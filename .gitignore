@@ -1,0 +1,5 @@
+*.swp
+libspotify*.changes
+libspotify*.deb
+libspotify*.debian.tar.gz
+libspotify*.dsc
