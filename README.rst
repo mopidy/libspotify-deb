@@ -1,6 +1,30 @@
 libspotify Debian package
 =========================
 
-This is the source for the Mopidy project's Debian package of libspotify.
+This is the source for the Mopidy project's Debian package of libspotify. It is
+in no way specific to Mopidy and may be used with any application to gain
+access to the Spotify music streaming service.
 
-If you want to install the package, you can do so from http://apt.mopidy.com/.
+
+Install from APT archive
+------------------------
+
+If you want to install the package, you can do so from the Mopidy APT archive
+at http://apt.mopidy.com/.
+
+#. Add the archive's GPG key::
+
+       wget -q -O - http://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
+
+#. Add the following to ``/etc/apt/sources.list``, or if you have the directory
+   ``/etc/apt/sources.list.d/``, add it to a file called ``mopidy.list`` in that
+   directory::
+
+       # Mopidy APT archive
+       deb http://apt.mopidy.com/ stable main non-free
+       deb-src http://apt.mopidy.com/ stable main non-free
+
+#. Install packages::
+
+       sudo apt-get update
+       sudo apt-get install libspotify6 libspotify-dev
