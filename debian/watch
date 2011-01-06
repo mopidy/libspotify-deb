@@ -9,6 +9,7 @@ version=3
 # Uncomment to examine a Webpage
 # <Webpage URL> <string match>
 #http://www.example.com/downloads.php libspotify-(.*)\.tar\.gz
+http://developer.spotify.com/en/libspotify/overview/ .*/libspotify-(.*)-linux6-x86_64\.tar\.gz
 
 # Uncomment to examine a Webserver directory
 #http://www.example.com/pub/libspotify-(.*)\.tar\.gz
