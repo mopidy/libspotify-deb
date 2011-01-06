@@ -1,0 +1,5 @@
+libspotify (0.0.6-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Thu, 06 Jan 2011 03:33:22 +0100
