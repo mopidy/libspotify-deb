@@ -12,7 +12,7 @@
 prefix = ${CURDIR}/debian/tmp/usr
 
 %:
-	dh $@
+	dh --with quilt $@
 
 override_dh_auto_install:
 	make -C ${DEB_HOST_ARCH} install prefix=${prefix}
