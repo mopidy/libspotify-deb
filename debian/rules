@@ -9,5 +9,11 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+prefix = ${CURDIR}/debian/tmp/usr
+
 %:
-	dh $@ 
+	dh $@
+
+override_dh_auto_install:
+	make -C ${DEB_HOST_ARCH} install prefix=${prefix}
+	sed -i -e s:${prefix}:/usr:g ${prefix}/lib/pkgconfig/libspotify.pc
