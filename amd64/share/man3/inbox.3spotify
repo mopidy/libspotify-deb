@@ -1,0 +1,106 @@
+.TH "Inbox subsysten" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Inbox subsysten \- 
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef void \fBinboxpost_complete_cb\fP (\fBsp_inbox\fP *result, void *userdata)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBsp_inbox\fP * \fBsp_inbox_post_tracks\fP (\fBsp_session\fP *session, const char *user, \fBsp_track\fP *const *tracks, int num_tracks, \fBinboxpost_complete_cb\fP *callback, void *userdata)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_inbox_error\fP (\fBsp_inbox\fP *inbox)"
+.br
+.ti -1c
+.RI "void \fBsp_inbox_add_ref\fP (\fBsp_inbox\fP *inbox)"
+.br
+.ti -1c
+.RI "void \fBsp_inbox_release\fP (\fBsp_inbox\fP *inbox)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef void \fBinboxpost_complete_cb\fP(\fBsp_inbox\fP *result, void *userdata)"
+.PP
+The type of a callback used in sp_inbox_post()
+.PP
+When this callback is called, the \fBsp_track_is_loaded()\fP, \fBsp_album_is_loaded()\fP, and \fBsp_artist_is_loaded()\fP functions will return non-zero for the objects contained in the search result.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresult\fP The same pointer returned by \fBsp_search_create()\fP 
+.br
+\fIuserdata\fP The opaque pointer given to \fBsp_search_create()\fP 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "void sp_inbox_add_ref (\fBsp_inbox\fP * inbox)"
+.PP
+Increase the reference count of a inbox result
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinbox\fP The inbox result object 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_inbox_error (\fBsp_inbox\fP * inbox)"
+.PP
+Check if inbox operation returned an error code.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinbox\fP Inbox object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Error code 
+.RE
+.PP
+
+.SS "\fBsp_inbox\fP* sp_inbox_post_tracks (\fBsp_session\fP * session, const char * user, \fBsp_track\fP *const * tracks, int num_tracks, \fBinboxpost_complete_cb\fP * callback, void * userdata)"
+.PP
+Add to inbox
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIuser\fP Canonical username of recipient 
+.br
+\fItracks\fP Array of trancks to post 
+.br
+\fInum_tracks\fP Number of tracks in \fCtracks\fP 
+.br
+\fIcallback\fP Callback to be invoked when the request has completed 
+.br
+\fIuserdata\fP Userdata passed to callback
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+sp_inbox object if the request has been sent, NULL if request failed to initialize 
+.RE
+.PP
+
+.SS "void sp_inbox_release (\fBsp_inbox\fP * inbox)"
+.PP
+Decrease the reference count of a inbox result
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinbox\fP The inbox result object 
+.RE
+.PP
+

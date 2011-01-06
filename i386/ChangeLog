@@ -1,0 +1,179 @@
+Version 0.0.6
+
+	SPOTIFY_API_VERSION is bumped to 6.
+
+	feature: Playlist folders. The folders are implemented as
+	specialized playlists. Two specialized types of playlists
+	can be used to push/pop depth in the a playlist container view.
+	See sp_playlist_type and sp_playlistcontainer_playlist_type().
+
+	feature: Autolinking of tracks, see sp_track_is_autolinked().
+
+	feature: Add support for extracting playlist description and
+	playlist images.
+
+	feature: Make it possible to query if a track is a local track.
+	See sp_track_is_local().
+
+	feature: sp_session_release() is now available and thus,
+	sp_session_init() has been renamed to sp_session_create()
+
+	feature: Improved audio delivery handling.
+
+	An application may choose to implement a callback in the session
+	struct that allows libspotify to query the applcation audio buffer
+	statistics.  The application should return number of samples
+	currently in its buffer and also if it has experienced any audio
+	dropouts (stutters) since the last query. The query
+	callback (get_audio_buffer_stats) will be invoked ca 10 times per
+	second.
+
+	If an application implements the get_audio_buffer_stats() it may
+	also choose to implement the start_playback() and stop_playback()
+	callbacks.  The start_playback() callback will be invoked when
+	there is enough samples in the buffer and the session player is in
+	play mode,see sp_session_player_play()
+
+	The stop_playback() callback will be invoked when playback is
+	paused and when a track ends.
+
+	If an application reports that it has experienced stutter it may
+	put itself in paused state and wait for start_playback() to be
+	invoked. This wil happen once libspotify is satisfied with the
+	buffer fullness.  No stop_playback() will be invoked in this case.
+
+	feature: Prefetching of tracks has been added. See
+	sp_session_player_prefetch(). Note that prefetch only works if
+	the caching is enabled.
+
+	feature: A new session configuration variable 'tiny_settings' is
+	available that, when set, tries to minimize the data store in the
+	settings dir as much as possible without affecting the user
+	experience too much. Set this if free disk space is precious.
+
+
+Version 0.0.5
+
+	SPOTIFY_API_VERSION is bumped to 5.
+
+	feature: The cache size can now be explicitly configured.  See
+	sp_session_set_cache_size().
+
+	feature: Support for getting create user and time for playlist entries.
+	See sp_playlist_track_creator() sp_playlist_track_create_time() and the
+	track_created_changed callback.
+
+	feature: Support for loading currently logged in user's Inbox.  See
+	sp_session_inbox(), sp_playlist_track_seen() and the track_seen_changed
+	playlist callback.
+
+	feature: Three new link types SP_LINKTYPE_PROFILE,
+	SP_LINKTYPE_STARRED and SP_LINKTYPE_LOCALTRACK
+
+	feature: Support for browsing other users toplists. See
+	sp_toplistbrowse_create().
+
+	feature: Support for browsing published lists. See
+	sp_session_publishedcontainer_for_user() and
+	sp_session_publishedcontainer_for_user_release(), also you can
+	get the user object for a playlistcontainer using
+	sp_playlistcontainer_owner.
+
+	feature: Support creating local tracks. See sp_localtrack_create().
+
+	ABI change: sp_track_is_available() & sp_track_is_starred() now need
+	sp_session to be passed as an argument.
+
+Version 0.0.4
+
+	SPOTIFY_API_VERSION is bumped to 4.
+
+	feature: libspotify is now available for Win32 and OS/X platforms.
+
+	feature: Add support for starred tracks. See sp_track_is_starred(),
+	sp_track_set_starred() and sp_session_starred_create().
+
+	feature: Add support for radio. See sp_radio_search_create().
+
+	feature: Add support for loading playlist without adding them to
+	the users's playlist container. See sp_playlist_create().
+
+	feature: Add support for 320kb/s streaming. See
+	sp_session_preferred_bitrate().
+
+	feature: Added new session callback streaming_error() that is invoked
+	if the library is unable to play the requested track.
+
+	feature: Add new session callback userinfo_updated() that is invoked
+	when one or more sp_user entries have been updated.
+
+	ABI change: Due to internal changes, the sp_playlist_add_tracks()
+	needs sp_session to be passed as an argument.
+
+	API change: The include file has been renamed from spotify/api.h to
+	libspotify/api.h for coherency reasons.
+
+Version 0.0.3
+
+	SPOTIFY_API_VERSION is bumped to 3.
+
+	feature: libspotify is now available for 64-bit x86 Linux platforms
+
+	feature: sp_artistbrowse_num_albums() and sp_artistbrowse_album()
+	have been added so users of the API can list all albums returned
+	in an artist browse.
+
+	bugfix: SP_ERROR_OTHER_PERMAMENT renamed to SP_ERROR_OTHER_PERMANENT
+
+	feature: The sp_image API has changed. libspotify now exposes the
+	source image data via the API. See sp_image_data() and
+	sp_image_format()
+
+	feature: PlaylistContainer have a new callback container_loaded()
+	that is invoked after the container has been initially
+	synchronized from the server.
+
+	feature: Added support for toplists. See the sp_toplistbrowse API
+	functions.
+
+	feature: Add sp_link_as_track_and_offset() for getting play start
+	offset encoded in URIs.
+
+Version 0.0.2
+
+	SPOTIFY_API_VERSION is bumped to 2.
+
+	feature: sp_search_create() has been extended with offset and
+	limit for album and artist results.
+
+	bugfix: libspotify contained a bug that caused it to hang if a
+	playlist was removed when libspotify was running.
+
+	feature: sp_track_is_available() has been added to allow the user
+	to query if a track can be played or not due to regional
+	restrictions.
+
+	feature: sp_album_is_available() has been added to allow the user
+	to query if a album is available or not due to regional
+	restrictions.
+
+	feature: playlist_metadata_updated() per-playlist callback has
+	been added, allowing the user to refresh metadata for tracks in a
+	playlist.
+
+	feature: sp_album_type() has been added to allow the user to find
+	out the album type. See the sp_albumtype enum for the available
+	types.
+
+	feature: An end_of_track() session callback has been added. Prior
+	to this release the music_delivery() callback would be invoked
+	with num_frames set to 0 both to indicate audio discontinuity (as
+	a result of a seek from the main thread) and also to indicate
+	end-of-track.  To ease application development, end_of_track() is
+	now invoked at the end of a track and music_delivery() is only
+	invoked with num_frames set to 0 as a result of a seek.
+
+
+Version 0.0.1
+
+	Initial release
