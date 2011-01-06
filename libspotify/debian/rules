@@ -17,3 +17,9 @@ prefix = ${CURDIR}/debian/tmp/usr
 override_dh_auto_install:
 	make -C ${DEB_HOST_ARCH} install prefix=${prefix}
 	sed -i -e s:${prefix}:/usr:g ${prefix}/lib/pkgconfig/libspotify.pc
+
+override_dh_installchangelogs:
+	dh_installchangelogs ${DEB_HOST_ARCH}/ChangeLog
+
+override_dh_installdocs:
+	dh_installdocs -XChangeLog -XLICENSE

@@ -1,3 +1,15 @@
+libspotify (0.0.6-2) UNRELEASED; urgency=low
+
+  * Install ChangeLog as changelog.gz. Fixes
+    wrong-name-for-upstream-changelog Lintian warning.
+  * Do not install LICENSE into docs. Fixes extra-license-file Lintian
+    warning.
+  * Make postinst/postrm specific to libspotify6. Fixes
+    postinst-has-useless-call-to-ldconfig and
+    postrm-has-useless-call-to-ldconfig Lintian warnings for libspotify-dev.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Thu, 06 Jan 2011 06:56:08 +0100
+
 libspotify (0.0.6-1) unstable; urgency=low
 
   * Initial release
