@@ -21,8 +21,8 @@ at http://apt.mopidy.com/.
    directory::
 
        # Mopidy APT archive
-       deb http://apt.mopidy.com/ stable main non-free
-       deb-src http://apt.mopidy.com/ stable main non-free
+       deb http://apt.mopidy.com/ stable main contrib non-free
+       deb-src http://apt.mopidy.com/ stable main contrib non-free
 
 #. Install packages::
 
