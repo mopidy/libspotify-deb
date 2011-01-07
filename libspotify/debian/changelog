@@ -12,8 +12,10 @@ libspotify (0.0.6-2) UNRELEASED; urgency=low
     debian/libspotify-dev.manpages, as they are only used by the -dev package
     anyway.
   * Build-Depends on quilt. Fixes missing-build-dependency Lintian error.
+  * Increase standards version to 3.9.1. Fixes out-of-date-standards-version
+    Lintian warning.
 
- -- Stein Magnus Jodal <stein.magnus@jodal.no>  Fri, 07 Jan 2011 15:56:48 +0100
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Fri, 07 Jan 2011 15:57:46 +0100
 
 libspotify (0.0.6-1) unstable; urgency=low
 
