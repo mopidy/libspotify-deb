@@ -11,7 +11,7 @@ Vcs-Browser: http://github.com/mopidy/libspotify-deb
 Package: libspotify-dev
 Section: libdevel
 Architecture: any
-Depends: libspotify6 (= ${binary:Version})
+Depends: ${misc:Depends}, libspotify6 (= ${binary:Version})
 Description: Library for using the Spotify music streaming service
  This development package provides the header files and the symbolic links to
  allow compilation and linking of programs that use the libraries provided in
