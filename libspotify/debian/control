@@ -1,7 +1,7 @@
 Source: libspotify
 Priority: extra
 Maintainer: Stein Magnus Jodal <stein.magnus@jodal.no>
-Build-Depends: debhelper (>= 7.0.50~)
+Build-Depends: debhelper (>= 7.0.50~), quilt (>= 0.46-7~)
 Standards-Version: 3.8.4
 Section: libs
 Homepage: http://developer.spotify.com/en/libspotify/

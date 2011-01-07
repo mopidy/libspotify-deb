@@ -11,8 +11,9 @@ libspotify (0.0.6-2) UNRELEASED; urgency=low
   * Rename debian/docs and debian/manpages to debian/libspotify-dev.docs and
     debian/libspotify-dev.manpages, as they are only used by the -dev package
     anyway.
+  * Build-Depends on quilt. Fixes missing-build-dependency Lintian error.
 
- -- Stein Magnus Jodal <stein.magnus@jodal.no>  Thu, 06 Jan 2011 08:09:28 +0100
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Fri, 07 Jan 2011 15:56:48 +0100
 
 libspotify (0.0.6-1) unstable; urgency=low
 
