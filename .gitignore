@@ -1,5 +1,6 @@
 *.swp
 .pc
+libspotify*.build
 libspotify*.changes
 libspotify*.deb
 libspotify*.debian.tar.gz
