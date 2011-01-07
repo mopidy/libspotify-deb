@@ -1,4 +1,4 @@
-libspotify (0.0.6-2) UNRELEASED; urgency=low
+libspotify (0.0.6-2) unstable; urgency=low
 
   * Install ChangeLog as changelog.gz. Fixes
     wrong-name-for-upstream-changelog Lintian warning.
@@ -17,7 +17,7 @@ libspotify (0.0.6-2) UNRELEASED; urgency=low
   * Add ${misc:Depends} to libspotify-dev. Fixes debhelper-but-no-misc-depends
     Lintian warning.
 
- -- Stein Magnus Jodal <stein.magnus@jodal.no>  Fri, 07 Jan 2011 16:01:43 +0100
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Fri, 07 Jan 2011 16:02:40 +0100
 
 libspotify (0.0.6-1) unstable; urgency=low
 
