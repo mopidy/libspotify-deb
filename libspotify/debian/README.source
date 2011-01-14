@@ -4,9 +4,4 @@ libspotify for Debian
 This package is built using multiple upstream tarballs, as described at
 <http://raphaelhertzog.com/2010/09/07/how-to-use-multiple-upstream-tarballs-in-debian-source-packages/>.
 
-Since the amd64 and i386 tarballs are equivalent, there is no main upstream
-tarball. Thus, the package must be built like this:
-
-    dpkg-buildpackage --source-option=--create-empty-orig
-
  -- Stein Magnus Jodal <stein.magnus@jodal.no>  Thu, 06 Jan 2011 03:33:22 +0100
