@@ -2,8 +2,10 @@ libspotify (0.0.6-3) unstable; urgency=low
 
   * Add 'create-empty-orig' to debian/source/options instead of documenting it
     in debian/README.source.
+  * Remove redundant files: debian/libspotify6.{postinst,postrm,dirs},
+    debian/libspotify-dev.dirs.
 
- -- Stein Magnus Jodal <stein.magnus@jodal.no>  Fri, 14 Jan 2011 11:17:49 +0100
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Fri, 14 Jan 2011 11:19:34 +0100
 
 libspotify (0.0.6-2) unstable; urgency=low
 
