@@ -60,7 +60,7 @@ Index: libspotify/amd64/share/man3/error.3spotify
  .SH NAME
 -Error Handling \- 
 +error \- Error Handling
- .SS "Enumerations"
+ .SS "Typedefs"
  
  .in +1c
 Index: libspotify/amd64/share/man3/image.3spotify
@@ -190,7 +190,7 @@ Index: libspotify/amd64/share/man3/user.3spotify
  .SH NAME
 -User handling \- 
 +user \- User handling
- .SS "Enumerations"
+ .SS "Typedefs"
  
  .in +1c
 Index: libspotify/amd64/share/man3/sp_audio_buffer_stats.3spotify
@@ -268,6 +268,19 @@ Index: libspotify/amd64/share/man3/sp_session_config.3spotify
  .SH NAME
 -sp_session_config \- 
 +sp_session_config \- sp_session_config
+ .SH SYNOPSIS
+ .br
+ .PP
+Index: libspotify/amd64/share/man3/sp_subscribers.3spotify
+===================================================================
+--- libspotify.orig/amd64/share/man3/sp_subscribers.3spotify	2011-02-12 16:02:40.268044993 +0100
++++ libspotify/amd64/share/man3/sp_subscribers.3spotify	2011-02-12 16:02:40.268044995 +0100
+@@ -2,7 +2,7 @@
+ .ad l
+ .nh
+ .SH NAME
+-sp_subscribers \- 
++sp_subscribers \- Playlist subscribers
  .SH SYNOPSIS
  .br
  .PP
