@@ -1,4 +1,4 @@
-.TH "Inbox subsysten" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Inbox subsysten" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,7 +14,7 @@ Inbox subsysten \-
 
 .in +1c
 .ti -1c
-.RI "\fBsp_inbox\fP * \fBsp_inbox_post_tracks\fP (\fBsp_session\fP *session, const char *user, \fBsp_track\fP *const *tracks, int num_tracks, \fBinboxpost_complete_cb\fP *callback, void *userdata)"
+.RI "\fBsp_inbox\fP * \fBsp_inbox_post_tracks\fP (\fBsp_session\fP *session, const char *user, \fBsp_track\fP *const *tracks, int num_tracks, const char *message, \fBinboxpost_complete_cb\fP *callback, void *userdata)"
 .br
 .ti -1c
 .RI "\fBsp_error\fP \fBsp_inbox_error\fP (\fBsp_inbox\fP *inbox)"
@@ -28,9 +28,7 @@ Inbox subsysten \-
 .in -1c
 .SH "Typedef Documentation"
 .PP 
-.SS "typedef void \fBinboxpost_complete_cb\fP(\fBsp_inbox\fP *result, void *userdata)"
-.PP
-The type of a callback used in sp_inbox_post()
+.SS "typedef void \fBinboxpost_complete_cb\fP(\fBsp_inbox\fP *result, void *userdata)"The type of a callback used in sp_inbox_post()
 .PP
 When this callback is called, the \fBsp_track_is_loaded()\fP, \fBsp_album_is_loaded()\fP, and \fBsp_artist_is_loaded()\fP functions will return non-zero for the objects contained in the search result.
 .PP
@@ -44,9 +42,7 @@ When this callback is called, the \fBsp_track_is_loaded()\fP, \fBsp_album_is_loa
 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_inbox_add_ref (\fBsp_inbox\fP * inbox)"
-.PP
-Increase the reference count of a inbox result
+.SS "void sp_inbox_add_ref (\fBsp_inbox\fP * inbox)"Increase the reference count of a inbox result
 .PP
 \fBParameters:\fP
 .RS 4
@@ -54,9 +50,7 @@ Increase the reference count of a inbox result
 .RE
 .PP
 
-.SS "\fBsp_error\fP sp_inbox_error (\fBsp_inbox\fP * inbox)"
-.PP
-Check if inbox operation returned an error code.
+.SS "\fBsp_error\fP sp_inbox_error (\fBsp_inbox\fP * inbox)"Check if inbox operation returned an error code.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -65,13 +59,11 @@ Check if inbox operation returned an error code.
 .PP
 \fBReturns:\fP
 .RS 4
-Error code 
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_OTHER_TRANSIENT SP_ERROR_PERMISSION_DENIED SP_ERROR_INVALID_INDATA SP_ERROR_INBOX_IS_FULL SP_ERROR_NO_SUCH_USER SP_ERROR_OTHER_PERMANENT 
 .RE
 .PP
 
-.SS "\fBsp_inbox\fP* sp_inbox_post_tracks (\fBsp_session\fP * session, const char * user, \fBsp_track\fP *const * tracks, int num_tracks, \fBinboxpost_complete_cb\fP * callback, void * userdata)"
-.PP
-Add to inbox
+.SS "\fBsp_inbox\fP* sp_inbox_post_tracks (\fBsp_session\fP * session, const char * user, \fBsp_track\fP *const * tracks, int num_tracks, const char * message, \fBinboxpost_complete_cb\fP * callback, void * userdata)"Add to inbox
 .PP
 \fBParameters:\fP
 .RS 4
@@ -82,6 +74,8 @@ Add to inbox
 \fItracks\fP Array of trancks to post 
 .br
 \fInum_tracks\fP Number of tracks in \fCtracks\fP 
+.br
+\fImessage\fP Message to attach to tracks. UTF-8 
 .br
 \fIcallback\fP Callback to be invoked when the request has completed 
 .br
@@ -94,9 +88,7 @@ sp_inbox object if the request has been sent, NULL if request failed to initiali
 .RE
 .PP
 
-.SS "void sp_inbox_release (\fBsp_inbox\fP * inbox)"
-.PP
-Decrease the reference count of a inbox result
+.SS "void sp_inbox_release (\fBsp_inbox\fP * inbox)"Decrease the reference count of a inbox result
 .PP
 \fBParameters:\fP
 .RS 4
@@ -104,3 +96,6 @@ Decrease the reference count of a inbox result
 .RE
 .PP
 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

@@ -53,8 +53,9 @@ struct {
 	{ "playlists",  cmd_playlists,  "List playlists" },
 	{ "playlist",   cmd_playlist,   "List playlist contents" },
 	{ "set_autolink", cmd_set_autolink, "Set autolinking state" },
-	{ "published_subscribe",  cmd_published_subscribe, "List a published list and subscribe for updates" },
-	{ "published_unsubscribe",  cmd_published_unsubscribe, "Unsubscribe for updates on a published list" }
+	{ "published_playlists",  cmd_published_playlists, "List a published list and subscribe for updates" },
+	{ "add_folder", cmd_add_folder, "Add playlist folder"},
+	{ "update_subscriptions", cmd_update_subscriptions, "Update playlist subscription info"},
 };
 
 

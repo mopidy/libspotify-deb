@@ -1,4 +1,4 @@
-.TH "Links (Spotify URIs)" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Links (Spotify URIs)" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -67,9 +67,7 @@ Links (Spotify URIs) \-
 These functions handle links to Spotify entities in a way that allows you to not care about the textual representation of the link. 
 .SH "Enumeration Type Documentation"
 .PP 
-.SS "enum \fBsp_linktype\fP"
-.PP
-Link types 
+.SS "enum \fBsp_linktype\fP"Link types 
 .PP
 \fBEnumerator: \fP
 .in +1c
@@ -102,9 +100,7 @@ Link type is starred.
 Link type is a local file. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_link_add_ref (\fBsp_link\fP * link)"
-.PP
-Increase the reference count of a link
+.SS "void sp_link_add_ref (\fBsp_link\fP * link)"Increase the reference count of a link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -112,9 +108,7 @@ Increase the reference count of a link
 .RE
 .PP
 
-.SS "\fBsp_album\fP* sp_link_as_album (\fBsp_link\fP * link)"
-.PP
-The album representation for the given link
+.SS "\fBsp_album\fP* sp_link_as_album (\fBsp_link\fP * link)"The album representation for the given link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -127,9 +121,11 @@ The album representation of the given album link If the link is not of album typ
 .RE
 .PP
 
-.SS "\fBsp_artist\fP* sp_link_as_artist (\fBsp_link\fP * link)"
 .PP
-The artist representation for the given link
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_artist\fP* sp_link_as_artist (\fBsp_link\fP * link)"The artist representation for the given link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -142,9 +138,11 @@ The artist representation of the given link If the link is not of artist type th
 .RE
 .PP
 
-.SS "int sp_link_as_string (\fBsp_link\fP * link, char * buffer, int buffer_size)"
 .PP
-Create a string representation of the given Spotify link
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "int sp_link_as_string (\fBsp_link\fP * link, char * buffer, int buffer_size)"Create a string representation of the given Spotify link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -161,9 +159,11 @@ The number of characters in the string representation of the link. If this value
 .RE
 .PP
 
-.SS "\fBsp_track\fP* sp_link_as_track (\fBsp_link\fP * link)"
 .PP
-The track representation for the given link
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_track\fP* sp_link_as_track (\fBsp_link\fP * link)"The track representation for the given link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -176,9 +176,11 @@ The track representation of the given track link If the link is not of track typ
 .RE
 .PP
 
-.SS "\fBsp_track\fP* sp_link_as_track_and_offset (\fBsp_link\fP * link, int * offset)"
 .PP
-The track and offset into track representation for the given link
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_track\fP* sp_link_as_track_and_offset (\fBsp_link\fP * link, int * offset)"The track and offset into track representation for the given link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -193,9 +195,7 @@ The track representation of the given track link If the link is not of track typ
 .RE
 .PP
 
-.SS "\fBsp_user\fP* sp_link_as_user (\fBsp_link\fP * link)"
-.PP
-The user representation for the given link
+.SS "\fBsp_user\fP* sp_link_as_user (\fBsp_link\fP * link)"The user representation for the given link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -208,9 +208,7 @@ The user representation of the given link If the link is not of user type then N
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_album (\fBsp_album\fP * album)"
-.PP
-Create a link object from an album
+.SS "\fBsp_link\fP* sp_link_create_from_album (\fBsp_album\fP * album)"Create a link object from an album
 .PP
 \fBParameters:\fP
 .RS 4
@@ -233,9 +231,7 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_artist (\fBsp_artist\fP * artist)"
-.PP
-Creates a link object from an artist
+.SS "\fBsp_link\fP* sp_link_create_from_artist (\fBsp_artist\fP * artist)"Creates a link object from an artist
 .PP
 \fBParameters:\fP
 .RS 4
@@ -258,9 +254,7 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_playlist (\fBsp_playlist\fP * playlist)"
-.PP
-Create a link object representing the given playlist
+.SS "\fBsp_link\fP* sp_link_create_from_playlist (\fBsp_playlist\fP * playlist)"Create a link object representing the given playlist
 .PP
 \fBParameters:\fP
 .RS 4
@@ -279,13 +273,16 @@ You need to release the link when you are done with it.
 .PP
 \fBSee also:\fP
 .RS 4
-\fBsp_link_release()\fP 
+\fBsp_link_release()\fP
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Due to reasons in the playlist backend design and the Spotify URI scheme you need to wait for the playlist to be loaded before you can successfully construct an URI. If \fBsp_link_create_from_playlist()\fP returns NULL, try again after teh playlist_state_changed callback has fired. 
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_search (\fBsp_search\fP * search)"
-.PP
-Generate a link object representing the current search
+.SS "\fBsp_link\fP* sp_link_create_from_search (\fBsp_search\fP * search)"Generate a link object representing the current search
 .PP
 \fBParameters:\fP
 .RS 4
@@ -308,9 +305,7 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_string (const char * link)"
-.PP
-Create a Spotify link given a string
+.SS "\fBsp_link\fP* sp_link_create_from_string (const char * link)"Create a Spotify link given a string
 .PP
 \fBParameters:\fP
 .RS 4
@@ -335,9 +330,11 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_track (\fBsp_track\fP * track, int offset)"
 .PP
-Generates a link object from a track
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_link\fP* sp_link_create_from_track (\fBsp_track\fP * track, int offset)"Generates a link object from a track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -362,9 +359,11 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_user (\fBsp_user\fP * user)"
 .PP
-Create a link object representing the given playlist
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_link\fP* sp_link_create_from_user (\fBsp_user\fP * user)"Create a link object representing the given playlist
 .PP
 \fBParameters:\fP
 .RS 4
@@ -387,9 +386,7 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "void sp_link_release (\fBsp_link\fP * link)"
-.PP
-Decrease the reference count of a link
+.SS "void sp_link_release (\fBsp_link\fP * link)"Decrease the reference count of a link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -397,9 +394,11 @@ Decrease the reference count of a link
 .RE
 .PP
 
-.SS "\fBsp_linktype\fP sp_link_type (\fBsp_link\fP * link)"
 .PP
-The link type of the specified link
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_linktype\fP sp_link_type (\fBsp_link\fP * link)"The link type of the specified link
 .PP
 \fBParameters:\fP
 .RS 4
@@ -412,3 +411,10 @@ The link type of the specified link - see the sp_linktype enum for possible valu
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

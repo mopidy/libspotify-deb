@@ -1,4 +1,4 @@
-.TH "Spotify types & structs" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Spotify types & structs" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -63,3 +63,6 @@ Spotify types & structs \-
 .br
 .RI "\fIAdd to inbox request handle. \fP"
 .in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

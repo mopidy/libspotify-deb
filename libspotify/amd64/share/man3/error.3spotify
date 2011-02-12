@@ -1,13 +1,20 @@
-.TH "Error Handling" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Error Handling" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 Error Handling \- 
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBsp_error\fP \fBsp_error\fP"
+.br
+.in -1c
 .SS "Enumerations"
 
 .in +1c
 .ti -1c
-.RI "enum \fBsp_error\fP { \fBSP_ERROR_OK\fP =  0, \fBSP_ERROR_BAD_API_VERSION\fP =  1, \fBSP_ERROR_API_INITIALIZATION_FAILED\fP =  2, \fBSP_ERROR_TRACK_NOT_PLAYABLE\fP =  3, \fBSP_ERROR_RESOURCE_NOT_LOADED\fP =  4, \fBSP_ERROR_BAD_APPLICATION_KEY\fP =  5, \fBSP_ERROR_BAD_USERNAME_OR_PASSWORD\fP =  6, \fBSP_ERROR_USER_BANNED\fP =  7, \fBSP_ERROR_UNABLE_TO_CONTACT_SERVER\fP =  8, \fBSP_ERROR_CLIENT_TOO_OLD\fP =  9, \fBSP_ERROR_OTHER_PERMANENT\fP =  10, \fBSP_ERROR_BAD_USER_AGENT\fP =  11, \fBSP_ERROR_MISSING_CALLBACK\fP =  12, \fBSP_ERROR_INVALID_INDATA\fP =  13, \fBSP_ERROR_INDEX_OUT_OF_RANGE\fP =  14, \fBSP_ERROR_USER_NEEDS_PREMIUM\fP =  15, \fBSP_ERROR_OTHER_TRANSIENT\fP =  16, \fBSP_ERROR_IS_LOADING\fP =  17, \fBSP_ERROR_NO_STREAM_AVAILABLE\fP =  18, \fBSP_ERROR_PERMISSION_DENIED\fP =  19, \fBSP_ERROR_INBOX_IS_FULL\fP =  20 }"
+.RI "enum \fBsp_error\fP { \fBSP_ERROR_OK\fP =  0, \fBSP_ERROR_BAD_API_VERSION\fP =  1, \fBSP_ERROR_API_INITIALIZATION_FAILED\fP =  2, \fBSP_ERROR_TRACK_NOT_PLAYABLE\fP =  3, \fBSP_ERROR_RESOURCE_NOT_LOADED\fP =  4, \fBSP_ERROR_BAD_APPLICATION_KEY\fP =  5, \fBSP_ERROR_BAD_USERNAME_OR_PASSWORD\fP =  6, \fBSP_ERROR_USER_BANNED\fP =  7, \fBSP_ERROR_UNABLE_TO_CONTACT_SERVER\fP =  8, \fBSP_ERROR_CLIENT_TOO_OLD\fP =  9, \fBSP_ERROR_OTHER_PERMANENT\fP =  10, \fBSP_ERROR_BAD_USER_AGENT\fP =  11, \fBSP_ERROR_MISSING_CALLBACK\fP =  12, \fBSP_ERROR_INVALID_INDATA\fP =  13, \fBSP_ERROR_INDEX_OUT_OF_RANGE\fP =  14, \fBSP_ERROR_USER_NEEDS_PREMIUM\fP =  15, \fBSP_ERROR_OTHER_TRANSIENT\fP =  16, \fBSP_ERROR_IS_LOADING\fP =  17, \fBSP_ERROR_NO_STREAM_AVAILABLE\fP =  18, \fBSP_ERROR_PERMISSION_DENIED\fP =  19, \fBSP_ERROR_INBOX_IS_FULL\fP =  20, \fBSP_ERROR_NO_CACHE\fP =  21, \fBSP_ERROR_NO_SUCH_USER\fP =  22 }"
 .br
 .in -1c
 .SS "Functions"
@@ -20,11 +27,12 @@ Error Handling \-
 .SH "Detailed Description"
 .PP 
 All functions in libspotify use the same set of error codes. Most of them return an error code, and let the result of the operation be stored in an out-parameter. 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef enum \fBsp_error\fP  \fBsp_error\fP"Error codes returned by various functions 
 .SH "Enumeration Type Documentation"
 .PP 
-.SS "enum \fBsp_error\fP"
-.PP
-Error codes returned by various functions 
+.SS "enum \fBsp_error\fP"Error codes returned by various functions 
 .PP
 \fBEnumerator: \fP
 .in +1c
@@ -91,11 +99,15 @@ Requested operation is not allowed.
 .TP
 \fB\fISP_ERROR_INBOX_IS_FULL \fP\fP
 Target inbox is full. 
+.TP
+\fB\fISP_ERROR_NO_CACHE \fP\fP
+Cache is not enabled. 
+.TP
+\fB\fISP_ERROR_NO_SUCH_USER \fP\fP
+Requested user does not exist. 
 .SH "Function Documentation"
 .PP 
-.SS "const char* sp_error_message (\fBsp_error\fP error)"
-.PP
-Convert a numeric libspotify error code to a text string
+.SS "const char* sp_error_message (\fBsp_error\fP error)"Convert a numeric libspotify error code to a text string
 .PP
 \fBParameters:\fP
 .RS 4
@@ -103,3 +115,10 @@ Convert a numeric libspotify error code to a text string
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, \fBjukebox.c\fP, and \fBsearch.c\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

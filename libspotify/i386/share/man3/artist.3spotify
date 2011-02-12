@@ -1,4 +1,4 @@
-.TH "Artist subsystem" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Artist subsystem" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,9 +21,7 @@ Artist subsystem \-
 .in -1c
 .SH "Function Documentation"
 .PP 
-.SS "void sp_artist_add_ref (\fBsp_artist\fP * artist)"
-.PP
-Increase the reference count of a artist
+.SS "void sp_artist_add_ref (\fBsp_artist\fP * artist)"Increase the reference count of a artist
 .PP
 \fBParameters:\fP
 .RS 4
@@ -31,9 +29,7 @@ Increase the reference count of a artist
 .RE
 .PP
 
-.SS "bool sp_artist_is_loaded (\fBsp_artist\fP * artist)"
-.PP
-Check if the artist object is populated with data
+.SS "bool sp_artist_is_loaded (\fBsp_artist\fP * artist)"Check if the artist object is populated with data
 .PP
 \fBParameters:\fP
 .RS 4
@@ -46,9 +42,7 @@ True if metadata is present, false if not
 .RE
 .PP
 
-.SS "const char* sp_artist_name (\fBsp_artist\fP * artist)"
-.PP
-Return name of artist
+.SS "const char* sp_artist_name (\fBsp_artist\fP * artist)"Return name of artist
 .PP
 \fBParameters:\fP
 .RS 4
@@ -61,9 +55,11 @@ Name of artist. Returned string is valid as long as the artist object stays allo
 .RE
 .PP
 
-.SS "void sp_artist_release (\fBsp_artist\fP * artist)"
 .PP
-Decrease the reference count of a artist
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, \fBsearch.c\fP, and \fBtoplist.c\fP.
+.SS "void sp_artist_release (\fBsp_artist\fP * artist)"Decrease the reference count of a artist
 .PP
 \fBParameters:\fP
 .RS 4
@@ -71,3 +67,6 @@ Decrease the reference count of a artist
 .RE
 .PP
 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

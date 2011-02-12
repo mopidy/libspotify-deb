@@ -1,4 +1,4 @@
-.TH "Artist browsing" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Artist browsing" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -71,9 +71,7 @@ There is currently no built-in functionality available for getting the albums be
 
 .SH "Typedef Documentation"
 .PP 
-.SS "typedef void \fBartistbrowse_complete_cb\fP(\fBsp_artistbrowse\fP *result, void *userdata)"
-.PP
-The type of a callback used in \fBsp_artistbrowse_create()\fP
+.SS "typedef void \fBartistbrowse_complete_cb\fP(\fBsp_artistbrowse\fP *result, void *userdata)"The type of a callback used in \fBsp_artistbrowse_create()\fP
 .PP
 When the callback is called, the metadata of all tracks belonging to it will have been loaded, so \fBsp_track_is_loaded()\fP will return non-zero. The same goes for the similar artist data.
 .PP
@@ -87,9 +85,7 @@ When the callback is called, the metadata of all tracks belonging to it will hav
 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_artistbrowse_add_ref (\fBsp_artistbrowse\fP * arb)"
-.PP
-Increase the reference count of an artist browse result
+.SS "void sp_artistbrowse_add_ref (\fBsp_artistbrowse\fP * arb)"Increase the reference count of an artist browse result
 .PP
 \fBParameters:\fP
 .RS 4
@@ -97,9 +93,7 @@ Increase the reference count of an artist browse result
 .RE
 .PP
 
-.SS "\fBsp_album\fP* sp_artistbrowse_album (\fBsp_artistbrowse\fP * arb, int index)"
-.PP
-Given an artist browse object, return one of its albums
+.SS "\fBsp_album\fP* sp_artistbrowse_album (\fBsp_artistbrowse\fP * arb, int index)"Given an artist browse object, return one of its albums
 .PP
 \fBParameters:\fP
 .RS 4
@@ -119,9 +113,7 @@ A album object, or NULL if the index is out of range.
 .RE
 .PP
 
-.SS "\fBsp_artist\fP* sp_artistbrowse_artist (\fBsp_artistbrowse\fP * arb)"
-.PP
-Given an artist browse object, return a pointer to its artist object
+.SS "\fBsp_artist\fP* sp_artistbrowse_artist (\fBsp_artistbrowse\fP * arb)"Given an artist browse object, return a pointer to its artist object
 .PP
 \fBParameters:\fP
 .RS 4
@@ -134,9 +126,11 @@ Artist object
 .RE
 .PP
 
-.SS "const char* sp_artistbrowse_biography (\fBsp_artistbrowse\fP * arb)"
 .PP
-Given an artist browse object, return the artists biography
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "const char* sp_artistbrowse_biography (\fBsp_artistbrowse\fP * arb)"Given an artist browse object, return the artists biography
 .PP
 \fBNote:\fP
 .RS 4
@@ -154,9 +148,11 @@ Biography string in UTF-8 format. Returned string is valid as long as the album 
 .RE
 .PP
 
-.SS "\fBsp_artistbrowse\fP* sp_artistbrowse_create (\fBsp_session\fP * session, \fBsp_artist\fP * artist, \fBartistbrowse_complete_cb\fP * callback, void * userdata)"
 .PP
-Initiate a request for browsing an artist
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_artistbrowse\fP* sp_artistbrowse_create (\fBsp_session\fP * session, \fBsp_artist\fP * artist, \fBartistbrowse_complete_cb\fP * callback, void * userdata)"Initiate a request for browsing an artist
 .PP
 The user is responsible for freeing the returned artist browse using \fBsp_artistbrowse_release()\fP. This can be done in the callback.
 .PP
@@ -182,9 +178,11 @@ Artist browse object
 .RE
 .PP
 
-.SS "\fBsp_error\fP sp_artistbrowse_error (\fBsp_artistbrowse\fP * arb)"
 .PP
-Check if browsing returned an error code.
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_error\fP sp_artistbrowse_error (\fBsp_artistbrowse\fP * arb)"Check if browsing returned an error code.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -193,13 +191,15 @@ Check if browsing returned an error code.
 .PP
 \fBReturns:\fP
 .RS 4
-Error code 
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_IS_LOADING SP_ERROR_OTHER_PERMANENT SP_ERROR_OTHER_TRANSIENT 
 .RE
 .PP
 
-.SS "bool sp_artistbrowse_is_loaded (\fBsp_artistbrowse\fP * arb)"
 .PP
-Check if an artist browse request is completed
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "bool sp_artistbrowse_is_loaded (\fBsp_artistbrowse\fP * arb)"Check if an artist browse request is completed
 .PP
 \fBParameters:\fP
 .RS 4
@@ -212,9 +212,7 @@ True if browsing is completed, false if not
 .RE
 .PP
 
-.SS "int sp_artistbrowse_num_albums (\fBsp_artistbrowse\fP * arb)"
-.PP
-Given an artist browse object, return number of albums
+.SS "int sp_artistbrowse_num_albums (\fBsp_artistbrowse\fP * arb)"Given an artist browse object, return number of albums
 .PP
 \fBParameters:\fP
 .RS 4
@@ -227,9 +225,7 @@ Number of albums for given artist
 .RE
 .PP
 
-.SS "int sp_artistbrowse_num_portraits (\fBsp_artistbrowse\fP * arb)"
-.PP
-Given an artist browse object, return number of portraits available
+.SS "int sp_artistbrowse_num_portraits (\fBsp_artistbrowse\fP * arb)"Given an artist browse object, return number of portraits available
 .PP
 \fBParameters:\fP
 .RS 4
@@ -242,9 +238,11 @@ Number of portraits for given artist
 .RE
 .PP
 
-.SS "int sp_artistbrowse_num_similar_artists (\fBsp_artistbrowse\fP * arb)"
 .PP
-Given an artist browse object, return number of similar artists
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "int sp_artistbrowse_num_similar_artists (\fBsp_artistbrowse\fP * arb)"Given an artist browse object, return number of similar artists
 .PP
 \fBParameters:\fP
 .RS 4
@@ -257,9 +255,11 @@ Number of similar artists for given artist
 .RE
 .PP
 
-.SS "int sp_artistbrowse_num_tracks (\fBsp_artistbrowse\fP * arb)"
 .PP
-Given an artist browse object, return number of tracks
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "int sp_artistbrowse_num_tracks (\fBsp_artistbrowse\fP * arb)"Given an artist browse object, return number of tracks
 .PP
 \fBParameters:\fP
 .RS 4
@@ -272,9 +272,11 @@ Number of tracks for given artist
 .RE
 .PP
 
-.SS "const byte* sp_artistbrowse_portrait (\fBsp_artistbrowse\fP * arb, int index)"
 .PP
-Return image ID representing a portrait of the artist
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "const byte* sp_artistbrowse_portrait (\fBsp_artistbrowse\fP * arb, int index)"Return image ID representing a portrait of the artist
 .PP
 \fBParameters:\fP
 .RS 4
@@ -294,9 +296,7 @@ ID byte sequence that can be passed to \fBsp_image_create()\fP
 .RE
 .PP
 
-.SS "void sp_artistbrowse_release (\fBsp_artistbrowse\fP * arb)"
-.PP
-Decrease the reference count of an artist browse result
+.SS "void sp_artistbrowse_release (\fBsp_artistbrowse\fP * arb)"Decrease the reference count of an artist browse result
 .PP
 \fBParameters:\fP
 .RS 4
@@ -304,9 +304,11 @@ Decrease the reference count of an artist browse result
 .RE
 .PP
 
-.SS "\fBsp_artist\fP* sp_artistbrowse_similar_artist (\fBsp_artistbrowse\fP * arb, int index)"
 .PP
-Given an artist browse object, return a similar artist by index
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_artist\fP* sp_artistbrowse_similar_artist (\fBsp_artistbrowse\fP * arb, int index)"Given an artist browse object, return a similar artist by index
 .PP
 \fBParameters:\fP
 .RS 4
@@ -326,9 +328,11 @@ A pointer to an artist object.
 .RE
 .PP
 
-.SS "\fBsp_track\fP* sp_artistbrowse_track (\fBsp_artistbrowse\fP * arb, int index)"
 .PP
-Given an artist browse object, return one of its tracks
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_track\fP* sp_artistbrowse_track (\fBsp_artistbrowse\fP * arb, int index)"Given an artist browse object, return one of its tracks
 .PP
 \fBParameters:\fP
 .RS 4
@@ -348,3 +352,10 @@ A track object, or NULL if the index is out of range.
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

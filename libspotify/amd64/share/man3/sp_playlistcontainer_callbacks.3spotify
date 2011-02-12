@@ -1,4 +1,4 @@
-.TH "sp_playlistcontainer_callbacks" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "sp_playlistcontainer_callbacks" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,8 +6,8 @@ sp_playlistcontainer_callbacks \-
 .SH SYNOPSIS
 .br
 .PP
-\fC#include <api.h>\fP
 .PP
+\fC#include <api.h>\fP
 .SS "Data Fields"
 
 .in +1c
@@ -36,11 +36,24 @@ Playlist container callbacks. If some callbacks should not be of interest, set t
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+.PP
+\fBjukebox.c\fP.
 .SH "Field Documentation"
 .PP 
-.SS "void( * \fBsp_playlistcontainer_callbacks::playlist_added\fP)(\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, int position, void *userdata)"
+.SS "void( * \fBsp_playlistcontainer_callbacks::container_loaded\fP)(\fBsp_playlistcontainer\fP *pc, void *userdata)"Called when the playlist container is loaded
 .PP
-Called when a new playlist has been added to the playlist container.
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIuserdata\fP Userdata as set in \fBsp_playlistcontainer_add_callbacks()\fP 
+.RE
+.PP
+
+.SS "void( * \fBsp_playlistcontainer_callbacks::playlist_added\fP)(\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, int position, void *userdata)"Called when a new playlist has been added to the playlist container.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -54,25 +67,7 @@ Called when a new playlist has been added to the playlist container.
 .RE
 .PP
 
-.SS "void( * \fBsp_playlistcontainer_callbacks::playlist_removed\fP)(\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, int position, void *userdata)"
-.PP
-Called when a new playlist has been removed from playlist container
-.PP
-\fBParameters:\fP
-.RS 4
-\fIpc\fP Playlist container 
-.br
-\fIplaylist\fP Playlist object. 
-.br
-\fIposition\fP Position in list 
-.br
-\fIuserdata\fP Userdata as set in \fBsp_playlistcontainer_add_callbacks()\fP 
-.RE
-.PP
-
-.SS "void( * \fBsp_playlistcontainer_callbacks::playlist_moved\fP)(\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, int position, int new_position, void *userdata)"
-.PP
-Called when a playlist has been moved in the playlist container
+.SS "void( * \fBsp_playlistcontainer_callbacks::playlist_moved\fP)(\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, int position, int new_position, void *userdata)"Called when a playlist has been moved in the playlist container
 .PP
 \fBParameters:\fP
 .RS 4
@@ -88,13 +83,15 @@ Called when a playlist has been moved in the playlist container
 .RE
 .PP
 
-.SS "void( * \fBsp_playlistcontainer_callbacks::container_loaded\fP)(\fBsp_playlistcontainer\fP *pc, void *userdata)"
-.PP
-Called when the playlist container is loaded
+.SS "void( * \fBsp_playlistcontainer_callbacks::playlist_removed\fP)(\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, int position, void *userdata)"Called when a new playlist has been removed from playlist container
 .PP
 \fBParameters:\fP
 .RS 4
 \fIpc\fP Playlist container 
+.br
+\fIplaylist\fP Playlist object. 
+.br
+\fIposition\fP Position in list 
 .br
 \fIuserdata\fP Userdata as set in \fBsp_playlistcontainer_add_callbacks()\fP 
 .RE

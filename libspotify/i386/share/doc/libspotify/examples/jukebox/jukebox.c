@@ -107,7 +107,7 @@ static void try_jukebox_start(void)
 	if (!t)
 		return;
 
-	if (sp_track_is_loaded(t) == 0)
+	if (sp_track_error(t) != SP_ERROR_OK)
 		return;
 
 	if (g_currenttrack == t)
@@ -271,7 +271,8 @@ static void playlist_removed(sp_playlistcontainer *pc, sp_playlist *pl,
  */
 static void container_loaded(sp_playlistcontainer *pc, void *userdata)
 {
-	fprintf(stderr, "jukebox: Rootlist synchronized\n");
+	fprintf(stderr, "jukebox: Rootlist synchronized (%d playlists)\n",
+	    sp_playlistcontainer_num_playlists(pc));
 }
 
 

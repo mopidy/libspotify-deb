@@ -1,4 +1,4 @@
-.TH "Image handling" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Image handling" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -53,14 +53,10 @@ Image handling \-
 .in -1c
 .SH "Typedef Documentation"
 .PP 
-.SS "typedef void \fBimage_loaded_cb\fP(\fBsp_image\fP *image, void *userdata)"
-.PP
-The type of a callback used to notify the application that an image is done loading. 
+.SS "typedef void \fBimage_loaded_cb\fP(\fBsp_image\fP *image, void *userdata)"The type of a callback used to notify the application that an image is done loading. 
 .SH "Enumeration Type Documentation"
 .PP 
-.SS "enum \fBsp_imageformat\fP"
-.PP
-Image format 
+.SS "enum \fBsp_imageformat\fP"Image format 
 .PP
 \fBEnumerator: \fP
 .in +1c
@@ -72,9 +68,7 @@ Unknown image format.
 JPEG image. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_image_add_load_callback (\fBsp_image\fP * image, \fBimage_loaded_cb\fP * callback, void * userdata)"
-.PP
-Add a callback that will be invoked when the image is loaded
+.SS "void sp_image_add_load_callback (\fBsp_image\fP * image, \fBimage_loaded_cb\fP * callback, void * userdata)"Add a callback that will be invoked when the image is loaded
 .PP
 If an image is loaded, and loading fails, the image will behave like an empty image.
 .PP
@@ -88,9 +82,7 @@ If an image is loaded, and loading fails, the image will behave like an empty im
 .RE
 .PP
 
-.SS "void sp_image_add_ref (\fBsp_image\fP * image)"
-.PP
-Increase the reference count of an image
+.SS "void sp_image_add_ref (\fBsp_image\fP * image)"Increase the reference count of an image
 .PP
 \fBParameters:\fP
 .RS 4
@@ -98,9 +90,7 @@ Increase the reference count of an image
 .RE
 .PP
 
-.SS "\fBsp_image\fP* sp_image_create (\fBsp_session\fP * session, const byte image_id[20])"
-.PP
-Create an image object
+.SS "\fBsp_image\fP* sp_image_create (\fBsp_session\fP * session, const byte image_id[20])"Create an image object
 .PP
 \fBParameters:\fP
 .RS 4
@@ -122,9 +112,7 @@ Pointer to an image object. To free the object, use \fBsp_image_release()\fP
 .RE
 .PP
 
-.SS "const void* sp_image_data (\fBsp_image\fP * image, size_t * data_size)"
-.PP
-Get image data
+.SS "const void* sp_image_data (\fBsp_image\fP * image, size_t * data_size)"Get image data
 .PP
 \fBParameters:\fP
 .RS 4
@@ -139,9 +127,7 @@ Pointer to raw image data
 .RE
 .PP
 
-.SS "\fBsp_error\fP sp_image_error (\fBsp_image\fP * image)"
-.PP
-Check if image retrieval returned an error code.
+.SS "\fBsp_error\fP sp_image_error (\fBsp_image\fP * image)"Check if image retrieval returned an error code.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -150,13 +136,11 @@ Check if image retrieval returned an error code.
 .PP
 \fBReturns:\fP
 .RS 4
-Error code 
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_IS_LOADING SP_ERROR_OTHER_PERMANENT SP_ERROR_OTHER_TRANSIENT 
 .RE
 .PP
 
-.SS "\fBsp_imageformat\fP sp_image_format (\fBsp_image\fP * image)"
-.PP
-Get image format
+.SS "\fBsp_imageformat\fP sp_image_format (\fBsp_image\fP * image)"Get image format
 .PP
 \fBParameters:\fP
 .RS 4
@@ -169,9 +153,7 @@ Image format as described by sp_imageformat
 .RE
 .PP
 
-.SS "const byte* sp_image_image_id (\fBsp_image\fP * image)"
-.PP
-Get image ID
+.SS "const byte* sp_image_image_id (\fBsp_image\fP * image)"Get image ID
 .PP
 \fBParameters:\fP
 .RS 4
@@ -184,9 +166,7 @@ Image ID
 .RE
 .PP
 
-.SS "bool sp_image_is_loaded (\fBsp_image\fP * image)"
-.PP
-Check if an image is loaded. Before the image is loaded, the rest of the methods will behave as if the image is empty.
+.SS "bool sp_image_is_loaded (\fBsp_image\fP * image)"Check if an image is loaded. Before the image is loaded, the rest of the methods will behave as if the image is empty.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -199,9 +179,7 @@ True if image is loaded, false otherwise
 .RE
 .PP
 
-.SS "void sp_image_release (\fBsp_image\fP * image)"
-.PP
-Decrease the reference count of an image
+.SS "void sp_image_release (\fBsp_image\fP * image)"Decrease the reference count of an image
 .PP
 \fBParameters:\fP
 .RS 4
@@ -209,9 +187,7 @@ Decrease the reference count of an image
 .RE
 .PP
 
-.SS "void sp_image_remove_load_callback (\fBsp_image\fP * image, \fBimage_loaded_cb\fP * callback, void * userdata)"
-.PP
-Remove an image load callback previously added with \fBsp_image_add_load_callback()\fP
+.SS "void sp_image_remove_load_callback (\fBsp_image\fP * image, \fBimage_loaded_cb\fP * callback, void * userdata)"Remove an image load callback previously added with \fBsp_image_add_load_callback()\fP
 .PP
 \fBParameters:\fP
 .RS 4
@@ -223,3 +199,6 @@ Remove an image load callback previously added with \fBsp_image_add_load_callbac
 .RE
 .PP
 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

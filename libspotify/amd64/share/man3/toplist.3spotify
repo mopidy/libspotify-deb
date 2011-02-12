@@ -1,4 +1,4 @@
-.TH "Toplist handling" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Toplist handling" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -66,16 +66,16 @@ Toplist handling \-
 .in -1c
 .SH "Define Documentation"
 .PP 
-.SS "#define SP_TOPLIST_REGION(a, b)   ((a) << 8 | (b))"
-.PP
-Convenience macro to create a toplist region. Toplist regions are ISO 3166-1 country codes (in uppercase) encoded in an integer. There are also some reserved codes used to denote non-country regions. See sp_toplistregion
+.SS "#define SP_TOPLIST_REGION(a, b)   ((a) << 8 | (b))"Convenience macro to create a toplist region. Toplist regions are ISO 3166-1 country codes (in uppercase) encoded in an integer. There are also some reserved codes used to denote non-country regions. See sp_toplistregion
 .PP
 Example: SP_TOPLIST_REGION('S', 'E') // for sweden 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
 .SH "Typedef Documentation"
 .PP 
-.SS "typedef void \fBtoplistbrowse_complete_cb\fP(\fBsp_toplistbrowse\fP *result, void *userdata)"
-.PP
-The type of a callback used in \fBsp_toplistbrowse_create()\fP
+.SS "typedef void \fBtoplistbrowse_complete_cb\fP(\fBsp_toplistbrowse\fP *result, void *userdata)"The type of a callback used in \fBsp_toplistbrowse_create()\fP
 .PP
 When the callback is called, the metadata of all tracks belonging to it will have been loaded, so \fBsp_track_is_loaded()\fP will return non-zero. The same goes for the similar toplist data.
 .PP
@@ -89,9 +89,7 @@ When the callback is called, the metadata of all tracks belonging to it will hav
 
 .SH "Enumeration Type Documentation"
 .PP 
-.SS "enum \fBsp_toplistregion\fP"
-.PP
-Special toplist regions 
+.SS "enum \fBsp_toplistregion\fP"Special toplist regions 
 .PP
 \fBEnumerator: \fP
 .in +1c
@@ -101,9 +99,7 @@ Global toplist.
 .TP
 \fB\fISP_TOPLIST_REGION_USER \fP\fP
 Toplist for a given user. 
-.SS "enum \fBsp_toplisttype\fP"
-.PP
-Toplist types 
+.SS "enum \fBsp_toplisttype\fP"Toplist types 
 .PP
 \fBEnumerator: \fP
 .in +1c
@@ -118,9 +114,7 @@ Top albums.
 Top tracks. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_toplistbrowse_add_ref (\fBsp_toplistbrowse\fP * tlb)"
-.PP
-Increase the reference count of an toplist browse result
+.SS "void sp_toplistbrowse_add_ref (\fBsp_toplistbrowse\fP * tlb)"Increase the reference count of an toplist browse result
 .PP
 \fBParameters:\fP
 .RS 4
@@ -128,9 +122,7 @@ Increase the reference count of an toplist browse result
 .RE
 .PP
 
-.SS "\fBsp_album\fP* sp_toplistbrowse_album (\fBsp_toplistbrowse\fP * tlb, int index)"
-.PP
-Return the album at the given index in the given toplist browse object
+.SS "\fBsp_album\fP* sp_toplistbrowse_album (\fBsp_toplistbrowse\fP * tlb, int index)"Return the album at the given index in the given toplist browse object
 .PP
 \fBParameters:\fP
 .RS 4
@@ -145,9 +137,11 @@ The album at the given index in the given toplist browse object
 .RE
 .PP
 
-.SS "\fBsp_artist\fP* sp_toplistbrowse_artist (\fBsp_toplistbrowse\fP * tlb, int index)"
 .PP
-Return the artist at the given index in the given toplist browse object
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SS "\fBsp_artist\fP* sp_toplistbrowse_artist (\fBsp_toplistbrowse\fP * tlb, int index)"Return the artist at the given index in the given toplist browse object
 .PP
 \fBParameters:\fP
 .RS 4
@@ -162,9 +156,11 @@ The artist at the given index in the given toplist browse object
 .RE
 .PP
 
-.SS "\fBsp_toplistbrowse\fP* sp_toplistbrowse_create (\fBsp_session\fP * session, \fBsp_toplisttype\fP type, \fBsp_toplistregion\fP region, const char * username, \fBtoplistbrowse_complete_cb\fP * callback, void * userdata)"
 .PP
-Initiate a request for browsing an toplist
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SS "\fBsp_toplistbrowse\fP* sp_toplistbrowse_create (\fBsp_session\fP * session, \fBsp_toplisttype\fP type, \fBsp_toplistregion\fP region, const char * username, \fBtoplistbrowse_complete_cb\fP * callback, void * userdata)"Initiate a request for browsing an toplist
 .PP
 The user is responsible for freeing the returned toplist browse using \fBsp_toplistbrowse_release()\fP. This can be done in the callback.
 .PP
@@ -194,9 +190,11 @@ Toplist browse object
 .RE
 .PP
 
-.SS "\fBsp_error\fP sp_toplistbrowse_error (\fBsp_toplistbrowse\fP * tlb)"
 .PP
-Check if browsing returned an error code.
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SS "\fBsp_error\fP sp_toplistbrowse_error (\fBsp_toplistbrowse\fP * tlb)"Check if browsing returned an error code.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -205,13 +203,11 @@ Check if browsing returned an error code.
 .PP
 \fBReturns:\fP
 .RS 4
-Error code 
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_IS_LOADING SP_ERROR_OTHER_PERMANENT SP_ERROR_OTHER_TRANSIENT 
 .RE
 .PP
 
-.SS "bool sp_toplistbrowse_is_loaded (\fBsp_toplistbrowse\fP * tlb)"
-.PP
-Check if an toplist browse request is completed
+.SS "bool sp_toplistbrowse_is_loaded (\fBsp_toplistbrowse\fP * tlb)"Check if an toplist browse request is completed
 .PP
 \fBParameters:\fP
 .RS 4
@@ -224,9 +220,7 @@ True if browsing is completed, false if not
 .RE
 .PP
 
-.SS "int sp_toplistbrowse_num_albums (\fBsp_toplistbrowse\fP * tlb)"
-.PP
-Given an toplist browse object, return number of albums
+.SS "int sp_toplistbrowse_num_albums (\fBsp_toplistbrowse\fP * tlb)"Given an toplist browse object, return number of albums
 .PP
 \fBParameters:\fP
 .RS 4
@@ -239,9 +233,11 @@ Number of albums on toplist
 .RE
 .PP
 
-.SS "int sp_toplistbrowse_num_artists (\fBsp_toplistbrowse\fP * tlb)"
 .PP
-Given an toplist browse object, return number of artists
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SS "int sp_toplistbrowse_num_artists (\fBsp_toplistbrowse\fP * tlb)"Given an toplist browse object, return number of artists
 .PP
 \fBParameters:\fP
 .RS 4
@@ -254,9 +250,11 @@ Number of artists on toplist
 .RE
 .PP
 
-.SS "int sp_toplistbrowse_num_tracks (\fBsp_toplistbrowse\fP * tlb)"
 .PP
-Given an toplist browse object, return number of tracks
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SS "int sp_toplistbrowse_num_tracks (\fBsp_toplistbrowse\fP * tlb)"Given an toplist browse object, return number of tracks
 .PP
 \fBParameters:\fP
 .RS 4
@@ -269,9 +267,11 @@ Number of tracks on toplist
 .RE
 .PP
 
-.SS "void sp_toplistbrowse_release (\fBsp_toplistbrowse\fP * tlb)"
 .PP
-Decrease the reference count of an toplist browse result
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SS "void sp_toplistbrowse_release (\fBsp_toplistbrowse\fP * tlb)"Decrease the reference count of an toplist browse result
 .PP
 \fBParameters:\fP
 .RS 4
@@ -279,9 +279,11 @@ Decrease the reference count of an toplist browse result
 .RE
 .PP
 
-.SS "\fBsp_track\fP* sp_toplistbrowse_track (\fBsp_toplistbrowse\fP * tlb, int index)"
 .PP
-Return the track at the given index in the given toplist browse object
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SS "\fBsp_track\fP* sp_toplistbrowse_track (\fBsp_toplistbrowse\fP * tlb, int index)"Return the track at the given index in the given toplist browse object
 .PP
 \fBParameters:\fP
 .RS 4
@@ -296,3 +298,10 @@ The track at the given index in the given toplist browse object
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

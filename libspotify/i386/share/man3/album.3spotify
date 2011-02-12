@@ -1,4 +1,4 @@
-.TH "Album subsystem" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Album subsystem" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -43,9 +43,7 @@ Album subsystem \-
 .in -1c
 .SH "Enumeration Type Documentation"
 .PP 
-.SS "enum \fBsp_albumtype\fP"
-.PP
-Album types 
+.SS "enum \fBsp_albumtype\fP"Album types 
 .PP
 \fBEnumerator: \fP
 .in +1c
@@ -63,9 +61,7 @@ Compilation.
 Unknown type. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_album_add_ref (\fBsp_album\fP * album)"
-.PP
-Increase the reference count of an album
+.SS "void sp_album_add_ref (\fBsp_album\fP * album)"Increase the reference count of an album
 .PP
 \fBParameters:\fP
 .RS 4
@@ -73,9 +69,7 @@ Increase the reference count of an album
 .RE
 .PP
 
-.SS "\fBsp_artist\fP* sp_album_artist (\fBsp_album\fP * album)"
-.PP
-Get the artist associated with the given album
+.SS "\fBsp_artist\fP* sp_album_artist (\fBsp_album\fP * album)"Get the artist associated with the given album
 .PP
 \fBParameters:\fP
 .RS 4
@@ -88,9 +82,11 @@ A reference to the artist. NULL if the metadata has not been loaded yet
 .RE
 .PP
 
-.SS "const byte* sp_album_cover (\fBsp_album\fP * album)"
 .PP
-Return image ID representing the album's coverart.
+\fBExamples: \fP
+.in +1c
+\fBtoplist.c\fP.
+.SS "const byte* sp_album_cover (\fBsp_album\fP * album)"Return image ID representing the album's coverart.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -108,9 +104,7 @@ ID byte sequence that can be passed to \fBsp_image_create()\fP If the album has 
 .RE
 .PP
 
-.SS "bool sp_album_is_available (\fBsp_album\fP * album)"
-.PP
-Return true if the album is available in the current region.
+.SS "bool sp_album_is_available (\fBsp_album\fP * album)"Return true if the album is available in the current region.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -133,9 +127,7 @@ The album must be loaded or this function will always return false.
 .RE
 .PP
 
-.SS "bool sp_album_is_loaded (\fBsp_album\fP * album)"
-.PP
-Check if the album object is populated with data
+.SS "bool sp_album_is_loaded (\fBsp_album\fP * album)"Check if the album object is populated with data
 .PP
 \fBParameters:\fP
 .RS 4
@@ -148,9 +140,7 @@ True if metadata is present, false if not
 .RE
 .PP
 
-.SS "const char* sp_album_name (\fBsp_album\fP * album)"
-.PP
-Return name of album
+.SS "const char* sp_album_name (\fBsp_album\fP * album)"Return name of album
 .PP
 \fBParameters:\fP
 .RS 4
@@ -163,9 +153,11 @@ Name of album. Returned string is valid as long as the album object stays alloca
 .RE
 .PP
 
-.SS "void sp_album_release (\fBsp_album\fP * album)"
 .PP
-Decrease the reference count of an album
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, \fBsearch.c\fP, and \fBtoplist.c\fP.
+.SS "void sp_album_release (\fBsp_album\fP * album)"Decrease the reference count of an album
 .PP
 \fBParameters:\fP
 .RS 4
@@ -173,9 +165,7 @@ Decrease the reference count of an album
 .RE
 .PP
 
-.SS "\fBsp_albumtype\fP sp_album_type (\fBsp_album\fP * album)"
-.PP
-Return type of specified album
+.SS "\fBsp_albumtype\fP sp_album_type (\fBsp_album\fP * album)"Return type of specified album
 .PP
 \fBParameters:\fP
 .RS 4
@@ -188,9 +178,7 @@ sp_albumtype
 .RE
 .PP
 
-.SS "int sp_album_year (\fBsp_album\fP * album)"
-.PP
-Return release year of specified album
+.SS "int sp_album_year (\fBsp_album\fP * album)"Return release year of specified album
 .PP
 \fBParameters:\fP
 .RS 4
@@ -203,3 +191,10 @@ Release year
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBsearch.c\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

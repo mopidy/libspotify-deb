@@ -49,11 +49,12 @@ extern int cmd_playlists(int argc, char **argv);
 extern int cmd_playlist(int argc, char **argv);
 extern int cmd_set_autolink(int argc, char **argv);
 
-extern int cmd_published_subscribe(int argc, char **argv);
-extern int cmd_published_unsubscribe(int argc, char **argv);
+extern int cmd_published_playlists(int argc, char **argv);
 
 extern int cmd_social_enable(int argc, char **argv);
 extern int cmd_playlists_enable(int argc, char **argv);
+extern int cmd_add_folder(int argc, char **argv);
+extern int cmd_update_subscriptions(int argc, char **argv);
 
 /* Shared functions */
 void browse_playlist(sp_playlist *pl);

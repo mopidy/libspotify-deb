@@ -1,4 +1,4 @@
-.TH "Track subsystem" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Track subsystem" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -63,9 +63,7 @@ Track subsystem \-
 .in -1c
 .SH "Function Documentation"
 .PP 
-.SS "\fBsp_track\fP* sp_localtrack_create (const char * artist, const char * title, const char * album, int length)"
-.PP
-Returns the newly created local track
+.SS "\fBsp_track\fP* sp_localtrack_create (const char * artist, const char * title, const char * album, int length)"Returns the newly created local track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -75,7 +73,7 @@ Returns the newly created local track
 .br
 \fIalbum\fP Name of the album, or an empty string if not available 
 .br
-\fItitle\fP Length in MS, or -1 if not available.
+\fIlength\fP Length in MS, or -1 if not available.
 .RE
 .PP
 \fBReturns:\fP
@@ -84,9 +82,7 @@ A track.
 .RE
 .PP
 
-.SS "void sp_track_add_ref (\fBsp_track\fP * track)"
-.PP
-Increase the reference count of a track
+.SS "void sp_track_add_ref (\fBsp_track\fP * track)"Increase the reference count of a track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -94,9 +90,11 @@ Increase the reference count of a track
 .RE
 .PP
 
-.SS "\fBsp_album\fP* sp_track_album (\fBsp_track\fP * track)"
 .PP
-The album of the specified track
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_album\fP* sp_track_album (\fBsp_track\fP * track)"The album of the specified track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -109,9 +107,7 @@ The album of the given track. You need to increase the refcount if you want to k
 .RE
 .PP
 
-.SS "\fBsp_artist\fP* sp_track_artist (\fBsp_track\fP * track, int index)"
-.PP
-The artist matching the specified index performing on the current track.
+.SS "\fBsp_artist\fP* sp_track_artist (\fBsp_track\fP * track, int index)"The artist matching the specified index performing on the current track.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -126,9 +122,7 @@ The participating artist, or NULL if invalid index
 .RE
 .PP
 
-.SS "int sp_track_disc (\fBsp_track\fP * track)"
-.PP
-Returns the disc number for a track
+.SS "int sp_track_disc (\fBsp_track\fP * track)"Returns the disc number for a track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -141,9 +135,11 @@ Disc index. Possible values are [1, total number of discs on album] This functio
 .RE
 .PP
 
-.SS "int sp_track_duration (\fBsp_track\fP * track)"
 .PP
-The duration, in milliseconds, of the specified track
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "int sp_track_duration (\fBsp_track\fP * track)"The duration, in milliseconds, of the specified track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -156,9 +152,11 @@ The duration of the specified track, in milliseconds If no metadata is available
 .RE
 .PP
 
-.SS "\fBsp_error\fP sp_track_error (\fBsp_track\fP * track)"
 .PP
-Return an error code associated with a track. For example if it could not load
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_error\fP sp_track_error (\fBsp_track\fP * track)"Return an error code associated with a track. For example if it could not load
 .PP
 \fBParameters:\fP
 .RS 4
@@ -167,13 +165,15 @@ Return an error code associated with a track. For example if it could not load
 .PP
 \fBReturns:\fP
 .RS 4
-Error code 
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_IS_LOADING SP_ERROR_OTHER_PERMANENT 
 .RE
 .PP
 
-.SS "int sp_track_index (\fBsp_track\fP * track)"
 .PP
-Returns the position of a track on its disc
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "int sp_track_index (\fBsp_track\fP * track)"Returns the position of a track on its disc
 .PP
 \fBParameters:\fP
 .RS 4
@@ -186,9 +186,11 @@ Track position, starts at 1 (relative the corresponding disc) This function retu
 .RE
 .PP
 
-.SS "bool sp_track_is_autolinked (\fBsp_session\fP * session, \fBsp_track\fP * track)"
 .PP
-Return true if the track is autolinked to another track.
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "bool sp_track_is_autolinked (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return true if the track is autolinked to another track.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -213,9 +215,7 @@ The track must be loaded or this function will always return false.
 .RE
 .PP
 
-.SS "bool sp_track_is_available (\fBsp_session\fP * session, \fBsp_track\fP * track)"
-.PP
-Return true if the track is available for playback.
+.SS "bool sp_track_is_available (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return true if the track is available for playback.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -240,24 +240,29 @@ The track must be loaded or this function will always return false.
 .RE
 .PP
 
-.SS "bool sp_track_is_loaded (\fBsp_track\fP * track)"
-.PP
-Get load status for the specified track. If the track is not loaded yet, all other functions operating on the track return default values.
+.SS "bool sp_track_is_loaded (\fBsp_track\fP * track)"Return whether or not the track metadata is loaded.
 .PP
 \fBParameters:\fP
 .RS 4
-\fItrack\fP The track whose load status you are interested in
+\fItrack\fP The track
 .RE
 .PP
 \fBReturns:\fP
 .RS 4
-True if track is loaded, otherwise false 
+True if track is loaded
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This is equivivalent to checking if \fBsp_track_error()\fP not returns SP_ERROR_IS_LOADING. 
 .RE
 .PP
 
-.SS "bool sp_track_is_local (\fBsp_session\fP * session, \fBsp_track\fP * track)"
 .PP
-Return true if the track is a local file.
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "bool sp_track_is_local (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return true if the track is a local file.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -282,9 +287,7 @@ The track must be loaded or this function will always return false.
 .RE
 .PP
 
-.SS "bool sp_track_is_starred (\fBsp_session\fP * session, \fBsp_track\fP * track)"
-.PP
-Return true if the track is starred by the currently logged in user.
+.SS "bool sp_track_is_starred (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return true if the track is starred by the currently logged in user.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -309,9 +312,11 @@ The track must be loaded or this function will always return false.
 .RE
 .PP
 
-.SS "const char* sp_track_name (\fBsp_track\fP * track)"
 .PP
-The string representation of the specified track's name
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "const char* sp_track_name (\fBsp_track\fP * track)"The string representation of the specified track's name
 .PP
 \fBParameters:\fP
 .RS 4
@@ -324,9 +329,11 @@ The string representation of the specified track's name. Returned string is vali
 .RE
 .PP
 
-.SS "int sp_track_num_artists (\fBsp_track\fP * track)"
 .PP
-The number of artists performing on the specified track
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "int sp_track_num_artists (\fBsp_track\fP * track)"The number of artists performing on the specified track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -339,9 +346,11 @@ The number of artists performing on the specified track. If no metadata is avail
 .RE
 .PP
 
-.SS "int sp_track_popularity (\fBsp_track\fP * track)"
 .PP
-Returns popularity for track
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "int sp_track_popularity (\fBsp_track\fP * track)"Returns popularity for track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -354,9 +363,11 @@ Popularity in range 0 to 100, 0 if undefined If no metadata is available for the
 .RE
 .PP
 
-.SS "void sp_track_release (\fBsp_track\fP * track)"
 .PP
-Decrease the reference count of a track
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "void sp_track_release (\fBsp_track\fP * track)"Decrease the reference count of a track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -364,9 +375,11 @@ Decrease the reference count of a track
 .RE
 .PP
 
-.SS "void sp_track_set_starred (\fBsp_session\fP * session, const \fBsp_track\fP ** tracks, int num_tracks, bool star)"
 .PP
-Star/Unstar the specified track
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "void sp_track_set_starred (\fBsp_session\fP * session, const \fBsp_track\fP ** tracks, int num_tracks, bool star)"Star/Unstar the specified track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -390,3 +403,6 @@ sp_set_playlists_enabled()
 .RE
 .PP
 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

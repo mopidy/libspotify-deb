@@ -1,4 +1,4 @@
-.TH "sp_audio_buffer_stats" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "sp_audio_buffer_stats" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,8 +6,8 @@ sp_audio_buffer_stats \-
 .SH SYNOPSIS
 .br
 .PP
-\fC#include <api.h>\fP
 .PP
+\fC#include <api.h>\fP
 .SS "Data Fields"
 
 .in +1c
@@ -22,7 +22,7 @@ sp_audio_buffer_stats \-
 .in -1c
 .SH "Detailed Description"
 .PP 
-Bitrate definitions for music streaming 
+Buffer stats used by get_audio_buffer_stats callback 
 
 .SH "Author"
 .PP 

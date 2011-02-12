@@ -133,6 +133,8 @@ int spshell_init(const char *username, const char *password)
         /// The size of the application key.
 	extern const size_t g_appkey_size;
 
+	memset(&config, 0, sizeof(config));
+
 	// Always do this. It allows libspotify to check for
 	// header/library inconsistencies.
 	config.api_version = SPOTIFY_API_VERSION;
@@ -166,14 +168,7 @@ int spshell_init(const char *username, const char *password)
 	}
 
 	// Login using the credentials given on the command line.
-	error = sp_session_login(session, username, password);
-
-	if (SP_ERROR_OK != error) {
-		fprintf(stderr, "failed to login: %s\n",
-		                sp_error_message(error));
-		return 3;
-	}
-
+	sp_session_login(session, username, password);
 	g_session = session;
 	return 0;
 }

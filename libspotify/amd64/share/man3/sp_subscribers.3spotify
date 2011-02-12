@@ -1,0 +1,25 @@
+.TH "sp_subscribers" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sp_subscribers \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <api.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "char * \fBsubscribers\fP [1]"
+.br
+.RI "\fIActual size is 'count'. Array of pointers to canonical usernames. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+List of subscribers returned by \fBsp_playlist_subscribers()\fP 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

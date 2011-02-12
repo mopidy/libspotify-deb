@@ -1,8 +1,15 @@
-.TH "User handling" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "User handling" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 User handling \- 
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef enum \fBsp_relation_type\fP \fBsp_relation_type\fP"
+.br
+.in -1c
 .SS "Enumerations"
 
 .in +1c
@@ -38,11 +45,12 @@ User handling \-
 .RI "void \fBsp_user_release\fP (\fBsp_user\fP *user)"
 .br
 .in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef enum \fBsp_relation_type\fP  \fBsp_relation_type\fP"User relation type 
 .SH "Enumeration Type Documentation"
 .PP 
-.SS "enum \fBsp_relation_type\fP"
-.PP
-User relation type 
+.SS "enum \fBsp_relation_type\fP"User relation type 
 .PP
 \fBEnumerator: \fP
 .in +1c
@@ -60,9 +68,7 @@ The currently logged in user is following this uer.
 Bidirectional friendship established. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_user_add_ref (\fBsp_user\fP * user)"
-.PP
-Increase the reference count of an user
+.SS "void sp_user_add_ref (\fBsp_user\fP * user)"Increase the reference count of an user
 .PP
 \fBParameters:\fP
 .RS 4
@@ -70,9 +76,7 @@ Increase the reference count of an user
 .RE
 .PP
 
-.SS "const char* sp_user_canonical_name (\fBsp_user\fP * user)"
-.PP
-Get a pointer to a string representing the user's canonical username.
+.SS "const char* sp_user_canonical_name (\fBsp_user\fP * user)"Get a pointer to a string representing the user's canonical username.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -85,9 +89,7 @@ A string representing the canonical username.
 .RE
 .PP
 
-.SS "const char* sp_user_display_name (\fBsp_user\fP * user)"
-.PP
-Get a pointer to a string representing the user's displayable username. If there is no difference between the canonical username and the display name, or if the library does not know about the display name yet, the canonical username will be returned.
+.SS "const char* sp_user_display_name (\fBsp_user\fP * user)"Get a pointer to a string representing the user's displayable username. If there is no difference between the canonical username and the display name, or if the library does not know about the display name yet, the canonical username will be returned.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -100,9 +102,7 @@ A string
 .RE
 .PP
 
-.SS "const char* sp_user_full_name (\fBsp_user\fP * user)"
-.PP
-Get a pointer to a string representing the user's full name as returned from social networks.
+.SS "const char* sp_user_full_name (\fBsp_user\fP * user)"Get a pointer to a string representing the user's full name as returned from social networks.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -115,9 +115,7 @@ A string, NULL if the full name is not known.
 .RE
 .PP
 
-.SS "bool sp_user_is_loaded (\fBsp_user\fP * user)"
-.PP
-Get load status for a user object. Before it is loaded, only the user's canonical username is known.
+.SS "bool sp_user_is_loaded (\fBsp_user\fP * user)"Get load status for a user object. Before it is loaded, only the user's canonical username is known.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -130,9 +128,7 @@ True if user object is loaded, otherwise false
 .RE
 .PP
 
-.SS "const char* sp_user_picture (\fBsp_user\fP * user)"
-.PP
-Get a pointer to an URL for an picture representing the user
+.SS "const char* sp_user_picture (\fBsp_user\fP * user)"Get a pointer to an URL for an picture representing the user
 .PP
 \fBParameters:\fP
 .RS 4
@@ -145,9 +141,7 @@ A string, NULL if the URL is not known.
 .RE
 .PP
 
-.SS "\fBsp_relation_type\fP sp_user_relation_type (\fBsp_session\fP * session, \fBsp_user\fP * user)"
-.PP
-Get relation type for a given user
+.SS "\fBsp_relation_type\fP sp_user_relation_type (\fBsp_session\fP * session, \fBsp_user\fP * user)"Get relation type for a given user
 .PP
 \fBParameters:\fP
 .RS 4
@@ -162,9 +156,7 @@ Get relation type for a given user
 .RE
 .PP
 
-.SS "void sp_user_release (\fBsp_user\fP * user)"
-.PP
-Decrease the reference count of an user
+.SS "void sp_user_release (\fBsp_user\fP * user)"Decrease the reference count of an user
 .PP
 \fBParameters:\fP
 .RS 4
@@ -172,3 +164,6 @@ Decrease the reference count of an user
 .RE
 .PP
 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

@@ -52,32 +52,33 @@ int cmd_friends(int argc, char **argv)
 	return 1;
 }
 
+
+static const char *getowner(sp_playlistcontainer *pc)
+{
+	return sp_user_canonical_name(sp_playlistcontainer_owner(pc));
+}
+
 void plc_pl_added(sp_playlistcontainer *pc, sp_playlist *playlist, int position, void *userdata)
 {
-	const char *canonical_username = (const char *) userdata ? userdata : sp_user_display_name(sp_session_user(g_session));
-printf("playlistcontainer for user %s: pl %s added at position %d\n",
-       canonical_username, sp_playlist_name(playlist), position);
+	printf("playlistcontainer for user %s: pl %s added at position %d\n",
+	       getowner(pc), sp_playlist_name(playlist), position);
 	
 }
 void plc_pl_removed(sp_playlistcontainer *pc, sp_playlist *playlist, int position, void *userdata)
 {
-	const char *canonical_username = (const char *) userdata ? userdata : sp_user_display_name(sp_session_user(g_session));
-printf("playlistcontainer for user %s: pl %s removed at position %d\n",
-       canonical_username, sp_playlist_name(playlist), position);
+	printf("playlistcontainer for user %s: pl %s removed at position %d\n",
+	       getowner(pc), sp_playlist_name(playlist), position);
 
 }
 void plc_pl_moved(sp_playlistcontainer *pc, sp_playlist *playlist, int position, int new_position, void *userdata)
 {
-	const char *canonical_username = (const char *) userdata ? userdata : sp_user_display_name(sp_session_user(g_session));
-printf("playlistcontainer for user %s: pl %s moved from %d to %d\n",
-       canonical_username, sp_playlist_name(playlist), position, new_position);
+	printf("playlistcontainer for user %s: pl %s moved from %d to %d\n",
+	       getowner(pc), sp_playlist_name(playlist), position, new_position);
 }
 
-void plc_loaded(sp_playlistcontainer *plc, void *userdata)
+void plc_loaded(sp_playlistcontainer *pc, void *userdata)
 {
-	const char *canonical_username = (const char *)userdata;
-	printf("playlistcontainer for user %s loaded\n",
-	       canonical_username ? canonical_username : sp_user_display_name(sp_session_user(g_session)));
+	printf("playlistcontainer for user %s loaded\n", getowner(pc));
 }
 
 sp_playlistcontainer_callbacks plc_callbacks = {
@@ -87,38 +88,37 @@ sp_playlistcontainer_callbacks plc_callbacks = {
 	plc_loaded,
 };
 
-int cmd_published_subscribe(int argc, char **argv)
+int cmd_published_playlists(int argc, char **argv)
 {
 	const char *user = NULL;
 	int n;
-	sp_playlistcontainer *plc;
+	static sp_playlistcontainer *plc;
+	sp_user *ui;
+
 	if (argc > 1)
 		user = argv[1];
-	plc = sp_session_publishedcontainer_for_user(g_session, user);
-	if (plc) {
-		sp_user *ui = sp_playlistcontainer_owner(plc);
-		printf("playlistcontainer for user %s\n", ui ? sp_user_display_name(ui) : "<unknown>");
 
-		/* Make sure we're not registering duplicate callbacks */
-		sp_playlistcontainer_remove_callbacks(plc, &plc_callbacks, (void*)user);
-		sp_playlistcontainer_add_callbacks(plc, &plc_callbacks, (void*)user);
-		for (n = sp_playlistcontainer_num_playlists(plc); n; --n) {
-			sp_playlist *pl = sp_playlistcontainer_playlist(plc, n);
-			if (pl) {
-				printf("playlist: %s\n", sp_playlist_name(pl));
-			} else {
-				printf("unknown playlist at position %d\n", n);
-			}
+	if(plc != NULL) {
+		// Release any previously created playlistcontainer
+		// ie. we only subscribe to one at a time
+		sp_playlistcontainer_remove_callbacks(plc, &plc_callbacks, NULL);
+		sp_playlistcontainer_release(plc);
+	}
+
+	plc = sp_session_publishedcontainer_for_user_create(g_session, user);
+
+	ui = sp_playlistcontainer_owner(plc);
+	printf("playlistcontainer for user %s\n", ui ? sp_user_display_name(ui) : "<unknown>");
+
+	sp_playlistcontainer_add_callbacks(plc, &plc_callbacks, NULL);
+
+	for (n = sp_playlistcontainer_num_playlists(plc); n; --n) {
+		sp_playlist *pl = sp_playlistcontainer_playlist(plc, n);
+		if (pl) {
+			printf("playlist: %s\n", sp_playlist_name(pl));
+		} else {
+			printf("unknown playlist at position %d\n", n);
 		}
 	}
-	return 1;
-}
-
-int cmd_published_unsubscribe(int argc, char **argv)
-{
-	const char *user = NULL;
-	if (argc > 1)
-		user = argv[1];
-	sp_session_publishedcontainer_for_user_release(g_session, user);
 	return 1;
 }

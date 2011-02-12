@@ -1,4 +1,4 @@
-.TH "Album browsing" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "Album browsing" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -55,9 +55,7 @@ Album browsing \-
 Browsing adds additional information to what an \fBsp_album\fP holds. It retrieves copyrights, reviews and tracks of the album. 
 .SH "Typedef Documentation"
 .PP 
-.SS "typedef void \fBalbumbrowse_complete_cb\fP(\fBsp_albumbrowse\fP *result, void *userdata)"
-.PP
-The type of a callback used in \fBsp_albumbrowse_create()\fP
+.SS "typedef void \fBalbumbrowse_complete_cb\fP(\fBsp_albumbrowse\fP *result, void *userdata)"The type of a callback used in \fBsp_albumbrowse_create()\fP
 .PP
 When the callback is called, the metadata of all tracks belonging to it will have been loaded, so \fBsp_track_is_loaded()\fP will return non-zero. The \fBsp_artist\fP of the album will also have been fully loaded.
 .PP
@@ -71,9 +69,7 @@ When the callback is called, the metadata of all tracks belonging to it will hav
 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_albumbrowse_add_ref (\fBsp_albumbrowse\fP * alb)"
-.PP
-Increase the reference count of an album browse result
+.SS "void sp_albumbrowse_add_ref (\fBsp_albumbrowse\fP * alb)"Increase the reference count of an album browse result
 .PP
 \fBParameters:\fP
 .RS 4
@@ -81,9 +77,7 @@ Increase the reference count of an album browse result
 .RE
 .PP
 
-.SS "\fBsp_album\fP* sp_albumbrowse_album (\fBsp_albumbrowse\fP * alb)"
-.PP
-Given an album browse object, return the pointer to its album object
+.SS "\fBsp_album\fP* sp_albumbrowse_album (\fBsp_albumbrowse\fP * alb)"Given an album browse object, return the pointer to its album object
 .PP
 \fBParameters:\fP
 .RS 4
@@ -96,9 +90,11 @@ Album object
 .RE
 .PP
 
-.SS "\fBsp_artist\fP* sp_albumbrowse_artist (\fBsp_albumbrowse\fP * alb)"
 .PP
-Given an album browse object, return the pointer to its artist object
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_artist\fP* sp_albumbrowse_artist (\fBsp_albumbrowse\fP * alb)"Given an album browse object, return the pointer to its artist object
 .PP
 \fBParameters:\fP
 .RS 4
@@ -111,9 +107,7 @@ Artist object
 .RE
 .PP
 
-.SS "const char* sp_albumbrowse_copyright (\fBsp_albumbrowse\fP * alb, int index)"
-.PP
-Given an album browse object, return one of its copyright strings
+.SS "const char* sp_albumbrowse_copyright (\fBsp_albumbrowse\fP * alb, int index)"Given an album browse object, return one of its copyright strings
 .PP
 \fBParameters:\fP
 .RS 4
@@ -128,9 +122,11 @@ Copyright string in UTF-8 format, or NULL if the index is invalid. Returned stri
 .RE
 .PP
 
-.SS "\fBsp_albumbrowse\fP* sp_albumbrowse_create (\fBsp_session\fP * session, \fBsp_album\fP * album, \fBalbumbrowse_complete_cb\fP * callback, void * userdata)"
 .PP
-Initiate a request for browsing an album
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_albumbrowse\fP* sp_albumbrowse_create (\fBsp_session\fP * session, \fBsp_album\fP * album, \fBalbumbrowse_complete_cb\fP * callback, void * userdata)"Initiate a request for browsing an album
 .PP
 The user is responsible for freeing the returned album browse using \fBsp_albumbrowse_release()\fP. This can be done in the callback.
 .PP
@@ -156,9 +152,11 @@ Album browse object
 .RE
 .PP
 
-.SS "\fBsp_error\fP sp_albumbrowse_error (\fBsp_albumbrowse\fP * alb)"
 .PP
-Check if browsing returned an error code.
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_error\fP sp_albumbrowse_error (\fBsp_albumbrowse\fP * alb)"Check if browsing returned an error code.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -167,13 +165,15 @@ Check if browsing returned an error code.
 .PP
 \fBReturns:\fP
 .RS 4
-Error code 
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_IS_LOADING SP_ERROR_OTHER_PERMANENT SP_ERROR_OTHER_TRANSIENT 
 .RE
 .PP
 
-.SS "bool sp_albumbrowse_is_loaded (\fBsp_albumbrowse\fP * alb)"
 .PP
-Check if an album browse request is completed
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "bool sp_albumbrowse_is_loaded (\fBsp_albumbrowse\fP * alb)"Check if an album browse request is completed
 .PP
 \fBParameters:\fP
 .RS 4
@@ -186,9 +186,7 @@ True if browsing is completed, false if not
 .RE
 .PP
 
-.SS "int sp_albumbrowse_num_copyrights (\fBsp_albumbrowse\fP * alb)"
-.PP
-Given an album browse object, return number of copyright strings
+.SS "int sp_albumbrowse_num_copyrights (\fBsp_albumbrowse\fP * alb)"Given an album browse object, return number of copyright strings
 .PP
 \fBParameters:\fP
 .RS 4
@@ -201,9 +199,11 @@ Number of copyright strings available, 0 if unknown
 .RE
 .PP
 
-.SS "int sp_albumbrowse_num_tracks (\fBsp_albumbrowse\fP * alb)"
 .PP
-Given an album browse object, return number of tracks
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "int sp_albumbrowse_num_tracks (\fBsp_albumbrowse\fP * alb)"Given an album browse object, return number of tracks
 .PP
 \fBParameters:\fP
 .RS 4
@@ -216,9 +216,11 @@ Number of tracks on album
 .RE
 .PP
 
-.SS "void sp_albumbrowse_release (\fBsp_albumbrowse\fP * alb)"
 .PP
-Decrease the reference count of an album browse result
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "void sp_albumbrowse_release (\fBsp_albumbrowse\fP * alb)"Decrease the reference count of an album browse result
 .PP
 \fBParameters:\fP
 .RS 4
@@ -226,9 +228,11 @@ Decrease the reference count of an album browse result
 .RE
 .PP
 
-.SS "const char* sp_albumbrowse_review (\fBsp_albumbrowse\fP * alb)"
 .PP
-Given an album browse object, return its review
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "const char* sp_albumbrowse_review (\fBsp_albumbrowse\fP * alb)"Given an album browse object, return its review
 .PP
 \fBParameters:\fP
 .RS 4
@@ -241,9 +245,11 @@ Review string in UTF-8 format. Returned string is valid as long as the album obj
 .RE
 .PP
 
-.SS "\fBsp_track\fP* sp_albumbrowse_track (\fBsp_albumbrowse\fP * alb, int index)"
 .PP
-Given an album browse object, return a pointer to one of its tracks
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_track\fP* sp_albumbrowse_track (\fBsp_albumbrowse\fP * alb, int index)"Given an album browse object, return a pointer to one of its tracks
 .PP
 \fBParameters:\fP
 .RS 4
@@ -263,3 +269,10 @@ A track.
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

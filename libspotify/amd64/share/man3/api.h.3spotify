@@ -1,4 +1,4 @@
-.TH "api.h" 3spotify "3 Nov 2010" "libspotify" \" -*- nroff -*-
+.TH "api.h" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,6 +21,9 @@ api.h \-
 .RI "struct \fBsp_audio_buffer_stats\fP"
 .br
 .ti -1c
+.RI "struct \fBsp_subscribers\fP"
+.br
+.ti -1c
 .RI "struct \fBsp_session_callbacks\fP"
 .br
 .ti -1c
@@ -37,7 +40,7 @@ api.h \-
 
 .in +1c
 .ti -1c
-.RI "#define \fBSPOTIFY_API_VERSION\fP   6"
+.RI "#define \fBSPOTIFY_API_VERSION\fP   7"
 .br
 .ti -1c
 .RI "#define \fBSP_TOPLIST_REGION\fP(a, b)   ((a) << 8 | (b))"
@@ -103,6 +106,36 @@ api.h \-
 .br
 .RI "\fIAdd to inbox request handle. \fP"
 .ti -1c
+.RI "typedef enum \fBsp_error\fP \fBsp_error\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_connectionstate\fP \fBsp_connectionstate\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_sampletype\fP \fBsp_sampletype\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_audioformat\fP \fBsp_audioformat\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_bitrate\fP \fBsp_bitrate\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_playlist_type\fP \fBsp_playlist_type\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_audio_buffer_stats\fP \fBsp_audio_buffer_stats\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_subscribers\fP \fBsp_subscribers\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_session_callbacks\fP \fBsp_session_callbacks\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_session_config\fP \fBsp_session_config\fP"
+.br
+.ti -1c
 .RI "typedef void \fBalbumbrowse_complete_cb\fP (\fBsp_albumbrowse\fP *result, void *userdata)"
 .br
 .ti -1c
@@ -112,7 +145,19 @@ api.h \-
 .RI "typedef void \fBimage_loaded_cb\fP (\fBsp_image\fP *image, void *userdata)"
 .br
 .ti -1c
+.RI "typedef enum \fBsp_radio_genre\fP \fBsp_radio_genre\fP"
+.br
+.ti -1c
 .RI "typedef void \fBsearch_complete_cb\fP (\fBsp_search\fP *result, void *userdata)"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_playlist_callbacks\fP \fBsp_playlist_callbacks\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_playlistcontainer_callbacks\fP \fBsp_playlistcontainer_callbacks\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_relation_type\fP \fBsp_relation_type\fP"
 .br
 .ti -1c
 .RI "typedef void \fBtoplistbrowse_complete_cb\fP (\fBsp_toplistbrowse\fP *result, void *userdata)"
@@ -125,7 +170,7 @@ api.h \-
 
 .in +1c
 .ti -1c
-.RI "enum \fBsp_error\fP { \fBSP_ERROR_OK\fP =  0, \fBSP_ERROR_BAD_API_VERSION\fP =  1, \fBSP_ERROR_API_INITIALIZATION_FAILED\fP =  2, \fBSP_ERROR_TRACK_NOT_PLAYABLE\fP =  3, \fBSP_ERROR_RESOURCE_NOT_LOADED\fP =  4, \fBSP_ERROR_BAD_APPLICATION_KEY\fP =  5, \fBSP_ERROR_BAD_USERNAME_OR_PASSWORD\fP =  6, \fBSP_ERROR_USER_BANNED\fP =  7, \fBSP_ERROR_UNABLE_TO_CONTACT_SERVER\fP =  8, \fBSP_ERROR_CLIENT_TOO_OLD\fP =  9, \fBSP_ERROR_OTHER_PERMANENT\fP =  10, \fBSP_ERROR_BAD_USER_AGENT\fP =  11, \fBSP_ERROR_MISSING_CALLBACK\fP =  12, \fBSP_ERROR_INVALID_INDATA\fP =  13, \fBSP_ERROR_INDEX_OUT_OF_RANGE\fP =  14, \fBSP_ERROR_USER_NEEDS_PREMIUM\fP =  15, \fBSP_ERROR_OTHER_TRANSIENT\fP =  16, \fBSP_ERROR_IS_LOADING\fP =  17, \fBSP_ERROR_NO_STREAM_AVAILABLE\fP =  18, \fBSP_ERROR_PERMISSION_DENIED\fP =  19, \fBSP_ERROR_INBOX_IS_FULL\fP =  20 }"
+.RI "enum \fBsp_error\fP { \fBSP_ERROR_OK\fP =  0, \fBSP_ERROR_BAD_API_VERSION\fP =  1, \fBSP_ERROR_API_INITIALIZATION_FAILED\fP =  2, \fBSP_ERROR_TRACK_NOT_PLAYABLE\fP =  3, \fBSP_ERROR_RESOURCE_NOT_LOADED\fP =  4, \fBSP_ERROR_BAD_APPLICATION_KEY\fP =  5, \fBSP_ERROR_BAD_USERNAME_OR_PASSWORD\fP =  6, \fBSP_ERROR_USER_BANNED\fP =  7, \fBSP_ERROR_UNABLE_TO_CONTACT_SERVER\fP =  8, \fBSP_ERROR_CLIENT_TOO_OLD\fP =  9, \fBSP_ERROR_OTHER_PERMANENT\fP =  10, \fBSP_ERROR_BAD_USER_AGENT\fP =  11, \fBSP_ERROR_MISSING_CALLBACK\fP =  12, \fBSP_ERROR_INVALID_INDATA\fP =  13, \fBSP_ERROR_INDEX_OUT_OF_RANGE\fP =  14, \fBSP_ERROR_USER_NEEDS_PREMIUM\fP =  15, \fBSP_ERROR_OTHER_TRANSIENT\fP =  16, \fBSP_ERROR_IS_LOADING\fP =  17, \fBSP_ERROR_NO_STREAM_AVAILABLE\fP =  18, \fBSP_ERROR_PERMISSION_DENIED\fP =  19, \fBSP_ERROR_INBOX_IS_FULL\fP =  20, \fBSP_ERROR_NO_CACHE\fP =  21, \fBSP_ERROR_NO_SUCH_USER\fP =  22 }"
 .br
 .ti -1c
 .RI "enum \fBsp_connectionstate\fP { \fBSP_CONNECTION_STATE_LOGGED_OUT\fP =  0, \fBSP_CONNECTION_STATE_LOGGED_IN\fP =  1, \fBSP_CONNECTION_STATE_DISCONNECTED\fP =  2, \fBSP_CONNECTION_STATE_UNDEFINED\fP =  3 }"
@@ -174,13 +219,13 @@ api.h \-
 .RI "void \fBsp_session_release\fP (\fBsp_session\fP *sess)"
 .br
 .ti -1c
-.RI "\fBsp_error\fP \fBsp_session_login\fP (\fBsp_session\fP *session, const char *username, const char *password)"
+.RI "void \fBsp_session_login\fP (\fBsp_session\fP *session, const char *username, const char *password)"
 .br
 .ti -1c
 .RI "\fBsp_user\fP * \fBsp_session_user\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
-.RI "\fBsp_error\fP \fBsp_session_logout\fP (\fBsp_session\fP *session)"
+.RI "void \fBsp_session_logout\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_connectionstate\fP \fBsp_session_connectionstate\fP (\fBsp_session\fP *session)"
@@ -198,10 +243,10 @@ api.h \-
 .RI "\fBsp_error\fP \fBsp_session_player_load\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
 .br
 .ti -1c
-.RI "\fBsp_error\fP \fBsp_session_player_seek\fP (\fBsp_session\fP *session, int offset)"
+.RI "void \fBsp_session_player_seek\fP (\fBsp_session\fP *session, int offset)"
 .br
 .ti -1c
-.RI "\fBsp_error\fP \fBsp_session_player_play\fP (\fBsp_session\fP *session, bool play)"
+.RI "void \fBsp_session_player_play\fP (\fBsp_session\fP *session, bool play)"
 .br
 .ti -1c
 .RI "void \fBsp_session_player_unload\fP (\fBsp_session\fP *session)"
@@ -219,13 +264,10 @@ api.h \-
 .RI "\fBsp_playlist\fP * \fBsp_session_starred_create\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
-.RI "\fBsp_playlist\fP * \fBsp_session_starred_for_user_create\fP (\fBsp_session\fP *session, const char *username)"
+.RI "\fBsp_playlist\fP * \fBsp_session_starred_for_user_create\fP (\fBsp_session\fP *session, const char *canonical_username)"
 .br
 .ti -1c
-.RI "\fBsp_playlistcontainer\fP * \fBsp_session_publishedcontainer_for_user\fP (\fBsp_session\fP *session, const char *canonical_username)"
-.br
-.ti -1c
-.RI "void \fBsp_session_publishedcontainer_for_user_release\fP (\fBsp_session\fP *session, const char *canonical_username)"
+.RI "\fBsp_playlistcontainer\fP * \fBsp_session_publishedcontainer_for_user_create\fP (\fBsp_session\fP *session, const char *canonical_username)"
 .br
 .ti -1c
 .RI "void \fBsp_session_preferred_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate)"
@@ -564,6 +606,12 @@ api.h \-
 .RI "bool \fBsp_playlist_track_seen\fP (\fBsp_playlist\fP *playlist, int index)"
 .br
 .ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_track_set_seen\fP (\fBsp_playlist\fP *playlist, int index, bool seen)"
+.br
+.ti -1c
+.RI "const char * \fBsp_playlist_track_message\fP (\fBsp_playlist\fP *playlist, int index)"
+.br
+.ti -1c
 .RI "const char * \fBsp_playlist_name\fP (\fBsp_playlist\fP *playlist)"
 .br
 .ti -1c
@@ -600,6 +648,24 @@ api.h \-
 .RI "\fBsp_error\fP \fBsp_playlist_reorder_tracks\fP (\fBsp_playlist\fP *playlist, const int *tracks, int num_tracks, int new_position)"
 .br
 .ti -1c
+.RI "unsigned int \fBsp_playlist_num_subscribers\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_subscribers\fP * \fBsp_playlist_subscribers\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "void \fBsp_playlist_subscribers_free\fP (\fBsp_subscribers\fP *subscribers)"
+.br
+.ti -1c
+.RI "void \fBsp_playlist_update_subscribers\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "bool \fBsp_playlist_is_in_ram\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "void \fBsp_playlist_set_in_ram\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist, bool in_ram)"
+.br
+.ti -1c
 .RI "\fBsp_playlist\fP * \fBsp_playlist_create\fP (\fBsp_session\fP *session, \fBsp_link\fP *link)"
 .br
 .ti -1c
@@ -624,7 +690,7 @@ api.h \-
 .RI "\fBsp_playlist_type\fP \fBsp_playlistcontainer_playlist_type\fP (\fBsp_playlistcontainer\fP *pc, int index)"
 .br
 .ti -1c
-.RI "const char * \fBsp_playlistcontainer_playlist_folder_name\fP (\fBsp_playlistcontainer\fP *pc, int index)"
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_playlist_folder_name\fP (\fBsp_playlistcontainer\fP *pc, int index, char *buffer, int buffer_size)"
 .br
 .ti -1c
 .RI "sp_uint64 \fBsp_playlistcontainer_playlist_folder_id\fP (\fBsp_playlistcontainer\fP *pc, int index)"
@@ -639,10 +705,19 @@ api.h \-
 .RI "\fBsp_error\fP \fBsp_playlistcontainer_remove_playlist\fP (\fBsp_playlistcontainer\fP *pc, int index)"
 .br
 .ti -1c
-.RI "\fBsp_error\fP \fBsp_playlistcontainer_move_playlist\fP (\fBsp_playlistcontainer\fP *pc, int index, int new_position)"
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_move_playlist\fP (\fBsp_playlistcontainer\fP *pc, int index, int new_position, bool dry_run)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_add_folder\fP (\fBsp_playlistcontainer\fP *pc, int index, const char *name)"
 .br
 .ti -1c
 .RI "\fBsp_user\fP * \fBsp_playlistcontainer_owner\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "void \fBsp_playlistcontainer_add_ref\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "void \fBsp_playlistcontainer_release\fP (\fBsp_playlistcontainer\fP *pc)"
 .br
 .ti -1c
 .RI "const char * \fBsp_user_canonical_name\fP (\fBsp_user\fP *user)"
@@ -702,7 +777,7 @@ api.h \-
 .RI "\fBsp_track\fP * \fBsp_toplistbrowse_track\fP (\fBsp_toplistbrowse\fP *tlb, int index)"
 .br
 .ti -1c
-.RI "\fBsp_inbox\fP * \fBsp_inbox_post_tracks\fP (\fBsp_session\fP *session, const char *user, \fBsp_track\fP *const *tracks, int num_tracks, \fBinboxpost_complete_cb\fP *callback, void *userdata)"
+.RI "\fBsp_inbox\fP * \fBsp_inbox_post_tracks\fP (\fBsp_session\fP *session, const char *user, \fBsp_track\fP *const *tracks, int num_tracks, const char *message, \fBinboxpost_complete_cb\fP *callback, void *userdata)"
 .br
 .ti -1c
 .RI "\fBsp_error\fP \fBsp_inbox_error\fP (\fBsp_inbox\fP *inbox)"
