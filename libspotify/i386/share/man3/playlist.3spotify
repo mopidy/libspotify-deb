@@ -1,4 +1,4 @@
-.TH "Playlist subsystem" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.TH "Playlist subsystem" 3spotify "24 May 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -114,6 +114,15 @@ Playlist subsystem \-
 .RI "\fBsp_playlist\fP * \fBsp_playlist_create\fP (\fBsp_session\fP *session, \fBsp_link\fP *link)"
 .br
 .ti -1c
+.RI "void \fBsp_playlist_set_offline_mode\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist, bool offline)"
+.br
+.ti -1c
+.RI "\fBsp_playlist_offline_status\fP \fBsp_playlist_get_offline_status\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "int \fBsp_playlist_get_offline_download_completed\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
 .RI "void \fBsp_playlist_add_ref\fP (\fBsp_playlist\fP *playlist)"
 .br
 .ti -1c
@@ -127,6 +136,9 @@ Playlist subsystem \-
 .br
 .ti -1c
 .RI "int \fBsp_playlistcontainer_num_playlists\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "bool \fBsp_playlistcontainer_is_loaded\fP (\fBsp_playlistcontainer\fP *pc)"
 .br
 .ti -1c
 .RI "\fBsp_playlist\fP * \fBsp_playlistcontainer_playlist\fP (\fBsp_playlistcontainer\fP *pc, int index)"
@@ -192,7 +204,7 @@ Used to get notifications when playlists are updated. If some callbacks should n
 Here is a snippet from \fCjukebox.c:\fP  
 .PP
 .nf
-  sp_playlist_add_callbacks(pl, &pl_callbacks, NULL);
+   sp_playlist_add_callbacks(pl, &pl_callbacks, NULL);
 
 .fi
 .PP
@@ -289,6 +301,46 @@ Playlist description or NULL if unset
 \fBReturns:\fP
 .RS 4
 TRUE if playlist has an image, FALSE if not 
+.RE
+.PP
+
+.SS "int sp_playlist_get_offline_download_completed (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist)"Get download progress for an offline playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value from 0 - 100 that indicates amount of playlist that is downloaded
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_playlist_offline_status()\fP 
+.RE
+.PP
+
+.SS "\fBsp_playlist_offline_status\fP sp_playlist_get_offline_status (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist)"Get offline status for a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+sp_playlist_offline_status
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+When in \fBSP_PLAYLIST_OFFLINE_STATUS_DOWNLOADING\fP mode the \fBsp_playlist_get_offline_download_completed()\fP method can be used to query progress of the download 
 .RE
 .PP
 
@@ -553,6 +605,18 @@ A playlist in collaborative state can be modifed by all users, not only the user
 .RE
 .PP
 
+.SS "void sp_playlist_set_offline_mode (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist, bool offline)"Mark a playlist to be synchronized for offline playback
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object 
+.br
+\fIoffline\fP True iff playlist should be offline, false otherwise 
+.RE
+.PP
+
 .SS "\fBsp_subscribers\fP* sp_playlist_subscribers (\fBsp_playlist\fP * playlist)"Return subscribers for a playlist
 .PP
 \fBParameters:\fP
@@ -774,6 +838,24 @@ Pointer to the new playlist. Will be NULL if the playlist already exists.
 \fBParameters:\fP
 .RS 4
 \fIpc\fP Playlist container. 
+.RE
+.PP
+
+.SS "bool sp_playlistcontainer_is_loaded (\fBsp_playlistcontainer\fP * pc)"Return true if the playlistcontainer is fully loaded
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if container is loaded
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+The container_loaded callback will be invoked when this flips to true 
 .RE
 .PP
 

@@ -48,6 +48,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#adcfcee6abf1b6f408010e5615d2a79c8">start_playback</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#a2a225bc017266c935c05d18142f27ad6">stop_playback</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#a328404ac150210387ea3f9cc973149c9">get_audio_buffer_stats</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="structsp__audio__buffer__stats.html">sp_audio_buffer_stats</a> *stats)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#aa0f62ed875aab47e5ae093576a6d54c8">offline_status_updated</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Session callbacks</p>
@@ -276,6 +277,26 @@ This function must never block. If your output buffers are full you must return 
 
 </div>
 </div>
+<a class="anchor" id="aa0f62ed875aab47e5ae093576a6d54c8"></a><!-- doxytag: member="sp_session_callbacks::offline_status_updated" ref="aa0f62ed875aab47e5ae093576a6d54c8" args=")(sp_session *session)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void( * <a class="el" href="structsp__session__callbacks.html#aa0f62ed875aab47e5ae093576a6d54c8">sp_session_callbacks::offline_status_updated</a>)(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Called when offline synchronization status is updated</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a641fc97950305fbcd83d5114918c53b9"></a><!-- doxytag: member="sp_session_callbacks::play_token_lost" ref="a641fc97950305fbcd83d5114918c53b9" args=")(sp_session *session)" -->
 <div class="memitem">
 <div class="memproto">
@@ -393,7 +414,7 @@ This function must never block.</dd></dl>
 </ul>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Sat Feb 12 12:51:15 2011.<br>
+Generated on Tue May 24 15:28:46 2011.<br>
 Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
 </body>
 </html>

@@ -39,17 +39,22 @@
 <br/>
 &nbsp;&nbsp;<a class="el" href="group__link.html#ggabe9611f04086cdbed6e4e6e1fd913b98ab649bd86d0fc55ab3fafed3050261353">SP_LINKTYPE_STARRED</a> =  7, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="group__link.html#ggabe9611f04086cdbed6e4e6e1fd913b98a0698cd0123190c7af55daf79bb642805">SP_LINKTYPE_LOCALTRACK</a> =  8
+&nbsp;&nbsp;<a class="el" href="group__link.html#ggabe9611f04086cdbed6e4e6e1fd913b98a0698cd0123190c7af55daf79bb642805">SP_LINKTYPE_LOCALTRACK</a> =  8, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="group__link.html#ggabe9611f04086cdbed6e4e6e1fd913b98a1b20b8e2b8773df47b241dc7d28ea0e8">SP_LINKTYPE_IMAGE</a> =  9
 <br/>
  }</td></tr>
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#gaea9c39f35f7986fc9fed4584fa211127">sp_link_create_from_string</a> (const char *link)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga82c29419ce70e2b504670e3d45167d5d">sp_link_create_from_track</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track, int offset)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga040627b0df84425947c82cd8890122ad">sp_link_create_from_album</a> (<a class="el" href="group__types.html#ga6fd3e5de729c429fef3ff18ece6dcfad">sp_album</a> *album)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga0cfffdb19e38cae3f34a72e977be1e67">sp_link_create_from_album_cover</a> (<a class="el" href="group__types.html#ga6fd3e5de729c429fef3ff18ece6dcfad">sp_album</a> *album)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga3196ce9de3da4f1d5944a0b58bd80540">sp_link_create_from_artist</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga10b623f923dcb7dde8b33aaf03bb4eb3">sp_link_create_from_artist_portrait</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga95c97ba4de9c4040047276ad618a108e">sp_link_create_from_search</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga805392bfa8e526eebedc1cf5a7bcae0f">sp_link_create_from_playlist</a> (<a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *playlist)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#gaaa78b1750179c17f8152408cea43efef">sp_link_create_from_user</a> (<a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *user)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#gaa85fbea312127db44685b7e9dc492042">sp_link_create_from_image</a> (<a class="el" href="group__types.html#ga61155ca7b1ba941e15490e417441917b">sp_image</a> *image)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga9f169be53f098adcf12f7a10b8bd3ef7">sp_link_as_string</a> (<a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *link, char *buffer, int buffer_size)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__link.html#gabe9611f04086cdbed6e4e6e1fd913b98">sp_linktype</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga6140f924c696d53469bb8930cd53e1e6">sp_link_type</a> (<a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *link)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__link.html#ga2560687997d7ce0fbf4f05251d87d32a">sp_link_as_track</a> (<a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *link)</td></tr>
@@ -101,6 +106,9 @@
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ggabe9611f04086cdbed6e4e6e1fd913b98a0698cd0123190c7af55daf79bb642805"></a><!-- doxytag: member="SP_LINKTYPE_LOCALTRACK" ref="ggabe9611f04086cdbed6e4e6e1fd913b98a0698cd0123190c7af55daf79bb642805" args="" -->SP_LINKTYPE_LOCALTRACK</em>&nbsp;</td><td>
 <p>Link type is a local file. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="ggabe9611f04086cdbed6e4e6e1fd913b98a1b20b8e2b8773df47b241dc7d28ea0e8"></a><!-- doxytag: member="SP_LINKTYPE_IMAGE" ref="ggabe9611f04086cdbed6e4e6e1fd913b98a1b20b8e2b8773df47b241dc7d28ea0e8" args="" -->SP_LINKTYPE_IMAGE</em>&nbsp;</td><td>
+<p>Link type is an image. </p>
 </td></tr>
 </table>
 </dd>
@@ -157,7 +165,7 @@
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The album representation of the given album link If the link is not of album type then NULL is returned </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a53">browse.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a55">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -184,7 +192,7 @@
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The artist representation of the given link If the link is not of artist type then NULL is returned </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a56">browse.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a58">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -228,7 +236,7 @@
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of characters in the string representation of the link. If this value is greater or equal than <code>buffer_size</code>, output was truncated. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a12">browse.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a15">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -255,7 +263,7 @@
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The track representation of the given track link If the link is not of track type then NULL is returned. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a59">browse.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a61">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -349,6 +357,34 @@
 
 </div>
 </div>
+<a class="anchor" id="ga0cfffdb19e38cae3f34a72e977be1e67"></a><!-- doxytag: member="api.h::sp_link_create_from_album_cover" ref="ga0cfffdb19e38cae3f34a72e977be1e67" args="(sp_album *album)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a>* sp_link_create_from_album_cover </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga6fd3e5de729c429fef3ff18ece6dcfad">sp_album</a> *&nbsp;</td>
+          <td class="paramname"> <em>album</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create an image link object from an album</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>album</em>&nbsp;</td><td>An album object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A link representing the album cover. Type is set to SP_LINKTYPE_IMAGE</dd></dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>You need to release the link when you are done with it. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release()</a> </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga3196ce9de3da4f1d5944a0b58bd80540"></a><!-- doxytag: member="api.h::sp_link_create_from_artist" ref="ga3196ce9de3da4f1d5944a0b58bd80540" args="(sp_artist *artist)" -->
 <div class="memitem">
 <div class="memproto">
@@ -372,6 +408,74 @@
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A link object representing the artist</dd></dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>You need to release the link when you are done with it. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga10b623f923dcb7dde8b33aaf03bb4eb3"></a><!-- doxytag: member="api.h::sp_link_create_from_artist_portrait" ref="ga10b623f923dcb7dde8b33aaf03bb4eb3" args="(sp_artistbrowse *arb, int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a>* sp_link_create_from_artist_portrait </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *&nbsp;</td>
+          <td class="paramname"> <em>arb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Creates a link object from an artist portrait</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>arb</em>&nbsp;</td><td>Artist browse object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>index</em>&nbsp;</td><td>The index of the portrait. Should be in the interval [0, <a class="el" href="group__artistbrowse.html#ga98dc47d36d2789999bfe62707c5041d7">sp_artistbrowse_num_portraits()</a> - 1]</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A link object representing an image</dd></dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>You need to release the link when you are done with it. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release()</a> </dd>
+<dd>
+<a class="el" href="group__artistbrowse.html#ga98dc47d36d2789999bfe62707c5041d7">sp_artistbrowse_num_portraits()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa85fbea312127db44685b7e9dc492042"></a><!-- doxytag: member="api.h::sp_link_create_from_image" ref="gaa85fbea312127db44685b7e9dc492042" args="(sp_image *image)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a>* sp_link_create_from_image </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga61155ca7b1ba941e15490e417441917b">sp_image</a> *&nbsp;</td>
+          <td class="paramname"> <em>image</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create a link object representing the given image</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>image</em>&nbsp;</td><td>Image object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A link representing the image.</dd></dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>You need to release the link when you are done with it. </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release()</a> </dd></dl>
 
@@ -461,7 +565,7 @@
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__link.html#ga6140f924c696d53469bb8930cd53e1e6">sp_link_type()</a> </dd>
 <dd>
 <a class="el" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release()</a> </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a49">browse.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a51">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -500,7 +604,7 @@
 <dl class="return"><dt><b>Returns:</b></dt><dd>A link representing the track</dd></dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>You need to release the link when you are done with it. </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release()</a> </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a11">browse.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a14">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -554,7 +658,7 @@
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a13">browse.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a16">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -581,13 +685,13 @@
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The link type of the specified link - see the sp_linktype enum for possible values </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a50">browse.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a52">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Sat Feb 12 12:51:15 2011.<br>
+Generated on Tue May 24 15:28:46 2011.<br>
 Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
 </body>
 </html>

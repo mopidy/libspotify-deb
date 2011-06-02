@@ -1,4 +1,4 @@
-.TH "Track subsystem" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.TH "Track subsystem" 3spotify "24 May 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -122,6 +122,10 @@ The participating artist, or NULL if invalid index
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
 .SS "int sp_track_disc (\fBsp_track\fP * track)"Returns the disc number for a track
 .PP
 \fBParameters:\fP

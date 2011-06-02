@@ -36,7 +36,7 @@
   </div>
   <div class="tabs">
     <ul>
-      <li><a href="#index_s"><span>s</span></a></li>
+      <li class="current"><a href="globals_func.html#index_s"><span>s</span></a></li>
     </ul>
   </div>
 </div>
@@ -176,6 +176,9 @@
 <li>sp_image_create()
 : <a class="el" href="group__image.html#gaf29e89f45945db2b3667bf9db4279c33">api.h</a>
 </li>
+<li>sp_image_create_from_link()
+: <a class="el" href="group__image.html#ga70fb25cd2b0caaf15f637f36e75524b9">api.h</a>
+</li>
 <li>sp_image_data()
 : <a class="el" href="group__image.html#ga03700a7dfa90bfc8200b89f15acd91aa">api.h</a>
 </li>
@@ -233,8 +236,17 @@
 <li>sp_link_create_from_album()
 : <a class="el" href="group__link.html#ga040627b0df84425947c82cd8890122ad">api.h</a>
 </li>
+<li>sp_link_create_from_album_cover()
+: <a class="el" href="group__link.html#ga0cfffdb19e38cae3f34a72e977be1e67">api.h</a>
+</li>
 <li>sp_link_create_from_artist()
 : <a class="el" href="group__link.html#ga3196ce9de3da4f1d5944a0b58bd80540">api.h</a>
+</li>
+<li>sp_link_create_from_artist_portrait()
+: <a class="el" href="group__link.html#ga10b623f923dcb7dde8b33aaf03bb4eb3">api.h</a>
+</li>
+<li>sp_link_create_from_image()
+: <a class="el" href="group__link.html#gaa85fbea312127db44685b7e9dc492042">api.h</a>
 </li>
 <li>sp_link_create_from_playlist()
 : <a class="el" href="group__link.html#ga805392bfa8e526eebedc1cf5a7bcae0f">api.h</a>
@@ -260,6 +272,15 @@
 <li>sp_localtrack_create()
 : <a class="el" href="group__track.html#ga0fb814ef23636fdecda64e3a63b15a23">api.h</a>
 </li>
+<li>sp_offline_num_playlists()
+: <a class="el" href="group__session.html#gad6cee58fa44453b7a4fd2ae2266df055">api.h</a>
+</li>
+<li>sp_offline_sync_get_status()
+: <a class="el" href="group__session.html#gac893150cfe6925d41b696798f57d603f">api.h</a>
+</li>
+<li>sp_offline_tracks_to_sync()
+: <a class="el" href="group__session.html#gaf535124b4208c279cb98a061834e6411">api.h</a>
+</li>
 <li>sp_playlist_add_callbacks()
 : <a class="el" href="group__playlist.html#gac90e08b7cf247c51a577ac3b763b6a6f">api.h</a>
 </li>
@@ -277,6 +298,12 @@
 </li>
 <li>sp_playlist_get_image()
 : <a class="el" href="group__playlist.html#ga409cb6b2a88db7242ec939b6644e8c30">api.h</a>
+</li>
+<li>sp_playlist_get_offline_download_completed()
+: <a class="el" href="group__playlist.html#ga83ca1a25f50834f8e6f8ee1e883a8c6e">api.h</a>
+</li>
+<li>sp_playlist_get_offline_status()
+: <a class="el" href="group__playlist.html#ga7170157af21445c37a21a2241f91ff06">api.h</a>
 </li>
 <li>sp_playlist_has_pending_changes()
 : <a class="el" href="group__playlist.html#gaf0e39b5969259d10625eb398af0f3f43">api.h</a>
@@ -326,6 +353,9 @@
 <li>sp_playlist_set_in_ram()
 : <a class="el" href="group__playlist.html#ga2b008d6d510d19fa94fed0191a05e5d3">api.h</a>
 </li>
+<li>sp_playlist_set_offline_mode()
+: <a class="el" href="group__playlist.html#ga2d65e27b07b2c651b4f6d6e192487b3a">api.h</a>
+</li>
 <li>sp_playlist_subscribers()
 : <a class="el" href="group__playlist.html#gad49f491babc475f8d4aeea1b4452ff8b">api.h</a>
 </li>
@@ -367,6 +397,9 @@
 </li>
 <li>sp_playlistcontainer_add_ref()
 : <a class="el" href="group__playlist.html#gaa7a92fd7a822348641a4d3adbf885b4a">api.h</a>
+</li>
+<li>sp_playlistcontainer_is_loaded()
+: <a class="el" href="group__playlist.html#gae23cb67b4b26bca663034997c4418fa8">api.h</a>
 </li>
 <li>sp_playlistcontainer_move_playlist()
 : <a class="el" href="group__playlist.html#gad9be708159957d4c1e5ef905550808c5">api.h</a>
@@ -491,6 +524,9 @@
 <li>sp_session_preferred_bitrate()
 : <a class="el" href="group__session.html#ga2b1186b141f3bbcddb2dfcbe55118602">api.h</a>
 </li>
+<li>sp_session_preferred_offline_bitrate()
+: <a class="el" href="group__session.html#ga06242334def451c1e21704961a9f5b20">api.h</a>
+</li>
 <li>sp_session_process_events()
 : <a class="el" href="group__session.html#ga019a640b351de2a1ffe040ed755013f4">api.h</a>
 </li>
@@ -503,6 +539,12 @@
 <li>sp_session_set_cache_size()
 : <a class="el" href="group__session.html#ga95f7a6e6874b71b0ad73a1ba833d7494">api.h</a>
 </li>
+<li>sp_session_set_connection_rules()
+: <a class="el" href="group__session.html#gaf4e1a039e161b6fa5768c06ef73e4c98">api.h</a>
+</li>
+<li>sp_session_set_connection_type()
+: <a class="el" href="group__session.html#gaf4e4ec40368bdafcd72d33c73b345e0e">api.h</a>
+</li>
 <li>sp_session_starred_create()
 : <a class="el" href="group__session.html#ga02391c9e28cff0a602f7139542e0238f">api.h</a>
 </li>
@@ -511,6 +553,9 @@
 </li>
 <li>sp_session_user()
 : <a class="el" href="group__session.html#ga267bbcae24b6bb1fd56de56678a5f455">api.h</a>
+</li>
+<li>sp_session_user_country()
+: <a class="el" href="group__session.html#ga54c7693afa9be664f3ea870feb0df8d9">api.h</a>
 </li>
 <li>sp_session_userdata()
 : <a class="el" href="group__session.html#gabfb3f59b20ae0b225e154eb9095152b2">api.h</a>
@@ -626,7 +671,7 @@
 </ul>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Sat Feb 12 12:49:34 2011.<br>
+Generated on Tue May 24 15:26:00 2011.<br>
 Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
 </body>
 </html>

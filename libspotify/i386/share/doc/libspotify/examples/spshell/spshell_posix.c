@@ -74,6 +74,7 @@ static void *promptloop(void *aux)
 		cmdline = l;
 		pthread_cond_signal(&notify_cond);
 	}
+	return NULL;
 }
 
 

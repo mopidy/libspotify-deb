@@ -36,8 +36,10 @@ struct {
 	int (*fn)(int argc, char **argv);
 	const char *help;
 } commands[] = {
+	{ "log",        cmd_log,        "Enable/Disable logging to console (default off)" },
 	{ "logout",     cmd_logout,     "Logout and exit app" },
 	{ "exit",       cmd_logout,     "Logout and exit app" },
+	{ "quit",       cmd_logout,     "Logout and exit app" },
 	{ "browse",     cmd_browse,     "Browse a Spotify URI" },
 	{ "search",     cmd_search,     "Search" },
 	{ "whatsnew",   cmd_whatsnew,   "List new albums" },
@@ -56,6 +58,8 @@ struct {
 	{ "published_playlists",  cmd_published_playlists, "List a published list and subscribe for updates" },
 	{ "add_folder", cmd_add_folder, "Add playlist folder"},
 	{ "update_subscriptions", cmd_update_subscriptions, "Update playlist subscription info"},
+	{ "add", cmd_playlist_add_track, "Add track to playlist"},
+	{ "offline", cmd_playlist_offline, "Set offline mode for a playlist"},
 };
 
 

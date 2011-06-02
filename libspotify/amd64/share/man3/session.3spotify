@@ -1,4 +1,4 @@
-.TH "Session handling" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.TH "Session handling" 3spotify "24 May 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,6 +16,9 @@ Session handling \-
 .RI "struct \fBsp_subscribers\fP"
 .br
 .ti -1c
+.RI "struct \fBsp_offline_sync_status\fP"
+.br
+.ti -1c
 .RI "struct \fBsp_session_callbacks\fP"
 .br
 .ti -1c
@@ -26,7 +29,7 @@ Session handling \-
 
 .in +1c
 .ti -1c
-.RI "#define \fBSPOTIFY_API_VERSION\fP   7"
+.RI "#define \fBSPOTIFY_API_VERSION\fP   8"
 .br
 .in -1c
 .SS "Typedefs"
@@ -54,6 +57,15 @@ Session handling \-
 .RI "typedef struct \fBsp_subscribers\fP \fBsp_subscribers\fP"
 .br
 .ti -1c
+.RI "typedef enum \fBsp_connection_type\fP \fBsp_connection_type\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_connection_rules\fP \fBsp_connection_rules\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_offline_sync_status\fP \fBsp_offline_sync_status\fP"
+.br
+.ti -1c
 .RI "typedef struct \fBsp_session_callbacks\fP \fBsp_session_callbacks\fP"
 .br
 .ti -1c
@@ -74,6 +86,15 @@ Session handling \-
 .br
 .ti -1c
 .RI "enum \fBsp_playlist_type\fP { \fBSP_PLAYLIST_TYPE_PLAYLIST\fP =  0, \fBSP_PLAYLIST_TYPE_START_FOLDER\fP =  1, \fBSP_PLAYLIST_TYPE_END_FOLDER\fP =  2, \fBSP_PLAYLIST_TYPE_PLACEHOLDER\fP =  3 }"
+.br
+.ti -1c
+.RI "enum \fBsp_playlist_offline_status\fP { \fBSP_PLAYLIST_OFFLINE_STATUS_NO\fP =  0, \fBSP_PLAYLIST_OFFLINE_STATUS_YES\fP =  1, \fBSP_PLAYLIST_OFFLINE_STATUS_DOWNLOADING\fP =  2, \fBSP_PLAYLIST_OFFLINE_STATUS_WAITING\fP =  3 }"
+.br
+.ti -1c
+.RI "enum \fBsp_connection_type\fP { \fBSP_CONNECTION_TYPE_UNKNOWN\fP =  0, \fBSP_CONNECTION_TYPE_NONE\fP =  1, \fBSP_CONNECTION_TYPE_MOBILE\fP =  2, \fBSP_CONNECTION_TYPE_MOBILE_ROAMING\fP =  3, \fBSP_CONNECTION_TYPE_WIFI\fP =  4, \fBSP_CONNECTION_TYPE_WIRED\fP =  5 }"
+.br
+.ti -1c
+.RI "enum \fBsp_connection_rules\fP { \fBSP_CONNECTION_RULE_NETWORK\fP =  0x1, \fBSP_CONNECTION_RULE_NETWORK_IF_ROAMING\fP =  0x2, \fBSP_CONNECTION_RULE_ALLOW_SYNC_OVER_MOBILE\fP =  0x4, \fBSP_CONNECTION_RULE_ALLOW_SYNC_OVER_WIFI\fP =  0x8 }"
 .br
 .in -1c
 .SS "Functions"
@@ -140,10 +161,31 @@ Session handling \-
 .RI "void \fBsp_session_preferred_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate)"
 .br
 .ti -1c
+.RI "void \fBsp_session_preferred_offline_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate, bool allow_resync)"
+.br
+.ti -1c
 .RI "int \fBsp_session_num_friends\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_user\fP * \fBsp_session_friend\fP (\fBsp_session\fP *session, int index)"
+.br
+.ti -1c
+.RI "void \fBsp_session_set_connection_type\fP (\fBsp_session\fP *session, \fBsp_connection_type\fP type)"
+.br
+.ti -1c
+.RI "void \fBsp_session_set_connection_rules\fP (\fBsp_session\fP *session, \fBsp_connection_rules\fP rules)"
+.br
+.ti -1c
+.RI "int \fBsp_offline_tracks_to_sync\fP (\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "int \fBsp_offline_num_playlists\fP (\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void \fBsp_offline_sync_get_status\fP (\fBsp_session\fP *session, \fBsp_offline_sync_status\fP *status)"
+.br
+.ti -1c
+.RI "int \fBsp_session_user_country\fP (\fBsp_session\fP *session)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -151,7 +193,7 @@ Session handling \-
 The concept of a session is fundamental for all communication with the Spotify ecosystem - it is the object responsible for communicating with the Spotify service. You will need to instantiate a session that then can be used to request artist information, perform searches etc. 
 .SH "Define Documentation"
 .PP 
-.SS "#define SPOTIFY_API_VERSION   7"Current version of the application interface, that is, the API described by this file.
+.SS "#define SPOTIFY_API_VERSION   8"Current version of the application interface, that is, the API described by this file.
 .PP
 This value should be set in the \fBsp_session_config\fP struct passed to \fBsp_session_create()\fP.
 .PP
@@ -165,7 +207,12 @@ If an (upgraded) library is no longer compatible with this version the error \fB
 .SS "typedef struct \fBsp_audio_buffer_stats\fP  \fBsp_audio_buffer_stats\fP"Buffer stats used by get_audio_buffer_stats callback 
 .SS "typedef struct \fBsp_audioformat\fP  \fBsp_audioformat\fP"Audio format descriptor 
 .SS "typedef enum \fBsp_bitrate\fP  \fBsp_bitrate\fP"Bitrate definitions for music streaming 
+.SS "typedef enum \fBsp_connection_rules\fP  \fBsp_connection_rules\fP"Connection rules, bitwise OR of flags
+.PP
+The default is SP_CONNECTION_RULE_NETWORK | SP_CONNECTION_RULE_ALLOW_SYNC 
+.SS "typedef enum \fBsp_connection_type\fP  \fBsp_connection_type\fP"Current connection type set using \fBsp_session_set_connection_type()\fP 
 .SS "typedef enum \fBsp_connectionstate\fP  \fBsp_connectionstate\fP"Describes the current state of the connection 
+.SS "typedef struct \fBsp_offline_sync_status\fP  \fBsp_offline_sync_status\fP"Offline sync status 
 .SS "typedef enum \fBsp_playlist_type\fP  \fBsp_playlist_type\fP"Playlist types 
 .SS "typedef enum \fBsp_sampletype\fP  \fBsp_sampletype\fP"Sample type descriptor 
 .SS "typedef struct \fBsp_session_callbacks\fP  \fBsp_session_callbacks\fP"Session callbacks
@@ -176,6 +223,46 @@ Registered when you create a session. If some callbacks should not be of interes
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBsp_bitrate\fP"Bitrate definitions for music streaming 
+.SS "enum \fBsp_connection_rules\fP"Connection rules, bitwise OR of flags
+.PP
+The default is SP_CONNECTION_RULE_NETWORK | SP_CONNECTION_RULE_ALLOW_SYNC 
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fISP_CONNECTION_RULE_NETWORK \fP\fP
+Allow network traffic. When not set libspotify will force itself into offline mode. 
+.TP
+\fB\fISP_CONNECTION_RULE_NETWORK_IF_ROAMING \fP\fP
+Allow network traffic even if roaming. 
+.TP
+\fB\fISP_CONNECTION_RULE_ALLOW_SYNC_OVER_MOBILE \fP\fP
+Set to allow syncing of offline content over mobile connections. 
+.TP
+\fB\fISP_CONNECTION_RULE_ALLOW_SYNC_OVER_WIFI \fP\fP
+Set to allow syncing of offline content over WiFi. 
+.SS "enum \fBsp_connection_type\fP"Current connection type set using \fBsp_session_set_connection_type()\fP 
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fISP_CONNECTION_TYPE_UNKNOWN \fP\fP
+Connection type unknown (Default). 
+.TP
+\fB\fISP_CONNECTION_TYPE_NONE \fP\fP
+No connection. 
+.TP
+\fB\fISP_CONNECTION_TYPE_MOBILE \fP\fP
+Mobile data (EDGE, 3G, etc). 
+.TP
+\fB\fISP_CONNECTION_TYPE_MOBILE_ROAMING \fP\fP
+Roamed mobile data (EDGE, 3G, etc). 
+.TP
+\fB\fISP_CONNECTION_TYPE_WIFI \fP\fP
+Wireless connection. 
+.TP
+\fB\fISP_CONNECTION_TYPE_WIRED \fP\fP
+Ethernet cable, etc. 
 .SS "enum \fBsp_connectionstate\fP"Describes the current state of the connection 
 .PP
 \fBEnumerator: \fP
@@ -192,6 +279,22 @@ Was logged in, but has now been disconnected.
 .TP
 \fB\fISP_CONNECTION_STATE_UNDEFINED \fP\fP
 The connection state is undefined. 
+.SS "enum \fBsp_playlist_offline_status\fP"
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fISP_PLAYLIST_OFFLINE_STATUS_NO \fP\fP
+Playlist is not offline enabled. 
+.TP
+\fB\fISP_PLAYLIST_OFFLINE_STATUS_YES \fP\fP
+Playlist is synchronized to local storage. 
+.TP
+\fB\fISP_PLAYLIST_OFFLINE_STATUS_DOWNLOADING \fP\fP
+This playlist is currently downloading. Only one playlist can be in this state any given time. 
+.TP
+\fB\fISP_PLAYLIST_OFFLINE_STATUS_WAITING \fP\fP
+Playlist is queued for download. 
 .SS "enum \fBsp_playlist_type\fP"Playlist types 
 .PP
 \fBEnumerator: \fP
@@ -217,6 +320,42 @@ Unknown entry.
 16-bit signed integer samples 
 .SH "Function Documentation"
 .PP 
+.SS "int sp_offline_num_playlists (\fBsp_session\fP * session)"Return number of playlisys that is marked for offline synchronization
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of playlists 
+.RE
+.PP
+
+.SS "void sp_offline_sync_get_status (\fBsp_session\fP * session, \fBsp_offline_sync_status\fP * status)"Return offline synchronization status. When the internal status is updated the offline_status_updated() callback will be invoked.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIstatus\fP Status object that will be filled with info 
+.RE
+.PP
+
+.SS "int sp_offline_tracks_to_sync (\fBsp_session\fP * session)"Get total number of tracks that needs download before everything from all playlists that is marked for offline is fully synchronized
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of tracks 
+.RE
+.PP
+
 .SS "\fBsp_connectionstate\fP sp_session_connectionstate (\fBsp_session\fP * session)"The connection state of the specified session.
 .PP
 \fBParameters:\fP
@@ -235,7 +374,7 @@ The connection state - see the sp_connectionstate enum for possible values
 Here is a snippet from \fCspshell.c:\fP  
 .PP
 .nf
-   config.api_version = SPOTIFY_API_VERSION;
+ config.api_version = SPOTIFY_API_VERSION;
 
     // The path of the directory to store the cache. This must be specified.
     // Please read the documentation on preferred values.
@@ -481,6 +620,18 @@ Playlist container object, NULL if not logged in
 .RE
 .PP
 
+.SS "void sp_session_preferred_offline_bitrate (\fBsp_session\fP * session, \fBsp_bitrate\fP bitrate, bool allow_resync)"Set preferred bitrate for offline sync
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIbitrate\fP Preferred bitrate, see \fBsp_bitrate\fP for possible values 
+.br
+\fIallow_resync\fP Set to true if libspotify should resynchronize already synchronized tracks. Usually you should set this to false. 
+.RE
+.PP
+
 .SS "void sp_session_process_events (\fBsp_session\fP * session, int * next_timeout)"Make the specified session process any pending events
 .PP
 \fBParameters:\fP
@@ -527,6 +678,36 @@ Playlist container object, NULL if not logged in or not found.
 \fIsession\fP Your session object 
 .br
 \fIsize\fP Maximum cache size in megabytes. Setting it to 0 (the default) will let libspotify automatically resize the cache (10% of disk free space) 
+.RE
+.PP
+
+.SS "void sp_session_set_connection_rules (\fBsp_session\fP * session, \fBsp_connection_rules\fP rules)"Set rules for how libspotify connects to Spotify servers and synchronizes offline content
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIrules\fP Connection rules
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Used in conjunction with \fBsp_session_set_connection_type()\fP to control how libspotify should behave in respect to network activity and offline synchronization. 
+.RE
+.PP
+
+.SS "void sp_session_set_connection_type (\fBsp_session\fP * session, \fBsp_connection_type\fP type)"Set to true if the connection is currently routed over a roamed connectivity
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fItype\fP Connection type
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Used in conjunction with \fBsp_session_set_connection_rules()\fP to control how libspotify should behave in respect to network activity and offline synchronization. 
 .RE
 .PP
 
@@ -588,6 +769,19 @@ You need to release the playlist when you are done with it.
 \fBReturns:\fP
 .RS 4
 The logged in user (or NULL if not logged in) 
+.RE
+.PP
+
+.SS "int sp_session_user_country (\fBsp_session\fP * session)"Get currently logged in users country updated the offline_status_updated() callback will be invoked.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Country encoded in an integer 'SE' = 'S' << 8 | 'E' 
 .RE
 .PP
 

@@ -1,4 +1,4 @@
-.TH "sp_session_callbacks" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.TH "sp_session_callbacks" 3spotify "24 May 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -55,6 +55,9 @@ sp_session_callbacks \-
 .br
 .ti -1c
 .RI "void(* \fBget_audio_buffer_stats\fP )(\fBsp_session\fP *session, \fBsp_audio_buffer_stats\fP *stats)"
+.br
+.ti -1c
+.RI "void(* \fBoffline_status_updated\fP )(\fBsp_session\fP *session)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -197,6 +200,14 @@ You need to call \fBsp_session_process_events()\fP in the main thread to get lib
 \fBNote:\fP
 .RS 4
 This function is called from an internal session thread - you need to have proper synchronization! 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::offline_status_updated\fP)(\fBsp_session\fP *session)"Called when offline synchronization status is updated
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
 .RE
 .PP
 

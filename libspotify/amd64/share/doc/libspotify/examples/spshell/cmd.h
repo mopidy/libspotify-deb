@@ -31,7 +31,7 @@ extern void cmd_dispatch(int argc, char **argv);
 extern void cmd_done(void);
 
 
-
+extern int cmd_log(int argc, char **argv);
 extern int cmd_logout(int argc, char **argv);
 extern int cmd_browse(int argc, char **argv);
 extern int cmd_search(int argc, char **argv);
@@ -55,6 +55,8 @@ extern int cmd_social_enable(int argc, char **argv);
 extern int cmd_playlists_enable(int argc, char **argv);
 extern int cmd_add_folder(int argc, char **argv);
 extern int cmd_update_subscriptions(int argc, char **argv);
+extern int cmd_playlist_add_track(int argc, char **argv);
+extern int cmd_playlist_offline(int argc, char **argv);
 
 /* Shared functions */
 void browse_playlist(sp_playlist *pl);

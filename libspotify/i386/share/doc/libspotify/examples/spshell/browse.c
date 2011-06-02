@@ -38,6 +38,7 @@ void print_track(sp_track *track)
 	int duration = sp_track_duration(track);
 	char url[256];
 	sp_link *l;
+	int i;
 
 #if WIN32
 	printf(" %s ", sp_track_is_starred(g_session,track) ? "*" : " ");
@@ -57,6 +58,10 @@ void print_track(sp_track *track)
 		       sp_track_disc(track));
 	printf("\n");
 
+	for (i = 0; i < sp_track_num_artists(track); i++) {
+		sp_artist *art = sp_track_artist(track, i);
+		printf("\tArtist %d: %s\n", i + 1, sp_artist_name(art));
+	}
 	l = sp_link_create_from_track(track, 0);
 	sp_link_as_string(l, url, sizeof(url));
 	printf("\t\t%s\n", url);

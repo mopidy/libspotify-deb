@@ -21,11 +21,14 @@
  *
  */
 
+#include <string.h>
+
 #include "spshell.h"
 
 sp_session *g_session;
 void (*metadata_updated_fn)(void);
 int is_logged_out;
+int log_to_stderr;
 
 /**
  * This callback is called when the user was logged in, but the connection to
@@ -48,6 +51,7 @@ static void logged_in(sp_session *session, sp_error error)
 {
 	sp_user *me;
 	const char *my_name;
+	int cc;
 
 	if (SP_ERROR_OK != error) {
 		fprintf(stderr, "failed to log in to Spotify: %s\n",
@@ -60,7 +64,9 @@ static void logged_in(sp_session *session, sp_error error)
 	me = sp_session_user(session);
 	my_name = (sp_user_is_loaded(me) ? sp_user_display_name(me) : sp_user_canonical_name(me));
 
-	fprintf(stderr, "Logged in to Spotify as user %s\n", my_name);
+	cc = sp_session_user_country(session);
+
+	fprintf(stderr, "Logged in to Spotify as user %s (registered in country: %c%c)\n", my_name, cc >> 8, cc & 0xff);
 
 	start_prompt();
 }
@@ -83,7 +89,8 @@ static void logged_out(sp_session *session)
  */
 static void log_message(sp_session *session, const char *data)
 {
-	fprintf(stderr, "%s", data);
+	if (log_to_stderr)
+		fprintf(stderr, "%s", data);
 }
 
 
@@ -104,6 +111,28 @@ static void metadata_updated(sp_session *sess)
 
 
 /**
+ *
+ */
+static void offline_status_updated(sp_session *sess)
+{
+	sp_offline_sync_status status;
+	sp_offline_sync_get_status(sess, &status);
+	if(status.syncing) {
+		printf("Offline status: queued:%d:%lld done:%d:%lld copied:%d:%lld nocopy:%d err:%d\n",
+		    status.queued_tracks,
+		    status.queued_bytes,
+		    status.done_tracks,
+		    status.done_bytes,
+		    status.copied_tracks,
+		    status.copied_bytes,
+		    status.willnotcopy_tracks,
+		    status.error_tracks);
+	} else {
+		printf("Offline status: Idle\n");
+	}
+}
+
+/**
  * Session callbacks
  */
 static sp_session_callbacks callbacks = {
@@ -115,7 +144,14 @@ static sp_session_callbacks callbacks = {
 	&notify_main_thread,
 	NULL,
 	NULL,
-	&log_message
+	&log_message,
+	NULL, // end_of_track
+	NULL, // streaming error
+	NULL, // userinfo update
+	NULL, // start_playback
+	NULL, // stop_playback
+	NULL, // get_audio_buffer_stats
+	offline_status_updated,
 };
 
 /**
@@ -181,4 +217,20 @@ int cmd_logout(int argc, char **argv)
 {
 	sp_session_logout(g_session);
 	return 0;
+}
+
+
+
+/**
+ *
+ */
+int cmd_log(int argc, char **argv)
+{
+	if(argc != 2) {
+		fprintf(stderr, "log enable|disable\n");
+		return -1;
+	}
+
+	log_to_stderr = !strcmp(argv[1], "enable");
+	return 1;
 }

@@ -1,4 +1,4 @@
-.TH "Image handling" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.TH "Image handling" 3spotify "24 May 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,6 +22,9 @@ Image handling \-
 .in +1c
 .ti -1c
 .RI "\fBsp_image\fP * \fBsp_image_create\fP (\fBsp_session\fP *session, const byte image_id[20])"
+.br
+.ti -1c
+.RI "\fBsp_image\fP * \fBsp_image_create_from_link\fP (\fBsp_session\fP *session, \fBsp_link\fP *l)"
 .br
 .ti -1c
 .RI "void \fBsp_image_add_load_callback\fP (\fBsp_image\fP *image, \fBimage_loaded_cb\fP *callback, void *userdata)"
@@ -109,6 +112,26 @@ Pointer to an image object. To free the object, use \fBsp_image_release()\fP
 \fBsp_album_cover\fP 
 .PP
 \fBsp_artistbrowse_portrait\fP 
+.RE
+.PP
+
+.SS "\fBsp_image\fP* sp_image_create_from_link (\fBsp_session\fP * session, \fBsp_link\fP * l)"Create an image object from a link
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIl\fP Spotify link object. This must be of SP_LINKTYPE_IMAGE type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to an image object. To free the object, use \fBsp_image_release()\fP
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_image_create\fP 
 .RE
 .PP
 

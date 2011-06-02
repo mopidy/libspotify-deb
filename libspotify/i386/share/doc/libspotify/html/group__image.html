@@ -32,6 +32,7 @@
  }</td></tr>
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga61155ca7b1ba941e15490e417441917b">sp_image</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__image.html#gaf29e89f45945db2b3667bf9db4279c33">sp_image_create</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const byte image_id[20])</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga61155ca7b1ba941e15490e417441917b">sp_image</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__image.html#ga70fb25cd2b0caaf15f637f36e75524b9">sp_image_create_from_link</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *l)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__image.html#gadb666de347d6b302cf93b6347e7df253">sp_image_add_load_callback</a> (<a class="el" href="group__types.html#ga61155ca7b1ba941e15490e417441917b">sp_image</a> *image, <a class="el" href="group__image.html#ga713bef7c5dedba7d91b9710cd9b5faa4">image_loaded_cb</a> *callback, void *userdata)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__image.html#ga10cb06e95b86f037e5ce4845ac9fb072">sp_image_remove_load_callback</a> (<a class="el" href="group__types.html#ga61155ca7b1ba941e15490e417441917b">sp_image</a> *image, <a class="el" href="group__image.html#ga713bef7c5dedba7d91b9710cd9b5faa4">image_loaded_cb</a> *callback, void *userdata)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__image.html#ga45312b1b9b5e5565485d61a8f0300e18">sp_image_is_loaded</a> (<a class="el" href="group__types.html#ga61155ca7b1ba941e15490e417441917b">sp_image</a> *image)</td></tr>
@@ -187,6 +188,43 @@
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__album.html#ga77cfa20fa7522c8be633389a5d1d0270">sp_album_cover</a> </dd>
 <dd>
 <a class="el" href="group__artistbrowse.html#ga5f164b2f9609a7bf2c89b3a1407ec239">sp_artistbrowse_portrait</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga70fb25cd2b0caaf15f637f36e75524b9"></a><!-- doxytag: member="api.h::sp_image_create_from_link" ref="ga70fb25cd2b0caaf15f637f36e75524b9" args="(sp_session *session, sp_link *l)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__types.html#ga61155ca7b1ba941e15490e417441917b">sp_image</a>* sp_image_create_from_link </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__types.html#gaf90a23d6b662c96d52ac19f7f4bc1e39">sp_link</a> *&nbsp;</td>
+          <td class="paramname"> <em>l</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Create an image object from a link</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>l</em>&nbsp;</td><td>Spotify link object. This must be of SP_LINKTYPE_IMAGE type</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to an image object. To free the object, use <a class="el" href="group__image.html#ga187c54c37abeb7a211dec817a5f30887">sp_image_release()</a></dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__image.html#gaf29e89f45945db2b3667bf9db4279c33">sp_image_create</a> </dd></dl>
 
 </div>
 </div>
@@ -399,7 +437,7 @@
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Sat Feb 12 12:51:15 2011.<br>
+Generated on Tue May 24 15:28:46 2011.<br>
 Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
 </body>
 </html>

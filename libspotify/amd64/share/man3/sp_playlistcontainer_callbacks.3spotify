@@ -1,4 +1,4 @@
-.TH "sp_playlistcontainer_callbacks" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.TH "sp_playlistcontainer_callbacks" 3spotify "24 May 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME

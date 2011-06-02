@@ -1,3 +1,31 @@
+Version 0.0.8
+
+	SPOTIFY_API_VERSION is bumped to 8.
+
+	Added support for offline mode.
+	Users of libspotify can now request playlists to be offline
+	synchronized just as Spotify's desktop and mobile applications.
+	For example of how to do this, please see cmd_playlist_offline()
+	in playlist.c in the spshell example.
+
+	Added sp_playlistcontainer_is_loaded() which can be used to
+	check if a playlistcontainer is loaded. This value will be true
+	after the container_loaded() callback is invoked.
+
+	Added support for spotify:image: linktype. If your application
+	needs an abstract way to refer to coverarts, artist portraits, etc
+	this is what you should use.
+
+	Add sp_session_user_country() that returns the currently logged in
+	users registered country. This is the country that should be used
+	to get toplists localized for the user.
+
+	bugfix: LocalTrack URI handling (sp_link) was broken. This has now
+	been fixed
+
+	bufix: libspotify was unable to link on 10.4 and 10.5. This has
+	now been fixed
+
 Version 0.0.7
 
 	SPOTIFY_API_VERSION is bumped to 7.

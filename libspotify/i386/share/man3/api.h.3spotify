@@ -1,4 +1,4 @@
-.TH "api.h" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.TH "api.h" 3spotify "24 May 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,6 +24,9 @@ api.h \-
 .RI "struct \fBsp_subscribers\fP"
 .br
 .ti -1c
+.RI "struct \fBsp_offline_sync_status\fP"
+.br
+.ti -1c
 .RI "struct \fBsp_session_callbacks\fP"
 .br
 .ti -1c
@@ -40,7 +43,7 @@ api.h \-
 
 .in +1c
 .ti -1c
-.RI "#define \fBSPOTIFY_API_VERSION\fP   7"
+.RI "#define \fBSPOTIFY_API_VERSION\fP   8"
 .br
 .ti -1c
 .RI "#define \fBSP_TOPLIST_REGION\fP(a, b)   ((a) << 8 | (b))"
@@ -130,6 +133,15 @@ api.h \-
 .RI "typedef struct \fBsp_subscribers\fP \fBsp_subscribers\fP"
 .br
 .ti -1c
+.RI "typedef enum \fBsp_connection_type\fP \fBsp_connection_type\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_connection_rules\fP \fBsp_connection_rules\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_offline_sync_status\fP \fBsp_offline_sync_status\fP"
+.br
+.ti -1c
 .RI "typedef struct \fBsp_session_callbacks\fP \fBsp_session_callbacks\fP"
 .br
 .ti -1c
@@ -185,7 +197,16 @@ api.h \-
 .RI "enum \fBsp_playlist_type\fP { \fBSP_PLAYLIST_TYPE_PLAYLIST\fP =  0, \fBSP_PLAYLIST_TYPE_START_FOLDER\fP =  1, \fBSP_PLAYLIST_TYPE_END_FOLDER\fP =  2, \fBSP_PLAYLIST_TYPE_PLACEHOLDER\fP =  3 }"
 .br
 .ti -1c
-.RI "enum \fBsp_linktype\fP { \fBSP_LINKTYPE_INVALID\fP =  0, \fBSP_LINKTYPE_TRACK\fP =  1, \fBSP_LINKTYPE_ALBUM\fP =  2, \fBSP_LINKTYPE_ARTIST\fP =  3, \fBSP_LINKTYPE_SEARCH\fP =  4, \fBSP_LINKTYPE_PLAYLIST\fP =  5, \fBSP_LINKTYPE_PROFILE\fP =  6, \fBSP_LINKTYPE_STARRED\fP =  7, \fBSP_LINKTYPE_LOCALTRACK\fP =  8 }"
+.RI "enum \fBsp_playlist_offline_status\fP { \fBSP_PLAYLIST_OFFLINE_STATUS_NO\fP =  0, \fBSP_PLAYLIST_OFFLINE_STATUS_YES\fP =  1, \fBSP_PLAYLIST_OFFLINE_STATUS_DOWNLOADING\fP =  2, \fBSP_PLAYLIST_OFFLINE_STATUS_WAITING\fP =  3 }"
+.br
+.ti -1c
+.RI "enum \fBsp_connection_type\fP { \fBSP_CONNECTION_TYPE_UNKNOWN\fP =  0, \fBSP_CONNECTION_TYPE_NONE\fP =  1, \fBSP_CONNECTION_TYPE_MOBILE\fP =  2, \fBSP_CONNECTION_TYPE_MOBILE_ROAMING\fP =  3, \fBSP_CONNECTION_TYPE_WIFI\fP =  4, \fBSP_CONNECTION_TYPE_WIRED\fP =  5 }"
+.br
+.ti -1c
+.RI "enum \fBsp_connection_rules\fP { \fBSP_CONNECTION_RULE_NETWORK\fP =  0x1, \fBSP_CONNECTION_RULE_NETWORK_IF_ROAMING\fP =  0x2, \fBSP_CONNECTION_RULE_ALLOW_SYNC_OVER_MOBILE\fP =  0x4, \fBSP_CONNECTION_RULE_ALLOW_SYNC_OVER_WIFI\fP =  0x8 }"
+.br
+.ti -1c
+.RI "enum \fBsp_linktype\fP { \fBSP_LINKTYPE_INVALID\fP =  0, \fBSP_LINKTYPE_TRACK\fP =  1, \fBSP_LINKTYPE_ALBUM\fP =  2, \fBSP_LINKTYPE_ARTIST\fP =  3, \fBSP_LINKTYPE_SEARCH\fP =  4, \fBSP_LINKTYPE_PLAYLIST\fP =  5, \fBSP_LINKTYPE_PROFILE\fP =  6, \fBSP_LINKTYPE_STARRED\fP =  7, \fBSP_LINKTYPE_LOCALTRACK\fP =  8, \fBSP_LINKTYPE_IMAGE\fP =  9 }"
 .br
 .ti -1c
 .RI "enum \fBsp_albumtype\fP { \fBSP_ALBUMTYPE_ALBUM\fP =  0, \fBSP_ALBUMTYPE_SINGLE\fP =  1, \fBSP_ALBUMTYPE_COMPILATION\fP =  2, \fBSP_ALBUMTYPE_UNKNOWN\fP =  3 }"
@@ -273,10 +294,31 @@ api.h \-
 .RI "void \fBsp_session_preferred_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate)"
 .br
 .ti -1c
+.RI "void \fBsp_session_preferred_offline_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate, bool allow_resync)"
+.br
+.ti -1c
 .RI "int \fBsp_session_num_friends\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_user\fP * \fBsp_session_friend\fP (\fBsp_session\fP *session, int index)"
+.br
+.ti -1c
+.RI "void \fBsp_session_set_connection_type\fP (\fBsp_session\fP *session, \fBsp_connection_type\fP type)"
+.br
+.ti -1c
+.RI "void \fBsp_session_set_connection_rules\fP (\fBsp_session\fP *session, \fBsp_connection_rules\fP rules)"
+.br
+.ti -1c
+.RI "int \fBsp_offline_tracks_to_sync\fP (\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "int \fBsp_offline_num_playlists\fP (\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void \fBsp_offline_sync_get_status\fP (\fBsp_session\fP *session, \fBsp_offline_sync_status\fP *status)"
+.br
+.ti -1c
+.RI "int \fBsp_session_user_country\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_string\fP (const char *link)"
@@ -288,7 +330,13 @@ api.h \-
 .RI "\fBsp_link\fP * \fBsp_link_create_from_album\fP (\fBsp_album\fP *album)"
 .br
 .ti -1c
+.RI "\fBsp_link\fP * \fBsp_link_create_from_album_cover\fP (\fBsp_album\fP *album)"
+.br
+.ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_artist\fP (\fBsp_artist\fP *artist)"
+.br
+.ti -1c
+.RI "\fBsp_link\fP * \fBsp_link_create_from_artist_portrait\fP (\fBsp_artistbrowse\fP *arb, int index)"
 .br
 .ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_search\fP (\fBsp_search\fP *search)"
@@ -298,6 +346,9 @@ api.h \-
 .br
 .ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_user\fP (\fBsp_user\fP *user)"
+.br
+.ti -1c
+.RI "\fBsp_link\fP * \fBsp_link_create_from_image\fP (\fBsp_image\fP *image)"
 .br
 .ti -1c
 .RI "int \fBsp_link_as_string\fP (\fBsp_link\fP *link, char *buffer, int buffer_size)"
@@ -504,6 +555,9 @@ api.h \-
 .RI "\fBsp_image\fP * \fBsp_image_create\fP (\fBsp_session\fP *session, const byte image_id[20])"
 .br
 .ti -1c
+.RI "\fBsp_image\fP * \fBsp_image_create_from_link\fP (\fBsp_session\fP *session, \fBsp_link\fP *l)"
+.br
+.ti -1c
 .RI "void \fBsp_image_add_load_callback\fP (\fBsp_image\fP *image, \fBimage_loaded_cb\fP *callback, void *userdata)"
 .br
 .ti -1c
@@ -669,6 +723,15 @@ api.h \-
 .RI "\fBsp_playlist\fP * \fBsp_playlist_create\fP (\fBsp_session\fP *session, \fBsp_link\fP *link)"
 .br
 .ti -1c
+.RI "void \fBsp_playlist_set_offline_mode\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist, bool offline)"
+.br
+.ti -1c
+.RI "\fBsp_playlist_offline_status\fP \fBsp_playlist_get_offline_status\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "int \fBsp_playlist_get_offline_download_completed\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
 .RI "void \fBsp_playlist_add_ref\fP (\fBsp_playlist\fP *playlist)"
 .br
 .ti -1c
@@ -682,6 +745,9 @@ api.h \-
 .br
 .ti -1c
 .RI "int \fBsp_playlistcontainer_num_playlists\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "bool \fBsp_playlistcontainer_is_loaded\fP (\fBsp_playlistcontainer\fP *pc)"
 .br
 .ti -1c
 .RI "\fBsp_playlist\fP * \fBsp_playlistcontainer_playlist\fP (\fBsp_playlistcontainer\fP *pc, int index)"

@@ -1,4 +1,4 @@
-.TH "Links (Spotify URIs)" 3spotify "12 Feb 2011" "libspotify" \" -*- nroff -*-
+.TH "Links (Spotify URIs)" 3spotify "24 May 2011" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,7 +7,7 @@ Links (Spotify URIs) \-
 
 .in +1c
 .ti -1c
-.RI "enum \fBsp_linktype\fP { \fBSP_LINKTYPE_INVALID\fP =  0, \fBSP_LINKTYPE_TRACK\fP =  1, \fBSP_LINKTYPE_ALBUM\fP =  2, \fBSP_LINKTYPE_ARTIST\fP =  3, \fBSP_LINKTYPE_SEARCH\fP =  4, \fBSP_LINKTYPE_PLAYLIST\fP =  5, \fBSP_LINKTYPE_PROFILE\fP =  6, \fBSP_LINKTYPE_STARRED\fP =  7, \fBSP_LINKTYPE_LOCALTRACK\fP =  8 }"
+.RI "enum \fBsp_linktype\fP { \fBSP_LINKTYPE_INVALID\fP =  0, \fBSP_LINKTYPE_TRACK\fP =  1, \fBSP_LINKTYPE_ALBUM\fP =  2, \fBSP_LINKTYPE_ARTIST\fP =  3, \fBSP_LINKTYPE_SEARCH\fP =  4, \fBSP_LINKTYPE_PLAYLIST\fP =  5, \fBSP_LINKTYPE_PROFILE\fP =  6, \fBSP_LINKTYPE_STARRED\fP =  7, \fBSP_LINKTYPE_LOCALTRACK\fP =  8, \fBSP_LINKTYPE_IMAGE\fP =  9 }"
 .br
 .in -1c
 .SS "Functions"
@@ -23,7 +23,13 @@ Links (Spotify URIs) \-
 .RI "\fBsp_link\fP * \fBsp_link_create_from_album\fP (\fBsp_album\fP *album)"
 .br
 .ti -1c
+.RI "\fBsp_link\fP * \fBsp_link_create_from_album_cover\fP (\fBsp_album\fP *album)"
+.br
+.ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_artist\fP (\fBsp_artist\fP *artist)"
+.br
+.ti -1c
+.RI "\fBsp_link\fP * \fBsp_link_create_from_artist_portrait\fP (\fBsp_artistbrowse\fP *arb, int index)"
 .br
 .ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_search\fP (\fBsp_search\fP *search)"
@@ -33,6 +39,9 @@ Links (Spotify URIs) \-
 .br
 .ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_user\fP (\fBsp_user\fP *user)"
+.br
+.ti -1c
+.RI "\fBsp_link\fP * \fBsp_link_create_from_image\fP (\fBsp_image\fP *image)"
 .br
 .ti -1c
 .RI "int \fBsp_link_as_string\fP (\fBsp_link\fP *link, char *buffer, int buffer_size)"
@@ -98,6 +107,9 @@ Link type is starred.
 .TP
 \fB\fISP_LINKTYPE_LOCALTRACK \fP\fP
 Link type is a local file. 
+.TP
+\fB\fISP_LINKTYPE_IMAGE \fP\fP
+Link type is an image. 
 .SH "Function Documentation"
 .PP 
 .SS "void sp_link_add_ref (\fBsp_link\fP * link)"Increase the reference count of a link
@@ -231,6 +243,29 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
+.SS "\fBsp_link\fP* sp_link_create_from_album_cover (\fBsp_album\fP * album)"Create an image link object from an album
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalbum\fP An album object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A link representing the album cover. Type is set to SP_LINKTYPE_IMAGE
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+You need to release the link when you are done with it. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_link_release()\fP 
+.RE
+.PP
+
 .SS "\fBsp_link\fP* sp_link_create_from_artist (\fBsp_artist\fP * artist)"Creates a link object from an artist
 .PP
 \fBParameters:\fP
@@ -241,6 +276,56 @@ You need to release the link when you are done with it.
 \fBReturns:\fP
 .RS 4
 A link object representing the artist
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+You need to release the link when you are done with it. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_link_release()\fP 
+.RE
+.PP
+
+.SS "\fBsp_link\fP* sp_link_create_from_artist_portrait (\fBsp_artistbrowse\fP * arb, int index)"Creates a link object from an artist portrait
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarb\fP Artist browse object 
+.br
+\fIindex\fP The index of the portrait. Should be in the interval [0, \fBsp_artistbrowse_num_portraits()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A link object representing an image
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+You need to release the link when you are done with it. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_link_release()\fP 
+.PP
+\fBsp_artistbrowse_num_portraits()\fP 
+.RE
+.PP
+
+.SS "\fBsp_link\fP* sp_link_create_from_image (\fBsp_image\fP * image)"Create a link object representing the given image
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimage\fP Image object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A link representing the image.
 .RE
 .PP
 \fBNote:\fP
