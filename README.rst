@@ -28,3 +28,9 @@ at http://apt.mopidy.com/.
 
        sudo apt-get update
        sudo apt-get install libspotify6 libspotify-dev
+
+   As most releases of libspotify increases the ``SONAME``, the latest package
+   may be named ``libspotify7`` instead of ``libspotify6``. To check what
+   packages you can choose from, run::
+
+       apt-cache search libspotify
