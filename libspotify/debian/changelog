@@ -1,3 +1,9 @@
+libspotify (9.1.32-2) unstable; urgency=low
+
+  * Update patch to fix manpage-has-bad-whatis-entry Lintian warnings.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Sat, 03 Sep 2011 14:53:56 +0200
+
 libspotify (9.1.32-1) unstable; urgency=low
 
   * New upstream release.
