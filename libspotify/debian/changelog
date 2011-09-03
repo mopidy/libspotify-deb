@@ -1,3 +1,9 @@
+libspotify (9.1.32-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Sat, 03 Sep 2011 13:50:16 +0200
+
 libspotify (0.0.8-1) unstable; urgency=low
 
   * New upstream release.
