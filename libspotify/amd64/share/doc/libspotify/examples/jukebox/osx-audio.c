@@ -28,7 +28,7 @@
 #include <AudioToolbox/AudioQueue.h>
 #include "audio.h"
 
-#define BUFFER_COUNT 3
+#define BUFFER_COUNT 5
 static struct AQPlayerState {
     AudioStreamBasicDescription   desc;
     AudioQueueRef                 queue;
@@ -80,9 +80,9 @@ void audio_init(audio_fifo_t *af)
 
     // Start some empty playback so we'll get the callbacks that fill in the actual audio.
     for (i = 0; i < BUFFER_COUNT; ++i) {
-	AudioQueueAllocateBuffer(state.queue, state.buffer_size, &state.buffers[i]);
-	state.buffers[i]->mAudioDataByteSize = state.buffer_size;
-	AudioQueueEnqueueBuffer(state.queue, state.buffers[i], 0, NULL);
+		AudioQueueAllocateBuffer(state.queue, state.buffer_size, &state.buffers[i]);
+		state.buffers[i]->mAudioDataByteSize = state.buffer_size;
+		AudioQueueEnqueueBuffer(state.queue, state.buffers[i], 0, NULL);
     }
     if (noErr != AudioQueueStart(state.queue, NULL)) puts("AudioQueueStart failed");
 }
@@ -94,8 +94,8 @@ void audio_fifo_flush(audio_fifo_t *af)
     pthread_mutex_lock(&af->mutex);
 
     while((afd = TAILQ_FIRST(&af->q))) {
-	TAILQ_REMOVE(&af->q, afd, link);
-	free(afd);
+		TAILQ_REMOVE(&af->q, afd, link);
+		free(afd);
     }
 
     af->qlen = 0;

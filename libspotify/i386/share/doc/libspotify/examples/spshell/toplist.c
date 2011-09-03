@@ -40,7 +40,16 @@ static void print_album(int index, sp_album *album)
  */
 static void print_artist(int index, sp_artist *artist)
 {
+	sp_link *l;
+	char url[200];
 	printf("  Artist %3d: \"%s\"\n", index, sp_artist_name(artist));
+
+	l = sp_link_create_from_artist_portrait(artist);
+	if(l != NULL) {
+		sp_link_as_string(l, url, sizeof(url));
+		printf("    Portrait: %s\n", url);
+		sp_link_release(l);
+	}
 }
 
 

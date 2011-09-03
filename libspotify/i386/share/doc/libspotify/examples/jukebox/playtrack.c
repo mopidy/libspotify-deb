@@ -308,7 +308,7 @@ int main(int argc, char **argv)
 	pthread_mutex_init(&g_notify_mutex, NULL);
 	pthread_cond_init(&g_notify_cond, NULL);
 
-	sp_session_login(sp, username, password);
+	sp_session_login(sp, username, password, 0);
 	pthread_mutex_lock(&g_notify_mutex);
 
 	for (;;) {

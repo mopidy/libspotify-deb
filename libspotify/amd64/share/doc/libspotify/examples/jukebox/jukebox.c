@@ -547,7 +547,7 @@ int main(int argc, char **argv)
 		&pc_callbacks,
 		NULL);
 
-	sp_session_login(sp, username, password);
+	sp_session_login(sp, username, password, 0);
 	pthread_mutex_lock(&g_notify_mutex);
 
 	for (;;) {

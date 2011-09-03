@@ -198,7 +198,7 @@ static sp_playlist_callbacks pl_update_callbacks;
 struct pl_update_work {
 	int position;
 	int num_tracks;
-	const sp_track **tracks;
+	sp_track **tracks;
 };
 
 static int apply_changes(sp_playlist *pl, struct pl_update_work *puw)

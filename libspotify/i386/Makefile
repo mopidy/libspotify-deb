@@ -8,18 +8,19 @@ install:
 	install include/libspotify/api.h $(prefix)/include/libspotify
 
 	mkdir -p $(prefix)/lib
-	install lib/libspotify.so.8.0.800005 \
-		$(prefix)/lib
-	cd $(prefix)/lib && ln -sf libspotify.so.8.0.800005 libspotify.so.8 && ln -sf libspotify.so.8.0.800005 libspotify.so
+	install -T lib/libspotify.so.9 \
+		$(prefix)/lib/libspotify.so.9.1.32
+
+	cd $(prefix)/lib && ln -sf libspotify.so.9.1.32 libspotify.so.9 && ln -sf libspotify.so.9.1.32 libspotify.so
 
 	mkdir -p $(prefix)/lib/pkgconfig
-	sed -e s:@pkg_prefix@:$(prefix):g \
-		<lib/pkgconfig/libspotify.pc.in \
+	sed -e s:PKG_PREFIX:$(prefix):g \
+		<lib/pkgconfig/libspotify.pc \
 		>$(prefix)/lib/pkgconfig/libspotify.pc
 
 uninstall:
 	rm -rf $(prefix)/include/libspotify
-	rm -f  $(prefix)/lib/libspotify.so.8.0.800005
-	rm -f  $(prefix)/lib/libspotify.so.8
+	rm -f  $(prefix)/lib/libspotify.so.9.1.32
+	rm -f  $(prefix)/lib/libspotify.so.9
 	rm -f  $(prefix)/lib/libspotify.so
 	rm -f  $(prefix)/lib/pkgconfig/libspotify.pc

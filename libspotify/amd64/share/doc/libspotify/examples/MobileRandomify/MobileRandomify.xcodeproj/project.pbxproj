@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0506F41D13EAAE480045304F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0506F41C13EAAE480045304F /* AVFoundation.framework */; };
+		0506F42013EAAFE40045304F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0506F41F13EAAFE40045304F /* Default.png */; };
+		053541C113E98F8E00979D0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053541C013E98F8E00979D0E /* UIKit.framework */; };
+		053541C313E98F8E00979D0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053541C213E98F8E00979D0E /* Foundation.framework */; };
+		053541C513E98F8E00979D0E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053541C413E98F8E00979D0E /* CoreGraphics.framework */; };
+		053541CB13E98F8E00979D0E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 053541C913E98F8E00979D0E /* InfoPlist.strings */; };
+		053541CD13E98F8E00979D0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541CC13E98F8E00979D0E /* main.m */; };
+		053541D113E98F8E00979D0E /* MobileRandomifyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541D013E98F8E00979D0E /* MobileRandomifyAppDelegate.m */; };
+		053541D413E98F8E00979D0E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053541D213E98F8E00979D0E /* MainWindow.xib */; };
+		053541D713E98F8E00979D0E /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541D613E98F8E00979D0E /* LoginVC.m */; };
+		053541DA13E98F8E00979D0E /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053541D813E98F8E00979D0E /* LoginVC.xib */; };
+		053541E113E9904C00979D0E /* libspotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 053541E013E9904C00979D0E /* libspotify.a */; };
+		053541ED13E9912E00979D0E /* SpotifyPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541E813E9912E00979D0E /* SpotifyPlaylist.m */; };
+		053541EE13E9912E00979D0E /* SpotifySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541EA13E9912E00979D0E /* SpotifySession.m */; };
+		053541EF13E9912E00979D0E /* SpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541EC13E9912E00979D0E /* SpotifyTrack.m */; };
+		053541F413E991A700979D0E /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = 053541F113E991A700979D0E /* audio.c */; };
+		053541F613E9921D00979D0E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053541F513E9921D00979D0E /* CFNetwork.framework */; };
+		053541FC13E992F500979D0E /* osx-audio.c in Sources */ = {isa = PBXBuildFile; fileRef = 053541FB13E992F500979D0E /* osx-audio.c */; };
+		053541FE13E9931F00979D0E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053541FD13E9931F00979D0E /* AudioToolbox.framework */; };
+		0535420013E9939A00979D0E /* appkey.c in Sources */ = {isa = PBXBuildFile; fileRef = 053541FF13E9939A00979D0E /* appkey.c */; };
+		0593CD1113EA9AEE00752FF1 /* PlaybackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0593CD0F13EA9AEE00752FF1 /* PlaybackVC.m */; };
+		0593CD1213EA9AEE00752FF1 /* PlaybackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593CD1013EA9AEE00752FF1 /* PlaybackVC.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0506F41C13EAAE480045304F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0506F41F13EAAFE40045304F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		053541BC13E98F8E00979D0E /* MobileRandomify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileRandomify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		053541C013E98F8E00979D0E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		053541C213E98F8E00979D0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		053541C413E98F8E00979D0E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		053541C813E98F8E00979D0E /* MobileRandomify-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MobileRandomify-Info.plist"; sourceTree = "<group>"; };
+		053541CA13E98F8E00979D0E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		053541CC13E98F8E00979D0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		053541CE13E98F8E00979D0E /* MobileRandomify-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileRandomify-Prefix.pch"; sourceTree = "<group>"; };
+		053541CF13E98F8E00979D0E /* MobileRandomifyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileRandomifyAppDelegate.h; sourceTree = "<group>"; };
+		053541D013E98F8E00979D0E /* MobileRandomifyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobileRandomifyAppDelegate.m; sourceTree = "<group>"; };
+		053541D313E98F8E00979D0E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		053541D513E98F8E00979D0E /* LoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		053541D613E98F8E00979D0E /* LoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
+		053541D913E98F8E00979D0E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoginVC.xib; sourceTree = "<group>"; };
+		053541E013E9904C00979D0E /* libspotify.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspotify.a; path = ../../../../lib/libspotify.a; sourceTree = "<group>"; };
+		053541E713E9912E00979D0E /* SpotifyPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotifyPlaylist.h; path = ../../Randomify/SpotifyPlaylist.h; sourceTree = "<group>"; };
+		053541E813E9912E00979D0E /* SpotifyPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotifyPlaylist.m; path = ../../Randomify/SpotifyPlaylist.m; sourceTree = "<group>"; };
+		053541E913E9912E00979D0E /* SpotifySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotifySession.h; path = ../../Randomify/SpotifySession.h; sourceTree = "<group>"; };
+		053541EA13E9912E00979D0E /* SpotifySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotifySession.m; path = ../../Randomify/SpotifySession.m; sourceTree = "<group>"; };
+		053541EB13E9912E00979D0E /* SpotifyTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotifyTrack.h; path = ../../Randomify/SpotifyTrack.h; sourceTree = "<group>"; };
+		053541EC13E9912E00979D0E /* SpotifyTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotifyTrack.m; path = ../../Randomify/SpotifyTrack.m; sourceTree = "<group>"; };
+		053541F113E991A700979D0E /* audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = audio.c; path = ../../jukebox/audio.c; sourceTree = "<group>"; };
+		053541F213E991A700979D0E /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio.h; path = ../../jukebox/audio.h; sourceTree = "<group>"; };
+		053541F313E991A700979D0E /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = queue.h; path = ../../jukebox/queue.h; sourceTree = "<group>"; };
+		053541F513E9921D00979D0E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		053541FB13E992F500979D0E /* osx-audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "osx-audio.c"; path = "../../jukebox/osx-audio.c"; sourceTree = "<group>"; };
+		053541FD13E9931F00979D0E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		053541FF13E9939A00979D0E /* appkey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = appkey.c; path = ../../appkey.c; sourceTree = "<group>"; };
+		0593CD0E13EA9AEE00752FF1 /* PlaybackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaybackVC.h; sourceTree = "<group>"; };
+		0593CD0F13EA9AEE00752FF1 /* PlaybackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaybackVC.m; sourceTree = "<group>"; };
+		0593CD1013EA9AEE00752FF1 /* PlaybackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaybackVC.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		053541B913E98F8E00979D0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0506F41D13EAAE480045304F /* AVFoundation.framework in Frameworks */,
+				053541FE13E9931F00979D0E /* AudioToolbox.framework in Frameworks */,
+				053541F613E9921D00979D0E /* CFNetwork.framework in Frameworks */,
+				053541C113E98F8E00979D0E /* UIKit.framework in Frameworks */,
+				053541C313E98F8E00979D0E /* Foundation.framework in Frameworks */,
+				053541C513E98F8E00979D0E /* CoreGraphics.framework in Frameworks */,
+				053541E113E9904C00979D0E /* libspotify.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		053541B113E98F8E00979D0E = {
+			isa = PBXGroup;
+			children = (
+				053541C613E98F8E00979D0E /* MobileRandomify */,
+				053541BF13E98F8E00979D0E /* Frameworks */,
+				053541BD13E98F8E00979D0E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		053541BD13E98F8E00979D0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				053541BC13E98F8E00979D0E /* MobileRandomify.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		053541BF13E98F8E00979D0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0506F41C13EAAE480045304F /* AVFoundation.framework */,
+				053541FD13E9931F00979D0E /* AudioToolbox.framework */,
+				053541F513E9921D00979D0E /* CFNetwork.framework */,
+				053541C013E98F8E00979D0E /* UIKit.framework */,
+				053541C213E98F8E00979D0E /* Foundation.framework */,
+				053541C413E98F8E00979D0E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		053541C613E98F8E00979D0E /* MobileRandomify */ = {
+			isa = PBXGroup;
+			children = (
+				053541E013E9904C00979D0E /* libspotify.a */,
+				053541FF13E9939A00979D0E /* appkey.c */,
+				053541CF13E98F8E00979D0E /* MobileRandomifyAppDelegate.h */,
+				053541D013E98F8E00979D0E /* MobileRandomifyAppDelegate.m */,
+				053541D213E98F8E00979D0E /* MainWindow.xib */,
+				053541D513E98F8E00979D0E /* LoginVC.h */,
+				053541D613E98F8E00979D0E /* LoginVC.m */,
+				053541D813E98F8E00979D0E /* LoginVC.xib */,
+				0593CD0E13EA9AEE00752FF1 /* PlaybackVC.h */,
+				0593CD0F13EA9AEE00752FF1 /* PlaybackVC.m */,
+				0593CD1013EA9AEE00752FF1 /* PlaybackVC.xib */,
+				053541E213E9911600979D0E /* Cocoa wrapper */,
+				053541F013E9919200979D0E /* Examples shared */,
+				053541C713E98F8E00979D0E /* Supporting Files */,
+			);
+			path = MobileRandomify;
+			sourceTree = "<group>";
+		};
+		053541C713E98F8E00979D0E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0506F41F13EAAFE40045304F /* Default.png */,
+				053541C813E98F8E00979D0E /* MobileRandomify-Info.plist */,
+				053541C913E98F8E00979D0E /* InfoPlist.strings */,
+				053541CC13E98F8E00979D0E /* main.m */,
+				053541CE13E98F8E00979D0E /* MobileRandomify-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		053541E213E9911600979D0E /* Cocoa wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				053541E713E9912E00979D0E /* SpotifyPlaylist.h */,
+				053541E813E9912E00979D0E /* SpotifyPlaylist.m */,
+				053541E913E9912E00979D0E /* SpotifySession.h */,
+				053541EA13E9912E00979D0E /* SpotifySession.m */,
+				053541EB13E9912E00979D0E /* SpotifyTrack.h */,
+				053541EC13E9912E00979D0E /* SpotifyTrack.m */,
+			);
+			name = "Cocoa wrapper";
+			sourceTree = "<group>";
+		};
+		053541F013E9919200979D0E /* Examples shared */ = {
+			isa = PBXGroup;
+			children = (
+				053541F113E991A700979D0E /* audio.c */,
+				053541FB13E992F500979D0E /* osx-audio.c */,
+				053541F213E991A700979D0E /* audio.h */,
+				053541F313E991A700979D0E /* queue.h */,
+			);
+			name = "Examples shared";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		053541BB13E98F8E00979D0E /* MobileRandomify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 053541DD13E98F8E00979D0E /* Build configuration list for PBXNativeTarget "MobileRandomify" */;
+			buildPhases = (
+				053541B813E98F8E00979D0E /* Sources */,
+				053541B913E98F8E00979D0E /* Frameworks */,
+				053541BA13E98F8E00979D0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MobileRandomify;
+			productName = MobileRandomify;
+			productReference = 053541BC13E98F8E00979D0E /* MobileRandomify.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		053541B313E98F8E00979D0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Spotify AB";
+			};
+			buildConfigurationList = 053541B613E98F8E00979D0E /* Build configuration list for PBXProject "MobileRandomify" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 053541B113E98F8E00979D0E;
+			productRefGroup = 053541BD13E98F8E00979D0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				053541BB13E98F8E00979D0E /* MobileRandomify */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		053541BA13E98F8E00979D0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				053541CB13E98F8E00979D0E /* InfoPlist.strings in Resources */,
+				053541D413E98F8E00979D0E /* MainWindow.xib in Resources */,
+				053541DA13E98F8E00979D0E /* LoginVC.xib in Resources */,
+				0593CD1213EA9AEE00752FF1 /* PlaybackVC.xib in Resources */,
+				0506F42013EAAFE40045304F /* Default.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		053541B813E98F8E00979D0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				053541CD13E98F8E00979D0E /* main.m in Sources */,
+				053541D113E98F8E00979D0E /* MobileRandomifyAppDelegate.m in Sources */,
+				053541D713E98F8E00979D0E /* LoginVC.m in Sources */,
+				053541ED13E9912E00979D0E /* SpotifyPlaylist.m in Sources */,
+				053541EE13E9912E00979D0E /* SpotifySession.m in Sources */,
+				053541EF13E9912E00979D0E /* SpotifyTrack.m in Sources */,
+				053541F413E991A700979D0E /* audio.c in Sources */,
+				053541FC13E992F500979D0E /* osx-audio.c in Sources */,
+				0535420013E9939A00979D0E /* appkey.c in Sources */,
+				0593CD1113EA9AEE00752FF1 /* PlaybackVC.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		053541C913E98F8E00979D0E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				053541CA13E98F8E00979D0E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		053541D213E98F8E00979D0E /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				053541D313E98F8E00979D0E /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		053541D813E98F8E00979D0E /* LoginVC.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				053541D913E98F8E00979D0E /* en */,
+			);
+			name = LoginVC.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		053541DB13E98F8E00979D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		053541DC13E98F8E00979D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		053541DE13E98F8E00979D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobileRandomify/MobileRandomify-Prefix.pch";
+				HEADER_SEARCH_PATHS = ../../../include;
+				INFOPLIST_FILE = "MobileRandomify/MobileRandomify-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../lib\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		053541DF13E98F8E00979D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobileRandomify/MobileRandomify-Prefix.pch";
+				HEADER_SEARCH_PATHS = ../../../include;
+				INFOPLIST_FILE = "MobileRandomify/MobileRandomify-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../lib\"",
+				);
+				OTHER_LDFLAGS = "-lstdc++";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		053541B613E98F8E00979D0E /* Build configuration list for PBXProject "MobileRandomify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				053541DB13E98F8E00979D0E /* Debug */,
+				053541DC13E98F8E00979D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		053541DD13E98F8E00979D0E /* Build configuration list for PBXNativeTarget "MobileRandomify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				053541DE13E98F8E00979D0E /* Debug */,
+				053541DF13E98F8E00979D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 053541B313E98F8E00979D0E /* Project object */;
+}

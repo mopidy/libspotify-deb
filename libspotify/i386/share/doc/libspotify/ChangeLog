@@ -1,3 +1,73 @@
+Version 9
+
+	SPOTIFY_API_VERSION is bumped to 9.
+
+	Package version numbers have changed.
+
+	The distributed package (and the is so versioning where
+	applicable) is now versioned like this:
+
+	libspotify-X.Y.Z
+
+	X - Major version. Always same as SPOTIFY_API_VERSION.
+	    libraries with different major versions are not ABI compatible
+
+	Y - Minor version.
+	    Is 0 during development. 1 for the first public release, etc
+
+	Z - Patch version. Incremented for each change of the codebase
+
+	libspotify can now remember user credentials.
+	This should be used to automatically login the user.
+	The application MUST NEVER store the user's password.
+
+        - A fourth parameter has been added to sp_session_login() that
+	will tell libspotify to remember the login credentials in an
+	encrypted form stored in the settings_location as specified when
+	creating the session.
+
+	- To relogin a user, the application should invoke
+	sp_session_relogin() instead of sp_session_login().  If no
+	credentials are stored, SP_ERROR_NO_CREDENTIALS will be returned
+
+	- To clear stored credentials, use sp_session_forget_me()
+
+	- To get username of currently stored credentials use
+	sp_session_remembered_user()
+
+
+	Add sp_session_offline_time_left() that returns time left until
+	the user is required to reconnect to Spotify in order to
+	revalidate the offline keys.
+
+	The logged in state has been updated to include
+	SP_CONNECTION_STATE_OFFLINE, which indicates that the user is
+	logged in to the Spotify service in offline mode.
+
+	The SP_ERROR_RESOURCE_NOT_LOADED, which was only used by
+	sp_session_player_load(), has been replaced with SP_ERROR_IS_LOADING
+	which means the same thing.
+
+	The documentation has been updated to fix a few minor errors.
+
+	callback connection_error() will no longer be invoked if the error
+	parameter has value SP_ERROR_OK, as it isn't an error.
+
+	sp_track_set_starred and sp_playlist_add_tracks got their list
+	arguments const property changed from (const**) to (*const*).
+
+	sp_link_create_from_artist_portrait() renamed to
+	sp_link_create_from_artistbrowse_portrait() which is more appropriate.
+
+	Introduced sp_artist_portrait() and
+	sp_link_create_from_artist_portrait() to get one artist portrait
+	from an artist object. This should be used to get artist portraits
+	when doing search and top list browse queries.
+
+	Introduced sp_build_id() - This could be useful to display
+	somewhere deep down in the user interface in case you (or Spotify)
+	would like to know the exact version running.
+
 Version 0.0.8
 
 	SPOTIFY_API_VERSION is bumped to 8.

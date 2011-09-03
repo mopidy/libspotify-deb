@@ -1,0 +1,282 @@
+.TH "sp_session_callbacks" 3spotify "Tue Aug 30 2011" "libspotify" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sp_session_callbacks \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <api.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "void(* \fBlogged_in\fP )(\fBsp_session\fP *session, \fBsp_error\fP error)"
+.br
+.ti -1c
+.RI "void(* \fBlogged_out\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void(* \fBmetadata_updated\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void(* \fBconnection_error\fP )(\fBsp_session\fP *session, \fBsp_error\fP error)"
+.br
+.ti -1c
+.RI "void(* \fBmessage_to_user\fP )(\fBsp_session\fP *session, const char *message)"
+.br
+.ti -1c
+.RI "void(* \fBnotify_main_thread\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "int(* \fBmusic_delivery\fP )(\fBsp_session\fP *session, const \fBsp_audioformat\fP *format, const void *frames, int num_frames)"
+.br
+.ti -1c
+.RI "void(* \fBplay_token_lost\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void(* \fBlog_message\fP )(\fBsp_session\fP *session, const char *data)"
+.br
+.ti -1c
+.RI "void(* \fBend_of_track\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void(* \fBstreaming_error\fP )(\fBsp_session\fP *session, \fBsp_error\fP error)"
+.br
+.ti -1c
+.RI "void(* \fBuserinfo_updated\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void(* \fBstart_playback\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void(* \fBstop_playback\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void(* \fBget_audio_buffer_stats\fP )(\fBsp_session\fP *session, \fBsp_audio_buffer_stats\fP *stats)"
+.br
+.ti -1c
+.RI "void(* \fBoffline_status_updated\fP )(\fBsp_session\fP *session)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Session callbacks
+.PP
+Registered when you create a session. If some callbacks should not be of interest, set them to NULL. 
+.PP
+\fBExamples: \fP
+.in +1c
+.PP
+\fBjukebox.c\fP.
+.SH "Field Documentation"
+.PP 
+.SS "void( * \fBsp_session_callbacks::connection_error\fP)(\fBsp_session\fP *session, \fBsp_error\fP error)"Called when there is a connection error, and the library has problems reconnecting to the Spotify service. Could be called multiple times (as long as the problem is present)
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIerror\fP One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_CLIENT_TOO_OLD SP_ERROR_UNABLE_TO_CONTACT_SERVER SP_ERROR_BAD_USERNAME_OR_PASSWORD SP_ERROR_USER_BANNED SP_ERROR_USER_NEEDS_PREMIUM SP_ERROR_OTHER_TRANSIENT SP_ERROR_OTHER_PERMANENT 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::end_of_track\fP)(\fBsp_session\fP *session)"End of track. Called when the currently played track has reached its end.
+.PP
+\fBNote:\fP
+.RS 4
+This function is invoked from the same internal thread as the music delivery callback
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::get_audio_buffer_stats\fP)(\fBsp_session\fP *session, \fBsp_audio_buffer_stats\fP *stats)"Called to query application about its audio buffer
+.PP
+\fBNote:\fP
+.RS 4
+This function is called from an internal session thread - you need to have proper synchronization!
+.PP
+This function must never block.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIstats\fP Stats struct to be filled by application 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::log_message\fP)(\fBsp_session\fP *session, const char *data)"Logging callback.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIdata\fP Log data 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::logged_in\fP)(\fBsp_session\fP *session, \fBsp_error\fP error)"Called when login has been processed and was successful
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIerror\fP One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_CLIENT_TOO_OLD SP_ERROR_UNABLE_TO_CONTACT_SERVER SP_ERROR_BAD_USERNAME_OR_PASSWORD SP_ERROR_USER_BANNED SP_ERROR_USER_NEEDS_PREMIUM SP_ERROR_OTHER_TRANSIENT SP_ERROR_OTHER_PERMANENT 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::logged_out\fP)(\fBsp_session\fP *session)"Called when logout has been processed. Either called explicitly if you initialize a logout operation, or implicitly if there is a permanent connection error
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::message_to_user\fP)(\fBsp_session\fP *session, const char *message)"Called when the access point wants to display a message to the user
+.PP
+In the desktop client, these are shown in a blueish toolbar just below the search box.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fImessage\fP String in UTF-8 format. 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::metadata_updated\fP)(\fBsp_session\fP *session)"Called whenever metadata has been updated
+.PP
+If you have metadata cached outside of libspotify, you should purge your caches and fetch new versions.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.RE
+.PP
+
+.SS "int( * \fBsp_session_callbacks::music_delivery\fP)(\fBsp_session\fP *session, const \fBsp_audioformat\fP *format, const void *frames, int num_frames)"Called when there is decompressed audio data available.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIformat\fP Audio format descriptor \fBsp_audioformat\fP 
+.br
+\fIframes\fP Points to raw PCM data as described by \fCformat\fP 
+.br
+\fInum_frames\fP Number of available samples in \fCframes\fP. If this is 0, a discontinuity has occurred (such as after a seek). The application should flush its audio fifos, etc.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of frames consumed. This value can be used to rate limit the output from the library if your output buffers are saturated. The library will retry delivery in about 100ms.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This function is called from an internal session thread - you need to have proper synchronization!
+.PP
+This function must never block. If your output buffers are full you must return 0 to signal that the library should retry delivery in a short while. 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::notify_main_thread\fP)(\fBsp_session\fP *session)"Called when processing needs to take place on the main thread.
+.PP
+You need to call \fBsp_session_process_events()\fP in the main thread to get libspotify to do more work. Failure to do so may cause request timeouts, or a lost connection.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This function is called from an internal session thread - you need to have proper synchronization! 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::offline_status_updated\fP)(\fBsp_session\fP *session)"Called when offline synchronization status is updated
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::play_token_lost\fP)(\fBsp_session\fP *session)"Music has been paused because only one account may play music at the same time.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::start_playback\fP)(\fBsp_session\fP *session)"Called when audio playback should start
+.PP
+\fBNote:\fP
+.RS 4
+For this to work correctly the application must also implement \fBget_audio_buffer_stats()\fP
+.PP
+This function is called from an internal session thread - you need to have proper synchronization!
+.PP
+This function must never block.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::stop_playback\fP)(\fBsp_session\fP *session)"Called when audio playback should stop
+.PP
+\fBNote:\fP
+.RS 4
+For this to work correctly the application must also implement \fBget_audio_buffer_stats()\fP
+.PP
+This function is called from an internal session thread - you need to have proper synchronization!
+.PP
+This function must never block.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::streaming_error\fP)(\fBsp_session\fP *session, \fBsp_error\fP error)"Streaming error. Called when streaming cannot start or continue
+.PP
+\fBNote:\fP
+.RS 4
+This function is invoked from the main thread
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIerror\fP One of the following errors, from \fBsp_error\fP SP_ERROR_NO_STREAM_AVAILABLE SP_ERROR_OTHER_TRANSIENT SP_ERROR_OTHER_PERMANENT 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::userinfo_updated\fP)(\fBsp_session\fP *session)"Called after user info (anything related to sp_user objects) have been updated.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

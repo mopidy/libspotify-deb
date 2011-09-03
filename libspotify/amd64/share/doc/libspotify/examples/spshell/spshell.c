@@ -204,7 +204,7 @@ int spshell_init(const char *username, const char *password)
 	}
 
 	// Login using the credentials given on the command line.
-	sp_session_login(session, username, password);
+	sp_session_login(session, username, password, 0);
 	g_session = session;
 	return 0;
 }
