@@ -19,12 +19,13 @@ procedure is as follows:
     cd libspotify/
 
     # Remove old release
-    git rm -rf i386/* amd64/*
+    git rm -rf i386/ amd64/
+    mkdir i386/ amd64/
 
     # Unpack new release and add to git
-    tar -C i386 --strip-components=1 -zxf ../libspotify_0.0.8.orig-i386.tar.gz
-    tar -C amd64 --strip-components=1 -zxf ../libspotify_0.0.8.orig-amd64.tar.gz
-    git add i386 amd64
+    tar -C i386/ --strip-components=1 -zxf ../libspotify_0.0.8.orig-i386.tar.gz
+    tar -C amd64/ --strip-components=1 -zxf ../libspotify_0.0.8.orig-amd64.tar.gz
+    git add i386/ amd64/
 
     # Commit the result
     git commit -m "Import libspotify 0.0.8"
