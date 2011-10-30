@@ -1,3 +1,9 @@
+libspotify (10.1.11) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Sun, 30 Oct 2011 17:26:53 +0100
+
 libspotify (9.1.32-2) unstable; urgency=low
 
   * Update patch to fix manpage-has-bad-whatis-entry Lintian warnings.
