@@ -39,7 +39,7 @@ static void star_usage(const char *prefix)
 static int dostar(int argc, char **argv, int set)
 {
 	sp_link *link;
-	const sp_track *track;
+	sp_track *track;
 
 	if (argc != 2) {
 		star_usage(set ? "" : "un");

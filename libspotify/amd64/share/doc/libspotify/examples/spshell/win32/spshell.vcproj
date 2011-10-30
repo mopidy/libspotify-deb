@@ -47,7 +47,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="4"
+				DebugInformationFormat="3"
 				CallingConvention="2"
 			/>
 			<Tool
@@ -231,6 +231,10 @@
 			</File>
 			<File
 				RelativePath="..\star.c"
+				>
+			</File>
+			<File
+				RelativePath="..\test.c"
 				>
 			</File>
 			<File

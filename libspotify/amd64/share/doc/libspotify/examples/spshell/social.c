@@ -24,6 +24,7 @@
 #include "spshell.h"
 #include "cmd.h"
 
+#if SPOTIFY_WITH_SOCIAL
 static const char *relationtypes[] = {
 	"Unknown",
 	"No relation",
@@ -51,6 +52,7 @@ int cmd_friends(int argc, char **argv)
 	}
 	return 1;
 }
+#endif
 
 
 static const char *getowner(sp_playlistcontainer *pc)

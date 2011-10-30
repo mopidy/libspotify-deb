@@ -18,7 +18,6 @@
 		053541D413E98F8E00979D0E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053541D213E98F8E00979D0E /* MainWindow.xib */; };
 		053541D713E98F8E00979D0E /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541D613E98F8E00979D0E /* LoginVC.m */; };
 		053541DA13E98F8E00979D0E /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053541D813E98F8E00979D0E /* LoginVC.xib */; };
-		053541E113E9904C00979D0E /* libspotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 053541E013E9904C00979D0E /* libspotify.a */; };
 		053541ED13E9912E00979D0E /* SpotifyPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541E813E9912E00979D0E /* SpotifyPlaylist.m */; };
 		053541EE13E9912E00979D0E /* SpotifySession.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541EA13E9912E00979D0E /* SpotifySession.m */; };
 		053541EF13E9912E00979D0E /* SpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 053541EC13E9912E00979D0E /* SpotifyTrack.m */; };
@@ -29,6 +28,8 @@
 		0535420013E9939A00979D0E /* appkey.c in Sources */ = {isa = PBXBuildFile; fileRef = 053541FF13E9939A00979D0E /* appkey.c */; };
 		0593CD1113EA9AEE00752FF1 /* PlaybackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0593CD0F13EA9AEE00752FF1 /* PlaybackVC.m */; };
 		0593CD1213EA9AEE00752FF1 /* PlaybackVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0593CD1013EA9AEE00752FF1 /* PlaybackVC.xib */; };
+		05DDE580140E6A1300AD9E23 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DDE57F140E6A1300AD9E23 /* SystemConfiguration.framework */; };
+		6AA223C414332BF6006D677A /* libspotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA223C314332BF6006D677A /* libspotify.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,8 @@
 		0593CD0E13EA9AEE00752FF1 /* PlaybackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaybackVC.h; sourceTree = "<group>"; };
 		0593CD0F13EA9AEE00752FF1 /* PlaybackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaybackVC.m; sourceTree = "<group>"; };
 		0593CD1013EA9AEE00752FF1 /* PlaybackVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaybackVC.xib; sourceTree = "<group>"; };
+		05DDE57F140E6A1300AD9E23 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6AA223C314332BF6006D677A /* libspotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libspotify.framework; path = ../../libspotify.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,13 +75,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AA223C414332BF6006D677A /* libspotify.framework in Frameworks */,
+				05DDE580140E6A1300AD9E23 /* SystemConfiguration.framework in Frameworks */,
 				0506F41D13EAAE480045304F /* AVFoundation.framework in Frameworks */,
 				053541FE13E9931F00979D0E /* AudioToolbox.framework in Frameworks */,
 				053541F613E9921D00979D0E /* CFNetwork.framework in Frameworks */,
 				053541C113E98F8E00979D0E /* UIKit.framework in Frameworks */,
 				053541C313E98F8E00979D0E /* Foundation.framework in Frameworks */,
 				053541C513E98F8E00979D0E /* CoreGraphics.framework in Frameworks */,
-				053541E113E9904C00979D0E /* libspotify.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +92,8 @@
 		053541B113E98F8E00979D0E = {
 			isa = PBXGroup;
 			children = (
+				6AA223C314332BF6006D677A /* libspotify.framework */,
+				05DDE57F140E6A1300AD9E23 /* SystemConfiguration.framework */,
 				053541C613E98F8E00979D0E /* MobileRandomify */,
 				053541BF13E98F8E00979D0E /* Frameworks */,
 				053541BD13E98F8E00979D0E /* Products */,
@@ -198,6 +204,7 @@
 		053541B313E98F8E00979D0E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "Spotify AB";
 			};
 			buildConfigurationList = 053541B613E98F8E00979D0E /* Build configuration list for PBXProject "MobileRandomify" */;
@@ -284,7 +291,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = armv6;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -299,7 +307,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -308,7 +316,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = armv6;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -316,7 +325,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -327,14 +336,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../..\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileRandomify/MobileRandomify-Prefix.pch";
-				HEADER_SEARCH_PATHS = ../../../include;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "MobileRandomify/MobileRandomify-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../lib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -346,14 +356,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../..\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileRandomify/MobileRandomify-Prefix.pch";
-				HEADER_SEARCH_PATHS = ../../../include;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "MobileRandomify/MobileRandomify-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../lib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -320,7 +320,7 @@ int cmd_browse(int argc, char **argv)
 		break;
 
 	case SP_LINKTYPE_ARTIST:
-		sp_artistbrowse_create(g_session, sp_link_as_artist(link), browse_artist_callback, NULL);
+		sp_artistbrowse_create(g_session, sp_link_as_artist(link), SP_ARTISTBROWSE_FULL, browse_artist_callback, NULL);
 		break;
 
 	case SP_LINKTYPE_LOCALTRACK:

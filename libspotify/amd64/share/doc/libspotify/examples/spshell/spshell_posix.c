@@ -53,6 +53,8 @@ static int show_prompt;
 
 extern int is_logged_out;
 
+extern int g_selftest;
+
 /**
  *
  */
@@ -110,33 +112,39 @@ int main(int argc, char **argv)
 {
 	const char *username = argc > 1 ? argv[1] : NULL;
 	const char *password = argc > 2 ? argv[2] : NULL;
+	int selftest = argc > 3 ? !strcmp(argv[3], "selftest") : 0;
 	char username_buf[256];
 	int r;
 	int next_timeout = 0;
 
+	printf("Using libspotify %s\n", sp_build_id());
+
 	if (username == NULL) {
-		printf("Username: ");
+		printf("Username (just press enter to login with stored credentials): ");
 		fflush(stdout);
 		fgets(username_buf, sizeof(username_buf), stdin);
 		trim(username_buf);
-		username = username_buf;
+		if(username_buf[0] == 0) {
+			username = NULL;
+		} else {
+			username = username_buf;
+		}
 	}
 
-	if (password == NULL)
+	if (username != NULL && password == NULL)
 		password = getpass("Password: ");
 
 	pthread_mutex_init(&notify_mutex, NULL);
 	pthread_cond_init(&notify_cond, NULL);
 	pthread_cond_init(&prompt_cond, NULL);
 
-	if ((r = spshell_init(username, password)) != 0)
+	if ((r = spshell_init(username, password, selftest)) != 0)
 		exit(r);
 
 	pthread_mutex_lock(&notify_mutex);
 
 	while(!is_logged_out) {
 		// Release prompt
-
 		if (next_timeout == 0) {
 			while(!notify_events && !cmdline)
 				pthread_cond_wait(&notify_cond, &notify_mutex);
@@ -153,6 +161,11 @@ int main(int argc, char **argv)
 
 			ts.tv_sec += next_timeout / 1000;
 			ts.tv_nsec += (next_timeout % 1000) * 1000000;
+			if(ts.tv_nsec > 1000000000) {
+				ts.tv_sec ++;
+				ts.tv_nsec -= 1000000000;
+			}
+
 
 			while(!notify_events && !cmdline) {
 				if(pthread_cond_timedwait(&notify_cond, &notify_mutex, &ts))
@@ -178,6 +191,9 @@ int main(int argc, char **argv)
 		do {
 			sp_session_process_events(g_session, &next_timeout);
 		} while (next_timeout == 0);
+
+		if(g_selftest)
+			test_process();
 
 		pthread_mutex_lock(&notify_mutex);
 	}
@@ -208,4 +224,15 @@ void notify_main_thread(sp_session *session)
 	notify_events = 1;
 	pthread_cond_signal(&notify_cond);
 	pthread_mutex_unlock(&notify_mutex);
+}
+
+
+/**
+ *
+ */
+sp_uint64 get_ts(void)
+{
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return (int64_t)tv.tv_sec * 1000LL + (tv.tv_usec / 1000);
 }

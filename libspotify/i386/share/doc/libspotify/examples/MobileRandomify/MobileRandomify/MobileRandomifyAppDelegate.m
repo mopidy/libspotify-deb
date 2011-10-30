@@ -47,6 +47,7 @@
 	if(!success)
 		NSLog(@"Failed to activate audio session: %@", err);
 	
+	NSLog(@"Finished launching");
 
     return YES;
 }

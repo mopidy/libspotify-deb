@@ -28,6 +28,8 @@
 #include <stdio.h>
 #include <libspotify/api.h>
 
+#define WITH_TEST_COMMAND 1
+
 #if WIN32
 #include <windows.h>
 #define snprintf sprintf_s
@@ -38,11 +40,26 @@ extern sp_session *g_session;
 
 extern void (*metadata_updated_fn)(void);
 
-extern int spshell_init(const char *username, const char *password);
+extern int spshell_init(const char *username, const char *password, int selftest);
 
 extern void notify_main_thread(sp_session *session);
 
 extern void start_prompt(void);
 
+extern sp_uint64 get_ts(void);
+
+#if WITH_TEST_COMMAND
+
+extern void test_finished(void);
+
+extern void test_process(void);
+
+extern void end_of_track(sp_session *s);
+
+extern int music_delivery(sp_session *s, const sp_audioformat *fmt, const void *frames, int num_frames);
+
+extern void play_token_lost(sp_session *s);
+
+#endif
 
 #endif // SPSHELL_H__

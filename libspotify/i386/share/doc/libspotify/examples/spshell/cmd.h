@@ -58,6 +58,10 @@ extern int cmd_update_subscriptions(int argc, char **argv);
 extern int cmd_playlist_add_track(int argc, char **argv);
 extern int cmd_playlist_offline(int argc, char **argv);
 
+#if WITH_TEST_COMMAND
+extern int cmd_test(int argc, char **argv);
+#endif
+
 /* Shared functions */
 void browse_playlist(sp_playlist *pl);
 void print_track(sp_track *track);

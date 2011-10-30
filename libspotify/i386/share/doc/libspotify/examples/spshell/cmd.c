@@ -51,7 +51,9 @@ struct {
 	{ "star",       cmd_star,       "Star a track" },
 	{ "unstar",     cmd_unstar,     "Unstar a track" },
 	{ "starred",    cmd_starred,    "List all starred tracks" },
+#if SPOTIFY_WITH_SOCIAL
 	{ "friends",    cmd_friends,    "List all your friends" },
+#endif
 	{ "playlists",  cmd_playlists,  "List playlists" },
 	{ "playlist",   cmd_playlist,   "List playlist contents" },
 	{ "set_autolink", cmd_set_autolink, "Set autolinking state" },
@@ -60,6 +62,9 @@ struct {
 	{ "update_subscriptions", cmd_update_subscriptions, "Update playlist subscription info"},
 	{ "add", cmd_playlist_add_track, "Add track to playlist"},
 	{ "offline", cmd_playlist_offline, "Set offline mode for a playlist"},
+#if WITH_TEST_COMMAND
+	{ "test", cmd_test, "Run tests"},
+#endif
 };
 
 

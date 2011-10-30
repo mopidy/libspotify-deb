@@ -32,6 +32,8 @@ static int console_ptr;
 
 extern int is_logged_out;
 
+extern int g_selftest;
+
 /**
  * Very simplistic console input
  */
@@ -39,8 +41,22 @@ static void console_input(void)
 {
 	TCHAR inp;
 	DWORD read;
-	if(!ReadConsole(events[1], &inp, 1, &read, NULL))
+	INPUT_RECORD rec;
+
+	if(!ReadConsoleInput(events[1], &rec, 1, &read))
 		return;
+
+	if(read == 0)
+		return;
+
+	if(rec.EventType != KEY_EVENT)
+		return;
+
+	if(!rec.Event.KeyEvent.bKeyDown)
+		return;
+
+	inp = rec.Event.KeyEvent.uChar.AsciiChar;
+
 
 	switch(inp) {
 	case 8:
@@ -112,7 +128,7 @@ int __cdecl main(int argc, char **argv)
 		printf("\r\n");
 	}
 
-	if ((r = spshell_init(username, password)) != 0)
+	if ((r = spshell_init(username, password, 0)) != 0)
 		exit(r);
 
 	if (!SetConsoleMode(events[1], ENABLE_PROCESSED_INPUT)) {
@@ -127,6 +143,9 @@ int __cdecl main(int argc, char **argv)
 			do {
 				sp_session_process_events(g_session, &next_timeout);
 			} while (next_timeout == 0);
+
+			if(g_selftest)
+				test_process();
 			break;
 
 		case WAIT_OBJECT_0 + 1:
@@ -166,4 +185,12 @@ void start_prompt(void)
 void notify_main_thread(sp_session *session)
 {
 	SetEvent(events[0]);
+}
+
+/**
+ *
+ */
+sp_uint64 get_ts(void)
+{
+	return GetTickCount();
 }

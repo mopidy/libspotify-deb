@@ -28,7 +28,7 @@
 #include <AudioToolbox/AudioQueue.h>
 #include "audio.h"
 
-#define BUFFER_COUNT 5
+#define BUFFER_COUNT 7
 static struct AQPlayerState {
     AudioStreamBasicDescription   desc;
     AudioQueueRef                 queue;
@@ -50,6 +50,8 @@ static void audio_callback (void *aux, AudioQueueRef aq, AudioQueueBufferRef buf
     free(afd);
 }
 
+static const int kSampleCountPerBuffer = 2048;
+
 void audio_init(audio_fifo_t *af)
 {
     int i;
@@ -66,12 +68,12 @@ void audio_init(audio_fifo_t *af)
     state.desc.mSampleRate = 44100;
     state.desc.mChannelsPerFrame = 2;
     state.desc.mFramesPerPacket = 1;
-    state.desc.mBytesPerFrame = sizeof (short) * state.desc.mChannelsPerFrame;
+    state.desc.mBytesPerFrame = sizeof(short) * state.desc.mChannelsPerFrame;
     state.desc.mBytesPerPacket = state.desc.mBytesPerFrame;
     state.desc.mBitsPerChannel = (state.desc.mBytesPerFrame*8)/state.desc.mChannelsPerFrame;
     state.desc.mReserved = 0;
 
-    state.buffer_size = state.desc.mBytesPerFrame * state.desc.mSampleRate;
+    state.buffer_size = state.desc.mBytesPerFrame * kSampleCountPerBuffer;
 
     if (noErr != AudioQueueNewOutput(&state.desc, audio_callback, af, NULL, NULL, 0, &state.queue)) {
 	printf("audioqueue error\n");
