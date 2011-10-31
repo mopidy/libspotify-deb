@@ -1,3 +1,9 @@
+libspotify (10.1.11-2) unstable; urgency=low
+
+  * Remove call to "ldconfig" from i386/Makefile to fix the i386 build.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Mon, 31 Oct 2011 12:12:58 +0100
+
 libspotify (10.1.11) unstable; urgency=low
 
   * New upstream release.
