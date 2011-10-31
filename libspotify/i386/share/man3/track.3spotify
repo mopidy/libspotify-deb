@@ -1,0 +1,451 @@
+.TH "Track subsystem" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Track subsystem \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBsp_track_is_loaded\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_track_error\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "\fBsp_track_offline_status\fP \fBsp_track_offline_get_status\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "\fBsp_track_availability\fP \fBsp_track_get_availability\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "bool \fBsp_track_is_local\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "bool \fBsp_track_is_autolinked\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "bool \fBsp_track_is_placeholder\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "bool \fBsp_track_is_starred\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "void \fBsp_track_set_starred\fP (\fBsp_session\fP *session, \fBsp_track\fP *const *tracks, int num_tracks, bool star)"
+.br
+.ti -1c
+.RI "int \fBsp_track_num_artists\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "\fBsp_artist\fP * \fBsp_track_artist\fP (\fBsp_track\fP *track, int index)"
+.br
+.ti -1c
+.RI "\fBsp_album\fP * \fBsp_track_album\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "const char * \fBsp_track_name\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "int \fBsp_track_duration\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "int \fBsp_track_popularity\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "int \fBsp_track_disc\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "int \fBsp_track_index\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "\fBsp_track\fP * \fBsp_localtrack_create\fP (const char *artist, const char *title, const char *album, int length)"
+.br
+.ti -1c
+.RI "void \fBsp_track_add_ref\fP (\fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "void \fBsp_track_release\fP (\fBsp_track\fP *track)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBsp_track\fP* sp_localtrack_create (const char * artist, const char * title, const char * album, int length)"Returns the newly created local track
+.PP
+\fBParameters:\fP
+.RS 4
+\fIartist\fP Name of the artist 
+.br
+\fItitle\fP Song title 
+.br
+\fIalbum\fP Name of the album, or an empty string if not available 
+.br
+\fIlength\fP Length in MS, or -1 if not available.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A track. 
+.RE
+.PP
+
+.SS "void sp_track_add_ref (\fBsp_track\fP * track)"Increase the reference count of a track
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP The track object 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_album\fP* sp_track_album (\fBsp_track\fP * track)"The album of the specified track
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP A track object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The album of the given track. You need to increase the refcount if you want to keep the pointer around. If no metadata is available for the track yet, this function returns 0. 
+.RE
+.PP
+
+.SS "\fBsp_artist\fP* sp_track_artist (\fBsp_track\fP * track, int index)"The artist matching the specified index performing on the current track.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP The track whose participating artist you are interested in 
+.br
+\fIindex\fP The index for the participating artist. Should be in the interval [0, \fBsp_track_num_artists()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The participating artist, or NULL if invalid index 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "int sp_track_disc (\fBsp_track\fP * track)"Returns the disc number for a track
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP A track object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Disc index. Possible values are [1, total number of discs on album] This function returns valid data only for tracks appearing in a browse artist or browse album result (otherwise returns 0). 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "int sp_track_duration (\fBsp_track\fP * track)"The duration, in milliseconds, of the specified track
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP A track object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The duration of the specified track, in milliseconds If no metadata is available for the track yet, this function returns 0. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_error\fP sp_track_error (\fBsp_track\fP * track)"Return an error code associated with a track. For example if it could not load
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_IS_LOADING SP_ERROR_OTHER_PERMANENT 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "\fBsp_track_availability\fP sp_track_get_availability (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return availability for a track
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Availability status, see \fBsp_track_availability\fP
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+The track must be loaded or this function will always SP_TRACK_AVAILABILITY_UNAVAILABLE 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_track_is_loaded()\fP 
+.RE
+.PP
+
+.SS "int sp_track_index (\fBsp_track\fP * track)"Returns the position of a track on its disc
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP A track object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Track position, starts at 1 (relative the corresponding disc) This function returns valid data only for tracks appearing in a browse artist or browse album result (otherwise returns 0). 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "bool sp_track_is_autolinked (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return true if the track is autolinked to another track.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if track is autolinked.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+The track must be loaded or this function will always return false. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_track_is_loaded()\fP 
+.RE
+.PP
+
+.SS "bool sp_track_is_loaded (\fBsp_track\fP * track)"Return whether or not the track metadata is loaded.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if track is loaded
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This is equivalent to checking if \fBsp_track_error()\fP not returns SP_ERROR_IS_LOADING. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "bool sp_track_is_local (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return true if the track is a local file.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if track is a local file.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+The track must be loaded or this function will always return false. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_track_is_loaded()\fP 
+.RE
+.PP
+
+.SS "bool sp_track_is_placeholder (\fBsp_track\fP * track)"Return true if the track is a placeholder. Placeholder tracks are used to store other objects than tracks in the playlist. Currently this is used in the inbox to store artists, albums and playlists.
+.PP
+Use \fBsp_link_create_from_track()\fP to get a link object that points to the real object this 'track' points to.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if track is a placeholder
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Contrary to most functions the track does not have to be loaded for this function to return correct value 
+.RE
+.PP
+
+.SS "bool sp_track_is_starred (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return true if the track is starred by the currently logged in user.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if track is starred.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+The track must be loaded or this function will always return false. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_track_is_loaded()\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "const char* sp_track_name (\fBsp_track\fP * track)"The string representation of the specified track's name
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP A track object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string representation of the specified track's name. Returned string is valid as long as the album object stays allocated and no longer than the next call to \fBsp_session_process_events()\fP If no metadata is available for the track yet, this function returns empty string. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "int sp_track_num_artists (\fBsp_track\fP * track)"The number of artists performing on the specified track
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP The track whose number of participating artists you are interested in
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of artists performing on the specified track. If no metadata is available for the track yet, this function returns 0. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_track_offline_status\fP sp_track_offline_get_status (\fBsp_track\fP * track)"Return offline status for a track. \fBsp_session_callbacks::metadata_updated()\fP will be invoked when offline status of a track changes
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Stats as described by \fBsp_track_offline_status\fP 
+.RE
+.PP
+
+.SS "int sp_track_popularity (\fBsp_track\fP * track)"Returns popularity for track
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP A track object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Popularity in range 0 to 100, 0 if undefined. If no metadata is available for the track yet, this function returns 0. 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "void sp_track_release (\fBsp_track\fP * track)"Decrease the reference count of a track
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrack\fP The track object 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "void sp_track_set_starred (\fBsp_session\fP * session, \fBsp_track\fP *const * tracks, int num_tracks, bool star)"Star/Unstar the specified track
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fItracks\fP Array of pointer to tracks. 
+.br
+\fInum_tracks\fP Length of \fCtracks\fP array 
+.br
+\fIstar\fP Starred status of the track
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This will fail silently if playlists are disabled. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+sp_set_playlists_enabled() 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.

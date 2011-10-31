@@ -48,6 +48,11 @@ Version 10
 	is called if there is some general problems with offline
 	synchronization of tracks.
 
+	The "social" API has been removed from libspotify.
+	This includes sp_session_num_friends(), sp_session_friend(),
+	sp_user_full_name(), sp_user_picture() and sp_user_relation_type()
+
+
 Version 9
 
 	SPOTIFY_API_VERSION is bumped to 9.
