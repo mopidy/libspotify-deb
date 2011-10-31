@@ -1,3 +1,9 @@
+libspotify (10.1.16-1) unstable; urgency=low
+
+  * New upstream release which readds HTML docs and manpages.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Mon, 31 Oct 2011 21:59:00 +0100
+
 libspotify (10.1.11-2) unstable; urgency=low
 
   * Remove call to "ldconfig" from i386/Makefile to fix the i386 build.
