@@ -1,7 +1,7 @@
 Index: libspotify/amd64/Makefile
 ===================================================================
---- libspotify.orig/amd64/Makefile	2011-10-31 12:12:04.440195506 +0100
-+++ libspotify/amd64/Makefile	2011-10-31 12:12:09.920367928 +0100
+--- libspotify.orig/amd64/Makefile	2011-10-31 21:58:53.153046408 +0100
++++ libspotify/amd64/Makefile	2011-10-31 22:10:38.677268753 +0100
 @@ -15,8 +15,6 @@
  	mkdir -p $(prefix)/lib/pkgconfig
  	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
@@ -10,11 +10,11 @@ Index: libspotify/amd64/Makefile
 -
  uninstall:
  	rm -rf $(prefix)/include/libspotify
- 	rm -f  $(prefix)/lib/libspotify.so.10.1.11
+ 	rm -f  $(prefix)/lib/libspotify.so.10.1.16
 Index: libspotify/i386/Makefile
 ===================================================================
---- libspotify.orig/i386/Makefile	2011-10-31 12:12:17.630610510 +0100
-+++ libspotify/i386/Makefile	2011-10-31 12:12:21.160721573 +0100
+--- libspotify.orig/i386/Makefile	2011-10-31 21:58:53.163046326 +0100
++++ libspotify/i386/Makefile	2011-10-31 22:10:38.677268753 +0100
 @@ -15,8 +15,6 @@
  	mkdir -p $(prefix)/lib/pkgconfig
  	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
@@ -23,4 +23,4 @@ Index: libspotify/i386/Makefile
 -
  uninstall:
  	rm -rf $(prefix)/include/libspotify
- 	rm -f  $(prefix)/lib/libspotify.so.10.1.11
+ 	rm -f  $(prefix)/lib/libspotify.so.10.1.16
