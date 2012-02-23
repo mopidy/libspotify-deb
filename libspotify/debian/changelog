@@ -1,3 +1,9 @@
+libspotify (10.1.16-2) unstable; urgency=low
+
+  * Added armv7 package as armel.
+
+ -- Richard Röjfors <richard.rojfors@gmail.com>  Thu, 23 Feb 2012 11:52:00 +0100
+
 libspotify (10.1.16-1) unstable; urgency=low
 
   * New upstream release which readds HTML docs and manpages.

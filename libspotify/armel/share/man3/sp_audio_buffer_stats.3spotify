@@ -1,0 +1,29 @@
+.TH "sp_audio_buffer_stats" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sp_audio_buffer_stats \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <api.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fBsamples\fP"
+.br
+.RI "\fISamples in buffer. \fP"
+.ti -1c
+.RI "int \fBstutter\fP"
+.br
+.RI "\fINumber of stutters (audio dropouts) since last query. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Buffer stats used by get_audio_buffer_stats callback 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.
