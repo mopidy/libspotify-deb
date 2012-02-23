@@ -1,0 +1,10 @@
+prefix=PKG_PREFIX
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libspotify
+Description: Spotify client library
+Version: 10.1.16
+Libs: -L${libdir} -lspotify
+Cflags: -I${includedir}
