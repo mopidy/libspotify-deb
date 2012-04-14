@@ -110,14 +110,37 @@ static void trim(char *buf)
  */
 int main(int argc, char **argv)
 {
-	const char *username = argc > 1 ? argv[1] : NULL;
-	const char *password = argc > 2 ? argv[2] : NULL;
-	int selftest = argc > 3 ? !strcmp(argv[3], "selftest") : 0;
+	const char *username;
+	const char *blob = NULL;
+	const char *password;
+	int selftest = 0;
 	char username_buf[256];
 	int r;
 	int next_timeout = 0;
+	int ch;
 
 	printf("Using libspotify %s\n", sp_build_id());
+	r = 0;
+	while ((ch = getopt(argc, argv, "tb:")) != -1) {
+
+		switch (ch) {
+		case 'b':
+			blob = optarg;
+			r +=2;
+			break;
+		case 't':
+			selftest = 1;
+			r++;
+			break;
+		default:
+			break;
+		}
+	}
+
+	argv += r;
+	argc -= r;
+	username = argc > 1 ? argv[1] : NULL;
+	password = argc > 2 ? argv[2] : NULL;
 
 	if (username == NULL) {
 		printf("Username (just press enter to login with stored credentials): ");
@@ -131,14 +154,15 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (username != NULL && password == NULL)
+	// If a username was supplied but no blob, prompt for password
+	if (username != NULL && password == NULL && blob == NULL)
 		password = getpass("Password: ");
 
 	pthread_mutex_init(&notify_mutex, NULL);
 	pthread_cond_init(&notify_cond, NULL);
 	pthread_cond_init(&prompt_cond, NULL);
 
-	if ((r = spshell_init(username, password, selftest)) != 0)
+	if ((r = spshell_init(username, password, blob, selftest)) != 0)
 		exit(r);
 
 	pthread_mutex_lock(&notify_mutex);

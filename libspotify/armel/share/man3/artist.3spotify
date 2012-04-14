@@ -1,4 +1,4 @@
-.TH "Artist subsystem" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "Artist subsystem" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -71,7 +71,7 @@ Name of artist. Returned string is valid as long as the artist object stays allo
 .PP
 \fBReturns:\fP
 .RS 4
-ID byte sequence that can be passed to \fBsp_image_create()\fP If the album has no image or the metadata for the album is not loaded yet, this function returns NULL. 
+ID byte sequence that can be passed to \fBsp_image_create()\fP If the artist has no image or the metadata for the album is not loaded yet, this function returns NULL. 
 .RE
 .PP
 

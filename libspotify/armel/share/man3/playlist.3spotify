@@ -1,4 +1,4 @@
-.TH "Playlist subsystem" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "Playlist subsystem" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -176,6 +176,12 @@ Playlist subsystem \-
 .ti -1c
 .RI "void \fBsp_playlistcontainer_release\fP (\fBsp_playlistcontainer\fP *pc)"
 .br
+.ti -1c
+.RI "int \fBsp_playlistcontainer_get_unseen_tracks\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, \fBsp_track\fP **tracks, int num_tracks)"
+.br
+.ti -1c
+.RI "int \fBsp_playlistcontainer_clear_unseen_tracks\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist)"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -204,7 +210,7 @@ Used to get notifications when playlists are updated. If some callbacks should n
 Here is a snippet from \fCjukebox.c:\fP  
 .PP
 .nf
-   sp_playlist_add_callbacks(pl, &pl_callbacks, NULL);
+  sp_playlist_add_callbacks(pl, &pl_callbacks, NULL);
 
 .fi
 .PP
@@ -838,6 +844,40 @@ Pointer to the new playlist. Will be NULL if the playlist already exists.
 \fBParameters:\fP
 .RS 4
 \fIpc\fP Playlist container. 
+.RE
+.PP
+
+.SS "int sp_playlistcontainer_clear_unseen_tracks (\fBsp_playlistcontainer\fP * pc, \fBsp_playlist\fP * playlist)"Clears a playlist from unseen tracks, so that next call to \fBsp_playlistcontainer_get_unseen_tracks()\fP will return 0 until a new track is added to the \fCplayslist\fP.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container. 
+.br
+\fIplaylist\fP Playlist object. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns 0 on success and -1 on failure. 
+.RE
+.PP
+
+.SS "int sp_playlistcontainer_get_unseen_tracks (\fBsp_playlistcontainer\fP * pc, \fBsp_playlist\fP * playlist, \fBsp_track\fP ** tracks, int num_tracks)"Get the number of new tracks in a playlist since the corresponding function \fBsp_playlistcontainer_clear_unseen_tracks()\fP was called. The function always returns the number of new tracks, and fills the \fCtracks\fP array with the new tracks, but not more than specified in \fCnum_tracks\fP. The function will return a negative value on failure.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container. 
+.br
+\fIplaylist\fP Playlist object. 
+.br
+\fItracks\fP Array of pointer to new tracks (maybe NULL) 
+.br
+\fInum_tracks\fP Size of tracks array 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns the number of unseen tracks 
 .RE
 .PP
 

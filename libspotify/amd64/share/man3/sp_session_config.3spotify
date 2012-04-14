@@ -1,4 +1,4 @@
-.TH "sp_session_config" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "sp_session_config" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -68,7 +68,7 @@ Session config
 .PP 
 .SS "const char* \fBsp_session_config::cache_location\fP"The location where Spotify will write cache files. This cache include tracks, cached browse results and coverarts. Set to empty string ('') to disable cache 
 .SS "bool \fBsp_session_config::compress_playlists\fP"Compress local copy of playlists, reduces disk space usage 
-.SS "const char* \fBsp_session_config::device_id\fP"Device ID for offline synchronization 
+.SS "const char* \fBsp_session_config::device_id\fP"Device ID for offline synchronization and logging purposes. The Device Id must be unique to the particular device instance, i.e. no two units must supply the same Device ID. The Device ID must not change between sessions or power cycles. Good examples is the device's MAC address or unique serial number. 
 .SS "bool \fBsp_session_config::dont_save_metadata_for_playlists\fP"Don't save metadata for local copies of playlists Reduces disk space usage at the expense of needing to request metadata from Spotify backend when loading list 
 .SS "bool \fBsp_session_config::initially_unload_playlists\fP"Avoid loading playlists into RAM on startup. See \fBsp_playlist_is_in_ram()\fP for more details. 
 .SS "const char* \fBsp_session_config::settings_location\fP"The location where Spotify will write setting files and per-user cache items. This includes playlists, track metadata, etc. 'settings_location' may be the same path as 'cache_location'. 'settings_location' folder will not be created (unlike 'cache_location'), if you don't want to create the folder yourself, you can set 'settings_location' to 'cache_location'. 

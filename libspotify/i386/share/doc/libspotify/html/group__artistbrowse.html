@@ -41,6 +41,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const byte *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artistbrowse.html#ga5f164b2f9609a7bf2c89b3a1407ec239">sp_artistbrowse_portrait</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artistbrowse.html#ga8c862caa2234125ffcc4e93287b1e029">sp_artistbrowse_num_tracks</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artistbrowse.html#ga45d28771a856f935dc40ab40e27dec4c">sp_artistbrowse_track</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb, int index)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artistbrowse.html#ga0c26782796af954300ce92fddea97637">sp_artistbrowse_num_tophit_tracks</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artistbrowse.html#ga5da55f43def03fe9f0d2c8b252b9755a">sp_artistbrowse_tophit_track</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artistbrowse.html#gaf0055361abd53425d89a4636a32b5c83">sp_artistbrowse_num_albums</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga6fd3e5de729c429fef3ff18ece6dcfad">sp_album</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artistbrowse.html#ga5b36c9a34876beea8fda8674b93d4fd3">sp_artistbrowse_album</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artistbrowse.html#ga2559638742416ac621af0e919e017d17">sp_artistbrowse_num_similar_artists</a> (<a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *arb)</td></tr>
@@ -413,6 +415,32 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
+<a class="anchor" id="ga0c26782796af954300ce92fddea97637"></a><!-- doxytag: member="api.h::sp_artistbrowse_num_tophit_tracks" ref="ga0c26782796af954300ce92fddea97637" args="(sp_artistbrowse *arb)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sp_artistbrowse_num_tophit_tracks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *&nbsp;</td>
+          <td class="paramname"> <em>arb</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Given an artist browse object, return number of tophit tracks This is a set of tracks for the artist with highest popularity</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>arb</em>&nbsp;</td><td>Artist browse object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Number of tophit tracks for given artist </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga8c862caa2234125ffcc4e93287b1e029"></a><!-- doxytag: member="api.h::sp_artistbrowse_num_tracks" ref="ga8c862caa2234125ffcc4e93287b1e029" args="(sp_artistbrowse *arb)" -->
 <div class="memitem">
 <div class="memproto">
@@ -541,6 +569,43 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
+<a class="anchor" id="ga5da55f43def03fe9f0d2c8b252b9755a"></a><!-- doxytag: member="api.h::sp_artistbrowse_tophit_track" ref="ga5da55f43def03fe9f0d2c8b252b9755a" args="(sp_artistbrowse *arb, int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a>* sp_artistbrowse_tophit_track </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b">sp_artistbrowse</a> *&nbsp;</td>
+          <td class="paramname"> <em>arb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Given an artist browse object, return one of its tophit tracks This is a set of tracks for the artist with highest popularity</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>arb</em>&nbsp;</td><td>Album browse object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>index</em>&nbsp;</td><td>The index for the track. Should be in the interval [0, <a class="el" href="group__artistbrowse.html#ga0c26782796af954300ce92fddea97637">sp_artistbrowse_num_tophit_tracks()</a> - 1]</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A track object, or NULL if the index is out of range.</dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__track.html">Track subsystem</a> </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga45d28771a856f935dc40ab40e27dec4c"></a><!-- doxytag: member="api.h::sp_artistbrowse_track" ref="ga45d28771a856f935dc40ab40e27dec4c" args="(sp_artistbrowse *arb, int index)" -->
 <div class="memitem">
 <div class="memproto">
@@ -581,7 +646,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:31:06.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:26:08.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

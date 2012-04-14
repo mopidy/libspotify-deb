@@ -26,9 +26,10 @@
 
 #include "main.h"
 #include <pthread.h>
-#include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <sys/time.h>
 sp_session *g_session;
 
 static int notify_events;
@@ -43,7 +44,13 @@ static void connection_error(sp_session *session, sp_error error)
 
 static void logged_in(sp_session *session, sp_error error)
 {
-	//add your testcode here 
+	//add your testcode here
+        if (error != SP_ERROR_OK) {
+		fprintf(stderr, "failed to login: %s\n",
+		                sp_error_message(error));
+                exit(1);
+        }
+
 	sp_track *track = sp_localtrack_create("Turboweekend","Something Or Nothing - Acid Washed Remix","",-1);
 	sp_playlistcontainer *pc = sp_session_playlistcontainer(session);
 	sp_playlist *pl = sp_playlistcontainer_add_new_playlist(pc,"localtest");
@@ -132,7 +139,7 @@ int spotify_init(const char *username,const char *password)
 	}
 
 	// Login using the credentials given on the command line.
-	error = sp_session_login(session, username, password, 0);
+	sp_session_login(session, username, password, 0, NULL);
 
 	if (SP_ERROR_OK != error) {
 		fprintf(stderr, "failed to login: %s\n",

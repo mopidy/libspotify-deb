@@ -38,7 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0575227A1161F3A5003FFC9D /* libspotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libspotify.framework; path = ../../../libspotify.framework; sourceTree = SOURCE_ROOT; };
+		0575227A1161F3A5003FFC9D /* libspotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libspotify.framework; path = ../../libspotify.framework; sourceTree = SOURCE_ROOT; };
 		0575228F1161F4AE003FFC9D /* appkey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = appkey.c; path = ../appkey.c; sourceTree = SOURCE_ROOT; };
 		057522B01161F609003FFC9D /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio.h; path = ../jukebox/audio.h; sourceTree = SOURCE_ROOT; };
 		057522B21161F609003FFC9D /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = queue.h; path = ../jukebox/queue.h; sourceTree = SOURCE_ROOT; };
@@ -241,7 +241,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../..\"",
+					"\"$(SRCROOT)/../..\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -262,7 +262,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../..\"",
+					"\"$(SRCROOT)/../..\"",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

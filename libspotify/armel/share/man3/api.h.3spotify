@@ -1,4 +1,4 @@
-.TH "api.h" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "api.h" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -43,7 +43,7 @@ api.h \-
 
 .in +1c
 .ti -1c
-.RI "#define \fBSPOTIFY_API_VERSION\fP   10"
+.RI "#define \fBSPOTIFY_API_VERSION\fP   11"
 .br
 .ti -1c
 .RI "#define \fBSP_TOPLIST_REGION\fP(a, b)   ((a) << 8 | (b))"
@@ -127,6 +127,9 @@ api.h \-
 .RI "typedef enum \fBsp_playlist_type\fP \fBsp_playlist_type\fP"
 .br
 .ti -1c
+.RI "typedef enum \fBsp_search_type\fP \fBsp_search_type\fP"
+.br
+.ti -1c
 .RI "typedef enum \fBsp_playlist_offline_status\fP \fBsp_playlist_offline_status\fP"
 .br
 .ti -1c
@@ -169,9 +172,6 @@ api.h \-
 .RI "typedef void \fBimage_loaded_cb\fP (\fBsp_image\fP *image, void *userdata)"
 .br
 .ti -1c
-.RI "typedef enum \fBsp_radio_genre\fP \fBsp_radio_genre\fP"
-.br
-.ti -1c
 .RI "typedef void \fBsearch_complete_cb\fP (\fBsp_search\fP *result, void *userdata)"
 .br
 .ti -1c
@@ -203,10 +203,13 @@ api.h \-
 .RI "enum \fBsp_sampletype\fP { \fBSP_SAMPLETYPE_INT16_NATIVE_ENDIAN\fP =  0 }"
 .br
 .ti -1c
-.RI "enum \fBsp_bitrate\fP "
+.RI "enum \fBsp_bitrate\fP { \fBSP_BITRATE_160k\fP =  0, \fBSP_BITRATE_320k\fP =  1, \fBSP_BITRATE_96k\fP =  2 }"
 .br
 .ti -1c
 .RI "enum \fBsp_playlist_type\fP { \fBSP_PLAYLIST_TYPE_PLAYLIST\fP =  0, \fBSP_PLAYLIST_TYPE_START_FOLDER\fP =  1, \fBSP_PLAYLIST_TYPE_END_FOLDER\fP =  2, \fBSP_PLAYLIST_TYPE_PLACEHOLDER\fP =  3 }"
+.br
+.ti -1c
+.RI "enum \fBsp_search_type\fP "
 .br
 .ti -1c
 .RI "enum \fBsp_playlist_offline_status\fP { \fBSP_PLAYLIST_OFFLINE_STATUS_NO\fP =  0, \fBSP_PLAYLIST_OFFLINE_STATUS_YES\fP =  1, \fBSP_PLAYLIST_OFFLINE_STATUS_DOWNLOADING\fP =  2, \fBSP_PLAYLIST_OFFLINE_STATUS_WAITING\fP =  3 }"
@@ -236,9 +239,6 @@ api.h \-
 .RI "enum \fBsp_imageformat\fP { \fBSP_IMAGE_FORMAT_UNKNOWN\fP =  -1, \fBSP_IMAGE_FORMAT_JPEG\fP =  0 }"
 .br
 .ti -1c
-.RI "enum \fBsp_radio_genre\fP "
-.br
-.ti -1c
 .RI "enum \fBsp_relation_type\fP { \fBSP_RELATION_TYPE_UNKNOWN\fP =  0, \fBSP_RELATION_TYPE_NONE\fP =  1, \fBSP_RELATION_TYPE_UNIDIRECTIONAL\fP =  2, \fBSP_RELATION_TYPE_BIDIRECTIONAL\fP =  3 }"
 .br
 .ti -1c
@@ -261,7 +261,7 @@ api.h \-
 .RI "void \fBsp_session_release\fP (\fBsp_session\fP *sess)"
 .br
 .ti -1c
-.RI "void \fBsp_session_login\fP (\fBsp_session\fP *session, const char *username, const char *password, bool remember_me)"
+.RI "void \fBsp_session_login\fP (\fBsp_session\fP *session, const char *username, const char *password, bool remember_me, const char *blob)"
 .br
 .ti -1c
 .RI "\fBsp_error\fP \fBsp_session_relogin\fP (\fBsp_session\fP *session)"
@@ -277,6 +277,9 @@ api.h \-
 .br
 .ti -1c
 .RI "void \fBsp_session_logout\fP (\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void \fBsp_session_flush_caches\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_connectionstate\fP \fBsp_session_connectionstate\fP (\fBsp_session\fP *session)"
@@ -432,6 +435,9 @@ api.h \-
 .RI "bool \fBsp_track_is_autolinked\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
 .br
 .ti -1c
+.RI "\fBsp_track\fP * \fBsp_track_get_playable\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
+.br
+.ti -1c
 .RI "bool \fBsp_track_is_placeholder\fP (\fBsp_track\fP *track)"
 .br
 .ti -1c
@@ -579,6 +585,12 @@ api.h \-
 .RI "\fBsp_track\fP * \fBsp_artistbrowse_track\fP (\fBsp_artistbrowse\fP *arb, int index)"
 .br
 .ti -1c
+.RI "int \fBsp_artistbrowse_num_tophit_tracks\fP (\fBsp_artistbrowse\fP *arb)"
+.br
+.ti -1c
+.RI "\fBsp_track\fP * \fBsp_artistbrowse_tophit_track\fP (\fBsp_artistbrowse\fP *arb, int index)"
+.br
+.ti -1c
 .RI "int \fBsp_artistbrowse_num_albums\fP (\fBsp_artistbrowse\fP *arb)"
 .br
 .ti -1c
@@ -636,10 +648,7 @@ api.h \-
 .RI "void \fBsp_image_release\fP (\fBsp_image\fP *image)"
 .br
 .ti -1c
-.RI "\fBsp_search\fP * \fBsp_search_create\fP (\fBsp_session\fP *session, const char *query, int track_offset, int track_count, int album_offset, int album_count, int artist_offset, int artist_count, \fBsearch_complete_cb\fP *callback, void *userdata)"
-.br
-.ti -1c
-.RI "\fBsp_search\fP * \fBsp_radio_search_create\fP (\fBsp_session\fP *session, unsigned int from_year, unsigned int to_year, \fBsp_radio_genre\fP genres, \fBsearch_complete_cb\fP *callback, void *userdata)"
+.RI "\fBsp_search\fP * \fBsp_search_create\fP (\fBsp_session\fP *session, const char *query, int track_offset, int track_count, int album_offset, int album_count, int artist_offset, int artist_count, int playlist_offset, int playlist_count, \fBsp_search_type\fP search_type, \fBsearch_complete_cb\fP *callback, void *userdata)"
 .br
 .ti -1c
 .RI "bool \fBsp_search_is_loaded\fP (\fBsp_search\fP *search)"
@@ -658,6 +667,18 @@ api.h \-
 .br
 .ti -1c
 .RI "\fBsp_album\fP * \fBsp_search_album\fP (\fBsp_search\fP *search, int index)"
+.br
+.ti -1c
+.RI "int \fBsp_search_num_playlists\fP (\fBsp_search\fP *search)"
+.br
+.ti -1c
+.RI "const char * \fBsp_search_playlist_name\fP (\fBsp_search\fP *search, int index)"
+.br
+.ti -1c
+.RI "const char * \fBsp_search_playlist_uri\fP (\fBsp_search\fP *search, int index)"
+.br
+.ti -1c
+.RI "const char * \fBsp_search_playlist_image_uri\fP (\fBsp_search\fP *search, int index)"
 .br
 .ti -1c
 .RI "int \fBsp_search_num_artists\fP (\fBsp_search\fP *search)"
@@ -679,6 +700,9 @@ api.h \-
 .br
 .ti -1c
 .RI "int \fBsp_search_total_artists\fP (\fBsp_search\fP *search)"
+.br
+.ti -1c
+.RI "int \fBsp_search_total_playlists\fP (\fBsp_search\fP *search)"
 .br
 .ti -1c
 .RI "void \fBsp_search_add_ref\fP (\fBsp_search\fP *search)"
@@ -835,6 +859,12 @@ api.h \-
 .br
 .ti -1c
 .RI "void \fBsp_playlistcontainer_release\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "int \fBsp_playlistcontainer_get_unseen_tracks\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, \fBsp_track\fP **tracks, int num_tracks)"
+.br
+.ti -1c
+.RI "int \fBsp_playlistcontainer_clear_unseen_tracks\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist)"
 .br
 .ti -1c
 .RI "const char * \fBsp_user_canonical_name\fP (\fBsp_user\fP *user)"

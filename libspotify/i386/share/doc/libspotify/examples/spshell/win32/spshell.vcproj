@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="spshell"
 	ProjectGUID="{6C49596C-977E-4BB6-BC94-123AEB5E2724}"
 	Keyword="Win32Proj"
@@ -115,6 +115,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="$(LIBSPOTIFY)\include;..\..\..\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -133,7 +134,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				LinkIncremental="2"
+				AdditionalDependencies="libspotify.lib"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(LIBSPOTIFY)\lib;;..\..\..\lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -215,10 +218,6 @@
 			</File>
 			<File
 				RelativePath="..\search.c"
-				>
-			</File>
-			<File
-				RelativePath="..\social.c"
 				>
 			</File>
 			<File

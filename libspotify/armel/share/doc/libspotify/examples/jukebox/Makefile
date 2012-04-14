@@ -13,12 +13,21 @@ LDLIBS  = $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) pkg-config --libs-only-l --
 AUDIO_DRIVER ?= alsa
 endif
 
-TARGET=jukebox
+TARGET = jukebox
+## TARGET = playtrack
+OBJS = $(TARGET).o appkey.o $(AUDIO_DRIVER)-audio.o audio.o
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+ifdef DEBUG
+ifeq ($(shell uname),Darwin)
+	install_name_tool -change @loader_path/../Frameworks/libspotify.framework/libspotify @rpath/libspotify.so $@
+endif
+endif
 
 include ../common.mk
 
-$(TARGET): jukebox.o appkey.o $(AUDIO_DRIVER)-audio.o audio.o
-playtrack: playtrack.o appkey.o $(AUDIO_DRIVER)-audio.o audio.o
+
 
 audio.o: audio.c audio.h
 alsa-audio.o: alsa-audio.c audio.h

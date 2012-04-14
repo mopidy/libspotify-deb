@@ -303,6 +303,11 @@ static void logged_in(sp_session *sess, sp_error error)
 		exit(2);
 	}
 
+	sp_playlistcontainer_add_callbacks(
+		pc,
+		&pc_callbacks,
+		NULL);
+
 	printf("jukebox: Looking at %d playlists\n", sp_playlistcontainer_num_playlists(pc));
 
 	for (i = 0; i < sp_playlistcontainer_num_playlists(pc); ++i) {
@@ -391,6 +396,7 @@ static void end_of_track(sp_session *sess)
 {
 	pthread_mutex_lock(&g_notify_mutex);
 	g_playback_done = 1;
+	g_notify_do = 1;
 	pthread_cond_signal(&g_notify_cond);
 	pthread_mutex_unlock(&g_notify_mutex);
 }
@@ -542,17 +548,12 @@ int main(int argc, char **argv)
 	pthread_mutex_init(&g_notify_mutex, NULL);
 	pthread_cond_init(&g_notify_cond, NULL);
 
-	sp_playlistcontainer_add_callbacks(
-		sp_session_playlistcontainer(g_sess),
-		&pc_callbacks,
-		NULL);
-
-	sp_session_login(sp, username, password, 0);
+	sp_session_login(sp, username, password, 0, NULL);
 	pthread_mutex_lock(&g_notify_mutex);
 
 	for (;;) {
 		if (next_timeout == 0) {
-			while(!g_notify_do && !g_playback_done)
+			while(!g_notify_do)
 				pthread_cond_wait(&g_notify_cond, &g_notify_mutex);
 		} else {
 			struct timespec ts;

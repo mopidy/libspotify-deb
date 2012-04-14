@@ -1,7 +1,59 @@
+Version 11
+
+	The end_of_track() callback in session has changed and is now
+	invoked on the main thread. Depending on how your application
+	use this callback some change might be necessary.
+
+	Artist browse when used in SP_ARTISTBROWSE_NO_TRACKS or
+	SP_ARTISTBROWSE_NO_ALBUMS also includes a list of top tracks for the
+	Artist.
+
+	The SP_ARTISTBROWSE_FULL mode has been deprecated and will be
+	removed in a future release.
+
+	Artist browse have been improved with tophit tracks.
+	See sp_artistbrowse_tophit_track() and
+	sp_artistbrowse_num_tophit_tracks()
+
+	New method sp_session_flush_caches().  This will make libspotify
+	write all data that is meant to be stored on disk to the disk
+	immediately. Libspotify does this periodically by itself and also
+	on logout. So under normal conditions this should never need to be
+	used.
+
+	Removed support for Mac OS X - PowerPC.
+
+	New callback, credentials_blob_updated() has been added.
+	This callback will be invoked when a login blob has been received
+	by the client. You can use this blob to relogin a user (via
+	sp_session_login()) much like the remember_me argument.
+	The difference between remember_me and the blob callback is that
+	the blob callback allows multiple users to be relogged in by
+	having the application store a blob for each user.
+	Useful if your application supports multiple users
+
+	sp_track_get_playable() will return the track that would actually
+	be played if a track is "linked". Linked tracks are redirect
+	from an unplayable track to a track on a different album (which is
+	available in the currently logged in user's region)
+	Normally, your application does not need to worry about this but
+	the function is here for completeness.
+
+	The radio has been removed. The reason for this is that the
+	radio features have been redesigned in the Spotify backend.
+
+	A new feature have been added that allows a user to see
+	the number of new tracks added on a subscribed playlist.
+	sp_playlistcontainer_get_unseen_tracks() returns number of new
+	tracks (and optionally the tracks themselves)
+	sp_playlistcontainer_clear_unseen_tracks() can be used to clear
+	the unseen track counter.
+	This feature is not available in the desktop client yet.
+
 Version 10
 
 	sp_track_is_available() has been renamed to sp_track_get_availability()
-	This new function returns more detaild information about why a track
+	This new function returns more detailed information about why a track
 	is not streamable.
 
 	Add error code SP_ERROR_NETWORK_DISABLED
@@ -15,7 +67,7 @@ Version 10
 	playlists that are not tracks but rather than changing the entire
 	API to support arbitrary items the sp_track object will act as a
 	proxy object. The placeholder track object only contains the URI
-	to the real object. Ie. after having determined that a track
+	to the real object. IE. after having determined that a track
 	is a placeholder track the API user should use
 	sp_link_create_from_track() to get an URI to the real object
 	and continue to resolve the object from there.
@@ -47,11 +99,9 @@ Version 10
 	A new session callback offline_error has been added that
 	is called if there is some general problems with offline
 	synchronization of tracks.
-
 	The "social" API has been removed from libspotify.
 	This includes sp_session_num_friends(), sp_session_friend(),
 	sp_user_full_name(), sp_user_picture() and sp_user_relation_type()
-
 
 Version 9
 

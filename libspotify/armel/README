@@ -1,8 +1,9 @@
 
-                                 libspotify 10.1.16
+                                 libspotify 11.1.60
+
                    ----------------------------------------
 
-                       Copyright © 2006-2010 Spotify Ltd
+                       Copyright © 2006-2012 Spotify Ltd
 
 
 
@@ -16,11 +17,15 @@
 
     The package is structured as follows:
 
-      libspotify/
+      libspotify-11.1.60/
+        ChangeLog                      Contains description of new and changed
+                                       functionality in libspotify
         Makefile                       Makefile for easier installation
         README                         This README file
         LICENSE                        License governing the library,
                                        and associated files
+        licenses.xhtml                 License governing third party libraries
+                                       included in libspotify.
         include/libspotify/api.h       Header file for the library
         lib/
           libspotify.so*               Shared object (and versioning symlinks)
@@ -35,11 +40,6 @@
                                        online.
             images/                    Graphics for use with applications
                                        using libspotify. See section 6 below.
-            LICENSE                    License governing the library,
-                                       and associated files
-            README                     This README file
-	    licenses.xhtml 	       License governing third party libraries
-                                       included in libspotify.
           man/                         Manual pages for libspotify
 
 

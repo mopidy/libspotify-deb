@@ -33,14 +33,13 @@ int log_to_stderr;
 int g_selftest;
 
 
-
 /**
  * This callback is called when the user was logged in, but the connection to
  * Spotify was dropped for some reason.
  *
  * @sa sp_session_callbacks#connection_error
  */
-static void connection_error(sp_session *session, sp_error error)
+static void SP_CALLCONV connection_error(sp_session *session, sp_error error)
 {
 	fprintf(stderr, "Connection to Spotify failed: %s\n",
 	                sp_error_message(error));
@@ -51,7 +50,7 @@ static void connection_error(sp_session *session, sp_error error)
  *
  * @sa sp_session_callbacks#logged_in
  */
-static void logged_in(sp_session *session, sp_error error)
+static void SP_CALLCONV logged_in(sp_session *session, sp_error error)
 {
 	sp_user *me;
 	const char *my_name;
@@ -85,18 +84,29 @@ static void logged_in(sp_session *session, sp_error error)
  *
  * @sa sp_session_callbacks#logged_out
  */
-static void logged_out(sp_session *session)
+static void SP_CALLCONV logged_out(sp_session *session)
 {
 	is_logged_out = 1;  // Will exit mainloop
 }
 
 
 /**
+ * This callback is called when the session have recieved a credential
+ * that could be stored safely on disk
+ *
+ * @sa sp_session_callbacks#credential_blob_updated
+ */
+static void SP_CALLCONV credential_blob_updated(sp_session *session, const char *blob)
+{
+	printf("blob for storage: %s\n", blob);
+}
+
+/**
  * This callback is called for log messages.
  *
  * @sa sp_session_callbacks#log_message
  */
-static void log_message(sp_session *session, const char *data)
+static void SP_CALLCONV log_message(sp_session *session, const char *data)
 {
 	if (log_to_stderr)
 		fprintf(stderr, "%s", data);
@@ -112,7 +122,7 @@ static void log_message(sp_session *session, const char *data)
  *
  * @sa sp_session_callbacks#metadata_updated
  */
-static void metadata_updated(sp_session *sess)
+static void SP_CALLCONV metadata_updated(sp_session *sess)
 {
 	if(metadata_updated_fn)
 		metadata_updated_fn();
@@ -126,7 +136,7 @@ static void metadata_updated(sp_session *sess)
 /**
  *
  */
-static void offline_status_updated(sp_session *sess)
+static void SP_CALLCONV offline_status_updated(sp_session *sess)
 {
 	sp_offline_sync_status status;
 	sp_offline_sync_get_status(sess, &status);
@@ -175,13 +185,13 @@ static sp_session_callbacks callbacks = {
 	NULL, // get_audio_buffer_stats
 	offline_status_updated,
 	NULL, // offline error
-
+	&credential_blob_updated,
 };
 
 /**
  *
  */
-int spshell_init(const char *username, const char *password, int selftest)
+int spshell_init(const char *username, const char *password, const  char *blob, int selftest)
 {
 	sp_session_config config;
 	sp_error error;
@@ -219,6 +229,10 @@ int spshell_init(const char *username, const char *password, int selftest)
 	// free-text string [1, 255] characters.
 	config.user_agent = "spshell";
 
+#if SP_WITH_CURL
+	config.ca_certs_filename = "../cacerts.pem";
+#endif
+
 	// Register the callbacks.
 	config.callbacks = &callbacks;
 
@@ -239,9 +253,9 @@ int spshell_init(const char *username, const char *password, int selftest)
 		}
 		sp_session_remembered_user(session, reloginname, sizeof(reloginname));
 		fprintf(stderr, "Trying to relogin as user %s\n", reloginname);
-		
+
 	} else {
-		sp_session_login(session, username, password, 1);
+		sp_session_login(session, username, password, 1, blob);
 	}
 
 	g_session = session;
@@ -284,7 +298,3 @@ int cmd_log(int argc, char **argv)
 	log_to_stderr = !strcmp(argv[1], "enable");
 	return 1;
 }
-
-
-
-

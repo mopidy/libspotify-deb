@@ -41,7 +41,7 @@ Data Structures</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html">sp_session_config</a></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga63b2309874193750ec3395f6cae32899">SPOTIFY_API_VERSION</a>&nbsp;&nbsp;&nbsp;10</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga63b2309874193750ec3395f6cae32899">SPOTIFY_API_VERSION</a>&nbsp;&nbsp;&nbsp;11</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__session.html#gabf77bb5a124d5a6ee9a12c86abbc0d34">sp_connectionstate</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gac0fa3d4cc60bd2e3d666026f88980e8c">sp_connectionstate</a></td></tr>
@@ -49,6 +49,7 @@ Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsp__audioformat.html">sp_audioformat</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga5338d4a10576ba8d6ab11b70892d503c">sp_audioformat</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__session.html#ga77ddd919314a7bb16140569af7a38fe2">sp_bitrate</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga83d3de45241a44e787410993c5fac0ea">sp_bitrate</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__session.html#gafdd7117213605e6f2671c4f289b44609">sp_playlist_type</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga86723f553db2db6a8f507cd748948ad4">sp_playlist_type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__session.html#ga99e8e9176ce40fff08a9be8b944edb09">sp_search_type</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga647e4de81e5ac0a2e5d1193b1005ed3e">sp_search_type</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <br class="typebreak"/>
 <a class="el" href="group__session.html#ga811fa52ed0fdb5cda732682e27e40417">sp_playlist_offline_status</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gac507efa32e8c122fbe9ea41d96180d06">sp_playlist_offline_status</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__session.html#gad7d9465769597b2a379ac704099adfdf">sp_availability</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga60c7ff53ddbc04c036a23181b7275d69">sp_track_availability</a></td></tr>
@@ -80,7 +81,14 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga087d21080010768316cfb55d938eb94d">sp_sampletype</a> { <a class="el" href="group__session.html#gga087d21080010768316cfb55d938eb94daa829b269d191cca95ecb02c2bc59da42">SP_SAMPLETYPE_INT16_NATIVE_ENDIAN</a> =  0
  }</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga77ddd919314a7bb16140569af7a38fe2">sp_bitrate</a> </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga77ddd919314a7bb16140569af7a38fe2">sp_bitrate</a> { <br/>
+&nbsp;&nbsp;<a class="el" href="group__session.html#gga77ddd919314a7bb16140569af7a38fe2a5b5c794224972f833a4b7eec9d7909c9">SP_BITRATE_160k</a> =  0, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="group__session.html#gga77ddd919314a7bb16140569af7a38fe2a9383c0dc9faefd2cbb38c3b9342c47e0">SP_BITRATE_320k</a> =  1, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="group__session.html#gga77ddd919314a7bb16140569af7a38fe2ad815a35af7e6bb5e2ef29418af62759b">SP_BITRATE_96k</a> =  2
+<br/>
+ }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gafdd7117213605e6f2671c4f289b44609">sp_playlist_type</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="group__session.html#ggafdd7117213605e6f2671c4f289b44609a6bd6bf9b62018fa9bbf969835c2f3077">SP_PLAYLIST_TYPE_PLAYLIST</a> =  0, 
 <br/>
@@ -91,6 +99,7 @@ Enumerations</h2></td></tr>
 &nbsp;&nbsp;<a class="el" href="group__session.html#ggafdd7117213605e6f2671c4f289b44609ad4f860ef76154e3e2c0d9da2f57a2784">SP_PLAYLIST_TYPE_PLACEHOLDER</a> =  3
 <br/>
  }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga99e8e9176ce40fff08a9be8b944edb09">sp_search_type</a> </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga811fa52ed0fdb5cda732682e27e40417">sp_playlist_offline_status</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="group__session.html#gga811fa52ed0fdb5cda732682e27e40417abef62e4e3a4af8827fed7fe3aa733ca0">SP_PLAYLIST_OFFLINE_STATUS_NO</a> =  0, 
 <br/>
@@ -165,12 +174,13 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaf2891f2daced4ff6da84219d6376b3aa">sp_session_create</a> (const <a class="el" href="structsp__session__config.html">sp_session_config</a> *config, <a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> **sess)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga964c81ca66632b6b4de01d58ed409fd9">sp_session_release</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *sess)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gac2e84f678eb00f08c2a8e5a9a73a02a2">sp_session_login</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *username, const char *password, bool remember_me)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga3b02370d51062088a1eb6b067f66ffb6">sp_session_login</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *username, const char *password, bool remember_me, const char *blob)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gae1bc9bebd230226c3d48925cd1be6edf">sp_session_relogin</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gab349c7bfe59e10e167bd75c20df9fc97">sp_session_remembered_user</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, char *buffer, size_t buffer_size)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaa2fdb51cf4c24d1ef8695401bbfb6c09">sp_session_forget_me</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga267bbcae24b6bb1fd56de56678a5f455">sp_session_user</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga3d1e2f42506fd1a03318c4ffb1d22634">sp_session_logout</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga02ecff01594a8e3f9b184c2049b780a0">sp_session_flush_caches</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__session.html#gabf77bb5a124d5a6ee9a12c86abbc0d34">sp_connectionstate</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga34a7c9527705ab7d23b742006d81ea35">sp_session_connectionstate</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gabfb3f59b20ae0b225e154eb9095152b2">sp_session_userdata</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga95f7a6e6874b71b0ad73a1ba833d7494">sp_session_set_cache_size</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, size_t size)</td></tr>
@@ -205,7 +215,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SPOTIFY_API_VERSION&nbsp;&nbsp;&nbsp;10</td>
+          <td class="memname">#define SPOTIFY_API_VERSION&nbsp;&nbsp;&nbsp;11</td>
         </tr>
       </table>
 </div>
@@ -372,6 +382,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga647e4de81e5ac0a2e5d1193b1005ed3e"></a><!-- doxytag: member="api.h::sp_search_type" ref="ga647e4de81e5ac0a2e5d1193b1005ed3e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="group__session.html#ga99e8e9176ce40fff08a9be8b944edb09">sp_search_type</a>  <a class="el" href="group__session.html#ga99e8e9176ce40fff08a9be8b944edb09">sp_search_type</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Search types </p>
+
+</div>
+</div>
 <a class="anchor" id="gaf1d92302cd5d0d4a032e1408188c8fd5"></a><!-- doxytag: member="api.h::sp_session_callbacks" ref="gaf1d92302cd5d0d4a032e1408188c8fd5" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -457,7 +481,7 @@ Functions</h2></td></tr>
 <p>Controls the type of data that will be included in artist browse queries </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="ggac86504cc9e8cadbc30c8aa8dbf355034a2914168528aded818177c013a0dd7e87"></a><!-- doxytag: member="SP_ARTISTBROWSE_FULL" ref="ggac86504cc9e8cadbc30c8aa8dbf355034a2914168528aded818177c013a0dd7e87" args="" -->SP_ARTISTBROWSE_FULL</em>&nbsp;</td><td>
-<p>All information </p>
+<p>All information except tophit tracks This mode is deprecated and will removed in a future release </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ggac86504cc9e8cadbc30c8aa8dbf355034afbad1e58606b3230dce5bc3320c95d12"></a><!-- doxytag: member="SP_ARTISTBROWSE_NO_TRACKS" ref="ggac86504cc9e8cadbc30c8aa8dbf355034afbad1e58606b3230dce5bc3320c95d12" args="" -->SP_ARTISTBROWSE_NO_TRACKS</em>&nbsp;</td><td>
 <p>Only albums and data about them, no tracks. In other words, <a class="el" href="group__artistbrowse.html#ga8c862caa2234125ffcc4e93287b1e029">sp_artistbrowse_num_tracks()</a> will return 0 </p>
@@ -512,6 +536,19 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Bitrate definitions for music streaming </p>
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga77ddd919314a7bb16140569af7a38fe2a5b5c794224972f833a4b7eec9d7909c9"></a><!-- doxytag: member="SP_BITRATE_160k" ref="gga77ddd919314a7bb16140569af7a38fe2a5b5c794224972f833a4b7eec9d7909c9" args="" -->SP_BITRATE_160k</em>&nbsp;</td><td>
+<p>Bitrate 160kbps. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga77ddd919314a7bb16140569af7a38fe2a9383c0dc9faefd2cbb38c3b9342c47e0"></a><!-- doxytag: member="SP_BITRATE_320k" ref="gga77ddd919314a7bb16140569af7a38fe2a9383c0dc9faefd2cbb38c3b9342c47e0" args="" -->SP_BITRATE_320k</em>&nbsp;</td><td>
+<p>Bitrate 320kbps. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga77ddd919314a7bb16140569af7a38fe2ad815a35af7e6bb5e2ef29418af62759b"></a><!-- doxytag: member="SP_BITRATE_96k" ref="gga77ddd919314a7bb16140569af7a38fe2ad815a35af7e6bb5e2ef29418af62759b" args="" -->SP_BITRATE_96k</em>&nbsp;</td><td>
+<p>Bitrate 96kbps. </p>
+</td></tr>
+</table>
+</dd>
+</dl>
 
 </div>
 </div>
@@ -693,6 +730,20 @@ Functions</h2></td></tr>
 </table>
 </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="ga99e8e9176ce40fff08a9be8b944edb09"></a><!-- doxytag: member="api.h::sp_search_type" ref="ga99e8e9176ce40fff08a9be8b944edb09" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__session.html#ga99e8e9176ce40fff08a9be8b944edb09">sp_search_type</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Search types </p>
 
 </div>
 </div>
@@ -924,6 +975,10 @@ Functions</h2></td></tr>
     <span class="comment">// free-text string [1, 255] characters.</span>
     config.user_agent = <span class="stringliteral">&quot;spshell&quot;</span>;
 
+<span class="preprocessor">#if SP_WITH_CURL</span>
+<span class="preprocessor"></span>    config.ca_certs_filename = <span class="stringliteral">&quot;../cacerts.pem&quot;</span>;
+<span class="preprocessor">#endif</span>
+<span class="preprocessor"></span>
     <span class="comment">// Register the callbacks.</span>
     config.callbacks = &amp;callbacks;
 
@@ -942,8 +997,34 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK SP_ERROR_BAD_API_VERSION SP_ERROR_BAD_USER_AGENT SP_ERROR_BAD_APPLICATION_KEY SP_ERROR_API_INITIALIZATION_FAILED SP_ERROR_INVALID_DEVICE_ID </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a24">jukebox.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a25">jukebox.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="ga02ecff01594a8e3f9b184c2049b780a0"></a><!-- doxytag: member="api.h::sp_session_flush_caches" ref="ga02ecff01594a8e3f9b184c2049b780a0" args="(sp_session *session)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sp_session_flush_caches </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Flush the caches</p>
+<p>This will make libspotify write all data that is meant to be stored on disk to the disk immediately. libspotify does this periodically by itself and also on logout. So under normal conditions this should never need to be used.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Your session object </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="gaa2fdb51cf4c24d1ef8695401bbfb6c09"></a><!-- doxytag: member="api.h::sp_session_forget_me" ref="gaa2fdb51cf4c24d1ef8695401bbfb6c09" args="(sp_session *session)" -->
@@ -1025,7 +1106,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gac2e84f678eb00f08c2a8e5a9a73a02a2"></a><!-- doxytag: member="api.h::sp_session_login" ref="gac2e84f678eb00f08c2a8e5a9a73a02a2" args="(sp_session *session, const char *username, const char *password, bool remember_me)" -->
+<a class="anchor" id="ga3b02370d51062088a1eb6b067f66ffb6"></a><!-- doxytag: member="api.h::sp_session_login" ref="ga3b02370d51062088a1eb6b067f66ffb6" args="(sp_session *session, const char *username, const char *password, bool remember_me, const char *blob)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1051,7 +1132,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&nbsp;</td>
-          <td class="paramname"> <em>remember_me</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>remember_me</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>blob</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -1063,7 +1150,7 @@ Functions</h2></td></tr>
 <div class="memdoc">
 <p>Logs in the specified username/password combo. This initiates the login in the background. A callback is called when login is complete</p>
 <p>An application MUST NEVER store the user's password in clear text. If automatic relogin is required, use <a class="el" href="group__session.html#gae1bc9bebd230226c3d48925cd1be6edf">sp_session_relogin()</a></p>
-<p>Here is a snippet from <code>spshell.c:</code>  <div class="fragment"><pre class="fragment">        <a class="code" href="group__session.html#gac2e84f678eb00f08c2a8e5a9a73a02a2">sp_session_login</a>(session, username, password, 1);
+<p>Here is a snippet from <code>spshell.c:</code>  <div class="fragment"><pre class="fragment">        <a class="code" href="group__session.html#ga3b02370d51062088a1eb6b067f66ffb6">sp_session_login</a>(session, username, password, 1, blob);
     }
 </pre></div></p>
 <dl><dt><b>Parameters:</b></dt><dd>
@@ -1072,6 +1159,7 @@ Functions</h2></td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>username</em>&nbsp;</td><td>The username to log in </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>password</em>&nbsp;</td><td>The password for the specified username </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>remember_me</em>&nbsp;</td><td>If set, the username / password will be remembered by libspotify </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>blob</em>&nbsp;</td><td>If you have received a blob in the credentials_blob_updated you can pas this here instead of password </td></tr>
   </table>
   </dd>
 </dl>
@@ -1618,6 +1706,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>Used in conjunction with <a class="el" href="group__session.html#gaf4e4ec40368bdafcd72d33c73b345e0e">sp_session_set_connection_type()</a> to control how libspotify should behave in respect to network activity and offline synchronization. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__session.html#ga24ee483cdceef9af3b415c020b197a75">sp_connection_rules</a> </dd></dl>
 
 </div>
 </div>
@@ -1654,6 +1743,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>Used in conjunction with <a class="el" href="group__session.html#gaf4e1a039e161b6fa5768c06ef73e4c98">sp_session_set_connection_rules()</a> to control how libspotify should behave in respect to network activity and offline synchronization. </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__session.html#ga05a7dbb946a9c47bf011f3f3d77964c3">sp_connection_type</a> </dd></dl>
 
 </div>
 </div>
@@ -1838,7 +1928,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:30:12.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:22:31.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

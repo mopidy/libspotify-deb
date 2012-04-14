@@ -35,6 +35,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__session.html#ga60c7ff53ddbc04c036a23181b7275d69">sp_track_availability</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga9c78846badae6567fe9f9a3792fd06c8">sp_track_get_availability</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#gabcb75da69e0338006bdbd2f2f467f082">sp_track_is_local</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga4eeb86de13187697cd9dfe0b0934988d">sp_track_is_autolinked</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga112dca47d0bac39818b55119ef134ffd">sp_track_get_playable</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga2367d906c578e674d0d470d8c1ee3b33">sp_track_is_placeholder</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#gab17d380ac941e102af0f308ad885b3c3">sp_track_is_starred</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#gabee64a739385f37f52320fb5af635ab6">sp_track_set_starred</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *const *tracks, int num_tracks, bool star)</td></tr>
@@ -306,6 +307,42 @@ Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Availability status, see <a class="el" href="group__session.html#ga60c7ff53ddbc04c036a23181b7275d69">sp_track_availability</a></dd></dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>The track must be loaded or this function will always SP_TRACK_AVAILABILITY_UNAVAILABLE </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__track.html#ga8b69cf193679c7e00031ae43e61c6a54">sp_track_is_loaded()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga112dca47d0bac39818b55119ef134ffd"></a><!-- doxytag: member="api.h::sp_track_get_playable" ref="ga112dca47d0bac39818b55119ef134ffd" args="(sp_session *session, sp_track *track)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a>* sp_track_get_playable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td>
+          <td class="paramname"> <em>track</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Return the actual track that will be played if the given track is played</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>track</em>&nbsp;</td><td>The track</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A track </dd></dl>
 
 </div>
 </div>
@@ -693,7 +730,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:32:45.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:27:08.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

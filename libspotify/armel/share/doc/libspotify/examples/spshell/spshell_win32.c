@@ -93,26 +93,35 @@ static void trim(char *buf)
 int __cdecl main(int argc, char **argv)
 {
 	const char *username = argc > 1 ? argv[1] : NULL;
-	const char *password = argc > 2 ? argv[2] : NULL;
+	const char *blob = argc > 2 ? argv[2] : NULL;
+	const char *password = NULL;
+	int selftest = argc > 3 ? !strcmp(argv[3], "selftest") : 0;
 	char username_buf[256];
 	char password_buf[256];
 	int r;
 	int next_timeout = 0;
 	DWORD ev;
+	DWORD mode;
 
 	events[0] = CreateEvent(NULL, FALSE, FALSE, NULL);
 	events[1] = GetStdHandle(STD_INPUT_HANDLE);
 
+	printf("Using libspotify %s\n", sp_build_id());
+
 	if (username == NULL) {
-		printf("Username: ");
+		printf("Username: (just press enter to login with stored credentials): ");
 		fflush(stdout);
 		fgets(username_buf, sizeof(username_buf), stdin);
 		trim(username_buf);
-		username = username_buf;
+		if(username_buf[0] == 0) {
+			username = NULL;
+		} else {
+			username = username_buf;
+		}
 	}
 
-	if (password == NULL) {
-		DWORD mode;
+	// If a username was supplied but no blob, prompt for password
+	if (username != NULL && blob == NULL) {
 		printf("Password: ");
 		fflush(stdout);
 
@@ -128,7 +137,7 @@ int __cdecl main(int argc, char **argv)
 		printf("\r\n");
 	}
 
-	if ((r = spshell_init(username, password, 0)) != 0)
+	if ((r = spshell_init(username, password, blob, selftest)) != 0)
 		exit(r);
 
 	if (!SetConsoleMode(events[1], ENABLE_PROCESSED_INPUT)) {
@@ -140,6 +149,7 @@ int __cdecl main(int argc, char **argv)
 		ev = WaitForMultipleObjects(1 + enable_console, events, FALSE, next_timeout > 0 ? next_timeout : INFINITE);
 		switch (ev) {
 		case WAIT_OBJECT_0 + 0:
+		case WAIT_TIMEOUT:
 			do {
 				sp_session_process_events(g_session, &next_timeout);
 			} while (next_timeout == 0);
@@ -182,7 +192,7 @@ void start_prompt(void)
 /**
  *
  */
-void notify_main_thread(sp_session *session)
+void SP_CALLCONV notify_main_thread(sp_session *session)
 {
 	SetEvent(events[0]);
 }

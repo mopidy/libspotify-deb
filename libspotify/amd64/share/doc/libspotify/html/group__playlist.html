@@ -91,6 +91,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__playlist.html#gad4fc67d1386dd637f778f4e735a36894">sp_playlistcontainer_owner</a> (<a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *pc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__playlist.html#gaa7a92fd7a822348641a4d3adbf885b4a">sp_playlistcontainer_add_ref</a> (<a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *pc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__playlist.html#ga94a62f5fee11bfb52d21709e87362e3e">sp_playlistcontainer_release</a> (<a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *pc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__playlist.html#gad9e11b45843ee4a147b43038a2e55f13">sp_playlistcontainer_get_unseen_tracks</a> (<a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *pc, <a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *playlist, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> **tracks, int num_tracks)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__playlist.html#gadaad604c35e543363e1dd5b23c462db0">sp_playlistcontainer_clear_unseen_tracks</a> (<a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *pc, <a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *playlist)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>The playlist subsystem handles playlists and playlist containers (list of playlists).</p>
@@ -768,7 +770,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK SP_ERROR_PERMISSION_DENIED </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a22">jukebox.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a23">jukebox.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1369,7 +1371,7 @@ Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__session.html#ga319767f0b795f1c46a08390b587c5671">sp_session_playlistcontainer()</a> </dd>
 <dd>
 <a class="el" href="group__playlist.html#ga22a3d59032179e501e6d5b8e40f70528">sp_playlistcontainer_remove_callbacks</a> </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a25">jukebox.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a16">jukebox.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1513,6 +1515,92 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="gadaad604c35e543363e1dd5b23c462db0"></a><!-- doxytag: member="api.h::sp_playlistcontainer_clear_unseen_tracks" ref="gadaad604c35e543363e1dd5b23c462db0" args="(sp_playlistcontainer *pc, sp_playlist *playlist)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sp_playlistcontainer_clear_unseen_tracks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *&nbsp;</td>
+          <td class="paramname"> <em>pc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *&nbsp;</td>
+          <td class="paramname"> <em>playlist</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Clears a playlist from unseen tracks, so that next call to <a class="el" href="group__playlist.html#gad9e11b45843ee4a147b43038a2e55f13">sp_playlistcontainer_get_unseen_tracks()</a> will return 0 until a new track is added to the <code>playslist</code>.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pc</em>&nbsp;</td><td>Playlist container. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>playlist</em>&nbsp;</td><td>Playlist object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Returns 0 on success and -1 on failure. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad9e11b45843ee4a147b43038a2e55f13"></a><!-- doxytag: member="api.h::sp_playlistcontainer_get_unseen_tracks" ref="gad9e11b45843ee4a147b43038a2e55f13" args="(sp_playlistcontainer *pc, sp_playlist *playlist, sp_track **tracks, int num_tracks)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sp_playlistcontainer_get_unseen_tracks </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *&nbsp;</td>
+          <td class="paramname"> <em>pc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *&nbsp;</td>
+          <td class="paramname"> <em>playlist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> **&nbsp;</td>
+          <td class="paramname"> <em>tracks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>num_tracks</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the number of new tracks in a playlist since the corresponding function <a class="el" href="group__playlist.html#gadaad604c35e543363e1dd5b23c462db0">sp_playlistcontainer_clear_unseen_tracks()</a> was called. The function always returns the number of new tracks, and fills the <code>tracks</code> array with the new tracks, but not more than specified in <code>num_tracks</code>. The function will return a negative value on failure.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pc</em>&nbsp;</td><td>Playlist container. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>playlist</em>&nbsp;</td><td>Playlist object. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>tracks</em>&nbsp;</td><td>Array of pointer to new tracks (maybe NULL) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>num_tracks</em>&nbsp;</td><td>Size of tracks array </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Returns the number of unseen tracks </dd></dl>
 
 </div>
 </div>
@@ -1681,7 +1769,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The playlist object</dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__session.html#ga319767f0b795f1c46a08390b587c5671">sp_session_playlistcontainer()</a> </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a16">jukebox.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a17">jukebox.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1920,7 +2008,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:32:45.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:27:08.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

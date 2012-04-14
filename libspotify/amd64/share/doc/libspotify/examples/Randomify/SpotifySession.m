@@ -229,7 +229,7 @@ static void userinfo_updated(sp_session *session)
 
 -(void)loginUser:(NSString*)user password:(NSString*)passwd;
 {
-	sp_session_login(session, [user UTF8String], [passwd UTF8String], 0);
+	sp_session_login(session, [user UTF8String], [passwd UTF8String], 0, NULL);
 }
 -(void)logout;
 {

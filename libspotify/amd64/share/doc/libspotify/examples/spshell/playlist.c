@@ -26,6 +26,10 @@
 #include "spshell.h"
 #include "cmd.h"
 
+#ifdef WIN32
+#define alloca _alloca
+#endif
+
 static int subscriptions_updated;
 
 /**
@@ -61,6 +65,7 @@ int cmd_playlists(int argc, char **argv)
 	int i, j, level = 0;
 	sp_playlist *pl;
 	char name[200];
+	int new = 0;
 
 	printf("%d entries in the container\n", sp_playlistcontainer_num_playlists(pc));
 
@@ -73,6 +78,11 @@ int cmd_playlists(int argc, char **argv)
 				printf("%s", sp_playlist_name(pl));
 				if(subscriptions_updated)
 					printf(" (%d subscribers)", sp_playlist_num_subscribers(pl));
+
+				new = sp_playlistcontainer_get_unseen_tracks(pc, pl, NULL, 0);
+				if (new)
+					printf(" (%d new)", new);
+
 				printf("\n");
 				break;
 			case SP_PLAYLIST_TYPE_START_FOLDER:
@@ -100,10 +110,23 @@ int cmd_playlists(int argc, char **argv)
 /**
  *
  */
+static void print_track2(sp_track *track, int i)
+{
+
+	printf("%d. %c %s%s %s\n", i,
+	       sp_track_is_starred(g_session, track) ? '*' : ' ',
+	       sp_track_is_local(g_session, track) ? "local" : "     ",
+	       sp_track_is_autolinked(g_session, track) ? "autolinked" : "          ",
+	       sp_track_name(track));
+}
+
+
+/**
+ *
+ */
 int cmd_playlist(int argc, char **argv)
 {
-	int index, i;
-	sp_track *track;
+	int index, i, nnew;
 	sp_playlist *playlist;
 	sp_playlistcontainer *pc = sp_session_playlistcontainer(g_session);
 
@@ -117,20 +140,42 @@ int cmd_playlist(int argc, char **argv)
 		printf("invalid index\n");
 		return 0;
 	}
+
 	playlist = sp_playlistcontainer_playlist(pc, index);
-	printf("Playlist %s by %s%s%s\n",
+
+	nnew = sp_playlistcontainer_get_unseen_tracks(pc, playlist, 0, 0);
+
+	printf("Playlist %s by %s%s%s, %d new tracks\n",
 		   sp_playlist_name(playlist),
 		   sp_user_display_name(sp_playlist_owner(playlist)),
 		   sp_playlist_is_collaborative(playlist) ? " (collaborative)" : "",
-		   sp_playlist_has_pending_changes(playlist) ? " with pending changes" : ""
+	           sp_playlist_has_pending_changes(playlist) ? " with pending changes" : "",
+	           nnew
 		   );
+
+	if (argc == 3) {
+		if (!strcmp(argv[2], "new")) {
+			sp_track **tracks;
+
+			if (nnew < 0)
+				return 1;
+
+			tracks = alloca(nnew * sizeof(*tracks));
+			sp_playlistcontainer_get_unseen_tracks(pc, playlist, tracks, nnew);
+
+			for (i = 0; i < nnew; i++) {
+				print_track2(tracks[i], i);
+			}
+			return 1;
+
+		} else if (!strcmp(argv[2], "clear-unseen"))
+			sp_playlistcontainer_clear_unseen_tracks(pc, playlist);
+
+	}
 	for (i = 0; i < sp_playlist_num_tracks(playlist); ++i) {
-		track = sp_playlist_track(playlist, i);
-		printf("%d. %c %s%s %s\n", i,
-			   sp_track_is_starred(g_session, track) ? '*' : ' ',
-			   sp_track_is_local(g_session, track) ? "local" : "     ",
-			   sp_track_is_autolinked(g_session, track) ? "autolinked" : "          ",
-			   sp_track_name(track));
+		sp_track *track = sp_playlist_track(playlist, i);
+
+		print_track2(track, i);
 	}
 	return 1;
 }
@@ -238,7 +283,7 @@ static int apply_changes(sp_playlist *pl, struct pl_update_work *puw)
 	return 0;
 }
 
-static void pl_state_change(sp_playlist *pl, void *userdata)
+static void SP_CALLCONV pl_state_change(sp_playlist *pl, void *userdata)
 {
 	struct pl_update_work *puw = userdata;
 	if(apply_changes(pl, puw))

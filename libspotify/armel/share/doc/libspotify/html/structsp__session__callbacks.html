@@ -57,12 +57,13 @@ Data Fields</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#a328404ac150210387ea3f9cc973149c9">get_audio_buffer_stats</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="structsp__audio__buffer__stats.html">sp_audio_buffer_stats</a> *stats)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#aa0f62ed875aab47e5ae093576a6d54c8">offline_status_updated</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#ad403ac063f5512b277c924add75dfbea">offline_error</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> error)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#ae7c5c209735f5c437d76a512eebbf30b">credentials_blob_updated</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *blob)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Session callbacks</p>
 <p>Registered when you create a session. If some callbacks should not be of interest, set them to NULL. </p>
 <dl><dt><b>Examples: </b></dt><dd>
-<p><a class="el" href="jukebox_8c-example.html#_a20">jukebox.c</a>.</p>
+<p><a class="el" href="jukebox_8c-example.html#_a21">jukebox.c</a>.</p>
 </dd>
 </dl><hr/><h2>Field Documentation</h2>
 <a class="anchor" id="a45bf5d3fac7953099a191ea39fcfc018"></a><!-- doxytag: member="sp_session_callbacks::connection_error" ref="a45bf5d3fac7953099a191ea39fcfc018" args=")(sp_session *session, sp_error error)" -->
@@ -86,6 +87,27 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae7c5c209735f5c437d76a512eebbf30b"></a><!-- doxytag: member="sp_session_callbacks::credentials_blob_updated" ref="ae7c5c209735f5c437d76a512eebbf30b" args=")(sp_session *session, const char *blob)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void( * <a class="el" href="structsp__session__callbacks.html#ae7c5c209735f5c437d76a512eebbf30b">sp_session_callbacks::credentials_blob_updated</a>)(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *blob)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Called when storable credentials have been updated, usually called when we have connected to the AP.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>blob</em>&nbsp;</td><td>Blob is a null-terminated string which contains an encrypted token that can be stored safely on disk instead of storing plaintext passwords. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a6bc198d89ff46d930c32dae950bd0294"></a><!-- doxytag: member="sp_session_callbacks::end_of_track" ref="a6bc198d89ff46d930c32dae950bd0294" args=")(sp_session *session)" -->
 <div class="memitem">
 <div class="memproto">
@@ -97,7 +119,7 @@ Data Fields</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>End of track. Called when the currently played track has reached its end.</p>
-<dl class="note"><dt><b>Note:</b></dt><dd>This function is invoked from the same internal thread as the music delivery callback</dd></dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>This function is invoked from the main thread</dd></dl>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
@@ -336,7 +358,10 @@ This function must never block. If your output buffers are full you must return 
       </table>
 </div>
 <div class="memdoc">
-<p>Music has been paused because only one account may play music at the same time.</p>
+<p>Music has been paused because an account only allows music to be played from one location simultaneously.</p>
+<dl class="note"><dt><b>Note:</b></dt><dd>When this callback is invoked the application should behave just as if the user pressed the pause button. The application should also display a message to the user indicating the playback has been paused because another application is playing using the same account.</dd>
+<dd>
+IT MUST NOT automatically resume playback but must instead wait for the user to press play.</dd></dl>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
@@ -406,7 +431,7 @@ This function must never block.</dd></dl>
       </table>
 </div>
 <div class="memdoc">
-<p>Streaming error. Called when streaming cannot start or continue</p>
+<p>Streaming error. Called when streaming cannot start or continue.</p>
 <dl class="note"><dt><b>Note:</b></dt><dd>This function is invoked from the main thread</dd></dl>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -443,7 +468,7 @@ This function must never block.</dd></dl>
 </ul>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:30:12.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:22:31.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

@@ -1,4 +1,4 @@
-.TH "Track subsystem" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "Track subsystem" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,6 +23,9 @@ Track subsystem \-
 .br
 .ti -1c
 .RI "bool \fBsp_track_is_autolinked\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
+.br
+.ti -1c
+.RI "\fBsp_track\fP * \fBsp_track_get_playable\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
 .br
 .ti -1c
 .RI "bool \fBsp_track_is_placeholder\fP (\fBsp_track\fP *track)"
@@ -205,6 +208,21 @@ The track must be loaded or this function will always SP_TRACK_AVAILABILITY_UNAV
 \fBSee also:\fP
 .RS 4
 \fBsp_track_is_loaded()\fP 
+.RE
+.PP
+
+.SS "\fBsp_track\fP* sp_track_get_playable (\fBsp_session\fP * session, \fBsp_track\fP * track)"Return the actual track that will be played if the given track is played
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fItrack\fP The track
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A track 
 .RE
 .PP
 

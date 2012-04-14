@@ -48,7 +48,7 @@
 <span class="preprocessor"></span>    printf(<span class="stringliteral">&quot;Track %s [%d:%02d] has %d artist(s), %d%% popularity&quot;</span>,
            <a name="a3"></a><a class="code" href="group__track.html#ga8eb423d3cc2cbfb743c7f23ffb8d0fad">sp_track_name</a>(track),
            duration / 60000,
-           (duration / 1000) / 60,
+           (duration / 1000) % 60,
            <a name="a4"></a><a class="code" href="group__track.html#ga0aa945fc43e35d36cc334a52735d83b2">sp_track_num_artists</a>(track),
            <a name="a5"></a><a class="code" href="group__track.html#ga4570f08f968edbff519b44d2241d2255">sp_track_popularity</a>(track));
     
@@ -293,7 +293,7 @@
 </pre></div> </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:31:06.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:26:08.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

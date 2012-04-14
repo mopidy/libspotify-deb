@@ -69,7 +69,7 @@
     puts(<span class="stringliteral">&quot;&quot;</span>);
 }
 
-<span class="keyword">static</span> <span class="keywordtype">void</span> search_complete(<a class="code" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd" title="A handle to a search result.">sp_search</a> *search, <span class="keywordtype">void</span> *userdata)
+<span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV search_complete(<a class="code" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd" title="A handle to a search result.">sp_search</a> *search, <span class="keywordtype">void</span> *userdata)
 {
     <span class="keywordflow">if</span> (<a name="a12"></a><a class="code" href="group__search.html#ga7cf655e37a823f952d30270d4fb60f10">sp_search_error</a>(search) == <a name="a13"></a><a class="code" href="group__error.html#ggafd27986ce4cd9eeaeca8adda83c9eb6ba16cb277dc84328e4b2c0cf6d5a0c0b8d" title="No errors encountered.">SP_ERROR_OK</a>)
         print_search(search);
@@ -104,76 +104,20 @@
         snprintf(query + strlen(query), <span class="keyword">sizeof</span>(query) - strlen(query), <span class="stringliteral">&quot;%s%s&quot;</span>,
              i == 1 ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot; &quot;</span>, argv[i]);
 
-    <a name="a16"></a><a class="code" href="group__search.html#gacf0b5e902e27d46ef8b1f40e332766df">sp_search_create</a>(g_session, query, 0, 100, 0, 100, 0, 100, &amp;search_complete, NULL);
+    <a name="a16"></a><a class="code" href="group__search.html#ga2f64dfbcc1313e7d5179998cb28208d4">sp_search_create</a>(g_session, query, 0, 100, 0, 100, 0, 100, 0, 100, SP_SEARCH_STANDARD, &amp;search_complete, NULL);
     <span class="keywordflow">return</span> 0;
 }
 
 
 <span class="keywordtype">int</span> cmd_whatsnew(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
 {
-    <a class="code" href="group__search.html#gacf0b5e902e27d46ef8b1f40e332766df">sp_search_create</a>(g_session, <span class="stringliteral">&quot;tag:new&quot;</span>, 0, 0, 0, 250, 0, 0, &amp;search_complete, NULL);
-    <span class="keywordflow">return</span> 0;
-}
-
-
-
-<span class="keyword">struct </span>{
-    <span class="keyword">const</span> <span class="keywordtype">char</span> *name;
-    <a class="code" href="group__search.html#ga4a1552ce40b390e21d798bbba13e231b">sp_radio_genre</a> id;
-} radiogenres[] = {
-    { <span class="stringliteral">&quot;AltPopRock&quot;</span>,     SP_RADIO_GENRE_ALT_POP_ROCK },
-    { <span class="stringliteral">&quot;Blues&quot;</span>,          SP_RADIO_GENRE_BLUES        },
-    { <span class="stringliteral">&quot;Country&quot;</span>,        SP_RADIO_GENRE_COUNTRY      },
-    { <span class="stringliteral">&quot;Disco&quot;</span>,          SP_RADIO_GENRE_DISCO        },
-    { <span class="stringliteral">&quot;Funk&quot;</span>,           SP_RADIO_GENRE_FUNK         },
-    { <span class="stringliteral">&quot;Hardrock&quot;</span>,       SP_RADIO_GENRE_HARD_ROCK    },
-    { <span class="stringliteral">&quot;HeavyMetal&quot;</span>,     SP_RADIO_GENRE_HEAVY_METAL  },
-    { <span class="stringliteral">&quot;Rap&quot;</span>,            SP_RADIO_GENRE_RAP          },
-    { <span class="stringliteral">&quot;House&quot;</span>,          SP_RADIO_GENRE_HOUSE        },
-    { <span class="stringliteral">&quot;Jazz&quot;</span>,           SP_RADIO_GENRE_JAZZ         },
-    { <span class="stringliteral">&quot;NewWave&quot;</span>,        SP_RADIO_GENRE_NEW_WAVE     },
-    { <span class="stringliteral">&quot;RnB&quot;</span>,            SP_RADIO_GENRE_RNB          },
-    { <span class="stringliteral">&quot;Pop&quot;</span>,            SP_RADIO_GENRE_POP          },
-    { <span class="stringliteral">&quot;Punk&quot;</span>,           SP_RADIO_GENRE_PUNK         },
-    { <span class="stringliteral">&quot;Reggae&quot;</span>,         SP_RADIO_GENRE_REGGAE       },
-    { <span class="stringliteral">&quot;PopRock&quot;</span>,        SP_RADIO_GENRE_POP_ROCK     },
-    { <span class="stringliteral">&quot;Soul&quot;</span>,           SP_RADIO_GENRE_SOUL         },
-    { <span class="stringliteral">&quot;Techno&quot;</span>,         SP_RADIO_GENRE_TECHNO       },
-};
-
-
-
-<span class="keyword">static</span> <span class="keywordtype">void</span> radio_usage(<span class="keywordtype">void</span>)
-{
-    <span class="keywordtype">int</span> i;
-    fprintf(stderr, <span class="stringliteral">&quot;Usage: radio &lt;startyear&gt; &lt;stopyear&gt; [&lt;genre&gt; ...]\n&quot;</span>);
-    fprintf(stderr, <span class="stringliteral">&quot;  Genres:\n&quot;</span>);
-    <span class="keywordflow">for</span>(i = 0; i &lt; <span class="keyword">sizeof</span>(radiogenres) / <span class="keyword">sizeof</span>(radiogenres[0]); i++)
-        fprintf(stderr, <span class="stringliteral">&quot;\t%s\n&quot;</span>, radiogenres[i].name);
-}
-
-<span class="keywordtype">int</span> cmd_radio(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)
-{
-    <a class="code" href="group__search.html#ga4a1552ce40b390e21d798bbba13e231b">sp_radio_genre</a> mask = 0;
-    <span class="keywordtype">int</span> i, j;
-
-    <span class="keywordflow">if</span> (argc &lt; 3) {
-        radio_usage();
-        <span class="keywordflow">return</span> -1;
-    }
-
-    <span class="keywordflow">for</span>(i = 3; i &lt; argc; i++)
-        <span class="keywordflow">for</span>(j = 0; j &lt; <span class="keyword">sizeof</span>(radiogenres) / <span class="keyword">sizeof</span>(radiogenres[0]); j++)
-            <span class="keywordflow">if</span> (!strcasecmp(radiogenres[j].name, argv[i]))
-                mask |= radiogenres[j].<span class="keywordtype">id</span>;
-
-    <a name="a17"></a><a class="code" href="group__search.html#gadb7d2f6845e5efc49afa6e83ca14b014">sp_radio_search_create</a>(g_session, atoi(argv[1]), atoi(argv[2]), mask, &amp;search_complete, NULL);
+    <a class="code" href="group__search.html#ga2f64dfbcc1313e7d5179998cb28208d4">sp_search_create</a>(g_session, <span class="stringliteral">&quot;tag:new&quot;</span>, 0, 0, 0, 250, 0, 0, 0, 0, SP_SEARCH_STANDARD, &amp;search_complete, NULL);
     <span class="keywordflow">return</span> 0;
 }
 </pre></div> </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:30:12.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:22:31.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

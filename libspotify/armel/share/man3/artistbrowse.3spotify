@@ -1,4 +1,4 @@
-.TH "Artist browsing" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "Artist browsing" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -36,6 +36,12 @@ Artist browsing \-
 .br
 .ti -1c
 .RI "\fBsp_track\fP * \fBsp_artistbrowse_track\fP (\fBsp_artistbrowse\fP *arb, int index)"
+.br
+.ti -1c
+.RI "int \fBsp_artistbrowse_num_tophit_tracks\fP (\fBsp_artistbrowse\fP *arb)"
+.br
+.ti -1c
+.RI "\fBsp_track\fP * \fBsp_artistbrowse_tophit_track\fP (\fBsp_artistbrowse\fP *arb, int index)"
 .br
 .ti -1c
 .RI "int \fBsp_artistbrowse_num_albums\fP (\fBsp_artistbrowse\fP *arb)"
@@ -277,6 +283,19 @@ Number of similar artists for given artist
 \fBExamples: \fP
 .in +1c
 \fBbrowse.c\fP.
+.SS "int sp_artistbrowse_num_tophit_tracks (\fBsp_artistbrowse\fP * arb)"Given an artist browse object, return number of tophit tracks This is a set of tracks for the artist with highest popularity
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarb\fP Artist browse object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of tophit tracks for given artist 
+.RE
+.PP
+
 .SS "int sp_artistbrowse_num_tracks (\fBsp_artistbrowse\fP * arb)"Given an artist browse object, return number of tracks
 .PP
 \fBParameters:\fP
@@ -350,6 +369,26 @@ A pointer to an artist object.
 \fBExamples: \fP
 .in +1c
 \fBbrowse.c\fP.
+.SS "\fBsp_track\fP* sp_artistbrowse_tophit_track (\fBsp_artistbrowse\fP * arb, int index)"Given an artist browse object, return one of its tophit tracks This is a set of tracks for the artist with highest popularity
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarb\fP Album browse object 
+.br
+\fIindex\fP The index for the track. Should be in the interval [0, \fBsp_artistbrowse_num_tophit_tracks()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A track object, or NULL if the index is out of range.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBTrack subsystem\fP 
+.RE
+.PP
+
 .SS "\fBsp_track\fP* sp_artistbrowse_track (\fBsp_artistbrowse\fP * arb, int index)"Given an artist browse object, return one of its tracks
 .PP
 \fBParameters:\fP

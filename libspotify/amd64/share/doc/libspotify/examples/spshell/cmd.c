@@ -43,7 +43,6 @@ struct {
 	{ "browse",     cmd_browse,     "Browse a Spotify URI" },
 	{ "search",     cmd_search,     "Search" },
 	{ "whatsnew",   cmd_whatsnew,   "List new albums" },
-	{ "radio",      cmd_radio,      "Radio query" },
 	{ "toplist",    cmd_toplist,    "Browse toplists" },
 	{ "post",       cmd_post,       "Post track to a user's inbox" },
 	{ "inbox",      cmd_inbox,      "View inbox" },
@@ -51,13 +50,9 @@ struct {
 	{ "star",       cmd_star,       "Star a track" },
 	{ "unstar",     cmd_unstar,     "Unstar a track" },
 	{ "starred",    cmd_starred,    "List all starred tracks" },
-#if SPOTIFY_WITH_SOCIAL
-	{ "friends",    cmd_friends,    "List all your friends" },
-#endif
 	{ "playlists",  cmd_playlists,  "List playlists" },
 	{ "playlist",   cmd_playlist,   "List playlist contents" },
 	{ "set_autolink", cmd_set_autolink, "Set autolinking state" },
-	{ "published_playlists",  cmd_published_playlists, "List a published list and subscribe for updates" },
 	{ "add_folder", cmd_add_folder, "Add playlist folder"},
 	{ "update_subscriptions", cmd_update_subscriptions, "Update playlist subscription info"},
 	{ "add", cmd_playlist_add_track, "Add track to playlist"},

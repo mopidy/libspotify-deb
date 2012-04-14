@@ -40,7 +40,7 @@
 }
 -(BOOL)available;
 {
-	return sp_track_is_available(session, track);
+	return sp_track_get_availability(session, track) == SP_TRACK_AVAILABILITY_AVAILABLE;
 }
 
 -(NSString*)description;

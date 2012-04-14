@@ -48,7 +48,7 @@ void print_track(sp_track *track)
 	printf("Track %s [%d:%02d] has %d artist(s), %d%% popularity",
 	       sp_track_name(track),
 	       duration / 60000,
-	       (duration / 1000) / 60,
+	       (duration / 1000) % 60,
 	       sp_track_num_artists(track),
 	       sp_track_popularity(track));
 	

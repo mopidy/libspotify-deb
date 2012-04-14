@@ -1,4 +1,4 @@
-.TH "sp_session_callbacks" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "sp_session_callbacks" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -62,6 +62,9 @@ sp_session_callbacks \-
 .ti -1c
 .RI "void(* \fBoffline_error\fP )(\fBsp_session\fP *session, \fBsp_error\fP error)"
 .br
+.ti -1c
+.RI "void(* \fBcredentials_blob_updated\fP )(\fBsp_session\fP *session, const char *blob)"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -85,11 +88,21 @@ Registered when you create a session. If some callbacks should not be of interes
 .RE
 .PP
 
+.SS "void( * \fBsp_session_callbacks::credentials_blob_updated\fP)(\fBsp_session\fP *session, const char *blob)"Called when storable credentials have been updated, usually called when we have connected to the AP.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIblob\fP Blob is a null-terminated string which contains an encrypted token that can be stored safely on disk instead of storing plaintext passwords. 
+.RE
+.PP
+
 .SS "void( * \fBsp_session_callbacks::end_of_track\fP)(\fBsp_session\fP *session)"End of track. Called when the currently played track has reached its end.
 .PP
 \fBNote:\fP
 .RS 4
-This function is invoked from the same internal thread as the music delivery callback
+This function is invoked from the main thread
 .RE
 .PP
 \fBParameters:\fP
@@ -224,7 +237,14 @@ This function is called from an internal session thread - you need to have prope
 .RE
 .PP
 
-.SS "void( * \fBsp_session_callbacks::play_token_lost\fP)(\fBsp_session\fP *session)"Music has been paused because only one account may play music at the same time.
+.SS "void( * \fBsp_session_callbacks::play_token_lost\fP)(\fBsp_session\fP *session)"Music has been paused because an account only allows music to be played from one location simultaneously.
+.PP
+\fBNote:\fP
+.RS 4
+When this callback is invoked the application should behave just as if the user pressed the pause button. The application should also display a message to the user indicating the playback has been paused because another application is playing using the same account.
+.PP
+IT MUST NOT automatically resume playback but must instead wait for the user to press play.
+.RE
 .PP
 \fBParameters:\fP
 .RS 4
@@ -266,7 +286,7 @@ This function must never block.
 .RE
 .PP
 
-.SS "void( * \fBsp_session_callbacks::streaming_error\fP)(\fBsp_session\fP *session, \fBsp_error\fP error)"Streaming error. Called when streaming cannot start or continue
+.SS "void( * \fBsp_session_callbacks::streaming_error\fP)(\fBsp_session\fP *session, \fBsp_error\fP error)"Streaming error. Called when streaming cannot start or continue.
 .PP
 \fBNote:\fP
 .RS 4

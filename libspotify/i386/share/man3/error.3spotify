@@ -1,4 +1,4 @@
-.TH "Error Handling" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "Error Handling" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -137,7 +137,7 @@ The license for this device has been lost. Most likely because the user used off
 The Spotify license server does not respond correctly. 
 .SH "Function Documentation"
 .PP 
-.SS "const char* sp_error_message (\fBsp_error\fP error)"Convert a numeric libspotify error code to a text string
+.SS "const char* sp_error_message (\fBsp_error\fP error)"Convert a numeric libspotify error code to a text string. The error message is in English. This function is useful for logging purposes.
 .PP
 \fBParameters:\fP
 .RS 4

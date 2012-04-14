@@ -50,5 +50,11 @@
     <ClCompile Include="..\toplist.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\playlist.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

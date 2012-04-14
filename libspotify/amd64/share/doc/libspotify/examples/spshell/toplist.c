@@ -59,7 +59,7 @@ static void print_artist(int index, sp_artist *artist)
  * @param result    The toplist result object that is now done
  * @param userdata  The opaque pointer given to sp_toplistbrowse_create()
  */
-static void got_toplist(sp_toplistbrowse *result, void *userdata)
+static void SP_CALLCONV got_toplist(sp_toplistbrowse *result, void *userdata)
 {
 	int i;
 

@@ -35,7 +35,6 @@ extern int cmd_log(int argc, char **argv);
 extern int cmd_logout(int argc, char **argv);
 extern int cmd_browse(int argc, char **argv);
 extern int cmd_search(int argc, char **argv);
-extern int cmd_radio(int argc, char **argv);
 extern int cmd_whatsnew(int argc, char **argv);
 extern int cmd_toplist(int argc, char **argv);
 extern int cmd_post(int argc, char **argv);
@@ -50,6 +49,7 @@ extern int cmd_playlist(int argc, char **argv);
 extern int cmd_set_autolink(int argc, char **argv);
 
 extern int cmd_published_playlists(int argc, char **argv);
+extern int cmd_get_published_playlist (int argc, char **argv);
 
 extern int cmd_social_enable(int argc, char **argv);
 extern int cmd_playlists_enable(int argc, char **argv);

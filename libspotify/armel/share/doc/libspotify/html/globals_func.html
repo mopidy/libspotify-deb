@@ -158,6 +158,9 @@
 <li>sp_artistbrowse_num_similar_artists()
 : <a class="el" href="group__artistbrowse.html#ga2559638742416ac621af0e919e017d17">api.h</a>
 </li>
+<li>sp_artistbrowse_num_tophit_tracks()
+: <a class="el" href="group__artistbrowse.html#ga0c26782796af954300ce92fddea97637">api.h</a>
+</li>
 <li>sp_artistbrowse_num_tracks()
 : <a class="el" href="group__artistbrowse.html#ga8c862caa2234125ffcc4e93287b1e029">api.h</a>
 </li>
@@ -169,6 +172,9 @@
 </li>
 <li>sp_artistbrowse_similar_artist()
 : <a class="el" href="group__artistbrowse.html#gac60ef4f9e006a920f1d72b6098743fbc">api.h</a>
+</li>
+<li>sp_artistbrowse_tophit_track()
+: <a class="el" href="group__artistbrowse.html#ga5da55f43def03fe9f0d2c8b252b9755a">api.h</a>
 </li>
 <li>sp_artistbrowse_track()
 : <a class="el" href="group__artistbrowse.html#ga45d28771a856f935dc40ab40e27dec4c">api.h</a>
@@ -416,6 +422,12 @@
 <li>sp_playlistcontainer_add_ref()
 : <a class="el" href="group__playlist.html#gaa7a92fd7a822348641a4d3adbf885b4a">api.h</a>
 </li>
+<li>sp_playlistcontainer_clear_unseen_tracks()
+: <a class="el" href="group__playlist.html#gadaad604c35e543363e1dd5b23c462db0">api.h</a>
+</li>
+<li>sp_playlistcontainer_get_unseen_tracks()
+: <a class="el" href="group__playlist.html#gad9e11b45843ee4a147b43038a2e55f13">api.h</a>
+</li>
 <li>sp_playlistcontainer_is_loaded()
 : <a class="el" href="group__playlist.html#gae23cb67b4b26bca663034997c4418fa8">api.h</a>
 </li>
@@ -449,9 +461,6 @@
 <li>sp_playlistcontainer_remove_playlist()
 : <a class="el" href="group__playlist.html#ga1ae1d51c4305940ae5c5c98c12be0afc">api.h</a>
 </li>
-<li>sp_radio_search_create()
-: <a class="el" href="group__search.html#gadb7d2f6845e5efc49afa6e83ca14b014">api.h</a>
-</li>
 <li>sp_search_add_ref()
 : <a class="el" href="group__search.html#gaff6bc550425d8ab963d93d7ed2e15bb5">api.h</a>
 </li>
@@ -462,7 +471,7 @@
 : <a class="el" href="group__search.html#ga79b3d532d5a20a3b2bf2a087eead7888">api.h</a>
 </li>
 <li>sp_search_create()
-: <a class="el" href="group__search.html#gacf0b5e902e27d46ef8b1f40e332766df">api.h</a>
+: <a class="el" href="group__search.html#ga2f64dfbcc1313e7d5179998cb28208d4">api.h</a>
 </li>
 <li>sp_search_did_you_mean()
 : <a class="el" href="group__search.html#ga8561c1da8b93ecdc8f2d325a9d19199b">api.h</a>
@@ -479,8 +488,20 @@
 <li>sp_search_num_artists()
 : <a class="el" href="group__search.html#gabd375a613c2dadecad8c13f8aca6f2d3">api.h</a>
 </li>
+<li>sp_search_num_playlists()
+: <a class="el" href="group__search.html#gaa9f007f439d8241bf632f9abb8d926c9">api.h</a>
+</li>
 <li>sp_search_num_tracks()
 : <a class="el" href="group__search.html#ga1dd18cf7b3b3b7f4bf6e92a2140378d0">api.h</a>
+</li>
+<li>sp_search_playlist_image_uri()
+: <a class="el" href="group__search.html#gac4463fab4ea25e0a5d5079c959a1781c">api.h</a>
+</li>
+<li>sp_search_playlist_name()
+: <a class="el" href="group__search.html#ga933cd5d5a0ccca9906082ca4549a4ed7">api.h</a>
+</li>
+<li>sp_search_playlist_uri()
+: <a class="el" href="group__search.html#ga0071a3d30f0f0c4e477bf923e9014ff5">api.h</a>
 </li>
 <li>sp_search_query()
 : <a class="el" href="group__search.html#ga127e9c2bf98e3602ecfc2926b9d242bf">api.h</a>
@@ -494,6 +515,9 @@
 <li>sp_search_total_artists()
 : <a class="el" href="group__search.html#ga305a4118625e0f70cfb14161a0112fd5">api.h</a>
 </li>
+<li>sp_search_total_playlists()
+: <a class="el" href="group__search.html#ga2e286415a6ba8dbf85ea677906f2798c">api.h</a>
+</li>
 <li>sp_search_total_tracks()
 : <a class="el" href="group__search.html#gab4e50582c517b4639fd1afd6fb011587">api.h</a>
 </li>
@@ -506,6 +530,9 @@
 <li>sp_session_create()
 : <a class="el" href="group__session.html#gaf2891f2daced4ff6da84219d6376b3aa">api.h</a>
 </li>
+<li>sp_session_flush_caches()
+: <a class="el" href="group__session.html#ga02ecff01594a8e3f9b184c2049b780a0">api.h</a>
+</li>
 <li>sp_session_forget_me()
 : <a class="el" href="group__session.html#gaa2fdb51cf4c24d1ef8695401bbfb6c09">api.h</a>
 </li>
@@ -516,7 +543,7 @@
 : <a class="el" href="group__session.html#gac72ccb51031c846101134b73195bb9ec">api.h</a>
 </li>
 <li>sp_session_login()
-: <a class="el" href="group__session.html#gac2e84f678eb00f08c2a8e5a9a73a02a2">api.h</a>
+: <a class="el" href="group__session.html#ga3b02370d51062088a1eb6b067f66ffb6">api.h</a>
 </li>
 <li>sp_session_logout()
 : <a class="el" href="group__session.html#ga3d1e2f42506fd1a03318c4ffb1d22634">api.h</a>
@@ -644,6 +671,9 @@
 <li>sp_track_get_availability()
 : <a class="el" href="group__track.html#ga9c78846badae6567fe9f9a3792fd06c8">api.h</a>
 </li>
+<li>sp_track_get_playable()
+: <a class="el" href="group__track.html#ga112dca47d0bac39818b55119ef134ffd">api.h</a>
+</li>
 <li>sp_track_index()
 : <a class="el" href="group__track.html#ga25c1df9d32fd58f243397740b29c3f61">api.h</a>
 </li>
@@ -698,7 +728,7 @@
 </ul>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:30:12.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:22:31.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

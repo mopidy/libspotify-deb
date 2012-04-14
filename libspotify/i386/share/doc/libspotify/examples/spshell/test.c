@@ -21,7 +21,12 @@
  *
  */
 #include <stdarg.h>
+#include <stdio.h>
 #include <string.h>
+
+#if __APPLE__ || __linux__
+#include <sys/resource.h>
+#endif // __APPLE__ || __linux__
 
 #include "spshell.h"
 #include "cmd.h"
@@ -109,7 +114,7 @@ void output(enum msglevel level, const char *fmt, ...)
 void test_deactivate(const struct Test * const t)
 {
 	struct Test *l, **p = &active_tests;
-	
+
 	while((l = *p) != NULL) {
 		if(t == l) {
 			*p = l->next;
@@ -135,7 +140,7 @@ static int test_done(Test *t, int backend_time)
 	test_deactivate(t);
 
 	t->duration = (int)(get_ts() - t->start);
-	
+
 	if(t->duration > t->maxtime * 1000) {
 		char trailer[100];
 
@@ -148,7 +153,7 @@ static int test_done(Test *t, int backend_time)
 		output(MSG_ERROR, "%s: %d Time exceeded, limit is %dms%s",
 		       t->title, t->duration, t->maxtime * 1000, trailer);
 		return 1;
-	} 
+	}
 	return 0;
 }
 
@@ -172,8 +177,8 @@ static void test_ok_backend_duration(Test *t, int backend_duration)
 	if(backend_duration == -1)
 		strcpy(trailer, "Loaded from cache");
 	else
-		snprintf(trailer, sizeof(trailer), "%d ms backend reqeust delay", backend_duration);
-		
+		snprintf(trailer, sizeof(trailer), "%d ms backend request delay", backend_duration);
+
 	output(MSG_OK, "%s: %d OK, %s", t->title, t->duration, trailer);
 }
 
@@ -190,12 +195,12 @@ static void test_report(Test *t, const char *fmt, ...)
 	va_start(ap, fmt);
 	vsnprintf(msg, sizeof(msg), fmt, ap);
 	va_end(ap);
-	
+
 	output(level, "%s: %d %s", t->title, t->duration, msg);
 }
 
 
-#define info_report(fmt, ...) output(MSG_INFO, fmt, __VA_ARGS__)
+#define info_report(fmt, ...) output(MSG_INFO, fmt, ##__VA_ARGS__)
 
 
 static void test_start(Test *t)
@@ -260,7 +265,7 @@ TEST_DECL(search2, 3);
 TEST_DECL(did_you_mean, 3);
 
 
-static void search1_cb(sp_search *result, void *userdata)
+static void SP_CALLCONV search1_cb(sp_search *result, void *userdata)
 {
 	if(!sp_search_is_loaded(result))
 		test_report(userdata, "Result not loaded");
@@ -272,13 +277,19 @@ static void search1_cb(sp_search *result, void *userdata)
 		test_report(userdata, "Expected %d albums got %d", 4, sp_search_num_albums(result));
 	else if(sp_search_num_artists(result) != 6)
 		test_report(userdata, "Expected %d artists got %d", 6, sp_search_num_artists(result));
-	else 
-		test_ok(userdata);
+	else if(sp_search_num_playlists(result) != 8)
+		test_report(userdata, "Expected %d artists got %d", 8, sp_search_num_playlists(result));
+	else {
+		if (!sp_search_playlist_name(result, 1)) {
+			test_report(userdata, "Expected a name for playlist #1");
+		} else
+			test_ok(userdata);
+	}
 	sp_search_release(result);
 }
 
 
-static void search2_cb(sp_search *result, void *userdata)
+static void SP_CALLCONV search2_cb(sp_search *result, void *userdata)
 {
 	if(!sp_search_is_loaded(result))
 		test_report(userdata, "Result not loaded");
@@ -289,13 +300,13 @@ static void search2_cb(sp_search *result, void *userdata)
 	sp_search_release(result);
 }
 
-static void did_you_mean_cb(sp_search *result, void *userdata)
+static void SP_CALLCONV did_you_mean_cb(sp_search *result, void *userdata)
 {
 	if(!sp_search_is_loaded(result))
 		test_report(userdata, "Result not loaded");
 	else if(sp_search_error(result) != SP_ERROR_OK)
 		test_report(userdata, "%s", sp_error_message(sp_search_error(result)));
-	else if(strcmp(sp_search_did_you_mean(result), "madonna")) 
+	else if(strcmp(sp_search_did_you_mean(result), "madonna"))
 		test_report(userdata, "Expected '%s' but got '%s'",
 			    "madonna", sp_search_did_you_mean(result));
 	else
@@ -307,13 +318,13 @@ static void did_you_mean_cb(sp_search *result, void *userdata)
 static void search_test(void)
 {
 	test_start(&search1);
-	sp_search_create(g_session, "madonna", 1,2,3,4,5,6, search1_cb, &search1);
+	sp_search_create(g_session, "madonna", 1,2,3,4,5,6,7,8, SP_SEARCH_STANDARD, search1_cb, &search1);
 
 	test_start(&search2);
-	sp_search_create(g_session, "madonna", 0,250,0,250,0,250, search2_cb, &search2);
+	sp_search_create(g_session, "madonna", 0,250,0,250,0,250, 0, 0, SP_SEARCH_STANDARD, search2_cb, &search2);
 
 	test_start(&did_you_mean);
-	sp_search_create(g_session, "madonnnna", 0,250,0,250,0,250, did_you_mean_cb, &did_you_mean);
+	sp_search_create(g_session, "madonnnna", 0,250,0,250,0,250, 0, 0, SP_SEARCH_STANDARD, did_you_mean_cb, &did_you_mean);
 }
 
 
@@ -322,7 +333,7 @@ static void search_test(void)
  */
 TEST_DECL(browse_50th_law, 3);
 
-static void album_cb(sp_albumbrowse *result, void *userdata)
+static void SP_CALLCONV album_cb(sp_albumbrowse *result, void *userdata)
 {
 	if(!sp_albumbrowse_is_loaded(result))
 		test_report(userdata, "Result not loaded");
@@ -368,7 +379,7 @@ TEST_DECL(browse_rihanna, 3);
 TEST_DECL(browse_elvis, 3);
 
 
-static void no_albums_cb(sp_artistbrowse *result, void *userdata)
+static void SP_CALLCONV no_albums_cb(sp_artistbrowse *result, void *userdata)
 {
 	if(!sp_artistbrowse_is_loaded(result))
 		test_report(userdata, "Result not loaded");
@@ -422,7 +433,7 @@ static void artistbrowse_test(void)
 TEST_DECL(browse_no_tracks_elvis, 10);
 
 
-static void no_tracks_cb(sp_artistbrowse *result, void *userdata)
+static void SP_CALLCONV no_tracks_cb(sp_artistbrowse *result, void *userdata)
 {
 	if(!sp_artistbrowse_is_loaded(result))
 		test_report(userdata, "Result not loaded");
@@ -465,7 +476,7 @@ TEST_DECL5(browse_toplist_artist_US,     3,  0,   0,   100);
 TEST_DECL5(browse_toplist_album_US,      3,  0,   100, 0);
 TEST_DECL5(browse_toplist_track_US,      3,  100, 0,   0);
 
-static void toplist_cb(sp_toplistbrowse *result, void *userdata)
+static void SP_CALLCONV toplist_cb(sp_toplistbrowse *result, void *userdata)
 {
 	const Test *t = userdata;
 	if(!sp_toplistbrowse_is_loaded(result))
@@ -559,8 +570,59 @@ static void toplistbrowse_test(void)
 				toplist_cb, &browse_toplist_track_US);
 }
 
+/*****************************************************************
+ * Radio
+ */
+#ifdef SP_WITH_RADIO
+
+TEST_DECL(radio_artist,3);
+TEST_DECL(radio_track,3);
+TEST_DECL(radio_genre,3);
 
 
+static void radio_cb(sp_radio *result, void *userdata)
+{
+	int num_tracks;
+	sp_track* track;
+
+	if(!sp_radio_is_loaded(result))
+		test_report(userdata, "Result not loaded");
+	else if(sp_radio_error(result) != SP_ERROR_OK)
+		test_report(userdata, "%s", sp_error_message(sp_radio_error(result)));
+	else {
+		num_tracks=sp_radio_num_tracks(result);
+		if (num_tracks>0) {
+			track = sp_radio_track(result, num_tracks - 1);
+			if ( track ) {
+				test_ok(userdata);
+			} else {
+				test_report(userdata, "Can't get last track");
+			}
+		} else {
+			test_report(userdata, "No tracks returned");
+		}
+	}
+	sp_radio_release(result);
+}
+
+static void radio_test(void)
+{
+	sp_link* link;
+	test_start(&radio_artist);
+	link = sp_link_create_from_string("spotify:artist:6tbjWDEIzxoDsBA1FuhfPW"); // Madonna
+	sp_radio_create_from_link(g_session, link, &radio_cb, &radio_artist);
+	sp_link_release( link );
+
+	test_start(&radio_track);
+	link = sp_link_create_from_string("spotify:track:1z3ugFmUKoCzGsI6jdY4Ci"); // Like A Prayer
+	sp_radio_create_from_link(g_session, link, &radio_cb, &radio_track);
+	sp_link_release( link );
+
+	test_start(&radio_genre);
+	sp_radio_create_from_genre(g_session, SP_RADIO_GENRE_DANCE, &radio_cb, &radio_genre);
+}
+
+#endif
 /*****************************************************************
  * Streaming test
  */
@@ -574,7 +636,7 @@ static int stream_track_end;
 /**
  * Callback from spotify session. Happen on different thread so we need to signal and wakeup
  */
-void end_of_track(sp_session *s)
+void SP_CALLCONV end_of_track(sp_session *s)
 {
 	stream_track_end = 1;
 	notify_main_thread(g_session);
@@ -584,7 +646,7 @@ void end_of_track(sp_session *s)
 /**
  * Callback from spotify session. Just consume all frames
  */
-int music_delivery(sp_session *s, const sp_audioformat *fmt, const void *frames, int num_frames)
+int SP_CALLCONV music_delivery(sp_session *s, const sp_audioformat *fmt, const void *frames, int num_frames)
 {
 	return num_frames;
 }
@@ -592,7 +654,7 @@ int music_delivery(sp_session *s, const sp_audioformat *fmt, const void *frames,
 /**
  * Callback from spotify session. Happen on different thread so we need to signal and wakeup
  */
-void play_token_lost(sp_session *s)
+void SP_CALLCONV play_token_lost(sp_session *s)
 {
 	stream_track_end = 2;
 	notify_main_thread(g_session);
@@ -615,9 +677,9 @@ static void playtrack_test(void)
 
 static int check_streaming_done(void)
 {
-	if(stream_track_end == 2) 
+	if(stream_track_end == 2)
 		test_report(&playtrack, "Playtoken lost");
-	else if(stream_track_end == 1) 
+	else if(stream_track_end == 1)
 		test_ok(&playtrack);
 	else
 		return 0;
@@ -638,7 +700,7 @@ TEST_DECL3(image7, 3, 10028876);
 TEST_DECL3(image8, 3, 7017370);
 TEST_DECL3(image9, 3, 3655831);
 
-static void image_cb(sp_image *image, void *userdata)
+static void SP_CALLCONV image_cb(sp_image *image, void *userdata)
 {
 	Test *t = userdata;
 	size_t size;
@@ -656,7 +718,7 @@ static void image_cb(sp_image *image, void *userdata)
 		test_report(userdata, "Invalid checksum");
 	else
 		test_ok(userdata);
-}			  
+}
 
 
 static void load_image(Test *t, const char *uri)
@@ -694,6 +756,40 @@ static void image_test(void)
  */
 #define WAIT_FOR_TEST(t) state = __LINE__; case __LINE__: if(!(t)->done) return
 #define WAIT_FOR(expr)   state = __LINE__; case __LINE__: if(!(expr)) return
+
+static void print_resource_usage()
+{
+#if __APPLE__ || __linux__
+	struct rusage r_usage;
+	int res;
+
+	res = getrusage(RUSAGE_SELF, &r_usage);
+	if (res == 0) {
+		printf("getrusage() returned:\n");
+
+#if __APPLE__
+#define TV_USEC_FORMAT "d"
+#elif __linux__
+#define TV_USEC_FORMAT "ld"
+#endif
+		printf("  User time:   %ld.%03" TV_USEC_FORMAT "s\n", r_usage.ru_utime.tv_sec, r_usage.ru_utime.tv_usec / 1000);
+		printf("  System time: %ld.%03" TV_USEC_FORMAT "s\n", r_usage.ru_stime.tv_sec, r_usage.ru_stime.tv_usec / 1000);
+#undef TV_USEC_FORMAT
+
+#if __APPLE__
+#define MAXRSS_UNITS "bytes"
+#elif __linux__
+#define MAXRSS_UNITS "kilobytes"
+#endif
+		printf("  Peak memory usage: %ld " MAXRSS_UNITS " (ru_maxrss)\n", r_usage.ru_maxrss); // integral max resident set size
+#undef MAXRSS_UNITS
+
+	} else {
+		perror("getrusage() failed");
+	}
+#endif // __APPLE__ || __linux__
+}
+
 /**
  *
  */
@@ -704,7 +800,7 @@ void test_process(void)
 	case 0:
 		search_test();
 		WAIT_FOR(!active_tests);
-		
+
 		albumbrowse_test();
 		WAIT_FOR(!active_tests);
 
@@ -720,6 +816,11 @@ void test_process(void)
 		toplistbrowse_test();
 		WAIT_FOR(!active_tests);
 
+#ifdef SP_WITH_RADIO
+		radio_test();
+		WAIT_FOR(!active_tests);
+#endif
+
 		info_report("Loading %s", "spotify:track:7dTWkvPOPgbGuMk4HDxNpY");
 		stream_track = track_from_uri("spotify:track:7dTWkvPOPgbGuMk4HDxNpY");
 		WAIT_FOR(sp_track_is_loaded(stream_track));
@@ -732,6 +833,7 @@ void test_process(void)
 
 		state = -1;
 		test_finished();
+		print_resource_usage();
 	}
 }
 

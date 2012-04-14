@@ -41,7 +41,7 @@ static void post_usage(void)
  * @param result    The inbox result object that is now done
  * @param userdata  The opaque pointer given to sp_inbox_post_tracks()
  */
-static void inbox_post_completed(sp_inbox *result, void *userdata)
+static void SP_CALLCONV inbox_post_completed(sp_inbox *result, void *userdata)
 {
 	fprintf(stderr, "Inbox post result: %s\n", sp_error_message(sp_inbox_error(result)));
 	cmd_done();

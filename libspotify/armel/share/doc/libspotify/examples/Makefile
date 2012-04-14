@@ -1,4 +1,4 @@
-EXAMPLES=jukebox spshell
+EXAMPLES=jukebox spshell localfiles
 
 .PHONY: all clean
 

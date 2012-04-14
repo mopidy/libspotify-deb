@@ -1,4 +1,4 @@
-.TH "Session handling" 3spotify "Mon Oct 31 2011" "libspotify" \" -*- nroff -*-
+.TH "Session handling" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -29,7 +29,7 @@ Session handling \-
 
 .in +1c
 .ti -1c
-.RI "#define \fBSPOTIFY_API_VERSION\fP   10"
+.RI "#define \fBSPOTIFY_API_VERSION\fP   11"
 .br
 .in -1c
 .SS "Typedefs"
@@ -49,6 +49,9 @@ Session handling \-
 .br
 .ti -1c
 .RI "typedef enum \fBsp_playlist_type\fP \fBsp_playlist_type\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_search_type\fP \fBsp_search_type\fP"
 .br
 .ti -1c
 .RI "typedef enum \fBsp_playlist_offline_status\fP \fBsp_playlist_offline_status\fP"
@@ -94,10 +97,13 @@ Session handling \-
 .RI "enum \fBsp_sampletype\fP { \fBSP_SAMPLETYPE_INT16_NATIVE_ENDIAN\fP =  0 }"
 .br
 .ti -1c
-.RI "enum \fBsp_bitrate\fP "
+.RI "enum \fBsp_bitrate\fP { \fBSP_BITRATE_160k\fP =  0, \fBSP_BITRATE_320k\fP =  1, \fBSP_BITRATE_96k\fP =  2 }"
 .br
 .ti -1c
 .RI "enum \fBsp_playlist_type\fP { \fBSP_PLAYLIST_TYPE_PLAYLIST\fP =  0, \fBSP_PLAYLIST_TYPE_START_FOLDER\fP =  1, \fBSP_PLAYLIST_TYPE_END_FOLDER\fP =  2, \fBSP_PLAYLIST_TYPE_PLACEHOLDER\fP =  3 }"
+.br
+.ti -1c
+.RI "enum \fBsp_search_type\fP "
 .br
 .ti -1c
 .RI "enum \fBsp_playlist_offline_status\fP { \fBSP_PLAYLIST_OFFLINE_STATUS_NO\fP =  0, \fBSP_PLAYLIST_OFFLINE_STATUS_YES\fP =  1, \fBSP_PLAYLIST_OFFLINE_STATUS_DOWNLOADING\fP =  2, \fBSP_PLAYLIST_OFFLINE_STATUS_WAITING\fP =  3 }"
@@ -128,7 +134,7 @@ Session handling \-
 .RI "void \fBsp_session_release\fP (\fBsp_session\fP *sess)"
 .br
 .ti -1c
-.RI "void \fBsp_session_login\fP (\fBsp_session\fP *session, const char *username, const char *password, bool remember_me)"
+.RI "void \fBsp_session_login\fP (\fBsp_session\fP *session, const char *username, const char *password, bool remember_me, const char *blob)"
 .br
 .ti -1c
 .RI "\fBsp_error\fP \fBsp_session_relogin\fP (\fBsp_session\fP *session)"
@@ -144,6 +150,9 @@ Session handling \-
 .br
 .ti -1c
 .RI "void \fBsp_session_logout\fP (\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void \fBsp_session_flush_caches\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_connectionstate\fP \fBsp_session_connectionstate\fP (\fBsp_session\fP *session)"
@@ -226,7 +235,7 @@ Session handling \-
 The concept of a session is fundamental for all communication with the Spotify ecosystem - it is the object responsible for communicating with the Spotify service. You will need to instantiate a session that then can be used to request artist information, perform searches etc. 
 .SH "Define Documentation"
 .PP 
-.SS "#define SPOTIFY_API_VERSION   10"Current version of the application interface, that is, the API described by this file.
+.SS "#define SPOTIFY_API_VERSION   11"Current version of the application interface, that is, the API described by this file.
 .PP
 This value should be set in the \fBsp_session_config\fP struct passed to \fBsp_session_create()\fP.
 .PP
@@ -246,6 +255,7 @@ The default is SP_CONNECTION_RULE_NETWORK | SP_CONNECTION_RULE_ALLOW_SYNC
 .SS "typedef enum \fBsp_playlist_offline_status\fP  \fBsp_playlist_offline_status\fP"Playlist offline status 
 .SS "typedef enum \fBsp_playlist_type\fP  \fBsp_playlist_type\fP"Playlist types 
 .SS "typedef enum \fBsp_sampletype\fP  \fBsp_sampletype\fP"Sample type descriptor 
+.SS "typedef enum \fBsp_search_type\fP  \fBsp_search_type\fP"Search types 
 .SS "typedef struct \fBsp_session_callbacks\fP  \fBsp_session_callbacks\fP"Session callbacks
 .PP
 Registered when you create a session. If some callbacks should not be of interest, set them to NULL. 
@@ -261,7 +271,7 @@ Registered when you create a session. If some callbacks should not be of interes
 .in +1c
 .TP
 \fB\fISP_ARTISTBROWSE_FULL \fP\fP
-All information 
+All information except tophit tracks This mode is deprecated and will removed in a future release 
 .TP
 \fB\fISP_ARTISTBROWSE_NO_TRACKS \fP\fP
 Only albums and data about them, no tracks. In other words, \fBsp_artistbrowse_num_tracks()\fP will return 0 
@@ -285,6 +295,18 @@ Track can not be streamed using this account.
 \fB\fISP_TRACK_AVAILABILITY_BANNED_BY_ARTIST \fP\fP
 Track not available on artist's reqeust. 
 .SS "enum \fBsp_bitrate\fP"Bitrate definitions for music streaming 
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fISP_BITRATE_160k \fP\fP
+Bitrate 160kbps. 
+.TP
+\fB\fISP_BITRATE_320k \fP\fP
+Bitrate 320kbps. 
+.TP
+\fB\fISP_BITRATE_96k \fP\fP
+Bitrate 96kbps. 
 .SS "enum \fBsp_connection_rules\fP"Connection rules, bitwise OR of flags
 .PP
 The default is SP_CONNECTION_RULE_NETWORK | SP_CONNECTION_RULE_ALLOW_SYNC 
@@ -383,6 +405,7 @@ Unknown entry.
 .TP
 \fB\fISP_SAMPLETYPE_INT16_NATIVE_ENDIAN \fP\fP
 16-bit signed integer samples 
+.SS "enum \fBsp_search_type\fP"Search types 
 .SS "enum \fBsp_track_offline_status\fP"Track offline status 
 .PP
 \fBEnumerator: \fP
@@ -505,6 +528,10 @@ Here is a snippet from \fCspshell.c:\fP
     // free-text string [1, 255] characters.
     config.user_agent = 'spshell';
 
+#if SP_WITH_CURL
+    config.ca_certs_filename = '../cacerts.pem';
+#endif
+
     // Register the callbacks.
     config.callbacks = &callbacks;
 
@@ -535,6 +562,16 @@ One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_BAD_API_VE
 \fBExamples: \fP
 .in +1c
 \fBjukebox.c\fP.
+.SS "void sp_session_flush_caches (\fBsp_session\fP * session)"Flush the caches
+.PP
+This will make libspotify write all data that is meant to be stored on disk to the disk immediately. libspotify does this periodically by itself and also on logout. So under normal conditions this should never need to be used.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Your session object 
+.RE
+.PP
+
 .SS "void sp_session_forget_me (\fBsp_session\fP * session)"Remove stored credentials in libspotify. If no credentials are currently stored, nothing will happen.
 .PP
 \fBParameters:\fP
@@ -579,14 +616,14 @@ You need to release the playlist when you are done with it.
 .RE
 .PP
 
-.SS "void sp_session_login (\fBsp_session\fP * session, const char * username, const char * password, bool remember_me)"Logs in the specified username/password combo. This initiates the login in the background. A callback is called when login is complete
+.SS "void sp_session_login (\fBsp_session\fP * session, const char * username, const char * password, bool remember_me, const char * blob)"Logs in the specified username/password combo. This initiates the login in the background. A callback is called when login is complete
 .PP
 An application MUST NEVER store the user's password in clear text. If automatic relogin is required, use \fBsp_session_relogin()\fP
 .PP
 Here is a snippet from \fCspshell.c:\fP  
 .PP
 .nf
-        sp_session_login(session, username, password, 1);
+      sp_session_login(session, username, password, 1, blob);
     }
 
 .fi
@@ -601,6 +638,8 @@ Here is a snippet from \fCspshell.c:\fP
 \fIpassword\fP The password for the specified username 
 .br
 \fIremember_me\fP If set, the username / password will be remembered by libspotify 
+.br
+\fIblob\fP If you have received a blob in the credentials_blob_updated you can pas this here instead of password 
 .RE
 .PP
 
@@ -831,6 +870,11 @@ The number of characters in the username. If value is greater or equal than \fCb
 Used in conjunction with \fBsp_session_set_connection_type()\fP to control how libspotify should behave in respect to network activity and offline synchronization. 
 .RE
 .PP
+\fBSee also:\fP
+.RS 4
+\fBsp_connection_rules\fP 
+.RE
+.PP
 
 .SS "void sp_session_set_connection_type (\fBsp_session\fP * session, \fBsp_connection_type\fP type)"Set to true if the connection is currently routed over a roamed connectivity
 .PP
@@ -844,6 +888,11 @@ Used in conjunction with \fBsp_session_set_connection_type()\fP to control how l
 \fBNote:\fP
 .RS 4
 Used in conjunction with \fBsp_session_set_connection_rules()\fP to control how libspotify should behave in respect to network activity and offline synchronization. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_connection_type\fP 
 .RE
 .PP
 

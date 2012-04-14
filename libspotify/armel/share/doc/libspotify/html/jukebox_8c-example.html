@@ -213,10 +213,15 @@
         exit(2);
     }
 
+    <a name="a16"></a><a class="code" href="group__playlist.html#ga1338451903a81b5423cd84e37784660f">sp_playlistcontainer_add_callbacks</a>(
+        pc,
+        &amp;pc_callbacks,
+        NULL);
+
     printf(<span class="stringliteral">&quot;jukebox: Looking at %d playlists\n&quot;</span>, <a class="code" href="group__playlist.html#ga7a1cbf558b2b364b8249d4ce432df700">sp_playlistcontainer_num_playlists</a>(pc));
 
     <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="group__playlist.html#ga7a1cbf558b2b364b8249d4ce432df700">sp_playlistcontainer_num_playlists</a>(pc); ++i) {
-        <a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl = <a name="a16"></a><a class="code" href="group__playlist.html#ga5ddd8c8064c281a14c6fd7877f522dc6">sp_playlistcontainer_playlist</a>(pc, i);
+        <a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl = <a name="a17"></a><a class="code" href="group__playlist.html#ga5ddd8c8064c281a14c6fd7877f522dc6">sp_playlistcontainer_playlist</a>(pc, i);
 
         <a class="code" href="group__playlist.html#gac90e08b7cf247c51a577ac3b763b6a6f">sp_playlist_add_callbacks</a>(pl, &amp;pl_callbacks, NULL);
 
@@ -240,7 +245,7 @@
     pthread_mutex_unlock(&amp;g_notify_mutex);
 }
 
-<span class="keyword">static</span> <span class="keywordtype">int</span> music_delivery(<a class="code" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53" title="Representation of a session.">sp_session</a> *sess, <span class="keyword">const</span> <a name="_a17"></a><a class="code" href="structsp__audioformat.html">sp_audioformat</a> *format,
+<span class="keyword">static</span> <span class="keywordtype">int</span> music_delivery(<a class="code" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53" title="Representation of a session.">sp_session</a> *sess, <span class="keyword">const</span> <a name="_a18"></a><a class="code" href="structsp__audioformat.html">sp_audioformat</a> *format,
                           <span class="keyword">const</span> <span class="keywordtype">void</span> *frames, <span class="keywordtype">int</span> num_frames)
 {
     audio_fifo_t *af = &amp;g_audiofifo;
@@ -253,13 +258,13 @@
     pthread_mutex_lock(&amp;af-&gt;mutex);
 
     <span class="comment">/* Buffer one second of audio */</span>
-    <span class="keywordflow">if</span> (af-&gt;qlen &gt; format-&gt;<a name="a18"></a><a class="code" href="structsp__audioformat.html#a2eb66d38a418d5c0afe284d4d45a619d" title="Audio sample rate, in samples per second.">sample_rate</a>) {
+    <span class="keywordflow">if</span> (af-&gt;qlen &gt; format-&gt;<a name="a19"></a><a class="code" href="structsp__audioformat.html#a2eb66d38a418d5c0afe284d4d45a619d" title="Audio sample rate, in samples per second.">sample_rate</a>) {
         pthread_mutex_unlock(&amp;af-&gt;mutex);
 
         <span class="keywordflow">return</span> 0;
     }
 
-    s = num_frames * <span class="keyword">sizeof</span>(int16_t) * format-&gt;<a name="a19"></a><a class="code" href="structsp__audioformat.html#ab6b47d8d0ebfaab73229d707dc8bf0b8" title="Number of channels. Currently 1 or 2.">channels</a>;
+    s = num_frames * <span class="keyword">sizeof</span>(int16_t) * format-&gt;<a name="a20"></a><a class="code" href="structsp__audioformat.html#ab6b47d8d0ebfaab73229d707dc8bf0b8" title="Number of channels. Currently 1 or 2.">channels</a>;
 
     afd = malloc(<span class="keyword">sizeof</span>(audio_fifo_data_t) + s);
     memcpy(afd-&gt;samples, frames, s);
@@ -283,6 +288,7 @@
 {
     pthread_mutex_lock(&amp;g_notify_mutex);
     g_playback_done = 1;
+    g_notify_do = 1;
     pthread_cond_signal(&amp;g_notify_cond);
     pthread_mutex_unlock(&amp;g_notify_mutex);
 }
@@ -303,7 +309,7 @@
     }
 }
 
-<span class="keyword">static</span> <a name="_a20"></a><a class="code" href="structsp__session__callbacks.html">sp_session_callbacks</a> session_callbacks = {
+<span class="keyword">static</span> <a name="_a21"></a><a class="code" href="structsp__session__callbacks.html">sp_session_callbacks</a> session_callbacks = {
     .logged_in = &amp;logged_in,
     .notify_main_thread = &amp;notify_main_thread,
     .music_delivery = &amp;music_delivery,
@@ -313,7 +319,7 @@
     .end_of_track = &amp;end_of_track,
 };
 
-<span class="keyword">static</span> <a name="_a21"></a><a class="code" href="structsp__session__config.html">sp_session_config</a> spconfig = {
+<span class="keyword">static</span> <a name="_a22"></a><a class="code" href="structsp__session__config.html">sp_session_config</a> spconfig = {
     .api_version = SPOTIFY_API_VERSION,
     .cache_location = <span class="stringliteral">&quot;tmp&quot;</span>,
     .settings_location = <span class="stringliteral">&quot;tmp&quot;</span>,
@@ -334,7 +340,7 @@
         g_currenttrack = NULL;
         <a class="code" href="group__session.html#ga91f2b527a7b02d688b8ef8b24060f70a">sp_session_player_unload</a>(g_sess);
         <span class="keywordflow">if</span> (g_remove_tracks) {
-            <a name="a22"></a><a class="code" href="group__playlist.html#gabd62cd7ff9484b4c31ff7f159ec41b6a">sp_playlist_remove_tracks</a>(g_jukeboxlist, &amp;tracks, 1);
+            <a name="a23"></a><a class="code" href="group__playlist.html#gabd62cd7ff9484b4c31ff7f159ec41b6a">sp_playlist_remove_tracks</a>(g_jukeboxlist, &amp;tracks, 1);
         } <span class="keywordflow">else</span> {
             ++g_track_index;
             try_jukebox_start();
@@ -388,9 +394,9 @@
     audio_init(&amp;g_audiofifo);
 
     <span class="comment">/* Create session */</span>
-    spconfig.<a name="a23"></a><a class="code" href="structsp__session__config.html#ab10b332fe29b941162fd1d9ea1003b82" title="The size of the application key in bytes.">application_key_size</a> = g_appkey_size;
+    spconfig.<a name="a24"></a><a class="code" href="structsp__session__config.html#ab10b332fe29b941162fd1d9ea1003b82" title="The size of the application key in bytes.">application_key_size</a> = g_appkey_size;
 
-    err = <a name="a24"></a><a class="code" href="group__session.html#gaf2891f2daced4ff6da84219d6376b3aa">sp_session_create</a>(&amp;spconfig, &amp;sp);
+    err = <a name="a25"></a><a class="code" href="group__session.html#gaf2891f2daced4ff6da84219d6376b3aa">sp_session_create</a>(&amp;spconfig, &amp;sp);
 
     <span class="keywordflow">if</span> (<a class="code" href="group__error.html#ggafd27986ce4cd9eeaeca8adda83c9eb6ba16cb277dc84328e4b2c0cf6d5a0c0b8d" title="No errors encountered.">SP_ERROR_OK</a> != err) {
         fprintf(stderr, <span class="stringliteral">&quot;Unable to create session: %s\n&quot;</span>,
@@ -403,17 +409,12 @@
     pthread_mutex_init(&amp;g_notify_mutex, NULL);
     pthread_cond_init(&amp;g_notify_cond, NULL);
 
-    <a name="a25"></a><a class="code" href="group__playlist.html#ga1338451903a81b5423cd84e37784660f">sp_playlistcontainer_add_callbacks</a>(
-        <a class="code" href="group__session.html#ga319767f0b795f1c46a08390b587c5671">sp_session_playlistcontainer</a>(g_sess),
-        &amp;pc_callbacks,
-        NULL);
-
-    <a name="a26"></a><a class="code" href="group__session.html#gac2e84f678eb00f08c2a8e5a9a73a02a2">sp_session_login</a>(sp, username, password, 0);
+    <a name="a26"></a><a class="code" href="group__session.html#ga3b02370d51062088a1eb6b067f66ffb6">sp_session_login</a>(sp, username, password, 0, NULL);
     pthread_mutex_lock(&amp;g_notify_mutex);
 
     <span class="keywordflow">for</span> (;;) {
         <span class="keywordflow">if</span> (next_timeout == 0) {
-            <span class="keywordflow">while</span>(!g_notify_do &amp;&amp; !g_playback_done)
+            <span class="keywordflow">while</span>(!g_notify_do)
                 pthread_cond_wait(&amp;g_notify_cond, &amp;g_notify_mutex);
         } <span class="keywordflow">else</span> {
             <span class="keyword">struct </span>timespec ts;
@@ -451,7 +452,7 @@
 </pre></div> </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Mon Oct 31 2011 15:30:12.<br>
-Copyright &copy; 2006&ndash;2009 Spotify Ltd</small></address>
+Generated on Wed Mar 28 2012 16:22:31.<br>
+Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

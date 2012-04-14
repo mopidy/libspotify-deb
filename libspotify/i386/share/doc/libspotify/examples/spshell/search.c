@@ -85,7 +85,7 @@ static void print_search(sp_search *search)
  * @param browse    The browse result object that is now done
  * @param userdata  The opaque pointer given to sp_artistbrowse_create()
  */
-static void search_complete(sp_search *search, void *userdata)
+static void SP_CALLCONV search_complete(sp_search *search, void *userdata)
 {
 	if (sp_search_error(search) == SP_ERROR_OK)
 		print_search(search);
@@ -126,7 +126,7 @@ int cmd_search(int argc, char **argv)
 		snprintf(query + strlen(query), sizeof(query) - strlen(query), "%s%s",
 			 i == 1 ? "" : " ", argv[i]);
 
-	sp_search_create(g_session, query, 0, 100, 0, 100, 0, 100, &search_complete, NULL);
+	sp_search_create(g_session, query, 0, 100, 0, 100, 0, 100, 0, 100, SP_SEARCH_STANDARD, &search_complete, NULL);
 	return 0;
 }
 
@@ -136,71 +136,6 @@ int cmd_search(int argc, char **argv)
  */
 int cmd_whatsnew(int argc, char **argv)
 {
-	sp_search_create(g_session, "tag:new", 0, 0, 0, 250, 0, 0, &search_complete, NULL);
-	return 0;
-}
-
-
-
-/**
- *
- */
-struct {
-	const char *name;
-	sp_radio_genre id;
-} radiogenres[] = {
-	{ "AltPopRock",     SP_RADIO_GENRE_ALT_POP_ROCK },
-	{ "Blues",          SP_RADIO_GENRE_BLUES        },
-	{ "Country",        SP_RADIO_GENRE_COUNTRY      },
-	{ "Disco",          SP_RADIO_GENRE_DISCO        },
-	{ "Funk",           SP_RADIO_GENRE_FUNK         },
-	{ "Hardrock",       SP_RADIO_GENRE_HARD_ROCK    },
-	{ "HeavyMetal",     SP_RADIO_GENRE_HEAVY_METAL  },
-	{ "Rap",            SP_RADIO_GENRE_RAP          },
-	{ "House",          SP_RADIO_GENRE_HOUSE        },
-	{ "Jazz",           SP_RADIO_GENRE_JAZZ         },
-	{ "NewWave",        SP_RADIO_GENRE_NEW_WAVE     },
-	{ "RnB",            SP_RADIO_GENRE_RNB          },
-	{ "Pop",            SP_RADIO_GENRE_POP          },
-	{ "Punk",           SP_RADIO_GENRE_PUNK         },
-	{ "Reggae",         SP_RADIO_GENRE_REGGAE       },
-	{ "PopRock",        SP_RADIO_GENRE_POP_ROCK     },
-	{ "Soul",           SP_RADIO_GENRE_SOUL         },
-	{ "Techno",         SP_RADIO_GENRE_TECHNO       },
-};
-
-
-
-/**
- *
- */
-static void radio_usage(void)
-{
-	int i;
-	fprintf(stderr, "Usage: radio <startyear> <stopyear> [<genre> ...]\n");
-	fprintf(stderr, "  Genres:\n");
-	for(i = 0; i < sizeof(radiogenres) / sizeof(radiogenres[0]); i++)
-		fprintf(stderr, "\t%s\n", radiogenres[i].name);
-}
-
-/**
- *
- */
-int cmd_radio(int argc, char **argv)
-{
-	sp_radio_genre mask = 0;
-	int i, j;
-
-	if (argc < 3) {
-		radio_usage();
-		return -1;
-	}
-
-	for(i = 3; i < argc; i++)
-		for(j = 0; j < sizeof(radiogenres) / sizeof(radiogenres[0]); j++)
-			if (!strcasecmp(radiogenres[j].name, argv[i]))
-				mask |= radiogenres[j].id;
-
-	sp_radio_search_create(g_session, atoi(argv[1]), atoi(argv[2]), mask, &search_complete, NULL);
+	sp_search_create(g_session, "tag:new", 0, 0, 0, 250, 0, 0, 0, 0, SP_SEARCH_STANDARD, &search_complete, NULL);
 	return 0;
 }

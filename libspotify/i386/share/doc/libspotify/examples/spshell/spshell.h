@@ -25,6 +25,9 @@
 #define SPSHELL_H__
 
 #include <stdlib.h>
+#ifndef WIN32
+#include <stdint.h>
+#endif
 #include <stdio.h>
 #include <libspotify/api.h>
 
@@ -36,13 +39,17 @@
 #define strcasecmp lstrcmp
 #endif 
 
+#ifndef PRIx64
+#define PRIx64 "llx"
+#endif
+
 extern sp_session *g_session;
 
 extern void (*metadata_updated_fn)(void);
 
-extern int spshell_init(const char *username, const char *password, int selftest);
+extern int spshell_init(const char *username, const char *password, const char *blob, int selftest);
 
-extern void notify_main_thread(sp_session *session);
+extern void SP_CALLCONV notify_main_thread(sp_session *session);
 
 extern void start_prompt(void);
 
@@ -54,11 +61,11 @@ extern void test_finished(void);
 
 extern void test_process(void);
 
-extern void end_of_track(sp_session *s);
+extern void SP_CALLCONV end_of_track(sp_session *s);
 
-extern int music_delivery(sp_session *s, const sp_audioformat *fmt, const void *frames, int num_frames);
+extern int SP_CALLCONV music_delivery(sp_session *s, const sp_audioformat *fmt, const void *frames, int num_frames);
 
-extern void play_token_lost(sp_session *s);
+extern void SP_CALLCONV play_token_lost(sp_session *s);
 
 #endif
 
