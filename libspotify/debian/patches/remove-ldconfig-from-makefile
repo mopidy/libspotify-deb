@@ -1,7 +1,7 @@
 Index: libspotify/amd64/Makefile
 ===================================================================
---- libspotify.orig/amd64/Makefile	2012-02-22 17:03:16.035205316 +0100
-+++ libspotify/amd64/Makefile	2012-02-23 11:30:40.996142358 +0100
+--- libspotify.orig/amd64/Makefile	2012-03-28 18:27:05.000000000 +0200
++++ libspotify/amd64/Makefile	2012-04-14 21:06:12.783515658 +0200
 @@ -15,8 +15,6 @@
  	mkdir -p $(prefix)/lib/pkgconfig
  	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
@@ -10,11 +10,11 @@ Index: libspotify/amd64/Makefile
 -
  uninstall:
  	rm -rf $(prefix)/include/libspotify
- 	rm -f  $(prefix)/lib/libspotify.so.10.1.16
+ 	rm -f  $(prefix)/lib/libspotify.so.11.1.60
 Index: libspotify/i386/Makefile
 ===================================================================
---- libspotify.orig/i386/Makefile	2012-02-22 17:03:15.964892816 +0100
-+++ libspotify/i386/Makefile	2012-02-23 11:30:29.855518461 +0100
+--- libspotify.orig/i386/Makefile	2012-03-28 18:26:05.000000000 +0200
++++ libspotify/i386/Makefile	2012-04-14 21:06:12.783515658 +0200
 @@ -15,8 +15,6 @@
  	mkdir -p $(prefix)/lib/pkgconfig
  	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
@@ -23,11 +23,11 @@ Index: libspotify/i386/Makefile
 -
  uninstall:
  	rm -rf $(prefix)/include/libspotify
- 	rm -f  $(prefix)/lib/libspotify.so.10.1.16
+ 	rm -f  $(prefix)/lib/libspotify.so.11.1.60
 Index: libspotify/armel/Makefile
 ===================================================================
---- libspotify.orig/armel/Makefile	2012-02-23 11:28:18.863330317 +0100
-+++ libspotify/armel/Makefile	2012-02-23 11:30:20.761767547 +0100
+--- libspotify.orig/armel/Makefile	2012-03-28 18:22:29.000000000 +0200
++++ libspotify/armel/Makefile	2012-04-14 21:06:12.783515658 +0200
 @@ -15,8 +15,6 @@
  	mkdir -p $(prefix)/lib/pkgconfig
  	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
@@ -36,4 +36,4 @@ Index: libspotify/armel/Makefile
 -
  uninstall:
  	rm -rf $(prefix)/include/libspotify
- 	rm -f  $(prefix)/lib/libspotify.so.10.1.16
+ 	rm -f  $(prefix)/lib/libspotify.so.11.1.60
