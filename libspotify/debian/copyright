@@ -5,7 +5,7 @@ This work was packaged for Debian by:
 
 It was downloaded from:
 
-    http://developer.spotify.com/en/libspotify/
+    https://developer.spotify.com/technologies/libspotify/
 
 Upstream Author(s):
 
@@ -13,17 +13,17 @@ Upstream Author(s):
 
 Copyright:
 
-    Copyright (C) 2006-2010 Spotify Ltd
+    Copyright (C) 2006-2012 Spotify Ltd
 
 License:
 
     For the current terms and conditions, please read:
 
-    http://developer.spotify.com/en/libspotify/terms-of-use/
+    https://developer.spotify.com/technologies/libspotify/#terms-of-use
 
 The Debian packaging is:
 
-    Copyright (C) 2011 Stein Magnus Jodal <stein.magnus@jodal.no>
+    Copyright (C) 2011-2012 Stein Magnus Jodal <stein.magnus@jodal.no>
 
 and is licensed under the Apache License, Version 2.0,
 see "/usr/share/common-licenses/Apache-2.0".
