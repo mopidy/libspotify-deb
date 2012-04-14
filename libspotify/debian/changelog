@@ -1,3 +1,13 @@
+libspotify (11.1.60-1) precise; urgency=low
+
+  * New upstream release.
+  * Update README.source instructions.
+  * Update link to upstream terms of use.
+  * Update upstream and package copyrights.
+  * Update watch file to match new upstream site.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Sat, 14 Apr 2012 20:54:27 +0200
+
 libspotify (10.1.16-2) unstable; urgency=low
 
   * Added armv7 package as armel.
