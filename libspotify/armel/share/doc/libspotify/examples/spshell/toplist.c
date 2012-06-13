@@ -44,7 +44,7 @@ static void print_artist(int index, sp_artist *artist)
 	char url[200];
 	printf("  Artist %3d: \"%s\"\n", index, sp_artist_name(artist));
 
-	l = sp_link_create_from_artist_portrait(artist);
+	l = sp_link_create_from_artist_portrait(artist, SP_IMAGE_SIZE_NORMAL);
 	if(l != NULL) {
 		sp_link_as_string(l, url, sizeof(url));
 		printf("    Portrait: %s\n", url);

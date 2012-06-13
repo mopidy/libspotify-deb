@@ -110,9 +110,9 @@ static void trim(char *buf)
  */
 int main(int argc, char **argv)
 {
-	const char *username;
+	const char *username = NULL;
 	const char *blob = NULL;
-	const char *password;
+	const char *password = NULL;
 	int selftest = 0;
 	char username_buf[256];
 	int r;
@@ -121,9 +121,15 @@ int main(int argc, char **argv)
 
 	printf("Using libspotify %s\n", sp_build_id());
 	r = 0;
-	while ((ch = getopt(argc, argv, "tb:")) != -1) {
+	while ((ch = getopt(argc, argv, "tb:u:p:")) != -1) {
 
 		switch (ch) {
+		case 'u':
+		  	username = optarg;
+			break;
+		case 'p':
+		  	password = optarg;
+			break;
 		case 'b':
 			blob = optarg;
 			r +=2;
@@ -136,11 +142,6 @@ int main(int argc, char **argv)
 			break;
 		}
 	}
-
-	argv += r;
-	argc -= r;
-	username = argc > 1 ? argv[1] : NULL;
-	password = argc > 2 ? argv[2] : NULL;
 
 	if (username == NULL) {
 		printf("Username (just press enter to login with stored credentials): ");

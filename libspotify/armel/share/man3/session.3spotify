@@ -1,4 +1,4 @@
-.TH "Session handling" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Session handling" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -29,7 +29,7 @@ Session handling \-
 
 .in +1c
 .ti -1c
-.RI "#define \fBSPOTIFY_API_VERSION\fP   11"
+.RI "#define \fBSPOTIFY_API_VERSION\fP   12"
 .br
 .in -1c
 .SS "Typedefs"
@@ -61,6 +61,9 @@ Session handling \-
 .br
 .ti -1c
 .RI "typedef enum \fBsp_track_offline_status\fP \fBsp_track_offline_status\fP"
+.br
+.ti -1c
+.RI "typedef enum \fBsp_image_size\fP \fBsp_image_size\fP"
 .br
 .ti -1c
 .RI "typedef struct \fBsp_audio_buffer_stats\fP \fBsp_audio_buffer_stats\fP"
@@ -115,6 +118,9 @@ Session handling \-
 .RI "enum \fBsp_track_offline_status\fP { \fBSP_TRACK_OFFLINE_NO\fP =  0, \fBSP_TRACK_OFFLINE_WAITING\fP =  1, \fBSP_TRACK_OFFLINE_DOWNLOADING\fP =  2, \fBSP_TRACK_OFFLINE_DONE\fP =  3, \fBSP_TRACK_OFFLINE_ERROR\fP =  4, \fBSP_TRACK_OFFLINE_DONE_EXPIRED\fP =  5, \fBSP_TRACK_OFFLINE_LIMIT_EXCEEDED\fP =  6, \fBSP_TRACK_OFFLINE_DONE_RESYNC\fP =  7 }"
 .br
 .ti -1c
+.RI "enum \fBsp_image_size\fP { \fBSP_IMAGE_SIZE_NORMAL\fP =  0, \fBSP_IMAGE_SIZE_SMALL\fP =  1, \fBSP_IMAGE_SIZE_LARGE\fP =  2 }"
+.br
+.ti -1c
 .RI "enum \fBsp_connection_type\fP { \fBSP_CONNECTION_TYPE_UNKNOWN\fP =  0, \fBSP_CONNECTION_TYPE_NONE\fP =  1, \fBSP_CONNECTION_TYPE_MOBILE\fP =  2, \fBSP_CONNECTION_TYPE_MOBILE_ROAMING\fP =  3, \fBSP_CONNECTION_TYPE_WIFI\fP =  4, \fBSP_CONNECTION_TYPE_WIRED\fP =  5 }"
 .br
 .ti -1c
@@ -131,10 +137,10 @@ Session handling \-
 .RI "\fBsp_error\fP \fBsp_session_create\fP (const \fBsp_session_config\fP *config, \fBsp_session\fP **sess)"
 .br
 .ti -1c
-.RI "void \fBsp_session_release\fP (\fBsp_session\fP *sess)"
+.RI "\fBsp_error\fP \fBsp_session_release\fP (\fBsp_session\fP *sess)"
 .br
 .ti -1c
-.RI "void \fBsp_session_login\fP (\fBsp_session\fP *session, const char *username, const char *password, bool remember_me, const char *blob)"
+.RI "\fBsp_error\fP \fBsp_session_login\fP (\fBsp_session\fP *session, const char *username, const char *password, bool remember_me, const char *blob)"
 .br
 .ti -1c
 .RI "\fBsp_error\fP \fBsp_session_relogin\fP (\fBsp_session\fP *session)"
@@ -143,16 +149,19 @@ Session handling \-
 .RI "int \fBsp_session_remembered_user\fP (\fBsp_session\fP *session, char *buffer, size_t buffer_size)"
 .br
 .ti -1c
-.RI "void \fBsp_session_forget_me\fP (\fBsp_session\fP *session)"
+.RI "const char * \fBsp_session_user_name\fP (\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_session_forget_me\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_user\fP * \fBsp_session_user\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
-.RI "void \fBsp_session_logout\fP (\fBsp_session\fP *session)"
+.RI "\fBsp_error\fP \fBsp_session_logout\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
-.RI "void \fBsp_session_flush_caches\fP (\fBsp_session\fP *session)"
+.RI "\fBsp_error\fP \fBsp_session_flush_caches\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_connectionstate\fP \fBsp_session_connectionstate\fP (\fBsp_session\fP *session)"
@@ -161,22 +170,22 @@ Session handling \-
 .RI "void * \fBsp_session_userdata\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
-.RI "void \fBsp_session_set_cache_size\fP (\fBsp_session\fP *session, size_t size)"
+.RI "\fBsp_error\fP \fBsp_session_set_cache_size\fP (\fBsp_session\fP *session, size_t size)"
 .br
 .ti -1c
-.RI "void \fBsp_session_process_events\fP (\fBsp_session\fP *session, int *next_timeout)"
+.RI "\fBsp_error\fP \fBsp_session_process_events\fP (\fBsp_session\fP *session, int *next_timeout)"
 .br
 .ti -1c
 .RI "\fBsp_error\fP \fBsp_session_player_load\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
 .br
 .ti -1c
-.RI "void \fBsp_session_player_seek\fP (\fBsp_session\fP *session, int offset)"
+.RI "\fBsp_error\fP \fBsp_session_player_seek\fP (\fBsp_session\fP *session, int offset)"
 .br
 .ti -1c
-.RI "void \fBsp_session_player_play\fP (\fBsp_session\fP *session, bool play)"
+.RI "\fBsp_error\fP \fBsp_session_player_play\fP (\fBsp_session\fP *session, bool play)"
 .br
 .ti -1c
-.RI "void \fBsp_session_player_unload\fP (\fBsp_session\fP *session)"
+.RI "\fBsp_error\fP \fBsp_session_player_unload\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
 .RI "\fBsp_error\fP \fBsp_session_player_prefetch\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
@@ -197,22 +206,40 @@ Session handling \-
 .RI "\fBsp_playlistcontainer\fP * \fBsp_session_publishedcontainer_for_user_create\fP (\fBsp_session\fP *session, const char *canonical_username)"
 .br
 .ti -1c
-.RI "void \fBsp_session_preferred_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate)"
+.RI "\fBsp_error\fP \fBsp_session_preferred_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate)"
 .br
 .ti -1c
-.RI "void \fBsp_session_preferred_offline_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate, bool allow_resync)"
+.RI "\fBsp_error\fP \fBsp_session_preferred_offline_bitrate\fP (\fBsp_session\fP *session, \fBsp_bitrate\fP bitrate, bool allow_resync)"
 .br
 .ti -1c
 .RI "bool \fBsp_session_get_volume_normalization\fP (\fBsp_session\fP *session)"
 .br
 .ti -1c
-.RI "void \fBsp_session_set_volume_normalization\fP (\fBsp_session\fP *session, bool on)"
+.RI "\fBsp_error\fP \fBsp_session_set_volume_normalization\fP (\fBsp_session\fP *session, bool on)"
 .br
 .ti -1c
-.RI "void \fBsp_session_set_connection_type\fP (\fBsp_session\fP *session, \fBsp_connection_type\fP type)"
+.RI "\fBsp_error\fP \fBsp_session_set_private_session\fP (\fBsp_session\fP *session, bool enabled)"
 .br
 .ti -1c
-.RI "void \fBsp_session_set_connection_rules\fP (\fBsp_session\fP *session, \fBsp_connection_rules\fP rules)"
+.RI "bool \fBsp_session_is_private_session\fP (\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_session_set_scrobbling\fP (\fBsp_session\fP *session, sp_social_provider provider, sp_scrobbling_state state)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_session_is_scrobbling\fP (\fBsp_session\fP *session, sp_social_provider provider, sp_scrobbling_state *state)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_session_is_scrobbling_possible\fP (\fBsp_session\fP *session, sp_social_provider provider, bool *out)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_session_set_social_credentials\fP (\fBsp_session\fP *session, sp_social_provider provider, const char *username, const char *password)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_session_set_connection_type\fP (\fBsp_session\fP *session, \fBsp_connection_type\fP type)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_session_set_connection_rules\fP (\fBsp_session\fP *session, \fBsp_connection_rules\fP rules)"
 .br
 .ti -1c
 .RI "int \fBsp_offline_tracks_to_sync\fP (\fBsp_session\fP *session)"
@@ -235,7 +262,7 @@ Session handling \-
 The concept of a session is fundamental for all communication with the Spotify ecosystem - it is the object responsible for communicating with the Spotify service. You will need to instantiate a session that then can be used to request artist information, perform searches etc. 
 .SH "Define Documentation"
 .PP 
-.SS "#define SPOTIFY_API_VERSION   11"Current version of the application interface, that is, the API described by this file.
+.SS "#define SPOTIFY_API_VERSION   12"Current version of the application interface, that is, the API described by this file.
 .PP
 This value should be set in the \fBsp_session_config\fP struct passed to \fBsp_session_create()\fP.
 .PP
@@ -251,6 +278,7 @@ If an (upgraded) library is no longer compatible with this version the error \fB
 The default is SP_CONNECTION_RULE_NETWORK | SP_CONNECTION_RULE_ALLOW_SYNC 
 .SS "typedef enum \fBsp_connection_type\fP  \fBsp_connection_type\fP"Current connection type set using \fBsp_session_set_connection_type()\fP 
 .SS "typedef enum \fBsp_connectionstate\fP  \fBsp_connectionstate\fP"Describes the current state of the connection 
+.SS "typedef enum \fBsp_image_size\fP  \fBsp_image_size\fP"Image size 
 .SS "typedef struct \fBsp_offline_sync_status\fP  \fBsp_offline_sync_status\fP"Offline sync status 
 .SS "typedef enum \fBsp_playlist_offline_status\fP  \fBsp_playlist_offline_status\fP"Playlist offline status 
 .SS "typedef enum \fBsp_playlist_type\fP  \fBsp_playlist_type\fP"Playlist types 
@@ -366,6 +394,19 @@ The connection state is undefined.
 .TP
 \fB\fISP_CONNECTION_STATE_OFFLINE \fP\fP
 Logged in in offline mode. 
+.SS "enum \fBsp_image_size\fP"Image size 
+.PP
+\fBEnumerator: \fP
+.in +1c
+.TP
+\fB\fISP_IMAGE_SIZE_NORMAL \fP\fP
+Normal image size. 
+.TP
+\fB\fISP_IMAGE_SIZE_SMALL \fP\fP
+Small image size. 
+.TP
+\fB\fISP_IMAGE_SIZE_LARGE \fP\fP
+Large image size. 
 .SS "enum \fBsp_playlist_offline_status\fP"Playlist offline status 
 .PP
 \fBEnumerator: \fP
@@ -528,11 +569,32 @@ Here is a snippet from \fCspshell.c:\fP
     // free-text string [1, 255] characters.
     config.user_agent = 'spshell';
 
-#if SP_WITH_CURL
+//ifdef SP_WITH_CURL
+#ifdef SP_WITH_CURL
     config.ca_certs_filename = '../cacerts.pem';
 #endif
+//endif
 
     // Register the callbacks.
+    callbacks.logged_in = logged_in;
+    callbacks.logged_out = logged_out;
+    callbacks.metadata_updated = metadata_updated;
+    callbacks.connection_error = connection_error;
+    callbacks.notify_main_thread = notify_main_thread;
+#if WITH_TEST_COMMAND
+    callbacks.music_delivery = music_delivery;
+    callbacks.play_token_lost = play_token_lost;
+    callbacks.end_of_track = end_of_track;
+#endif
+    callbacks.log_message = log_message;
+    callbacks.offline_status_updated = offline_status_updated;
+    callbacks.credentials_blob_updated = credentials_blob_updated;
+//ifdef SP_LIBSPOTIFY_WITH_SCROBBLING
+#ifdef SP_LIBSPOTIFY_WITH_SCROBBLING
+    callbacks.scrobble_error = scrobble_error;
+    callbacks.private_session_mode_changed = private_session_mode_changed;
+#endif
+//endif
     config.callbacks = &callbacks;
 
     error = sp_session_create(&config, &session);
@@ -562,7 +624,7 @@ One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_BAD_API_VE
 \fBExamples: \fP
 .in +1c
 \fBjukebox.c\fP.
-.SS "void sp_session_flush_caches (\fBsp_session\fP * session)"Flush the caches
+.SS "\fBsp_error\fP sp_session_flush_caches (\fBsp_session\fP * session)"Flush the caches
 .PP
 This will make libspotify write all data that is meant to be stored on disk to the disk immediately. libspotify does this periodically by itself and also on logout. So under normal conditions this should never need to be used.
 .PP
@@ -571,12 +633,22 @@ This will make libspotify write all data that is meant to be stored on disk to t
 \fIsession\fP Your session object 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
 
-.SS "void sp_session_forget_me (\fBsp_session\fP * session)"Remove stored credentials in libspotify. If no credentials are currently stored, nothing will happen.
+.SS "\fBsp_error\fP sp_session_forget_me (\fBsp_session\fP * session)"Remove stored credentials in libspotify. If no credentials are currently stored, nothing will happen.
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsession\fP Your session object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -616,14 +688,61 @@ You need to release the playlist when you are done with it.
 .RE
 .PP
 
-.SS "void sp_session_login (\fBsp_session\fP * session, const char * username, const char * password, bool remember_me, const char * blob)"Logs in the specified username/password combo. This initiates the login in the background. A callback is called when login is complete
+.SS "bool sp_session_is_private_session (\fBsp_session\fP * session)"Return True if private session is enabled
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if private session is enabled 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_session_is_scrobbling (\fBsp_session\fP * session, sp_social_provider provider, sp_scrobbling_state * state)"Return the scrobbling state. This makes it possible to find out if scrobbling is locally overrided or if the global setting is used.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIprovider\fP The scrobbling provider referred to 
+.br
+\fIstate\fP The output variable receiving the sp_scrobbling_state state
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+error code 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_session_is_scrobbling_possible (\fBsp_session\fP * session, sp_social_provider provider, bool * out)"Return True if scrobbling settings should be shown to the user. Currently this setting is relevant only to the facebook provider. The returned value may be false if the user is not connected to facebook, or if the user has opted out from facebook social graph.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIprovider\fP The scrobbling provider referred to 
+.br
+\fIout\fP True iff scrobbling is possible
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+error code 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_session_login (\fBsp_session\fP * session, const char * username, const char * password, bool remember_me, const char * blob)"Logs in the specified username/password combo. This initiates the login in the background. A callback is called when login is complete
 .PP
 An application MUST NEVER store the user's password in clear text. If automatic relogin is required, use \fBsp_session_relogin()\fP
 .PP
 Here is a snippet from \fCspshell.c:\fP  
 .PP
 .nf
-      sp_session_login(session, username, password, 1, blob);
+     sp_session_login(session, username, password, 1, blob);
     }
 
 .fi
@@ -642,18 +761,28 @@ Here is a snippet from \fCspshell.c:\fP
 \fIblob\fP If you have received a blob in the credentials_blob_updated you can pas this here instead of password 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
 
 .PP
 \fBExamples: \fP
 .in +1c
 \fBjukebox.c\fP.
-.SS "void sp_session_logout (\fBsp_session\fP * session)"Logs out the currently logged in user
+.SS "\fBsp_error\fP sp_session_logout (\fBsp_session\fP * session)"Logs out the currently logged in user
 .PP
 Always call this before terminating the application and libspotify is currently logged in. Otherwise, the settings and cache may be lost.
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsession\fP Your session object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -670,7 +799,7 @@ After successfully loading the track, you have the option of running \fBsp_sessi
 .PP
 \fBReturns:\fP
 .RS 4
-One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_MISSING_CALLBACK SP_ERROR_RESOURCE_NOT_LOADED SP_ERROR_TRACK_NOT_PLAYABLE 
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_MISSING_CALLBACK SP_ERROR_TRACK_NOT_PLAYABLE 
 .RE
 .PP
 
@@ -678,13 +807,18 @@ One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_MISSING_CA
 \fBExamples: \fP
 .in +1c
 \fBjukebox.c\fP.
-.SS "void sp_session_player_play (\fBsp_session\fP * session, bool play)"Play or pause the currently loaded track
+.SS "\fBsp_error\fP sp_session_player_play (\fBsp_session\fP * session, bool play)"Play or pause the currently loaded track
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsession\fP Your session object 
 .br
 \fIplay\fP If set to true, playback will occur. If set to false, the playback will be paused. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -714,7 +848,7 @@ Prefetching is only possible if a cache is configured
 .RE
 .PP
 
-.SS "void sp_session_player_seek (\fBsp_session\fP * session, int offset)"Seek to position in the currently loaded track
+.SS "\fBsp_error\fP sp_session_player_seek (\fBsp_session\fP * session, int offset)"Seek to position in the currently loaded track
 .PP
 \fBParameters:\fP
 .RS 4
@@ -723,14 +857,24 @@ Prefetching is only possible if a cache is configured
 \fIoffset\fP Track position, in milliseconds. 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
 
-.SS "void sp_session_player_unload (\fBsp_session\fP * session)"Stops the currently playing track
+.SS "\fBsp_error\fP sp_session_player_unload (\fBsp_session\fP * session)"Stops the currently playing track
 .PP
 This frees some resources held by libspotify to identify the currently playing track.
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsession\fP Your session object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -755,7 +899,7 @@ Playlist container object, NULL if not logged in
 \fBExamples: \fP
 .in +1c
 \fBjukebox.c\fP.
-.SS "void sp_session_preferred_bitrate (\fBsp_session\fP * session, \fBsp_bitrate\fP bitrate)"Set preferred bitrate for music streaming
+.SS "\fBsp_error\fP sp_session_preferred_bitrate (\fBsp_session\fP * session, \fBsp_bitrate\fP bitrate)"Set preferred bitrate for music streaming
 .PP
 \fBParameters:\fP
 .RS 4
@@ -764,8 +908,13 @@ Playlist container object, NULL if not logged in
 \fIbitrate\fP Preferred bitrate, see \fBsp_bitrate\fP for possible values 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INVALID_ARGUMENT 
+.RE
+.PP
 
-.SS "void sp_session_preferred_offline_bitrate (\fBsp_session\fP * session, \fBsp_bitrate\fP bitrate, bool allow_resync)"Set preferred bitrate for offline sync
+.SS "\fBsp_error\fP sp_session_preferred_offline_bitrate (\fBsp_session\fP * session, \fBsp_bitrate\fP bitrate, bool allow_resync)"Set preferred bitrate for offline sync
 .PP
 \fBParameters:\fP
 .RS 4
@@ -776,14 +925,24 @@ Playlist container object, NULL if not logged in
 \fIallow_resync\fP Set to true if libspotify should resynchronize already synchronized tracks. Usually you should set this to false. 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INVALID_ARGUMENT 
+.RE
+.PP
 
-.SS "void sp_session_process_events (\fBsp_session\fP * session, int * next_timeout)"Make the specified session process any pending events
+.SS "\fBsp_error\fP sp_session_process_events (\fBsp_session\fP * session, int * next_timeout)"Make the specified session process any pending events
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsession\fP Your session object 
 .br
 \fInext_timeout\fP Stores the time (in milliseconds) until you should call this function again 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -808,11 +967,16 @@ Playlist container object, NULL if not logged in.
 .RE
 .PP
 
-.SS "void sp_session_release (\fBsp_session\fP * sess)"Release the session. This will clean up all data and connections associated with the session
+.SS "\fBsp_error\fP sp_session_release (\fBsp_session\fP * sess)"Release the session. This will clean up all data and connections associated with the session
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsess\fP Session object returned from \fBsp_session_create()\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -846,7 +1010,7 @@ The number of characters in the username. If value is greater or equal than \fCb
 .RE
 .PP
 
-.SS "void sp_session_set_cache_size (\fBsp_session\fP * session, size_t size)"Set maximum cache size.
+.SS "\fBsp_error\fP sp_session_set_cache_size (\fBsp_session\fP * session, size_t size)"Set maximum cache size.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -855,8 +1019,13 @@ The number of characters in the username. If value is greater or equal than \fCb
 \fIsize\fP Maximum cache size in megabytes. Setting it to 0 (the default) will let libspotify automatically resize the cache (10% of disk free space) 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
 
-.SS "void sp_session_set_connection_rules (\fBsp_session\fP * session, \fBsp_connection_rules\fP rules)"Set rules for how libspotify connects to Spotify servers and synchronizes offline content
+.SS "\fBsp_error\fP sp_session_set_connection_rules (\fBsp_session\fP * session, \fBsp_connection_rules\fP rules)"Set rules for how libspotify connects to Spotify servers and synchronizes offline content
 .PP
 \fBParameters:\fP
 .RS 4
@@ -875,8 +1044,13 @@ Used in conjunction with \fBsp_session_set_connection_type()\fP to control how l
 \fBsp_connection_rules\fP 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
 
-.SS "void sp_session_set_connection_type (\fBsp_session\fP * session, \fBsp_connection_type\fP type)"Set to true if the connection is currently routed over a roamed connectivity
+.SS "\fBsp_error\fP sp_session_set_connection_type (\fBsp_session\fP * session, \fBsp_connection_type\fP type)"Set to true if the connection is currently routed over a roamed connectivity
 .PP
 \fBParameters:\fP
 .RS 4
@@ -895,14 +1069,94 @@ Used in conjunction with \fBsp_session_set_connection_rules()\fP to control how 
 \fBsp_connection_type\fP 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
 
-.SS "void sp_session_set_volume_normalization (\fBsp_session\fP * session, bool on)"Set volume normalization
+.SS "\fBsp_error\fP sp_session_set_private_session (\fBsp_session\fP * session, bool enabled)"Set if private session is enabled. This disables sharing what the user is listening to to services such as Spotify Social, Facebook and LastFM. The private session will last for a time, and then libspotify will revert to the normal state. The private session is prolonged by user activity.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIenabled\fP True iff private session should be enabled 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_session_set_scrobbling (\fBsp_session\fP * session, sp_social_provider provider, sp_scrobbling_state state)"Set if scrobbling is enabled. This api allows setting local overrides of the global scrobbling settings. Changing the global settings are currently not supported.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIprovider\fP The scrobbling provider referred to 
+.br
+\fIstate\fP The state to set the provider to
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+error code
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+sp_social_provider 
+.PP
+sp_scrobbling_state 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_session_set_social_credentials (\fBsp_session\fP * session, sp_social_provider provider, const char * username, const char * password)"Set the user's credentials with a social provider. Currently this is only relevant for LastFm Call sp_session_set_scrobbling to force an authentication attempt with the LastFm server. If authentication fails a scrobble_error callback will be sent.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIprovider\fP The scrobbling provider referred to 
+.br
+\fIusername\fP The user name 
+.br
+\fIpassword\fP The password
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+error code
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_session_set_scrobbling\fP 
+.PP
+\fBsp_session_callbacks::scrobble_error\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_session_set_volume_normalization (\fBsp_session\fP * session, bool on)"Set volume normalization
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsession\fP Session object 
 .br
 \fIon\fP True iff volume normalization should be enabled 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -977,6 +1231,19 @@ The logged in user (or NULL if not logged in)
 \fBReturns:\fP
 .RS 4
 Country encoded in an integer 'SE' = 'S' << 8 | 'E' 
+.RE
+.PP
+
+.SS "const char* sp_session_user_name (\fBsp_session\fP * session)"Get a pointer to a string representing the user's login username.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Your session object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string representing the login username. 
 .RE
 .PP
 

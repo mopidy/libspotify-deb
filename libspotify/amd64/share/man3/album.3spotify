@@ -1,4 +1,4 @@
-.TH "Album subsystem" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Album subsystem" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,7 +23,7 @@ Album subsystem \-
 .RI "\fBsp_artist\fP * \fBsp_album_artist\fP (\fBsp_album\fP *album)"
 .br
 .ti -1c
-.RI "const byte * \fBsp_album_cover\fP (\fBsp_album\fP *album)"
+.RI "const byte * \fBsp_album_cover\fP (\fBsp_album\fP *album, \fBsp_image_size\fP size)"
 .br
 .ti -1c
 .RI "const char * \fBsp_album_name\fP (\fBsp_album\fP *album)"
@@ -35,10 +35,10 @@ Album subsystem \-
 .RI "\fBsp_albumtype\fP \fBsp_album_type\fP (\fBsp_album\fP *album)"
 .br
 .ti -1c
-.RI "void \fBsp_album_add_ref\fP (\fBsp_album\fP *album)"
+.RI "\fBsp_error\fP \fBsp_album_add_ref\fP (\fBsp_album\fP *album)"
 .br
 .ti -1c
-.RI "void \fBsp_album_release\fP (\fBsp_album\fP *album)"
+.RI "\fBsp_error\fP \fBsp_album_release\fP (\fBsp_album\fP *album)"
 .br
 .in -1c
 .SH "Enumeration Type Documentation"
@@ -61,11 +61,16 @@ Compilation.
 Unknown type. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_album_add_ref (\fBsp_album\fP * album)"Increase the reference count of an album
+.SS "\fBsp_error\fP sp_album_add_ref (\fBsp_album\fP * album)"Increase the reference count of an album
 .PP
 \fBParameters:\fP
 .RS 4
 \fIalbum\fP The album object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -86,11 +91,13 @@ A reference to the artist. NULL if the metadata has not been loaded yet
 \fBExamples: \fP
 .in +1c
 \fBtoplist.c\fP.
-.SS "const byte* sp_album_cover (\fBsp_album\fP * album)"Return image ID representing the album's coverart.
+.SS "const byte* sp_album_cover (\fBsp_album\fP * album, \fBsp_image_size\fP size)"Return image ID representing the album's coverart.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIalbum\fP Album object
+\fIalbum\fP Album object 
+.br
+\fIsize\fP The desired size of the image
 .RE
 .PP
 \fBReturns:\fP
@@ -157,11 +164,16 @@ Name of album. Returned string is valid as long as the album object stays alloca
 \fBExamples: \fP
 .in +1c
 \fBbrowse.c\fP, \fBsearch.c\fP, and \fBtoplist.c\fP.
-.SS "void sp_album_release (\fBsp_album\fP * album)"Decrease the reference count of an album
+.SS "\fBsp_error\fP sp_album_release (\fBsp_album\fP * album)"Decrease the reference count of an album
 .PP
 \fBParameters:\fP
 .RS 4
 \fIalbum\fP The album object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

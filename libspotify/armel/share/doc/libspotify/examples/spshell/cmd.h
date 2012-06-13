@@ -43,6 +43,15 @@ extern int cmd_unstar(int argc, char **argv);
 extern int cmd_starred(int argc, char **argv);
 extern int cmd_inbox(int argc, char **argv);
 extern int cmd_friends(int argc, char **argv);
+extern int cmd_facebook_scrobbling(int argc, char **argv);
+extern int cmd_is_facebook_scrobbling(int argc, char **argv);
+extern int cmd_spotify_social(int argc, char **argv);
+extern int cmd_is_spotify_social(int argc, char **argv);
+extern int cmd_set_lastfm_scrobbling_credentials(int argc, char** argv);
+extern int cmd_lastfm_scrobbling(int argc, char** argv);
+extern int cmd_is_lastfm_scrobbling(int argc, char** argv);
+extern int cmd_private_session(int argc, char** argv);
+extern int cmd_is_private_session(int argc, char** argv);
 
 extern int cmd_playlists(int argc, char **argv);
 extern int cmd_playlist(int argc, char **argv);

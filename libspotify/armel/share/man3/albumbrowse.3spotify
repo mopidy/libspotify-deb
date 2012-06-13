@@ -1,4 +1,4 @@
-.TH "Album browsing" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Album browsing" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -47,10 +47,10 @@ Album browsing \-
 .RI "int \fBsp_albumbrowse_backend_request_duration\fP (\fBsp_albumbrowse\fP *alb)"
 .br
 .ti -1c
-.RI "void \fBsp_albumbrowse_add_ref\fP (\fBsp_albumbrowse\fP *alb)"
+.RI "\fBsp_error\fP \fBsp_albumbrowse_add_ref\fP (\fBsp_albumbrowse\fP *alb)"
 .br
 .ti -1c
-.RI "void \fBsp_albumbrowse_release\fP (\fBsp_albumbrowse\fP *alb)"
+.RI "\fBsp_error\fP \fBsp_albumbrowse_release\fP (\fBsp_albumbrowse\fP *alb)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -72,11 +72,16 @@ When the callback is called, the metadata of all tracks belonging to it will hav
 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_albumbrowse_add_ref (\fBsp_albumbrowse\fP * alb)"Increase the reference count of an album browse result
+.SS "\fBsp_error\fP sp_albumbrowse_add_ref (\fBsp_albumbrowse\fP * alb)"Increase the reference count of an album browse result
 .PP
 \fBParameters:\fP
 .RS 4
 \fIalb\fP The album browse result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -236,11 +241,16 @@ Number of tracks on album
 \fBExamples: \fP
 .in +1c
 \fBbrowse.c\fP.
-.SS "void sp_albumbrowse_release (\fBsp_albumbrowse\fP * alb)"Decrease the reference count of an album browse result
+.SS "\fBsp_error\fP sp_albumbrowse_release (\fBsp_albumbrowse\fP * alb)"Decrease the reference count of an album browse result
 .PP
 \fBParameters:\fP
 .RS 4
 \fIalb\fP The album browse result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

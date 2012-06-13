@@ -43,6 +43,10 @@
 #define PRIx64 "llx"
 #endif
 
+#if USE_STRCMP
+#define strcasecmp strcmp
+#endif
+
 extern sp_session *g_session;
 
 extern void (*metadata_updated_fn)(void);

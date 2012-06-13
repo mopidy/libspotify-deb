@@ -1,3 +1,25 @@
+Version 12
+
+	Added Android support.
+
+	Added functionality for controlling scrobbling.
+
+	Added function sp_session_user_name, suitable for using
+	in conjunction with the credentials_blob_updated callback.
+
+	Added connectionstate_updated callback.
+
+	Added support for low- and high-res images.
+
+	Fixed a bug where libspotify would crash on reusing credentials
+	when password had been changed.
+
+	Fixed a bug where sp_search_total_playlists would always return 0.
+
+	Fixed apparently random crash on multi-core ARM devices.
+
+	Various bug fixes.
+
 Version 11
 
 	The end_of_track() callback in session has changed and is now
@@ -99,9 +121,10 @@ Version 10
 	A new session callback offline_error has been added that
 	is called if there is some general problems with offline
 	synchronization of tracks.
-	The "social" API has been removed from libspotify.
-	This includes sp_session_num_friends(), sp_session_friend(),
-	sp_user_full_name(), sp_user_picture() and sp_user_relation_type()
+	libspotifys social integration requires a HTTPS client.
+	This needs to be supplied by the application.
+	For an example of how to do this (using libcurl) see the
+	spshell example (spshell.c)
 
 Version 9
 

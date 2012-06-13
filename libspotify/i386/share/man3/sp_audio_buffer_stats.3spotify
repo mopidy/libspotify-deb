@@ -1,4 +1,4 @@
-.TH "sp_audio_buffer_stats" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "sp_audio_buffer_stats" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME

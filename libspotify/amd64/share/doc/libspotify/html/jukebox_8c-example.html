@@ -80,7 +80,7 @@
     <span class="keywordflow">if</span> (g_currenttrack &amp;&amp; t != g_currenttrack) {
         <span class="comment">/* Someone changed the current track */</span>
         audio_fifo_flush(&amp;g_audiofifo);
-        <a name="a2"></a><a class="code" href="group__session.html#ga91f2b527a7b02d688b8ef8b24060f70a">sp_session_player_unload</a>(g_sess);
+        <a name="a2"></a><a class="code" href="group__session.html#gafa7ee2803f119451bb8be3bf28746975">sp_session_player_unload</a>(g_sess);
         g_currenttrack = NULL;
     }
 
@@ -99,7 +99,7 @@
     fflush(stdout);
 
     <a name="a6"></a><a class="code" href="group__session.html#gac73bf2c569a43d824439b557d5e4b293">sp_session_player_load</a>(g_sess, t);
-    <a name="a7"></a><a class="code" href="group__session.html#gab09b741570aa0330e9a0b1278ad518a5">sp_session_player_play</a>(g_sess, 1);
+    <a name="a7"></a><a class="code" href="group__session.html#gab66c5915967e4f90db945b118e620624">sp_session_player_play</a>(g_sess, 1);
 }
 
 <span class="comment">/* --------------------------  PLAYLIST CALLBACKS  ------------------------- */</span>
@@ -156,7 +156,7 @@
         printf(<span class="stringliteral">&quot;jukebox: current playlist renamed to \&quot;%s\&quot;.\n&quot;</span>, name);
         g_jukeboxlist = NULL;
         g_currenttrack = NULL;
-        <a class="code" href="group__session.html#ga91f2b527a7b02d688b8ef8b24060f70a">sp_session_player_unload</a>(g_sess);
+        <a class="code" href="group__session.html#gafa7ee2803f119451bb8be3bf28746975">sp_session_player_unload</a>(g_sess);
     }
 }
 
@@ -172,7 +172,7 @@
 <span class="keyword">static</span> <span class="keywordtype">void</span> playlist_added(<a class="code" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7" title="A playlist container (playlist containing other playlists) handle.">sp_playlistcontainer</a> *pc, <a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl,
                            <span class="keywordtype">int</span> position, <span class="keywordtype">void</span> *userdata)
 {
-    <a name="a10"></a><a class="code" href="group__playlist.html#gac90e08b7cf247c51a577ac3b763b6a6f">sp_playlist_add_callbacks</a>(pl, &amp;pl_callbacks, NULL);
+    <a name="a10"></a><a class="code" href="group__playlist.html#gab15fca12d387c69b4998a4d2b48e5b32">sp_playlist_add_callbacks</a>(pl, &amp;pl_callbacks, NULL);
 
     <span class="keywordflow">if</span> (!strcasecmp(<a class="code" href="group__playlist.html#ga61b7e33cc1aedb4e31a2af75ae0ac8cc">sp_playlist_name</a>(pl), g_listname)) {
         g_jukeboxlist = pl;
@@ -183,7 +183,7 @@
 <span class="keyword">static</span> <span class="keywordtype">void</span> playlist_removed(<a class="code" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7" title="A playlist container (playlist containing other playlists) handle.">sp_playlistcontainer</a> *pc, <a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl,
                              <span class="keywordtype">int</span> position, <span class="keywordtype">void</span> *userdata)
 {
-    <a name="a11"></a><a class="code" href="group__playlist.html#ga62926457695bc2f2aaabe76b05eabfdd">sp_playlist_remove_callbacks</a>(pl, &amp;pl_callbacks, NULL);
+    <a name="a11"></a><a class="code" href="group__playlist.html#ga7fcbf909a0fa8bf25f0b1d1e7dd0e160">sp_playlist_remove_callbacks</a>(pl, &amp;pl_callbacks, NULL);
 }
 
 
@@ -213,7 +213,7 @@
         exit(2);
     }
 
-    <a name="a16"></a><a class="code" href="group__playlist.html#ga1338451903a81b5423cd84e37784660f">sp_playlistcontainer_add_callbacks</a>(
+    <a name="a16"></a><a class="code" href="group__playlist.html#ga1976cb49c391cdd2dbe7c40d1bc71570">sp_playlistcontainer_add_callbacks</a>(
         pc,
         &amp;pc_callbacks,
         NULL);
@@ -223,7 +223,7 @@
     <span class="keywordflow">for</span> (i = 0; i &lt; <a class="code" href="group__playlist.html#ga7a1cbf558b2b364b8249d4ce432df700">sp_playlistcontainer_num_playlists</a>(pc); ++i) {
         <a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl = <a name="a17"></a><a class="code" href="group__playlist.html#ga5ddd8c8064c281a14c6fd7877f522dc6">sp_playlistcontainer_playlist</a>(pc, i);
 
-        <a class="code" href="group__playlist.html#gac90e08b7cf247c51a577ac3b763b6a6f">sp_playlist_add_callbacks</a>(pl, &amp;pl_callbacks, NULL);
+        <a class="code" href="group__playlist.html#gab15fca12d387c69b4998a4d2b48e5b32">sp_playlist_add_callbacks</a>(pl, &amp;pl_callbacks, NULL);
 
         <span class="keywordflow">if</span> (!strcasecmp(<a class="code" href="group__playlist.html#ga61b7e33cc1aedb4e31a2af75ae0ac8cc">sp_playlist_name</a>(pl), g_listname)) {
             g_jukeboxlist = pl;
@@ -266,7 +266,7 @@
 
     s = num_frames * <span class="keyword">sizeof</span>(int16_t) * format-&gt;<a name="a20"></a><a class="code" href="structsp__audioformat.html#ab6b47d8d0ebfaab73229d707dc8bf0b8" title="Number of channels. Currently 1 or 2.">channels</a>;
 
-    afd = malloc(<span class="keyword">sizeof</span>(audio_fifo_data_t) + s);
+    afd = malloc(<span class="keyword">sizeof</span>(*afd) + s);
     memcpy(afd-&gt;samples, frames, s);
 
     afd-&gt;nsamples = num_frames;
@@ -304,7 +304,7 @@
     audio_fifo_flush(&amp;g_audiofifo);
 
     <span class="keywordflow">if</span> (g_currenttrack != NULL) {
-        <a class="code" href="group__session.html#ga91f2b527a7b02d688b8ef8b24060f70a">sp_session_player_unload</a>(g_sess);
+        <a class="code" href="group__session.html#gafa7ee2803f119451bb8be3bf28746975">sp_session_player_unload</a>(g_sess);
         g_currenttrack = NULL;
     }
 }
@@ -338,7 +338,7 @@
 
     <span class="keywordflow">if</span> (g_currenttrack) {
         g_currenttrack = NULL;
-        <a class="code" href="group__session.html#ga91f2b527a7b02d688b8ef8b24060f70a">sp_session_player_unload</a>(g_sess);
+        <a class="code" href="group__session.html#gafa7ee2803f119451bb8be3bf28746975">sp_session_player_unload</a>(g_sess);
         <span class="keywordflow">if</span> (g_remove_tracks) {
             <a name="a23"></a><a class="code" href="group__playlist.html#gabd62cd7ff9484b4c31ff7f159ec41b6a">sp_playlist_remove_tracks</a>(g_jukeboxlist, &amp;tracks, 1);
         } <span class="keywordflow">else</span> {
@@ -409,7 +409,7 @@
     pthread_mutex_init(&amp;g_notify_mutex, NULL);
     pthread_cond_init(&amp;g_notify_cond, NULL);
 
-    <a name="a26"></a><a class="code" href="group__session.html#ga3b02370d51062088a1eb6b067f66ffb6">sp_session_login</a>(sp, username, password, 0, NULL);
+    <a name="a26"></a><a class="code" href="group__session.html#ga4533a992a120cacb109c892a852afe2a">sp_session_login</a>(sp, username, password, 0, NULL);
     pthread_mutex_lock(&amp;g_notify_mutex);
 
     <span class="keywordflow">for</span> (;;) {
@@ -441,7 +441,7 @@
         }
 
         <span class="keywordflow">do</span> {
-            <a name="a27"></a><a class="code" href="group__session.html#ga019a640b351de2a1ffe040ed755013f4">sp_session_process_events</a>(sp, &amp;next_timeout);
+            <a name="a27"></a><a class="code" href="group__session.html#gaff27cb730db6debf55e750e39e7fadd7">sp_session_process_events</a>(sp, &amp;next_timeout);
         } <span class="keywordflow">while</span> (next_timeout == 0);
 
         pthread_mutex_lock(&amp;g_notify_mutex);
@@ -452,7 +452,7 @@
 </pre></div> </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:27:08.<br>
+Generated on Wed May 23 2012 09:12:26.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

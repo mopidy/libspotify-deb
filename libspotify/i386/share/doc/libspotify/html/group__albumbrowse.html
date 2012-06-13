@@ -44,8 +44,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__albumbrowse.html#gad3c8df4b75158bba2c06aaefa74c5aa1">sp_albumbrowse_track</a> (<a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *alb, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__albumbrowse.html#ga868f3f3263f5033ae1fba60f403be712">sp_albumbrowse_review</a> (<a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *alb)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__albumbrowse.html#ga2f1e1049065e8c090c010f8e43061bd4">sp_albumbrowse_backend_request_duration</a> (<a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *alb)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__albumbrowse.html#ga05c5a7f0d5beb84d6a5ccddc949f5eba">sp_albumbrowse_add_ref</a> (<a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *alb)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__albumbrowse.html#gae6bf5a9b070518bfe0da07a03fdb01f0">sp_albumbrowse_release</a> (<a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *alb)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__albumbrowse.html#ga1afd6a10febf31a61cf356673cb34bef">sp_albumbrowse_add_ref</a> (<a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *alb)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__albumbrowse.html#gabdd5a4e3b2098166b67e35979f59613d">sp_albumbrowse_release</a> (<a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *alb)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Browsing adds additional information to what an <a class="el" href="group__types.html#ga6fd3e5de729c429fef3ff18ece6dcfad" title="An album handle.">sp_album</a> holds. It retrieves copyrights, reviews and tracks of the album. </p>
@@ -73,12 +73,12 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ga05c5a7f0d5beb84d6a5ccddc949f5eba"></a><!-- doxytag: member="api.h::sp_albumbrowse_add_ref" ref="ga05c5a7f0d5beb84d6a5ccddc949f5eba" args="(sp_albumbrowse *alb)" -->
+<a class="anchor" id="ga1afd6a10febf31a61cf356673cb34bef"></a><!-- doxytag: member="api.h::sp_albumbrowse_add_ref" ref="ga1afd6a10febf31a61cf356673cb34bef" args="(sp_albumbrowse *alb)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_albumbrowse_add_ref </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_albumbrowse_add_ref </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *&nbsp;</td>
           <td class="paramname"> <em>alb</em></td>
@@ -95,6 +95,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
@@ -209,7 +210,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Copyright string in UTF-8 format, or NULL if the index is invalid. Returned string is valid as long as the album object stays allocated and no longer than the next call to <a class="el" href="group__session.html#ga019a640b351de2a1ffe040ed755013f4">sp_session_process_events()</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Copyright string in UTF-8 format, or NULL if the index is invalid. Returned string is valid as long as the album object stays allocated and no longer than the next call to <a class="el" href="group__session.html#gaff27cb730db6debf55e750e39e7fadd7">sp_session_process_events()</a> </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a17">browse.c</a>.</dd>
 </dl>
 </div>
@@ -251,7 +252,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Initiate a request for browsing an album</p>
-<p>The user is responsible for freeing the returned album browse using <a class="el" href="group__albumbrowse.html#gae6bf5a9b070518bfe0da07a03fdb01f0">sp_albumbrowse_release()</a>. This can be done in the callback.</p>
+<p>The user is responsible for freeing the returned album browse using <a class="el" href="group__albumbrowse.html#gabdd5a4e3b2098166b67e35979f59613d">sp_albumbrowse_release()</a>. This can be done in the callback.</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session object </td></tr>
@@ -374,12 +375,12 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
-<a class="anchor" id="gae6bf5a9b070518bfe0da07a03fdb01f0"></a><!-- doxytag: member="api.h::sp_albumbrowse_release" ref="gae6bf5a9b070518bfe0da07a03fdb01f0" args="(sp_albumbrowse *alb)" -->
+<a class="anchor" id="gabdd5a4e3b2098166b67e35979f59613d"></a><!-- doxytag: member="api.h::sp_albumbrowse_release" ref="gabdd5a4e3b2098166b67e35979f59613d" args="(sp_albumbrowse *alb)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_albumbrowse_release </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_albumbrowse_release </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9">sp_albumbrowse</a> *&nbsp;</td>
           <td class="paramname"> <em>alb</em></td>
@@ -396,6 +397,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a31">browse.c</a>.</dd>
 </dl>
 </div>
@@ -422,7 +424,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Review string in UTF-8 format. Returned string is valid as long as the album object stays allocated and no longer than the next call to <a class="el" href="group__session.html#ga019a640b351de2a1ffe040ed755013f4">sp_session_process_events()</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Review string in UTF-8 format. Returned string is valid as long as the album object stays allocated and no longer than the next call to <a class="el" href="group__session.html#gaff27cb730db6debf55e750e39e7fadd7">sp_session_process_events()</a> </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a19">browse.c</a>.</dd>
 </dl>
 </div>
@@ -467,7 +469,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:26:08.<br>
+Generated on Wed May 23 2012 09:11:01.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

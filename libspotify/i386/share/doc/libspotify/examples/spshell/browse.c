@@ -127,7 +127,7 @@ static void print_artistbrowse(sp_artistbrowse *browse)
  * @param browse    The browse result object that is now done
  * @param userdata  The opaque pointer given to sp_albumbrowse_create()
  */
-static void browse_album_callback(sp_albumbrowse *browse, void *userdata)
+static void SP_CALLCONV browse_album_callback(sp_albumbrowse *browse, void *userdata)
 {
 	if (sp_albumbrowse_error(browse) == SP_ERROR_OK)
 		print_albumbrowse(browse);
@@ -146,7 +146,7 @@ static void browse_album_callback(sp_albumbrowse *browse, void *userdata)
  * @param browse    The browse result object that is now done
  * @param userdata  The opaque pointer given to sp_artistbrowse_create()
  */
-static void browse_artist_callback(sp_artistbrowse *browse, void *userdata)
+static void SP_CALLCONV browse_artist_callback(sp_artistbrowse *browse, void *userdata)
 {
 	if (sp_artistbrowse_error(browse) == SP_ERROR_OK)
 		print_artistbrowse(browse);
@@ -224,7 +224,7 @@ static void playlist_browse_try(void)
 /**
  *
  */
-static void pl_tracks_added(sp_playlist *pl, sp_track * const * tracks,
+static void SP_CALLCONV pl_tracks_added(sp_playlist *pl, sp_track * const * tracks,
 			    int num_tracks, int position, void *userdata)
 {
 	printf("\t%d tracks added\n", num_tracks);
@@ -233,7 +233,7 @@ static void pl_tracks_added(sp_playlist *pl, sp_track * const * tracks,
 /**
  *
  */
-static void pl_tracks_removed(sp_playlist *pl, const int *tracks,
+static void SP_CALLCONV pl_tracks_removed(sp_playlist *pl, const int *tracks,
 			      int num_tracks, void *userdata)
 {
 	printf("\t%d tracks removed\n", num_tracks);
@@ -242,7 +242,7 @@ static void pl_tracks_removed(sp_playlist *pl, const int *tracks,
 /**
  *
  */
-static void pl_tracks_moved(sp_playlist *pl, const int *tracks,
+static void SP_CALLCONV pl_tracks_moved(sp_playlist *pl, const int *tracks,
 			    int num_tracks, int new_position, void *userdata)
 {
 	printf("\t%d tracks moved\n", num_tracks);
@@ -251,7 +251,7 @@ static void pl_tracks_moved(sp_playlist *pl, const int *tracks,
 /**
  *
  */
-static void pl_renamed(sp_playlist *pl, void *userdata)
+static void SP_CALLCONV pl_renamed(sp_playlist *pl, void *userdata)
 {
 	printf("\tList name: %s\n",  sp_playlist_name(pl));
 }
@@ -259,7 +259,7 @@ static void pl_renamed(sp_playlist *pl, void *userdata)
 /**
  *
  */
-static void pl_state_change(sp_playlist *pl, void *userdata)
+static void SP_CALLCONV pl_state_change(sp_playlist *pl, void *userdata)
 {
 	playlist_browse_try();
 }

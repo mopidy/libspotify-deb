@@ -1,4 +1,4 @@
-.TH "User handling" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "User handling" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -30,10 +30,10 @@ User handling \-
 .RI "bool \fBsp_user_is_loaded\fP (\fBsp_user\fP *user)"
 .br
 .ti -1c
-.RI "void \fBsp_user_add_ref\fP (\fBsp_user\fP *user)"
+.RI "\fBsp_error\fP \fBsp_user_add_ref\fP (\fBsp_user\fP *user)"
 .br
 .ti -1c
-.RI "void \fBsp_user_release\fP (\fBsp_user\fP *user)"
+.RI "\fBsp_error\fP \fBsp_user_release\fP (\fBsp_user\fP *user)"
 .br
 .in -1c
 .SH "Typedef Documentation"
@@ -59,11 +59,16 @@ The currently logged in user is following this uer.
 Bidirectional friendship established. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_user_add_ref (\fBsp_user\fP * user)"Increase the reference count of an user
+.SS "\fBsp_error\fP sp_user_add_ref (\fBsp_user\fP * user)"Increase the reference count of an user
 .PP
 \fBParameters:\fP
 .RS 4
 \fIuser\fP The user object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -106,11 +111,16 @@ True if user object is loaded, otherwise false
 .RE
 .PP
 
-.SS "void sp_user_release (\fBsp_user\fP * user)"Decrease the reference count of an user
+.SS "\fBsp_error\fP sp_user_release (\fBsp_user\fP * user)"Decrease the reference count of an user
 .PP
 \fBParameters:\fP
 .RS 4
 \fIuser\fP The user object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

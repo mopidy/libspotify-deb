@@ -18,7 +18,7 @@ TARGET = jukebox
 OBJS = $(TARGET).o appkey.o $(AUDIO_DRIVER)-audio.o audio.o
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(LDLIBS) $^ -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 ifdef DEBUG
 ifeq ($(shell uname),Darwin)
 	install_name_tool -change @loader_path/../Frameworks/libspotify.framework/libspotify @rpath/libspotify.so $@

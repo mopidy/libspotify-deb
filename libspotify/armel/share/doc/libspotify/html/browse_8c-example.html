@@ -65,7 +65,7 @@
     l = <a name="a10"></a><a class="code" href="group__link.html#ga82c29419ce70e2b504670e3d45167d5d">sp_link_create_from_track</a>(track, 0);
     <a name="a11"></a><a class="code" href="group__link.html#ga9f169be53f098adcf12f7a10b8bd3ef7">sp_link_as_string</a>(l, url, <span class="keyword">sizeof</span>(url));
     printf(<span class="stringliteral">&quot;\t\t%s\n&quot;</span>, url);
-    <a name="a12"></a><a class="code" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release</a>(l);
+    <a name="a12"></a><a class="code" href="group__link.html#ga2b06ab16d1f6436cd8d36dbff2b5c022">sp_link_release</a>(l);
 }
 
 <span class="keyword">static</span> <span class="keywordtype">void</span> print_albumbrowse(<a class="code" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9" title="A handle to an album browse result.">sp_albumbrowse</a> *browse)
@@ -111,7 +111,7 @@
 
 
 
-<span class="keyword">static</span> <span class="keywordtype">void</span> browse_album_callback(<a class="code" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9" title="A handle to an album browse result.">sp_albumbrowse</a> *browse, <span class="keywordtype">void</span> *userdata)
+<span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV browse_album_callback(<a class="code" href="group__types.html#ga9c4550473a7a07790778ba870c31b4d9" title="A handle to an album browse result.">sp_albumbrowse</a> *browse, <span class="keywordtype">void</span> *userdata)
 {
     <span class="keywordflow">if</span> (<a name="a28"></a><a class="code" href="group__albumbrowse.html#ga153417eee319e7711b66503f88fba88b">sp_albumbrowse_error</a>(browse) == <a name="a29"></a><a class="code" href="group__error.html#ggafd27986ce4cd9eeaeca8adda83c9eb6ba16cb277dc84328e4b2c0cf6d5a0c0b8d" title="No errors encountered.">SP_ERROR_OK</a>)
         print_albumbrowse(browse);
@@ -119,12 +119,12 @@
         fprintf(stderr, <span class="stringliteral">&quot;Failed to browse album: %s\n&quot;</span>,
                 <a name="a30"></a><a class="code" href="group__error.html#ga983dee341d3c2008830513b7cffe7bf3">sp_error_message</a>(<a class="code" href="group__albumbrowse.html#ga153417eee319e7711b66503f88fba88b">sp_albumbrowse_error</a>(browse)));
 
-    <a name="a31"></a><a class="code" href="group__albumbrowse.html#gae6bf5a9b070518bfe0da07a03fdb01f0">sp_albumbrowse_release</a>(browse);
+    <a name="a31"></a><a class="code" href="group__albumbrowse.html#gabdd5a4e3b2098166b67e35979f59613d">sp_albumbrowse_release</a>(browse);
     cmd_done();
 }
 
 
-<span class="keyword">static</span> <span class="keywordtype">void</span> browse_artist_callback(<a class="code" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b" title="A handle to an artist browse result.">sp_artistbrowse</a> *browse, <span class="keywordtype">void</span> *userdata)
+<span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV browse_artist_callback(<a class="code" href="group__types.html#gafd3d5aae485f1012ec91b7948e6f9f2b" title="A handle to an artist browse result.">sp_artistbrowse</a> *browse, <span class="keywordtype">void</span> *userdata)
 {
     <span class="keywordflow">if</span> (<a name="a32"></a><a class="code" href="group__artistbrowse.html#ga203e757088ff7a5098f16a1367da25d2">sp_artistbrowse_error</a>(browse) == <a class="code" href="group__error.html#ggafd27986ce4cd9eeaeca8adda83c9eb6ba16cb277dc84328e4b2c0cf6d5a0c0b8d" title="No errors encountered.">SP_ERROR_OK</a>)
         print_artistbrowse(browse);
@@ -132,7 +132,7 @@
         fprintf(stderr, <span class="stringliteral">&quot;Failed to browse artist: %s\n&quot;</span>,
                 <a class="code" href="group__error.html#ga983dee341d3c2008830513b7cffe7bf3">sp_error_message</a>(<a class="code" href="group__artistbrowse.html#ga203e757088ff7a5098f16a1367da25d2">sp_artistbrowse_error</a>(browse)));
 
-    <a name="a33"></a><a class="code" href="group__artistbrowse.html#gaf0018dd013421db10be7fa2012d2ab17">sp_artistbrowse_release</a>(browse);
+    <a name="a33"></a><a class="code" href="group__artistbrowse.html#ga14626a4f6a60b1caf61cb54c26783671">sp_artistbrowse_release</a>(browse);
     cmd_done();
 }
 
@@ -155,7 +155,7 @@
     
     metadata_updated_fn = NULL;
     cmd_done();
-    <a name="a36"></a><a class="code" href="group__track.html#ga8b9a9ca88c7fb60e19420ce2261c7131">sp_track_release</a>(track_browse);
+    <a name="a36"></a><a class="code" href="group__track.html#gaa11098d82e6c2ae42fc2ea1486e741de">sp_track_release</a>(track_browse);
 }
 
 
@@ -185,38 +185,38 @@
         printf(<span class="stringliteral">&quot; %5d: &quot;</span>, i + 1);
         print_track(t);
     }
-    <a name="a41"></a><a class="code" href="group__playlist.html#ga62926457695bc2f2aaabe76b05eabfdd">sp_playlist_remove_callbacks</a>(playlist_browse, &amp;pl_callbacks, NULL);
+    <a name="a41"></a><a class="code" href="group__playlist.html#ga7fcbf909a0fa8bf25f0b1d1e7dd0e160">sp_playlist_remove_callbacks</a>(playlist_browse, &amp;pl_callbacks, NULL);
 
-    <a name="a42"></a><a class="code" href="group__playlist.html#gad614ee55fd6efd5e0ca63d22cca109fd">sp_playlist_release</a>(playlist_browse);
+    <a name="a42"></a><a class="code" href="group__playlist.html#gacb9250eb530869b039541a8b62dfab6c">sp_playlist_release</a>(playlist_browse);
     playlist_browse = NULL;
     metadata_updated_fn = NULL;
     cmd_done();
 }
 
-<span class="keyword">static</span> <span class="keywordtype">void</span> pl_tracks_added(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <a class="code" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48" title="A track handle.">sp_track</a> * <span class="keyword">const</span> * tracks,
+<span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV pl_tracks_added(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <a class="code" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48" title="A track handle.">sp_track</a> * <span class="keyword">const</span> * tracks,
                 <span class="keywordtype">int</span> num_tracks, <span class="keywordtype">int</span> position, <span class="keywordtype">void</span> *userdata)
 {
     printf(<span class="stringliteral">&quot;\t%d tracks added\n&quot;</span>, num_tracks);
 }
 
-<span class="keyword">static</span> <span class="keywordtype">void</span> pl_tracks_removed(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <span class="keyword">const</span> <span class="keywordtype">int</span> *tracks,
+<span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV pl_tracks_removed(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <span class="keyword">const</span> <span class="keywordtype">int</span> *tracks,
                   <span class="keywordtype">int</span> num_tracks, <span class="keywordtype">void</span> *userdata)
 {
     printf(<span class="stringliteral">&quot;\t%d tracks removed\n&quot;</span>, num_tracks);
 }
 
-<span class="keyword">static</span> <span class="keywordtype">void</span> pl_tracks_moved(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <span class="keyword">const</span> <span class="keywordtype">int</span> *tracks,
+<span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV pl_tracks_moved(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <span class="keyword">const</span> <span class="keywordtype">int</span> *tracks,
                 <span class="keywordtype">int</span> num_tracks, <span class="keywordtype">int</span> new_position, <span class="keywordtype">void</span> *userdata)
 {
     printf(<span class="stringliteral">&quot;\t%d tracks moved\n&quot;</span>, num_tracks);
 }
 
-<span class="keyword">static</span> <span class="keywordtype">void</span> pl_renamed(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <span class="keywordtype">void</span> *userdata)
+<span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV pl_renamed(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <span class="keywordtype">void</span> *userdata)
 {
     printf(<span class="stringliteral">&quot;\tList name: %s\n&quot;</span>,  <a name="a43"></a><a class="code" href="group__playlist.html#ga61b7e33cc1aedb4e31a2af75ae0ac8cc">sp_playlist_name</a>(pl));
 }
 
-<span class="keyword">static</span> <span class="keywordtype">void</span> pl_state_change(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <span class="keywordtype">void</span> *userdata)
+<span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV pl_state_change(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl, <span class="keywordtype">void</span> *userdata)
 {
     playlist_browse_try();
 }
@@ -233,7 +233,7 @@
 <span class="keywordtype">void</span> browse_playlist(<a class="code" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174" title="A playlist handle.">sp_playlist</a> *pl)
 {
     playlist_browse = pl;
-    <a name="a44"></a><a class="code" href="group__playlist.html#gac90e08b7cf247c51a577ac3b763b6a6f">sp_playlist_add_callbacks</a>(playlist_browse, &amp;pl_callbacks, NULL);
+    <a name="a44"></a><a class="code" href="group__playlist.html#gab15fca12d387c69b4998a4d2b48e5b32">sp_playlist_add_callbacks</a>(playlist_browse, &amp;pl_callbacks, NULL);
     playlist_browse_try();
 }
 
@@ -263,7 +263,7 @@
     <span class="keywordflow">switch</span>(<a name="a46"></a><a class="code" href="group__link.html#ga6140f924c696d53469bb8930cd53e1e6">sp_link_type</a>(link)) {
     <span class="keywordflow">default</span>:
         fprintf(stderr, <span class="stringliteral">&quot;Can not handle link&quot;</span>);
-        <a class="code" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release</a>(link);
+        <a class="code" href="group__link.html#ga2b06ab16d1f6436cd8d36dbff2b5c022">sp_link_release</a>(link);
         <span class="keywordflow">return</span> -1;
 
     <span class="keywordflow">case</span> <a name="a47"></a><a class="code" href="group__link.html#ggabe9611f04086cdbed6e4e6e1fd913b98a7716eb95eed852d08300e6e64febc7f3" title="Link type is album.">SP_LINKTYPE_ALBUM</a>:
@@ -278,7 +278,7 @@
     <span class="keywordflow">case</span> <a name="a55"></a><a class="code" href="group__link.html#ggabe9611f04086cdbed6e4e6e1fd913b98a5911dbb7258ed160b2f9c114cef152f1" title="Link type is track.">SP_LINKTYPE_TRACK</a>:
         track_browse = <a name="a56"></a><a class="code" href="group__link.html#ga2560687997d7ce0fbf4f05251d87d32a">sp_link_as_track</a>(link);
         metadata_updated_fn = track_browse_try;
-        <a name="a57"></a><a class="code" href="group__track.html#ga809ed70d450f83a97b880c9b4e8d9f10">sp_track_add_ref</a>(track_browse);
+        <a name="a57"></a><a class="code" href="group__track.html#ga7d86041a2bf75590f55978521c08e38c">sp_track_add_ref</a>(track_browse);
         track_browse_try();
         <span class="keywordflow">break</span>;
 
@@ -287,13 +287,13 @@
         <span class="keywordflow">break</span>;
     }
 
-    <a class="code" href="group__link.html#ga1f4d7673b6860226cd24241fd7ff437b">sp_link_release</a>(link);
+    <a class="code" href="group__link.html#ga2b06ab16d1f6436cd8d36dbff2b5c022">sp_link_release</a>(link);
     <span class="keywordflow">return</span> 0;
 }
 </pre></div> </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:22:31.<br>
+Generated on Wed May 23 2012 09:09:03.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

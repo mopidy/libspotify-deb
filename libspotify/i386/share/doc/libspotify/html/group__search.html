@@ -52,8 +52,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaafd3b228adbc028937383d0d45730581">sp_search_total_albums</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga305a4118625e0f70cfb14161a0112fd5">sp_search_total_artists</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga2e286415a6ba8dbf85ea677906f2798c">sp_search_total_playlists</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaff6bc550425d8ab963d93d7ed2e15bb5">sp_search_add_ref</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga5a5bcc9cf18698774a099c3ce8cdab63">sp_search_release</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga92e45a5edb1e33e64fdb857bd8eb9ad5">sp_search_add_ref</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga4e01d43067d9f8c533c985f90143821b">sp_search_release</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="gabcd51c99a318b9f36dfe2948d8209bb1"></a><!-- doxytag: member="api.h::search_complete_cb" ref="gabcd51c99a318b9f36dfe2948d8209bb1" args="(sp_search *result, void *userdata)" -->
@@ -79,12 +79,12 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="gaff6bc550425d8ab963d93d7ed2e15bb5"></a><!-- doxytag: member="api.h::sp_search_add_ref" ref="gaff6bc550425d8ab963d93d7ed2e15bb5" args="(sp_search *search)" -->
+<a class="anchor" id="ga92e45a5edb1e33e64fdb857bd8eb9ad5"></a><!-- doxytag: member="api.h::sp_search_add_ref" ref="ga92e45a5edb1e33e64fdb857bd8eb9ad5" args="(sp_search *search)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_search_add_ref </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_search_add_ref </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *&nbsp;</td>
           <td class="paramname"> <em>search</em></td>
@@ -101,6 +101,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
@@ -287,7 +288,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to a search object. To free the object, use <a class="el" href="group__search.html#ga5a5bcc9cf18698774a099c3ce8cdab63">sp_search_release()</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to a search object. To free the object, use <a class="el" href="group__search.html#ga4e01d43067d9f8c533c985f90143821b">sp_search_release()</a> </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a16">search.c</a>.</dd>
 </dl>
 </div>
@@ -614,12 +615,12 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga5a5bcc9cf18698774a099c3ce8cdab63"></a><!-- doxytag: member="api.h::sp_search_release" ref="ga5a5bcc9cf18698774a099c3ce8cdab63" args="(sp_search *search)" -->
+<a class="anchor" id="ga4e01d43067d9f8c533c985f90143821b"></a><!-- doxytag: member="api.h::sp_search_release" ref="ga4e01d43067d9f8c533c985f90143821b" args="(sp_search *search)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_search_release </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_search_release </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *&nbsp;</td>
           <td class="paramname"> <em>search</em></td>
@@ -636,6 +637,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a15">search.c</a>.</dd>
 </dl>
 </div>
@@ -784,7 +786,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:26:08.<br>
+Generated on Wed May 23 2012 09:11:01.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

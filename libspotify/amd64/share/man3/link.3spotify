@@ -1,4 +1,4 @@
-.TH "Links (Spotify URIs)" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Links (Spotify URIs)" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,13 +23,13 @@ Links (Spotify URIs) \-
 .RI "\fBsp_link\fP * \fBsp_link_create_from_album\fP (\fBsp_album\fP *album)"
 .br
 .ti -1c
-.RI "\fBsp_link\fP * \fBsp_link_create_from_album_cover\fP (\fBsp_album\fP *album)"
+.RI "\fBsp_link\fP * \fBsp_link_create_from_album_cover\fP (\fBsp_album\fP *album, \fBsp_image_size\fP size)"
 .br
 .ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_artist\fP (\fBsp_artist\fP *artist)"
 .br
 .ti -1c
-.RI "\fBsp_link\fP * \fBsp_link_create_from_artist_portrait\fP (\fBsp_artist\fP *artist)"
+.RI "\fBsp_link\fP * \fBsp_link_create_from_artist_portrait\fP (\fBsp_artist\fP *artist, \fBsp_image_size\fP size)"
 .br
 .ti -1c
 .RI "\fBsp_link\fP * \fBsp_link_create_from_artistbrowse_portrait\fP (\fBsp_artistbrowse\fP *arb, int index)"
@@ -68,10 +68,10 @@ Links (Spotify URIs) \-
 .RI "\fBsp_user\fP * \fBsp_link_as_user\fP (\fBsp_link\fP *link)"
 .br
 .ti -1c
-.RI "void \fBsp_link_add_ref\fP (\fBsp_link\fP *link)"
+.RI "\fBsp_error\fP \fBsp_link_add_ref\fP (\fBsp_link\fP *link)"
 .br
 .ti -1c
-.RI "void \fBsp_link_release\fP (\fBsp_link\fP *link)"
+.RI "\fBsp_error\fP \fBsp_link_release\fP (\fBsp_link\fP *link)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -115,11 +115,16 @@ Link type is a local file.
 Link type is an image. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_link_add_ref (\fBsp_link\fP * link)"Increase the reference count of a link
+.SS "\fBsp_error\fP sp_link_add_ref (\fBsp_link\fP * link)"Increase the reference count of a link
 .PP
 \fBParameters:\fP
 .RS 4
 \fIlink\fP The link object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -246,11 +251,13 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_album_cover (\fBsp_album\fP * album)"Create an image link object from an album
+.SS "\fBsp_link\fP* sp_link_create_from_album_cover (\fBsp_album\fP * album, \fBsp_image_size\fP size)"Create an image link object from an album
 .PP
 \fBParameters:\fP
 .RS 4
-\fIalbum\fP An album object
+\fIalbum\fP An album object 
+.br
+\fIsize\fP The desired size of the image
 .RE
 .PP
 \fBReturns:\fP
@@ -292,11 +299,13 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "\fBsp_link\fP* sp_link_create_from_artist_portrait (\fBsp_artist\fP * artist)"Creates a link object pointing to an artist portrait
+.SS "\fBsp_link\fP* sp_link_create_from_artist_portrait (\fBsp_artist\fP * artist, \fBsp_image_size\fP size)"Creates a link object pointing to an artist portrait
 .PP
 \fBParameters:\fP
 .RS 4
-\fIartist\fP Artist browse object
+\fIartist\fP Artist browse object 
+.br
+\fIsize\fP The desired size of the image
 .RE
 .PP
 \fBReturns:\fP
@@ -508,11 +517,16 @@ You need to release the link when you are done with it.
 .RE
 .PP
 
-.SS "void sp_link_release (\fBsp_link\fP * link)"Decrease the reference count of a link
+.SS "\fBsp_error\fP sp_link_release (\fBsp_link\fP * link)"Decrease the reference count of a link
 .PP
 \fBParameters:\fP
 .RS 4
 \fIlink\fP The link object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

@@ -31,17 +31,17 @@
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artist.html#gad2895555bb48514986823733a7afe5e2">sp_artist_name</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artist.html#gafc98f5093184a7ac7ce608302b0971ea">sp_artist_is_loaded</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const byte *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artist.html#ga41fda993a93240a86f269ddf04c5b958">sp_artist_portrait</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artist.html#gabda30f8338b3d63ca09e12355114963d">sp_artist_add_ref</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artist.html#ga0226bdc251bb68de8d42f1120e3a67f3">sp_artist_release</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const byte *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artist.html#ga87d366ac7479c717005c2c059d5f2be9">sp_artist_portrait</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist, <a class="el" href="group__session.html#ga61bc424465d776af3ceeb69eee2bb492">sp_image_size</a> size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artist.html#gac70d7467f580aa497d1a5d610e06d273">sp_artist_add_ref</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__artist.html#ga7b0da8f7ce09454bd0821d06d52e2d12">sp_artist_release</a> (<a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *artist)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="gabda30f8338b3d63ca09e12355114963d"></a><!-- doxytag: member="api.h::sp_artist_add_ref" ref="gabda30f8338b3d63ca09e12355114963d" args="(sp_artist *artist)" -->
+<a class="anchor" id="gac70d7467f580aa497d1a5d610e06d273"></a><!-- doxytag: member="api.h::sp_artist_add_ref" ref="gac70d7467f580aa497d1a5d610e06d273" args="(sp_artist *artist)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_artist_add_ref </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_artist_add_ref </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *&nbsp;</td>
           <td class="paramname"> <em>artist</em></td>
@@ -58,6 +58,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
@@ -109,12 +110,12 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Name of artist. Returned string is valid as long as the artist object stays allocated and no longer than the next call to <a class="el" href="group__session.html#ga019a640b351de2a1ffe040ed755013f4">sp_session_process_events()</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Name of artist. Returned string is valid as long as the artist object stays allocated and no longer than the next call to <a class="el" href="group__session.html#gaff27cb730db6debf55e750e39e7fadd7">sp_session_process_events()</a> </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a9">browse.c</a>, <a class="el" href="search_8c-example.html#a2">search.c</a>, and <a class="el" href="toplist_8c-example.html#a1">toplist.c</a>.</dd>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga41fda993a93240a86f269ddf04c5b958"></a><!-- doxytag: member="api.h::sp_artist_portrait" ref="ga41fda993a93240a86f269ddf04c5b958" args="(sp_artist *artist)" -->
+<a class="anchor" id="ga87d366ac7479c717005c2c059d5f2be9"></a><!-- doxytag: member="api.h::sp_artist_portrait" ref="ga87d366ac7479c717005c2c059d5f2be9" args="(sp_artist *artist, sp_image_size size)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -122,9 +123,18 @@ Functions</h2></td></tr>
           <td class="memname">const byte* sp_artist_portrait </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *&nbsp;</td>
-          <td class="paramname"> <em>artist</em></td>
-          <td>&nbsp;)&nbsp;</td>
+          <td class="paramname"> <em>artist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="group__session.html#ga61bc424465d776af3ceeb69eee2bb492">sp_image_size</a>&nbsp;</td>
+          <td class="paramname"> <em>size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
@@ -132,7 +142,8 @@ Functions</h2></td></tr>
 <p>Return portrait for artist</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>artist</em>&nbsp;</td><td>The artist object</td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>artist</em>&nbsp;</td><td>The artist object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>size</em>&nbsp;</td><td>The desired size of the image</td></tr>
   </table>
   </dd>
 </dl>
@@ -140,12 +151,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga0226bdc251bb68de8d42f1120e3a67f3"></a><!-- doxytag: member="api.h::sp_artist_release" ref="ga0226bdc251bb68de8d42f1120e3a67f3" args="(sp_artist *artist)" -->
+<a class="anchor" id="ga7b0da8f7ce09454bd0821d06d52e2d12"></a><!-- doxytag: member="api.h::sp_artist_release" ref="ga7b0da8f7ce09454bd0821d06d52e2d12" args="(sp_artist *artist)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_artist_release </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_artist_release </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *&nbsp;</td>
           <td class="paramname"> <em>artist</em></td>
@@ -162,12 +173,13 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:27:08.<br>
+Generated on Wed May 23 2012 09:12:26.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

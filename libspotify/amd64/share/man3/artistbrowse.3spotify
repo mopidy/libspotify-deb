@@ -1,4 +1,4 @@
-.TH "Artist browsing" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Artist browsing" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -62,10 +62,10 @@ Artist browsing \-
 .RI "int \fBsp_artistbrowse_backend_request_duration\fP (\fBsp_artistbrowse\fP *arb)"
 .br
 .ti -1c
-.RI "void \fBsp_artistbrowse_add_ref\fP (\fBsp_artistbrowse\fP *arb)"
+.RI "\fBsp_error\fP \fBsp_artistbrowse_add_ref\fP (\fBsp_artistbrowse\fP *arb)"
 .br
 .ti -1c
-.RI "void \fBsp_artistbrowse_release\fP (\fBsp_artistbrowse\fP *arb)"
+.RI "\fBsp_error\fP \fBsp_artistbrowse_release\fP (\fBsp_artistbrowse\fP *arb)"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -94,11 +94,16 @@ When the callback is called, the metadata of all tracks belonging to it will hav
 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_artistbrowse_add_ref (\fBsp_artistbrowse\fP * arb)"Increase the reference count of an artist browse result
+.SS "\fBsp_error\fP sp_artistbrowse_add_ref (\fBsp_artistbrowse\fP * arb)"Increase the reference count of an artist browse result
 .PP
 \fBParameters:\fP
 .RS 4
 \fIarb\fP The artist browse result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -333,11 +338,16 @@ ID byte sequence that can be passed to \fBsp_image_create()\fP
 .RE
 .PP
 
-.SS "void sp_artistbrowse_release (\fBsp_artistbrowse\fP * arb)"Decrease the reference count of an artist browse result
+.SS "\fBsp_error\fP sp_artistbrowse_release (\fBsp_artistbrowse\fP * arb)"Decrease the reference count of an artist browse result
 .PP
 \fBParameters:\fP
 .RS 4
 \fIarb\fP The artist browse result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

@@ -62,6 +62,10 @@ void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html#a190139f3c0842cfe27c61ebf2da5ee9f">dont_save_metadata_for_playlists</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html#a3460b768cf69d1c646ac39f507e39287">initially_unload_playlists</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html#af51c373555138dc4012501fa94b2bedc">device_id</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html#af7a09f94350796ae7dde15a6518f51e2">proxy</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html#a393cd7cf64c064f1647fe0045ac0d5cb">proxy_username</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html#a33f2d3aa26d3db999b3026529aa5d670">proxy_password</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html#a4a94ad4270e5401e68587952661bd3ca">ca_certs_filename</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html#aa7df4256deac84eea21053a7ca2cc3da">tracefile</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
@@ -70,6 +74,20 @@ void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <p><a class="el" href="jukebox_8c-example.html#_a22">jukebox.c</a>.</p>
 </dd>
 </dl><hr/><h2>Field Documentation</h2>
+<a class="anchor" id="a4a94ad4270e5401e68587952661bd3ca"></a><!-- doxytag: member="sp_session_config::ca_certs_filename" ref="a4a94ad4270e5401e68587952661bd3ca" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="structsp__session__config.html#a4a94ad4270e5401e68587952661bd3ca">sp_session_config::ca_certs_filename</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Path to a file containing the root ca certificates that the peer should be verified with. The file must be a concatenation of all certificates in PEM format. Provided with libspotify is a sample pem file in examples. It is recommended that the application export a similar file from the local certificate store. </p>
+
+</div>
+</div>
 <a class="anchor" id="ad1cb5e3670451d8cee3d8c9766b523fc"></a><!-- doxytag: member="sp_session_config::cache_location" ref="ad1cb5e3670451d8cee3d8c9766b523fc" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -140,6 +158,48 @@ void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 
 </div>
 </div>
+<a class="anchor" id="af7a09f94350796ae7dde15a6518f51e2"></a><!-- doxytag: member="sp_session_config::proxy" ref="af7a09f94350796ae7dde15a6518f51e2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="structsp__session__config.html#af7a09f94350796ae7dde15a6518f51e2">sp_session_config::proxy</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Url to the proxy server that should be used. The format is protocol://&lt;host&gt;:port (where protocal is http/https/socks4/socks5) </p>
+
+</div>
+</div>
+<a class="anchor" id="a33f2d3aa26d3db999b3026529aa5d670"></a><!-- doxytag: member="sp_session_config::proxy_password" ref="a33f2d3aa26d3db999b3026529aa5d670" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="structsp__session__config.html#a33f2d3aa26d3db999b3026529aa5d670">sp_session_config::proxy_password</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Password to authenticate with proxy server </p>
+
+</div>
+</div>
+<a class="anchor" id="a393cd7cf64c064f1647fe0045ac0d5cb"></a><!-- doxytag: member="sp_session_config::proxy_username" ref="a393cd7cf64c064f1647fe0045ac0d5cb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="structsp__session__config.html#a393cd7cf64c064f1647fe0045ac0d5cb">sp_session_config::proxy_username</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Username to authenticate with proxy server </p>
+
+</div>
+</div>
 <a class="anchor" id="a342532432040d476aaaf73f10893d23b"></a><!-- doxytag: member="sp_session_config::settings_location" ref="a342532432040d476aaaf73f10893d23b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +247,7 @@ void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 </ul>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:27:08.<br>
+Generated on Wed May 23 2012 09:12:26.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

@@ -1,4 +1,4 @@
-.TH "Toplist handling" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Toplist handling" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -40,10 +40,10 @@ Toplist handling \-
 .RI "\fBsp_error\fP \fBsp_toplistbrowse_error\fP (\fBsp_toplistbrowse\fP *tlb)"
 .br
 .ti -1c
-.RI "void \fBsp_toplistbrowse_add_ref\fP (\fBsp_toplistbrowse\fP *tlb)"
+.RI "\fBsp_error\fP \fBsp_toplistbrowse_add_ref\fP (\fBsp_toplistbrowse\fP *tlb)"
 .br
 .ti -1c
-.RI "void \fBsp_toplistbrowse_release\fP (\fBsp_toplistbrowse\fP *tlb)"
+.RI "\fBsp_error\fP \fBsp_toplistbrowse_release\fP (\fBsp_toplistbrowse\fP *tlb)"
 .br
 .ti -1c
 .RI "int \fBsp_toplistbrowse_num_artists\fP (\fBsp_toplistbrowse\fP *tlb)"
@@ -117,11 +117,16 @@ Top albums.
 Top tracks. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_toplistbrowse_add_ref (\fBsp_toplistbrowse\fP * tlb)"Increase the reference count of an toplist browse result
+.SS "\fBsp_error\fP sp_toplistbrowse_add_ref (\fBsp_toplistbrowse\fP * tlb)"Increase the reference count of an toplist browse result
 .PP
 \fBParameters:\fP
 .RS 4
 \fItlb\fP The toplist browse result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -287,11 +292,16 @@ Number of tracks on toplist
 \fBExamples: \fP
 .in +1c
 \fBtoplist.c\fP.
-.SS "void sp_toplistbrowse_release (\fBsp_toplistbrowse\fP * tlb)"Decrease the reference count of an toplist browse result
+.SS "\fBsp_error\fP sp_toplistbrowse_release (\fBsp_toplistbrowse\fP * tlb)"Decrease the reference count of an toplist browse result
 .PP
 \fBParameters:\fP
 .RS 4
 \fItlb\fP The toplist browse result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

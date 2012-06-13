@@ -38,7 +38,7 @@ LDLIBS  += $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) pkg-config --libs-only-l -
 endif
 
 ifdef DEBUG
-CFLAGS += -ggdb -O0
+CFLAGS += -g3 -O0
 endif
 
 CFLAGS += -Wall

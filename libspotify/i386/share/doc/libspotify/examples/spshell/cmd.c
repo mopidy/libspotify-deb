@@ -50,6 +50,17 @@ struct {
 	{ "star",       cmd_star,       "Star a track" },
 	{ "unstar",     cmd_unstar,     "Unstar a track" },
 	{ "starred",    cmd_starred,    "List all starred tracks" },
+#if SP_LIBSPOTIFY_WITH_SCROBBLING
+	{ "facebook_scrobbling", cmd_facebook_scrobbling,  "Enable/Disable facebook scrobbling" },
+	{ "is_facebook_scrobbling", cmd_is_facebook_scrobbling,  "Returns facebook scrobbling status" },
+	{ "spotify_social", cmd_spotify_social,  "Enable/Disable posting to Spotify Social" },
+	{ "is_spotify_social", cmd_is_spotify_social,  "Returns Spotify Social status" },
+	{ "lastfm_scrobbling_credentials", cmd_set_lastfm_scrobbling_credentials, "Sets the lastfm scrobbling credentials" },
+	{ "lastfm_scrobbling", cmd_lastfm_scrobbling, "Enable/Disable lastfm scrobbling" },
+	{ "is_lastfm_scrobbling", cmd_is_lastfm_scrobbling, "Returns lastfm scrobbling status"},
+	{ "private_session", cmd_private_session, "Enable/Disable private session" },
+	{ "is_private_session", cmd_is_private_session, "Returns private session mode"},
+#endif
 	{ "playlists",  cmd_playlists,  "List playlists" },
 	{ "playlist",   cmd_playlist,   "List playlist contents" },
 	{ "set_autolink", cmd_set_autolink, "Set autolinking state" },

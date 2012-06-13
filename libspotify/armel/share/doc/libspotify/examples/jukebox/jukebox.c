@@ -369,7 +369,7 @@ static int music_delivery(sp_session *sess, const sp_audioformat *format,
 
 	s = num_frames * sizeof(int16_t) * format->channels;
 
-	afd = malloc(sizeof(audio_fifo_data_t) + s);
+	afd = malloc(sizeof(*afd) + s);
 	memcpy(afd->samples, frames, s);
 
 	afd->nsamples = num_frames;

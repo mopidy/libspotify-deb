@@ -1,4 +1,4 @@
-.TH "Search subsystem" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Search subsystem" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -71,10 +71,10 @@ Search subsystem \-
 .RI "int \fBsp_search_total_playlists\fP (\fBsp_search\fP *search)"
 .br
 .ti -1c
-.RI "void \fBsp_search_add_ref\fP (\fBsp_search\fP *search)"
+.RI "\fBsp_error\fP \fBsp_search_add_ref\fP (\fBsp_search\fP *search)"
 .br
 .ti -1c
-.RI "void \fBsp_search_release\fP (\fBsp_search\fP *search)"
+.RI "\fBsp_error\fP \fBsp_search_release\fP (\fBsp_search\fP *search)"
 .br
 .in -1c
 .SH "Typedef Documentation"
@@ -93,11 +93,16 @@ When this callback is called, the \fBsp_track_is_loaded()\fP, \fBsp_album_is_loa
 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_search_add_ref (\fBsp_search\fP * search)"Increase the reference count of a search result
+.SS "\fBsp_error\fP sp_search_add_ref (\fBsp_search\fP * search)"Increase the reference count of a search result
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsearch\fP The search result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -353,11 +358,16 @@ The search query for the given search object
 \fBExamples: \fP
 .in +1c
 \fBsearch.c\fP.
-.SS "void sp_search_release (\fBsp_search\fP * search)"Decrease the reference count of a search result
+.SS "\fBsp_error\fP sp_search_release (\fBsp_search\fP * search)"Decrease the reference count of a search result
 .PP
 \fBParameters:\fP
 .RS 4
 \fIsearch\fP The search result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

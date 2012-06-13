@@ -41,7 +41,7 @@ Data Structures</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__config.html">sp_session_config</a></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga63b2309874193750ec3395f6cae32899">SPOTIFY_API_VERSION</a>&nbsp;&nbsp;&nbsp;11</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga63b2309874193750ec3395f6cae32899">SPOTIFY_API_VERSION</a>&nbsp;&nbsp;&nbsp;12</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__session.html#gabf77bb5a124d5a6ee9a12c86abbc0d34">sp_connectionstate</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gac0fa3d4cc60bd2e3d666026f88980e8c">sp_connectionstate</a></td></tr>
@@ -55,6 +55,7 @@ Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__session.html#gad7d9465769597b2a379ac704099adfdf">sp_availability</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga60c7ff53ddbc04c036a23181b7275d69">sp_track_availability</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <br class="typebreak"/>
 <a class="el" href="group__session.html#gaeaa41aad3c0047409996a6ec3b03203f">sp_track_offline_status</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gae689044941537050de641a1dcd4c75d5">sp_track_offline_status</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="group__session.html#ga61bc424465d776af3ceeb69eee2bb492">sp_image_size</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaca320fd41bd0556b7fa1f2fa6e14faee">sp_image_size</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef struct <br class="typebreak"/>
 <a class="el" href="structsp__audio__buffer__stats.html">sp_audio_buffer_stats</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga25462859a596a247ba5cc1853fc32cca">sp_audio_buffer_stats</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structsp__subscribers.html">sp_subscribers</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gafb515e30d134c61b8eaaff3177af0b5b">sp_subscribers</a></td></tr>
@@ -138,6 +139,14 @@ Enumerations</h2></td></tr>
 &nbsp;&nbsp;<a class="el" href="group__session.html#ggaeaa41aad3c0047409996a6ec3b03203fa5f3e19627de4509ae4a3864fd29edee6">SP_TRACK_OFFLINE_DONE_RESYNC</a> =  7
 <br/>
  }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga61bc424465d776af3ceeb69eee2bb492">sp_image_size</a> { <br/>
+&nbsp;&nbsp;<a class="el" href="group__session.html#gga61bc424465d776af3ceeb69eee2bb492ad20c808fd1f8180d1f49f643975d1dd7">SP_IMAGE_SIZE_NORMAL</a> =  0, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="group__session.html#gga61bc424465d776af3ceeb69eee2bb492ab9340b1bcf2129c3ad1328ea617d547f">SP_IMAGE_SIZE_SMALL</a> =  1, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="group__session.html#gga61bc424465d776af3ceeb69eee2bb492a0a0b624afbb2a66ee3d7954202b89721">SP_IMAGE_SIZE_LARGE</a> =  2
+<br/>
+ }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga3e8773baeb94189b9a1ff27d6a5e3553">sp_connection_type</a> { <br/>
 &nbsp;&nbsp;<a class="el" href="group__session.html#gga3e8773baeb94189b9a1ff27d6a5e3553af949fae9bc12f47b99ef290fa9b5d8a7">SP_CONNECTION_TYPE_UNKNOWN</a> =  0, 
 <br/>
@@ -173,34 +182,41 @@ Enumerations</h2></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaf2891f2daced4ff6da84219d6376b3aa">sp_session_create</a> (const <a class="el" href="structsp__session__config.html">sp_session_config</a> *config, <a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> **sess)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga964c81ca66632b6b4de01d58ed409fd9">sp_session_release</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *sess)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga3b02370d51062088a1eb6b067f66ffb6">sp_session_login</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *username, const char *password, bool remember_me, const char *blob)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gab81c540b76f7425a9cc0dbf270c09674">sp_session_release</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *sess)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga4533a992a120cacb109c892a852afe2a">sp_session_login</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *username, const char *password, bool remember_me, const char *blob)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gae1bc9bebd230226c3d48925cd1be6edf">sp_session_relogin</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gab349c7bfe59e10e167bd75c20df9fc97">sp_session_remembered_user</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, char *buffer, size_t buffer_size)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaa2fdb51cf4c24d1ef8695401bbfb6c09">sp_session_forget_me</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gac7a365c2166738909cdb901edebc3f70">sp_session_user_name</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga61e6b796d9e07682c018e888b901a191">sp_session_forget_me</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga267bbcae24b6bb1fd56de56678a5f455">sp_session_user</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga3d1e2f42506fd1a03318c4ffb1d22634">sp_session_logout</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga02ecff01594a8e3f9b184c2049b780a0">sp_session_flush_caches</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gab7f08ca0939985b30ae2d1ed9db1d726">sp_session_logout</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga34005bb06ee3de8ee4221597a0335cca">sp_session_flush_caches</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__session.html#gabf77bb5a124d5a6ee9a12c86abbc0d34">sp_connectionstate</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga34a7c9527705ab7d23b742006d81ea35">sp_session_connectionstate</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gabfb3f59b20ae0b225e154eb9095152b2">sp_session_userdata</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga95f7a6e6874b71b0ad73a1ba833d7494">sp_session_set_cache_size</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, size_t size)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga019a640b351de2a1ffe040ed755013f4">sp_session_process_events</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, int *next_timeout)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga6f27c55d1ce9f3f794fcce7bee7adfea">sp_session_set_cache_size</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, size_t size)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaff27cb730db6debf55e750e39e7fadd7">sp_session_process_events</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, int *next_timeout)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gac73bf2c569a43d824439b557d5e4b293">sp_session_player_load</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga07886bca112242bcd8315962a94d0a2c">sp_session_player_seek</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, int offset)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gab09b741570aa0330e9a0b1278ad518a5">sp_session_player_play</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, bool play)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga91f2b527a7b02d688b8ef8b24060f70a">sp_session_player_unload</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga3430cd4f11541868d3f83eaa31aecf44">sp_session_player_seek</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, int offset)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gab66c5915967e4f90db945b118e620624">sp_session_player_play</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, bool play)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gafa7ee2803f119451bb8be3bf28746975">sp_session_player_unload</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaf42e30a1f430ac7c436c7d9f0485368d">sp_session_player_prefetch</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga319767f0b795f1c46a08390b587c5671">sp_session_playlistcontainer</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gac72ccb51031c846101134b73195bb9ec">sp_session_inbox_create</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga02391c9e28cff0a602f7139542e0238f">sp_session_starred_create</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga9be806a719a6399bfe1fd0d4c125e0eb">sp_session_starred_for_user_create</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *canonical_username)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga45a2febbe167483e48dab8d606d462d7">sp_playlistcontainer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga4ad3a1de596a41f275120dad3bb4685d">sp_session_publishedcontainer_for_user_create</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *canonical_username)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga2b1186b141f3bbcddb2dfcbe55118602">sp_session_preferred_bitrate</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__session.html#ga77ddd919314a7bb16140569af7a38fe2">sp_bitrate</a> bitrate)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga06242334def451c1e21704961a9f5b20">sp_session_preferred_offline_bitrate</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__session.html#ga77ddd919314a7bb16140569af7a38fe2">sp_bitrate</a> bitrate, bool allow_resync)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gacd590e095b011af42fb10046117846fe">sp_session_preferred_bitrate</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__session.html#ga77ddd919314a7bb16140569af7a38fe2">sp_bitrate</a> bitrate)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga4bba5f828d6c87692f2c355cc8f07c61">sp_session_preferred_offline_bitrate</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__session.html#ga77ddd919314a7bb16140569af7a38fe2">sp_bitrate</a> bitrate, bool allow_resync)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga7913df06394360f255c77fb87af0f1fe">sp_session_get_volume_normalization</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga52c926013de115a9bdf6900973785917">sp_session_set_volume_normalization</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, bool on)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaf4e4ec40368bdafcd72d33c73b345e0e">sp_session_set_connection_type</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__session.html#ga3e8773baeb94189b9a1ff27d6a5e3553">sp_connection_type</a> type)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaf4e1a039e161b6fa5768c06ef73e4c98">sp_session_set_connection_rules</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__session.html#gad275d696685b2ad9ff1a2c3e16af6502">sp_connection_rules</a> rules)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga4e14f58356d00e3693be84623bf6bd11">sp_session_set_volume_normalization</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, bool on)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga42a8f0999316ac7f141926092879ad2f">sp_session_set_private_session</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, bool enabled)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga72702ee06bc96c074804388d24344149">sp_session_is_private_session</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga2475a1fbc2eeacccb96b7f36efd36725">sp_session_set_scrobbling</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, sp_social_provider provider, sp_scrobbling_state state)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga6a56bc82ff0b369bb6e0f035534ce33d">sp_session_is_scrobbling</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, sp_social_provider provider, sp_scrobbling_state *state)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga0fad03ceabcf8d68af78f0f35fcbcc8d">sp_session_is_scrobbling_possible</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, sp_social_provider provider, bool *out)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga9e5ee46ef5e75aa462607caac984f2de">sp_session_set_social_credentials</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, sp_social_provider provider, const char *username, const char *password)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaf81c61799e0ccdbba048fb79ec050930">sp_session_set_connection_type</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__session.html#ga3e8773baeb94189b9a1ff27d6a5e3553">sp_connection_type</a> type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga0ac85299c37710321b6d64713e1d6ba8">sp_session_set_connection_rules</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__session.html#gad275d696685b2ad9ff1a2c3e16af6502">sp_connection_rules</a> rules)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gaf535124b4208c279cb98a061834e6411">sp_offline_tracks_to_sync</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#gad6cee58fa44453b7a4fd2ae2266df055">sp_offline_num_playlists</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__session.html#ga02525cd659a34728047cd3801049e822">sp_offline_sync_get_status</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="structsp__offline__sync__status.html">sp_offline_sync_status</a> *status)</td></tr>
@@ -215,7 +231,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SPOTIFY_API_VERSION&nbsp;&nbsp;&nbsp;11</td>
+          <td class="memname">#define SPOTIFY_API_VERSION&nbsp;&nbsp;&nbsp;12</td>
         </tr>
       </table>
 </div>
@@ -308,7 +324,7 @@ Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Current connection type set using <a class="el" href="group__session.html#gaf4e4ec40368bdafcd72d33c73b345e0e">sp_session_set_connection_type()</a> </p>
+<p>Current connection type set using <a class="el" href="group__session.html#gaf81c61799e0ccdbba048fb79ec050930">sp_session_set_connection_type()</a> </p>
 
 </div>
 </div>
@@ -323,6 +339,20 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Describes the current state of the connection </p>
+
+</div>
+</div>
+<a class="anchor" id="gaca320fd41bd0556b7fa1f2fa6e14faee"></a><!-- doxytag: member="api.h::sp_image_size" ref="gaca320fd41bd0556b7fa1f2fa6e14faee" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="group__session.html#ga61bc424465d776af3ceeb69eee2bb492">sp_image_size</a>  <a class="el" href="group__session.html#ga61bc424465d776af3ceeb69eee2bb492">sp_image_size</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Image size </p>
 
 </div>
 </div>
@@ -593,7 +623,7 @@ Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Current connection type set using <a class="el" href="group__session.html#gaf4e4ec40368bdafcd72d33c73b345e0e">sp_session_set_connection_type()</a> </p>
+<p>Current connection type set using <a class="el" href="group__session.html#gaf81c61799e0ccdbba048fb79ec050930">sp_session_set_connection_type()</a> </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="gga3e8773baeb94189b9a1ff27d6a5e3553af949fae9bc12f47b99ef290fa9b5d8a7"></a><!-- doxytag: member="SP_CONNECTION_TYPE_UNKNOWN" ref="gga3e8773baeb94189b9a1ff27d6a5e3553af949fae9bc12f47b99ef290fa9b5d8a7" args="" -->SP_CONNECTION_TYPE_UNKNOWN</em>&nbsp;</td><td>
 <p>Connection type unknown (Default). </p>
@@ -645,6 +675,33 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="ggabf77bb5a124d5a6ee9a12c86abbc0d34a63099ef9185ba287fcd2e77be3c47d8f"></a><!-- doxytag: member="SP_CONNECTION_STATE_OFFLINE" ref="ggabf77bb5a124d5a6ee9a12c86abbc0d34a63099ef9185ba287fcd2e77be3c47d8f" args="" -->SP_CONNECTION_STATE_OFFLINE</em>&nbsp;</td><td>
 <p>Logged in in offline mode. </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga61bc424465d776af3ceeb69eee2bb492"></a><!-- doxytag: member="api.h::sp_image_size" ref="ga61bc424465d776af3ceeb69eee2bb492" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__session.html#ga61bc424465d776af3ceeb69eee2bb492">sp_image_size</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Image size </p>
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga61bc424465d776af3ceeb69eee2bb492ad20c808fd1f8180d1f49f643975d1dd7"></a><!-- doxytag: member="SP_IMAGE_SIZE_NORMAL" ref="gga61bc424465d776af3ceeb69eee2bb492ad20c808fd1f8180d1f49f643975d1dd7" args="" -->SP_IMAGE_SIZE_NORMAL</em>&nbsp;</td><td>
+<p>Normal image size. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga61bc424465d776af3ceeb69eee2bb492ab9340b1bcf2129c3ad1328ea617d547f"></a><!-- doxytag: member="SP_IMAGE_SIZE_SMALL" ref="gga61bc424465d776af3ceeb69eee2bb492ab9340b1bcf2129c3ad1328ea617d547f" args="" -->SP_IMAGE_SIZE_SMALL</em>&nbsp;</td><td>
+<p>Small image size. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga61bc424465d776af3ceeb69eee2bb492a0a0b624afbb2a66ee3d7954202b89721"></a><!-- doxytag: member="SP_IMAGE_SIZE_LARGE" ref="gga61bc424465d776af3ceeb69eee2bb492a0a0b624afbb2a66ee3d7954202b89721" args="" -->SP_IMAGE_SIZE_LARGE</em>&nbsp;</td><td>
+<p>Large image size. </p>
 </td></tr>
 </table>
 </dd>
@@ -975,11 +1032,32 @@ Functions</h2></td></tr>
     <span class="comment">// free-text string [1, 255] characters.</span>
     config.user_agent = <span class="stringliteral">&quot;spshell&quot;</span>;
 
-<span class="preprocessor">#if SP_WITH_CURL</span>
+<span class="comment">//ifdef SP_WITH_CURL</span>
+<span class="preprocessor">#ifdef SP_WITH_CURL</span>
 <span class="preprocessor"></span>    config.ca_certs_filename = <span class="stringliteral">&quot;../cacerts.pem&quot;</span>;
 <span class="preprocessor">#endif</span>
-<span class="preprocessor"></span>
+<span class="preprocessor"></span><span class="comment">//endif</span>
+
     <span class="comment">// Register the callbacks.</span>
+    callbacks.logged_in = logged_in;
+    callbacks.logged_out = logged_out;
+    callbacks.metadata_updated = metadata_updated;
+    callbacks.connection_error = connection_error;
+    callbacks.notify_main_thread = notify_main_thread;
+<span class="preprocessor">#if WITH_TEST_COMMAND</span>
+<span class="preprocessor"></span>    callbacks.music_delivery = music_delivery;
+    callbacks.play_token_lost = play_token_lost;
+    callbacks.end_of_track = end_of_track;
+<span class="preprocessor">#endif</span>
+<span class="preprocessor"></span>    callbacks.log_message = log_message;
+    callbacks.offline_status_updated = offline_status_updated;
+    callbacks.credentials_blob_updated = credentials_blob_updated;
+<span class="comment">//ifdef SP_LIBSPOTIFY_WITH_SCROBBLING</span>
+<span class="preprocessor">#ifdef SP_LIBSPOTIFY_WITH_SCROBBLING</span>
+<span class="preprocessor"></span>    callbacks.scrobble_error = scrobble_error;
+    callbacks.private_session_mode_changed = private_session_mode_changed;
+<span class="preprocessor">#endif</span>
+<span class="preprocessor"></span><span class="comment">//endif</span>
     config.callbacks = &amp;callbacks;
 
     error = <a class="code" href="group__session.html#gaf2891f2daced4ff6da84219d6376b3aa">sp_session_create</a>(&amp;config, &amp;session);
@@ -1001,12 +1079,12 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga02ecff01594a8e3f9b184c2049b780a0"></a><!-- doxytag: member="api.h::sp_session_flush_caches" ref="ga02ecff01594a8e3f9b184c2049b780a0" args="(sp_session *session)" -->
+<a class="anchor" id="ga34005bb06ee3de8ee4221597a0335cca"></a><!-- doxytag: member="api.h::sp_session_flush_caches" ref="ga34005bb06ee3de8ee4221597a0335cca" args="(sp_session *session)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_flush_caches </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_flush_caches </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em></td>
@@ -1024,15 +1102,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gaa2fdb51cf4c24d1ef8695401bbfb6c09"></a><!-- doxytag: member="api.h::sp_session_forget_me" ref="gaa2fdb51cf4c24d1ef8695401bbfb6c09" args="(sp_session *session)" -->
+<a class="anchor" id="ga61e6b796d9e07682c018e888b901a191"></a><!-- doxytag: member="api.h::sp_session_forget_me" ref="ga61e6b796d9e07682c018e888b901a191" args="(sp_session *session)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_forget_me </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_forget_me </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em></td>
@@ -1049,6 +1128,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
@@ -1102,16 +1182,128 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A playlist or NULL if no user is logged in </dd></dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>You need to release the playlist when you are done with it. </dd></dl>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__playlist.html#gad614ee55fd6efd5e0ca63d22cca109fd">sp_playlist_release()</a> </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__playlist.html#gacb9250eb530869b039541a8b62dfab6c">sp_playlist_release()</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga3b02370d51062088a1eb6b067f66ffb6"></a><!-- doxytag: member="api.h::sp_session_login" ref="ga3b02370d51062088a1eb6b067f66ffb6" args="(sp_session *session, const char *username, const char *password, bool remember_me, const char *blob)" -->
+<a class="anchor" id="ga72702ee06bc96c074804388d24344149"></a><!-- doxytag: member="api.h::sp_session_is_private_session" ref="ga72702ee06bc96c074804388d24344149" args="(sp_session *session)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_login </td>
+          <td class="memname">bool sp_session_is_private_session </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Return True if private session is enabled</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True if private session is enabled </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga6a56bc82ff0b369bb6e0f035534ce33d"></a><!-- doxytag: member="api.h::sp_session_is_scrobbling" ref="ga6a56bc82ff0b369bb6e0f035534ce33d" args="(sp_session *session, sp_social_provider provider, sp_scrobbling_state *state)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_is_scrobbling </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sp_social_provider&nbsp;</td>
+          <td class="paramname"> <em>provider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sp_scrobbling_state *&nbsp;</td>
+          <td class="paramname"> <em>state</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Return the scrobbling state. This makes it possible to find out if scrobbling is locally overrided or if the global setting is used.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>provider</em>&nbsp;</td><td>The scrobbling provider referred to </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>state</em>&nbsp;</td><td>The output variable receiving the sp_scrobbling_state state</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>error code </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0fad03ceabcf8d68af78f0f35fcbcc8d"></a><!-- doxytag: member="api.h::sp_session_is_scrobbling_possible" ref="ga0fad03ceabcf8d68af78f0f35fcbcc8d" args="(sp_session *session, sp_social_provider provider, bool *out)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_is_scrobbling_possible </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sp_social_provider&nbsp;</td>
+          <td class="paramname"> <em>provider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&nbsp;</td>
+          <td class="paramname"> <em>out</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Return True if scrobbling settings should be shown to the user. Currently this setting is relevant only to the facebook provider. The returned value may be false if the user is not connected to facebook, or if the user has opted out from facebook social graph.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>provider</em>&nbsp;</td><td>The scrobbling provider referred to </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>out</em>&nbsp;</td><td>True iff scrobbling is possible</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>error code </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4533a992a120cacb109c892a852afe2a"></a><!-- doxytag: member="api.h::sp_session_login" ref="ga4533a992a120cacb109c892a852afe2a" args="(sp_session *session, const char *username, const char *password, bool remember_me, const char *blob)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_login </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1150,7 +1342,7 @@ Functions</h2></td></tr>
 <div class="memdoc">
 <p>Logs in the specified username/password combo. This initiates the login in the background. A callback is called when login is complete</p>
 <p>An application MUST NEVER store the user's password in clear text. If automatic relogin is required, use <a class="el" href="group__session.html#gae1bc9bebd230226c3d48925cd1be6edf">sp_session_relogin()</a></p>
-<p>Here is a snippet from <code>spshell.c:</code>  <div class="fragment"><pre class="fragment">        <a class="code" href="group__session.html#ga3b02370d51062088a1eb6b067f66ffb6">sp_session_login</a>(session, username, password, 1, blob);
+<p>Here is a snippet from <code>spshell.c:</code>  <div class="fragment"><pre class="fragment">        <a class="code" href="group__session.html#ga4533a992a120cacb109c892a852afe2a">sp_session_login</a>(session, username, password, 1, blob);
     }
 </pre></div></p>
 <dl><dt><b>Parameters:</b></dt><dd>
@@ -1163,16 +1355,17 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a26">jukebox.c</a>.</dd>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga3d1e2f42506fd1a03318c4ffb1d22634"></a><!-- doxytag: member="api.h::sp_session_logout" ref="ga3d1e2f42506fd1a03318c4ffb1d22634" args="(sp_session *session)" -->
+<a class="anchor" id="gab7f08ca0939985b30ae2d1ed9db1d726"></a><!-- doxytag: member="api.h::sp_session_logout" ref="gab7f08ca0939985b30ae2d1ed9db1d726" args="(sp_session *session)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_logout </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_logout </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em></td>
@@ -1190,6 +1383,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
@@ -1218,7 +1412,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Loads the specified track</p>
-<p>After successfully loading the track, you have the option of running <a class="el" href="group__session.html#gab09b741570aa0330e9a0b1278ad518a5">sp_session_player_play()</a> directly, or using <a class="el" href="group__session.html#ga07886bca112242bcd8315962a94d0a2c">sp_session_player_seek()</a> first. When this call returns, the track will have been loaded, unless an error occurred.</p>
+<p>After successfully loading the track, you have the option of running <a class="el" href="group__session.html#gab66c5915967e4f90db945b118e620624">sp_session_player_play()</a> directly, or using <a class="el" href="group__session.html#ga3430cd4f11541868d3f83eaa31aecf44">sp_session_player_seek()</a> first. When this call returns, the track will have been loaded, unless an error occurred.</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Your session object </td></tr>
@@ -1226,17 +1420,17 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK SP_ERROR_MISSING_CALLBACK SP_ERROR_RESOURCE_NOT_LOADED SP_ERROR_TRACK_NOT_PLAYABLE </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK SP_ERROR_MISSING_CALLBACK SP_ERROR_TRACK_NOT_PLAYABLE </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a6">jukebox.c</a>.</dd>
 </dl>
 </div>
 </div>
-<a class="anchor" id="gab09b741570aa0330e9a0b1278ad518a5"></a><!-- doxytag: member="api.h::sp_session_player_play" ref="gab09b741570aa0330e9a0b1278ad518a5" args="(sp_session *session, bool play)" -->
+<a class="anchor" id="gab66c5915967e4f90db945b118e620624"></a><!-- doxytag: member="api.h::sp_session_player_play" ref="gab66c5915967e4f90db945b118e620624" args="(sp_session *session, bool play)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_player_play </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_player_play </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1263,6 +1457,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a7">jukebox.c</a>.</dd>
 </dl>
 </div>
@@ -1305,12 +1500,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga07886bca112242bcd8315962a94d0a2c"></a><!-- doxytag: member="api.h::sp_session_player_seek" ref="ga07886bca112242bcd8315962a94d0a2c" args="(sp_session *session, int offset)" -->
+<a class="anchor" id="ga3430cd4f11541868d3f83eaa31aecf44"></a><!-- doxytag: member="api.h::sp_session_player_seek" ref="ga3430cd4f11541868d3f83eaa31aecf44" args="(sp_session *session, int offset)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_player_seek </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_player_seek </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1337,15 +1532,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga91f2b527a7b02d688b8ef8b24060f70a"></a><!-- doxytag: member="api.h::sp_session_player_unload" ref="ga91f2b527a7b02d688b8ef8b24060f70a" args="(sp_session *session)" -->
+<a class="anchor" id="gafa7ee2803f119451bb8be3bf28746975"></a><!-- doxytag: member="api.h::sp_session_player_unload" ref="gafa7ee2803f119451bb8be3bf28746975" args="(sp_session *session)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_player_unload </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_player_unload </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em></td>
@@ -1363,6 +1559,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a2">jukebox.c</a>.</dd>
 </dl>
 </div>
@@ -1394,12 +1591,12 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga2b1186b141f3bbcddb2dfcbe55118602"></a><!-- doxytag: member="api.h::sp_session_preferred_bitrate" ref="ga2b1186b141f3bbcddb2dfcbe55118602" args="(sp_session *session, sp_bitrate bitrate)" -->
+<a class="anchor" id="gacd590e095b011af42fb10046117846fe"></a><!-- doxytag: member="api.h::sp_session_preferred_bitrate" ref="gacd590e095b011af42fb10046117846fe" args="(sp_session *session, sp_bitrate bitrate)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_preferred_bitrate </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_preferred_bitrate </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1426,15 +1623,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK SP_ERROR_INVALID_ARGUMENT </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga06242334def451c1e21704961a9f5b20"></a><!-- doxytag: member="api.h::sp_session_preferred_offline_bitrate" ref="ga06242334def451c1e21704961a9f5b20" args="(sp_session *session, sp_bitrate bitrate, bool allow_resync)" -->
+<a class="anchor" id="ga4bba5f828d6c87692f2c355cc8f07c61"></a><!-- doxytag: member="api.h::sp_session_preferred_offline_bitrate" ref="ga4bba5f828d6c87692f2c355cc8f07c61" args="(sp_session *session, sp_bitrate bitrate, bool allow_resync)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_preferred_offline_bitrate </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_preferred_offline_bitrate </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1468,15 +1666,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK SP_ERROR_INVALID_ARGUMENT </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga019a640b351de2a1ffe040ed755013f4"></a><!-- doxytag: member="api.h::sp_session_process_events" ref="ga019a640b351de2a1ffe040ed755013f4" args="(sp_session *session, int *next_timeout)" -->
+<a class="anchor" id="gaff27cb730db6debf55e750e39e7fadd7"></a><!-- doxytag: member="api.h::sp_session_process_events" ref="gaff27cb730db6debf55e750e39e7fadd7" args="(sp_session *session, int *next_timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_process_events </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_process_events </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1503,6 +1702,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="jukebox_8c-example.html#a27">jukebox.c</a>.</dd>
 </dl>
 </div>
@@ -1544,12 +1744,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga964c81ca66632b6b4de01d58ed409fd9"></a><!-- doxytag: member="api.h::sp_session_release" ref="ga964c81ca66632b6b4de01d58ed409fd9" args="(sp_session *sess)" -->
+<a class="anchor" id="gab81c540b76f7425a9cc0dbf270c09674"></a><!-- doxytag: member="api.h::sp_session_release" ref="gab81c540b76f7425a9cc0dbf270c09674" args="(sp_session *sess)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_release </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_release </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>sess</em></td>
@@ -1566,6 +1766,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
@@ -1638,12 +1839,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga95f7a6e6874b71b0ad73a1ba833d7494"></a><!-- doxytag: member="api.h::sp_session_set_cache_size" ref="ga95f7a6e6874b71b0ad73a1ba833d7494" args="(sp_session *session, size_t size)" -->
+<a class="anchor" id="ga6f27c55d1ce9f3f794fcce7bee7adfea"></a><!-- doxytag: member="api.h::sp_session_set_cache_size" ref="ga6f27c55d1ce9f3f794fcce7bee7adfea" args="(sp_session *session, size_t size)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_set_cache_size </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_set_cache_size </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1670,15 +1871,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gaf4e1a039e161b6fa5768c06ef73e4c98"></a><!-- doxytag: member="api.h::sp_session_set_connection_rules" ref="gaf4e1a039e161b6fa5768c06ef73e4c98" args="(sp_session *session, sp_connection_rules rules)" -->
+<a class="anchor" id="ga0ac85299c37710321b6d64713e1d6ba8"></a><!-- doxytag: member="api.h::sp_session_set_connection_rules" ref="ga0ac85299c37710321b6d64713e1d6ba8" args="(sp_session *session, sp_connection_rules rules)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_set_connection_rules </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_set_connection_rules </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1705,17 +1907,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="note"><dt><b>Note:</b></dt><dd>Used in conjunction with <a class="el" href="group__session.html#gaf4e4ec40368bdafcd72d33c73b345e0e">sp_session_set_connection_type()</a> to control how libspotify should behave in respect to network activity and offline synchronization. </dd></dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>Used in conjunction with <a class="el" href="group__session.html#gaf81c61799e0ccdbba048fb79ec050930">sp_session_set_connection_type()</a> to control how libspotify should behave in respect to network activity and offline synchronization. </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__session.html#ga24ee483cdceef9af3b415c020b197a75">sp_connection_rules</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gaf4e4ec40368bdafcd72d33c73b345e0e"></a><!-- doxytag: member="api.h::sp_session_set_connection_type" ref="gaf4e4ec40368bdafcd72d33c73b345e0e" args="(sp_session *session, sp_connection_type type)" -->
+<a class="anchor" id="gaf81c61799e0ccdbba048fb79ec050930"></a><!-- doxytag: member="api.h::sp_session_set_connection_type" ref="gaf81c61799e0ccdbba048fb79ec050930" args="(sp_session *session, sp_connection_type type)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_set_connection_type </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_set_connection_type </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1742,17 +1945,154 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="note"><dt><b>Note:</b></dt><dd>Used in conjunction with <a class="el" href="group__session.html#gaf4e1a039e161b6fa5768c06ef73e4c98">sp_session_set_connection_rules()</a> to control how libspotify should behave in respect to network activity and offline synchronization. </dd></dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>Used in conjunction with <a class="el" href="group__session.html#ga0ac85299c37710321b6d64713e1d6ba8">sp_session_set_connection_rules()</a> to control how libspotify should behave in respect to network activity and offline synchronization. </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__session.html#ga05a7dbb946a9c47bf011f3f3d77964c3">sp_connection_type</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga52c926013de115a9bdf6900973785917"></a><!-- doxytag: member="api.h::sp_session_set_volume_normalization" ref="ga52c926013de115a9bdf6900973785917" args="(sp_session *session, bool on)" -->
+<a class="anchor" id="ga42a8f0999316ac7f141926092879ad2f"></a><!-- doxytag: member="api.h::sp_session_set_private_session" ref="ga42a8f0999316ac7f141926092879ad2f" args="(sp_session *session, bool enabled)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_session_set_volume_normalization </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_set_private_session </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>enabled</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Set if private session is enabled. This disables sharing what the user is listening to to services such as Spotify Social, Facebook and LastFM. The private session will last for a time, and then libspotify will revert to the normal state. The private session is prolonged by user activity.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>enabled</em>&nbsp;</td><td>True iff private session should be enabled </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2475a1fbc2eeacccb96b7f36efd36725"></a><!-- doxytag: member="api.h::sp_session_set_scrobbling" ref="ga2475a1fbc2eeacccb96b7f36efd36725" args="(sp_session *session, sp_social_provider provider, sp_scrobbling_state state)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_set_scrobbling </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sp_social_provider&nbsp;</td>
+          <td class="paramname"> <em>provider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sp_scrobbling_state&nbsp;</td>
+          <td class="paramname"> <em>state</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Set if scrobbling is enabled. This api allows setting local overrides of the global scrobbling settings. Changing the global settings are currently not supported.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>provider</em>&nbsp;</td><td>The scrobbling provider referred to </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>state</em>&nbsp;</td><td>The state to set the provider to</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>error code</dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd>sp_social_provider </dd>
+<dd>
+sp_scrobbling_state </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9e5ee46ef5e75aa462607caac984f2de"></a><!-- doxytag: member="api.h::sp_session_set_social_credentials" ref="ga9e5ee46ef5e75aa462607caac984f2de" args="(sp_session *session, sp_social_provider provider, const char *username, const char *password)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_set_social_credentials </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sp_social_provider&nbsp;</td>
+          <td class="paramname"> <em>provider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>username</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>password</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Set the user's credentials with a social provider. Currently this is only relevant for LastFm Call sp_session_set_scrobbling to force an authentication attempt with the LastFm server. If authentication fails a scrobble_error callback will be sent.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>provider</em>&nbsp;</td><td>The scrobbling provider referred to </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>username</em>&nbsp;</td><td>The user name </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>password</em>&nbsp;</td><td>The password</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>error code</dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__session.html#ga2475a1fbc2eeacccb96b7f36efd36725">sp_session_set_scrobbling</a> </dd>
+<dd>
+<a class="el" href="structsp__session__callbacks.html#a01a47778439fa233187fdefa75a0f7dc">sp_session_callbacks::scrobble_error</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4e14f58356d00e3693be84623bf6bd11"></a><!-- doxytag: member="api.h::sp_session_set_volume_normalization" ref="ga4e14f58356d00e3693be84623bf6bd11" args="(sp_session *session, bool on)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_session_set_volume_normalization </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -1779,6 +2119,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
@@ -1806,7 +2147,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A playlist or NULL if no user is logged in </dd></dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>You need to release the playlist when you are done with it. </dd></dl>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__playlist.html#gad614ee55fd6efd5e0ca63d22cca109fd">sp_playlist_release()</a> </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__playlist.html#gacb9250eb530869b039541a8b62dfab6c">sp_playlist_release()</a> </dd></dl>
 
 </div>
 </div>
@@ -1844,7 +2185,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A playlist or NULL if no user is logged in </dd></dl>
 <dl class="note"><dt><b>Note:</b></dt><dd>You need to release the playlist when you are done with it. </dd></dl>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__playlist.html#gad614ee55fd6efd5e0ca63d22cca109fd">sp_playlist_release()</a> </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="group__playlist.html#gacb9250eb530869b039541a8b62dfab6c">sp_playlist_release()</a> </dd></dl>
 
 </div>
 </div>
@@ -1900,6 +2241,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gac7a365c2166738909cdb901edebc3f70"></a><!-- doxytag: member="api.h::sp_session_user_name" ref="gac7a365c2166738909cdb901edebc3f70" args="(sp_session *session)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* sp_session_user_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
+          <td class="paramname"> <em>session</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get a pointer to a string representing the user's login username.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Your session object</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A string representing the login username. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="gabfb3f59b20ae0b225e154eb9095152b2"></a><!-- doxytag: member="api.h::sp_session_userdata" ref="gabfb3f59b20ae0b225e154eb9095152b2" args="(sp_session *session)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1928,7 +2295,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:22:31.<br>
+Generated on Wed May 23 2012 09:09:03.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

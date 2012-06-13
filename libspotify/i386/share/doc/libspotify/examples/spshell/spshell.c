@@ -53,7 +53,7 @@ static void SP_CALLCONV connection_error(sp_session *session, sp_error error)
 static void SP_CALLCONV logged_in(sp_session *session, sp_error error)
 {
 	sp_user *me;
-	const char *my_name;
+	const char *display_name, *username;
 	int cc;
 
 	if (SP_ERROR_OK != error) {
@@ -65,11 +65,10 @@ static void SP_CALLCONV logged_in(sp_session *session, sp_error error)
 
 	// Let us print the nice message...
 	me = sp_session_user(session);
-	my_name = (sp_user_is_loaded(me) ? sp_user_display_name(me) : sp_user_canonical_name(me));
-
+	display_name = (sp_user_is_loaded(me) ? sp_user_display_name(me) : sp_user_canonical_name(me));
+	username = sp_session_user_name (session);
 	cc = sp_session_user_country(session);
-
-	fprintf(stderr, "Logged in to Spotify as user %s (registered in country: %c%c)\n", my_name, cc >> 8, cc & 0xff);
+	fprintf(stderr, "Logged in to Spotify as user %s [%s] (registered in country: %c%c)\n", username, display_name, cc >> 8, cc & 0xff);
 
 #if WITH_TEST_COMMAND
 	if(g_selftest)
@@ -89,14 +88,34 @@ static void SP_CALLCONV logged_out(sp_session *session)
 	is_logged_out = 1;  // Will exit mainloop
 }
 
+#ifdef SP_LIBSPOTIFY_WITH_SCROBBLING
+/**
+ * This callback is called when there is a scrobble error.
+ *
+ * @sa sp_session_callbacks#scrobble_error
+ */
+static void SP_CALLCONV scrobble_error(sp_session* session, sp_error error) {
+	fprintf(stderr, "Scrobble failure: %d\n", error);
+}
+
+/**
+ * Called when there is a change in the private session mode
+ *
+ * @param[in]  session    Session
+ * @param[in]  isPrivate  True if in private session, false otherwhise
+ */
+static void SP_CALLCONV private_session_mode_changed(sp_session *session, bool is_private) {
+	printf("private session mode changed: %d\n", is_private);
+}
+#endif
 
 /**
  * This callback is called when the session have recieved a credential
  * that could be stored safely on disk
  *
- * @sa sp_session_callbacks#credential_blob_updated
+ * @sa sp_session_callbacks#credentials_blob_updated
  */
-static void SP_CALLCONV credential_blob_updated(sp_session *session, const char *blob)
+static void SP_CALLCONV credentials_blob_updated(sp_session *session, const char *blob)
 {
 	printf("blob for storage: %s\n", blob);
 }
@@ -158,35 +177,8 @@ static void SP_CALLCONV offline_status_updated(sp_session *sess)
 /**
  * Session callbacks
  */
-static sp_session_callbacks callbacks = {
-	&logged_in,
-	&logged_out,
-	&metadata_updated,
-	&connection_error,
-	NULL,
-	&notify_main_thread,
-#if WITH_TEST_COMMAND
-	&music_delivery,
-	&play_token_lost,
-#else
-	NULL,
-	NULL,
-#endif
-	&log_message,
-#if WITH_TEST_COMMAND
-	&end_of_track, // end_of_track
-#else
-	NULL,
-#endif
-	NULL, // streaming error
-	NULL, // userinfo update
-	NULL, // start_playback
-	NULL, // stop_playback
-	NULL, // get_audio_buffer_stats
-	offline_status_updated,
-	NULL, // offline error
-	&credential_blob_updated,
-};
+
+static sp_session_callbacks callbacks;
 
 /**
  *
@@ -229,11 +221,28 @@ int spshell_init(const char *username, const char *password, const  char *blob, 
 	// free-text string [1, 255] characters.
 	config.user_agent = "spshell";
 
-#if SP_WITH_CURL
+#ifdef SP_WITH_CURL
 	config.ca_certs_filename = "../cacerts.pem";
 #endif
 
 	// Register the callbacks.
+	callbacks.logged_in = logged_in;
+	callbacks.logged_out = logged_out;
+	callbacks.metadata_updated = metadata_updated;
+	callbacks.connection_error = connection_error;
+	callbacks.notify_main_thread = notify_main_thread;
+#if WITH_TEST_COMMAND
+	callbacks.music_delivery = music_delivery;
+	callbacks.play_token_lost = play_token_lost;
+	callbacks.end_of_track = end_of_track;
+#endif
+	callbacks.log_message = log_message;
+	callbacks.offline_status_updated = offline_status_updated;
+	callbacks.credentials_blob_updated = credentials_blob_updated;
+#ifdef SP_LIBSPOTIFY_WITH_SCROBBLING
+	callbacks.scrobble_error = scrobble_error;
+	callbacks.private_session_mode_changed = private_session_mode_changed;
+#endif
 	config.callbacks = &callbacks;
 
 	error = sp_session_create(&config, &session);

@@ -1,4 +1,4 @@
-.TH "Image handling" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Image handling" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,10 +27,10 @@ Image handling \-
 .RI "\fBsp_image\fP * \fBsp_image_create_from_link\fP (\fBsp_session\fP *session, \fBsp_link\fP *l)"
 .br
 .ti -1c
-.RI "void \fBsp_image_add_load_callback\fP (\fBsp_image\fP *image, \fBimage_loaded_cb\fP *callback, void *userdata)"
+.RI "\fBsp_error\fP \fBsp_image_add_load_callback\fP (\fBsp_image\fP *image, \fBimage_loaded_cb\fP *callback, void *userdata)"
 .br
 .ti -1c
-.RI "void \fBsp_image_remove_load_callback\fP (\fBsp_image\fP *image, \fBimage_loaded_cb\fP *callback, void *userdata)"
+.RI "\fBsp_error\fP \fBsp_image_remove_load_callback\fP (\fBsp_image\fP *image, \fBimage_loaded_cb\fP *callback, void *userdata)"
 .br
 .ti -1c
 .RI "bool \fBsp_image_is_loaded\fP (\fBsp_image\fP *image)"
@@ -48,10 +48,10 @@ Image handling \-
 .RI "const byte * \fBsp_image_image_id\fP (\fBsp_image\fP *image)"
 .br
 .ti -1c
-.RI "void \fBsp_image_add_ref\fP (\fBsp_image\fP *image)"
+.RI "\fBsp_error\fP \fBsp_image_add_ref\fP (\fBsp_image\fP *image)"
 .br
 .ti -1c
-.RI "void \fBsp_image_release\fP (\fBsp_image\fP *image)"
+.RI "\fBsp_error\fP \fBsp_image_release\fP (\fBsp_image\fP *image)"
 .br
 .in -1c
 .SH "Typedef Documentation"
@@ -71,7 +71,7 @@ Unknown image format.
 JPEG image. 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_image_add_load_callback (\fBsp_image\fP * image, \fBimage_loaded_cb\fP * callback, void * userdata)"Add a callback that will be invoked when the image is loaded
+.SS "\fBsp_error\fP sp_image_add_load_callback (\fBsp_image\fP * image, \fBimage_loaded_cb\fP * callback, void * userdata)"Add a callback that will be invoked when the image is loaded
 .PP
 If an image is loaded, and loading fails, the image will behave like an empty image.
 .PP
@@ -85,11 +85,16 @@ If an image is loaded, and loading fails, the image will behave like an empty im
 .RE
 .PP
 
-.SS "void sp_image_add_ref (\fBsp_image\fP * image)"Increase the reference count of an image
+.SS "\fBsp_error\fP sp_image_add_ref (\fBsp_image\fP * image)"Increase the reference count of an image
 .PP
 \fBParameters:\fP
 .RS 4
 \fIimage\fP The image object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -202,15 +207,20 @@ True if image is loaded, false otherwise
 .RE
 .PP
 
-.SS "void sp_image_release (\fBsp_image\fP * image)"Decrease the reference count of an image
+.SS "\fBsp_error\fP sp_image_release (\fBsp_image\fP * image)"Decrease the reference count of an image
 .PP
 \fBParameters:\fP
 .RS 4
 \fIimage\fP The image object 
 .RE
 .PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
 
-.SS "void sp_image_remove_load_callback (\fBsp_image\fP * image, \fBimage_loaded_cb\fP * callback, void * userdata)"Remove an image load callback previously added with \fBsp_image_add_load_callback()\fP
+.SS "\fBsp_error\fP sp_image_remove_load_callback (\fBsp_image\fP * image, \fBimage_loaded_cb\fP * callback, void * userdata)"Remove an image load callback previously added with \fBsp_image_add_load_callback()\fP
 .PP
 \fBParameters:\fP
 .RS 4
@@ -219,6 +229,11 @@ True if image is loaded, false otherwise
 \fIcallback\fP Callback that will not be called when image has been fetched. 
 .br
 \fIuserdata\fP Opaque pointer passed to \fCcallback\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

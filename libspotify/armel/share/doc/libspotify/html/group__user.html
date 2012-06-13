@@ -49,8 +49,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__user.html#gad9ac5456cd129c31d2c577ba14e88f8c">sp_user_canonical_name</a> (<a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *user)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__user.html#ga0052befb81a93bb7106ca863de892610">sp_user_display_name</a> (<a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *user)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__user.html#ga0996fb9814564e4ad39b8a500cb3de21">sp_user_is_loaded</a> (<a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *user)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__user.html#ga6d9d1de794f142b33f99fb6331fe6f79">sp_user_add_ref</a> (<a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *user)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__user.html#ga6db02370fdedf5f6532e5325feea1770">sp_user_release</a> (<a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *user)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__user.html#ga232816a3c8f42ef2663b8d99261f2dae">sp_user_add_ref</a> (<a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *user)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__user.html#gab1ffba4355073e1f72594c9e1b22ebb4">sp_user_release</a> (<a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *user)</td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="ga3a5dbf9aee629d8a9b43dfb24881a9b4"></a><!-- doxytag: member="api.h::sp_relation_type" ref="ga3a5dbf9aee629d8a9b43dfb24881a9b4" args="" -->
@@ -99,12 +99,12 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ga6d9d1de794f142b33f99fb6331fe6f79"></a><!-- doxytag: member="api.h::sp_user_add_ref" ref="ga6d9d1de794f142b33f99fb6331fe6f79" args="(sp_user *user)" -->
+<a class="anchor" id="ga232816a3c8f42ef2663b8d99261f2dae"></a><!-- doxytag: member="api.h::sp_user_add_ref" ref="ga232816a3c8f42ef2663b8d99261f2dae" args="(sp_user *user)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_user_add_ref </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_user_add_ref </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *&nbsp;</td>
           <td class="paramname"> <em>user</em></td>
@@ -121,6 +121,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
@@ -202,12 +203,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga6db02370fdedf5f6532e5325feea1770"></a><!-- doxytag: member="api.h::sp_user_release" ref="ga6db02370fdedf5f6532e5325feea1770" args="(sp_user *user)" -->
+<a class="anchor" id="gab1ffba4355073e1f72594c9e1b22ebb4"></a><!-- doxytag: member="api.h::sp_user_release" ref="gab1ffba4355073e1f72594c9e1b22ebb4" args="(sp_user *user)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_user_release </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_user_release </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#gaed2dbaa1eebd6752f76613daad9158bc">sp_user</a> *&nbsp;</td>
           <td class="paramname"> <em>user</em></td>
@@ -224,12 +225,13 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 
 </div>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:22:31.<br>
+Generated on Wed May 23 2012 09:09:03.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

@@ -1,4 +1,4 @@
-.TH "sp_session_callbacks" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "sp_session_callbacks" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -65,6 +65,15 @@ sp_session_callbacks \-
 .ti -1c
 .RI "void(* \fBcredentials_blob_updated\fP )(\fBsp_session\fP *session, const char *blob)"
 .br
+.ti -1c
+.RI "void(* \fBconnectionstate_updated\fP )(\fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "void(* \fBscrobble_error\fP )(\fBsp_session\fP *session, \fBsp_error\fP error)"
+.br
+.ti -1c
+.RI "void(* \fBprivate_session_mode_changed\fP )(\fBsp_session\fP *session, bool is_private)"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -85,6 +94,14 @@ Registered when you create a session. If some callbacks should not be of interes
 \fIsession\fP Session 
 .br
 \fIerror\fP One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_CLIENT_TOO_OLD SP_ERROR_UNABLE_TO_CONTACT_SERVER SP_ERROR_BAD_USERNAME_OR_PASSWORD SP_ERROR_USER_BANNED SP_ERROR_USER_NEEDS_PREMIUM SP_ERROR_OTHER_TRANSIENT SP_ERROR_OTHER_PERMANENT 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::connectionstate_updated\fP)(\fBsp_session\fP *session)"Called when the connection state has updated - such as when logging in, going offline, etc.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
 .RE
 .PP
 
@@ -249,6 +266,26 @@ IT MUST NOT automatically resume playback but must instead wait for the user to 
 \fBParameters:\fP
 .RS 4
 \fIsession\fP Session 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::private_session_mode_changed\fP)(\fBsp_session\fP *session, bool is_private)"Called when there is a change in the private session mode
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIisPrivate\fP True if in private session, false otherwhise 
+.RE
+.PP
+
+.SS "void( * \fBsp_session_callbacks::scrobble_error\fP)(\fBsp_session\fP *session, \fBsp_error\fP error)"Called when there is a scrobble error event
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session 
+.br
+\fIerror\fP Scrobble error. Currently SP_ERROR_LASTFM_AUTH_ERROR. 
 .RE
 .PP
 

@@ -1,4 +1,4 @@
-.TH "Track subsystem" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Track subsystem" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -34,7 +34,7 @@ Track subsystem \-
 .RI "bool \fBsp_track_is_starred\fP (\fBsp_session\fP *session, \fBsp_track\fP *track)"
 .br
 .ti -1c
-.RI "void \fBsp_track_set_starred\fP (\fBsp_session\fP *session, \fBsp_track\fP *const *tracks, int num_tracks, bool star)"
+.RI "\fBsp_error\fP \fBsp_track_set_starred\fP (\fBsp_session\fP *session, \fBsp_track\fP *const *tracks, int num_tracks, bool star)"
 .br
 .ti -1c
 .RI "int \fBsp_track_num_artists\fP (\fBsp_track\fP *track)"
@@ -64,10 +64,10 @@ Track subsystem \-
 .RI "\fBsp_track\fP * \fBsp_localtrack_create\fP (const char *artist, const char *title, const char *album, int length)"
 .br
 .ti -1c
-.RI "void \fBsp_track_add_ref\fP (\fBsp_track\fP *track)"
+.RI "\fBsp_error\fP \fBsp_track_add_ref\fP (\fBsp_track\fP *track)"
 .br
 .ti -1c
-.RI "void \fBsp_track_release\fP (\fBsp_track\fP *track)"
+.RI "\fBsp_error\fP \fBsp_track_release\fP (\fBsp_track\fP *track)"
 .br
 .in -1c
 .SH "Function Documentation"
@@ -91,11 +91,16 @@ A track.
 .RE
 .PP
 
-.SS "void sp_track_add_ref (\fBsp_track\fP * track)"Increase the reference count of a track
+.SS "\fBsp_error\fP sp_track_add_ref (\fBsp_track\fP * track)"Increase the reference count of a track
 .PP
 \fBParameters:\fP
 .RS 4
 \fItrack\fP The track object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -428,11 +433,16 @@ Popularity in range 0 to 100, 0 if undefined. If no metadata is available for th
 \fBExamples: \fP
 .in +1c
 \fBbrowse.c\fP.
-.SS "void sp_track_release (\fBsp_track\fP * track)"Decrease the reference count of a track
+.SS "\fBsp_error\fP sp_track_release (\fBsp_track\fP * track)"Decrease the reference count of a track
 .PP
 \fBParameters:\fP
 .RS 4
 \fItrack\fP The track object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -440,7 +450,7 @@ Popularity in range 0 to 100, 0 if undefined. If no metadata is available for th
 \fBExamples: \fP
 .in +1c
 \fBbrowse.c\fP.
-.SS "void sp_track_set_starred (\fBsp_session\fP * session, \fBsp_track\fP *const * tracks, int num_tracks, bool star)"Star/Unstar the specified track
+.SS "\fBsp_error\fP sp_track_set_starred (\fBsp_session\fP * session, \fBsp_track\fP *const * tracks, int num_tracks, bool star)"Star/Unstar the specified track
 .PP
 \fBParameters:\fP
 .RS 4

@@ -28,6 +28,8 @@
 
 #ifdef WIN32
 #define alloca _alloca
+#else
+#include <alloca.h>
 #endif
 
 static int subscriptions_updated;

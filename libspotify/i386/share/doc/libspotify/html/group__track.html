@@ -38,7 +38,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga112dca47d0bac39818b55119ef134ffd">sp_track_get_playable</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga2367d906c578e674d0d470d8c1ee3b33">sp_track_is_placeholder</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#gab17d380ac941e102af0f308ad885b3c3">sp_track_is_starred</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#gabee64a739385f37f52320fb5af635ab6">sp_track_set_starred</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *const *tracks, int num_tracks, bool star)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga34b5a712fb2c683402ff78df73e7545c">sp_track_set_starred</a> (<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *const *tracks, int num_tracks, bool star)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga0aa945fc43e35d36cc334a52735d83b2">sp_track_num_artists</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga31764fbd69618c10be173c6c03d4c1bc">sp_artist</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga67cd0c035627a1e4a54642213fdf1d75">sp_track_artist</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga6fd3e5de729c429fef3ff18ece6dcfad">sp_album</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga39a0f52244472cb2d450ea9ba6807304">sp_track_album</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
@@ -48,8 +48,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga9d464ee4a5c8836b59888952b960223a">sp_track_disc</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga25c1df9d32fd58f243397740b29c3f61">sp_track_index</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga0fb814ef23636fdecda64e3a63b15a23">sp_localtrack_create</a> (const char *artist, const char *title, const char *album, int length)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga809ed70d450f83a97b880c9b4e8d9f10">sp_track_add_ref</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga8b9a9ca88c7fb60e19420ce2261c7131">sp_track_release</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#ga7d86041a2bf75590f55978521c08e38c">sp_track_add_ref</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__track.html#gaa11098d82e6c2ae42fc2ea1486e741de">sp_track_release</a> (<a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *track)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="ga0fb814ef23636fdecda64e3a63b15a23"></a><!-- doxytag: member="api.h::sp_localtrack_create" ref="ga0fb814ef23636fdecda64e3a63b15a23" args="(const char *artist, const char *title, const char *album, int length)" -->
@@ -102,12 +102,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga809ed70d450f83a97b880c9b4e8d9f10"></a><!-- doxytag: member="api.h::sp_track_add_ref" ref="ga809ed70d450f83a97b880c9b4e8d9f10" args="(sp_track *track)" -->
+<a class="anchor" id="ga7d86041a2bf75590f55978521c08e38c"></a><!-- doxytag: member="api.h::sp_track_add_ref" ref="ga7d86041a2bf75590f55978521c08e38c" args="(sp_track *track)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_track_add_ref </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_track_add_ref </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td>
           <td class="paramname"> <em>track</em></td>
@@ -124,6 +124,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a57">browse.c</a>.</dd>
 </dl>
 </div>
@@ -566,7 +567,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The string representation of the specified track's name. Returned string is valid as long as the album object stays allocated and no longer than the next call to <a class="el" href="group__session.html#ga019a640b351de2a1ffe040ed755013f4">sp_session_process_events()</a> If no metadata is available for the track yet, this function returns empty string. </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The string representation of the specified track's name. Returned string is valid as long as the album object stays allocated and no longer than the next call to <a class="el" href="group__session.html#gaff27cb730db6debf55e750e39e7fadd7">sp_session_process_events()</a> If no metadata is available for the track yet, this function returns empty string. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a3">browse.c</a>, and <a class="el" href="jukebox_8c-example.html#a5">jukebox.c</a>.</dd>
 </dl>
 </div>
@@ -651,12 +652,12 @@ Functions</h2></td></tr>
 </dl>
 </div>
 </div>
-<a class="anchor" id="ga8b9a9ca88c7fb60e19420ce2261c7131"></a><!-- doxytag: member="api.h::sp_track_release" ref="ga8b9a9ca88c7fb60e19420ce2261c7131" args="(sp_track *track)" -->
+<a class="anchor" id="gaa11098d82e6c2ae42fc2ea1486e741de"></a><!-- doxytag: member="api.h::sp_track_release" ref="gaa11098d82e6c2ae42fc2ea1486e741de" args="(sp_track *track)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_track_release </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_track_release </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga47bbd2262f0c8b5d7147af7d62198e48">sp_track</a> *&nbsp;</td>
           <td class="paramname"> <em>track</em></td>
@@ -673,16 +674,17 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="browse_8c-example.html#a36">browse.c</a>.</dd>
 </dl>
 </div>
 </div>
-<a class="anchor" id="gabee64a739385f37f52320fb5af635ab6"></a><!-- doxytag: member="api.h::sp_track_set_starred" ref="gabee64a739385f37f52320fb5af635ab6" args="(sp_session *session, sp_track *const *tracks, int num_tracks, bool star)" -->
+<a class="anchor" id="ga34b5a712fb2c683402ff78df73e7545c"></a><!-- doxytag: member="api.h::sp_track_set_starred" ref="ga34b5a712fb2c683402ff78df73e7545c" args="(sp_session *session, sp_track *const *tracks, int num_tracks, bool star)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void sp_track_set_starred </td>
+          <td class="memname"><a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> sp_track_set_starred </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *&nbsp;</td>
           <td class="paramname"> <em>session</em>, </td>
@@ -730,7 +732,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:26:08.<br>
+Generated on Wed May 23 2012 09:11:01.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

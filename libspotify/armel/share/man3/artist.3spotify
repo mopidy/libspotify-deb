@@ -1,4 +1,4 @@
-.TH "Artist subsystem" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Artist subsystem" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,22 +13,27 @@ Artist subsystem \-
 .RI "bool \fBsp_artist_is_loaded\fP (\fBsp_artist\fP *artist)"
 .br
 .ti -1c
-.RI "const byte * \fBsp_artist_portrait\fP (\fBsp_artist\fP *artist)"
+.RI "const byte * \fBsp_artist_portrait\fP (\fBsp_artist\fP *artist, \fBsp_image_size\fP size)"
 .br
 .ti -1c
-.RI "void \fBsp_artist_add_ref\fP (\fBsp_artist\fP *artist)"
+.RI "\fBsp_error\fP \fBsp_artist_add_ref\fP (\fBsp_artist\fP *artist)"
 .br
 .ti -1c
-.RI "void \fBsp_artist_release\fP (\fBsp_artist\fP *artist)"
+.RI "\fBsp_error\fP \fBsp_artist_release\fP (\fBsp_artist\fP *artist)"
 .br
 .in -1c
 .SH "Function Documentation"
 .PP 
-.SS "void sp_artist_add_ref (\fBsp_artist\fP * artist)"Increase the reference count of a artist
+.SS "\fBsp_error\fP sp_artist_add_ref (\fBsp_artist\fP * artist)"Increase the reference count of a artist
 .PP
 \fBParameters:\fP
 .RS 4
 \fIartist\fP The artist object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -62,11 +67,13 @@ Name of artist. Returned string is valid as long as the artist object stays allo
 \fBExamples: \fP
 .in +1c
 \fBbrowse.c\fP, \fBsearch.c\fP, and \fBtoplist.c\fP.
-.SS "const byte* sp_artist_portrait (\fBsp_artist\fP * artist)"Return portrait for artist
+.SS "const byte* sp_artist_portrait (\fBsp_artist\fP * artist, \fBsp_image_size\fP size)"Return portrait for artist
 .PP
 \fBParameters:\fP
 .RS 4
-\fIartist\fP The artist object
+\fIartist\fP The artist object 
+.br
+\fIsize\fP The desired size of the image
 .RE
 .PP
 \fBReturns:\fP
@@ -75,11 +82,16 @@ ID byte sequence that can be passed to \fBsp_image_create()\fP If the artist has
 .RE
 .PP
 
-.SS "void sp_artist_release (\fBsp_artist\fP * artist)"Decrease the reference count of a artist
+.SS "\fBsp_error\fP sp_artist_release (\fBsp_artist\fP * artist)"Decrease the reference count of a artist
 .PP
 \fBParameters:\fP
 .RS 4
 \fIartist\fP The artist object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

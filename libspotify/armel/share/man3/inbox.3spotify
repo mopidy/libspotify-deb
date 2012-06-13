@@ -1,4 +1,4 @@
-.TH "Inbox subsystem" 3spotify "Wed Mar 28 2012" "libspotify" \" -*- nroff -*-
+.TH "Inbox subsystem" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -20,10 +20,10 @@ Inbox subsystem \-
 .RI "\fBsp_error\fP \fBsp_inbox_error\fP (\fBsp_inbox\fP *inbox)"
 .br
 .ti -1c
-.RI "void \fBsp_inbox_add_ref\fP (\fBsp_inbox\fP *inbox)"
+.RI "\fBsp_error\fP \fBsp_inbox_add_ref\fP (\fBsp_inbox\fP *inbox)"
 .br
 .ti -1c
-.RI "void \fBsp_inbox_release\fP (\fBsp_inbox\fP *inbox)"
+.RI "\fBsp_error\fP \fBsp_inbox_release\fP (\fBsp_inbox\fP *inbox)"
 .br
 .in -1c
 .SH "Typedef Documentation"
@@ -42,11 +42,16 @@ When this callback is called, the \fBsp_track_is_loaded()\fP, \fBsp_album_is_loa
 
 .SH "Function Documentation"
 .PP 
-.SS "void sp_inbox_add_ref (\fBsp_inbox\fP * inbox)"Increase the reference count of a inbox result
+.SS "\fBsp_error\fP sp_inbox_add_ref (\fBsp_inbox\fP * inbox)"Increase the reference count of a inbox result
 .PP
 \fBParameters:\fP
 .RS 4
 \fIinbox\fP The inbox result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 
@@ -88,11 +93,16 @@ sp_inbox object if the request has been sent, NULL if request failed to initiali
 .RE
 .PP
 
-.SS "void sp_inbox_release (\fBsp_inbox\fP * inbox)"Decrease the reference count of a inbox result
+.SS "\fBsp_error\fP sp_inbox_release (\fBsp_inbox\fP * inbox)"Decrease the reference count of a inbox result
 .PP
 \fBParameters:\fP
 .RS 4
 \fIinbox\fP The inbox result object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
 .RE
 .PP
 

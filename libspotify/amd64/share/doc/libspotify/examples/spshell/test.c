@@ -273,12 +273,20 @@ static void SP_CALLCONV search1_cb(sp_search *result, void *userdata)
 		test_report(userdata, "%s", sp_error_message(sp_search_error(result)));
 	else if(sp_search_num_tracks(result) != 2)
 		test_report(userdata, "Expected %d tracks got %d", 2, sp_search_num_tracks(result));
+	else if(sp_search_total_tracks(result) < sp_search_num_tracks(result))
+		test_report(userdata, "Total tracks (%d) less than number of tracks (%d)", sp_search_total_tracks(result), sp_search_num_tracks(result));
 	else if(sp_search_num_albums(result) != 4)
 		test_report(userdata, "Expected %d albums got %d", 4, sp_search_num_albums(result));
+	else if(sp_search_total_albums(result) < sp_search_num_albums(result))
+		test_report(userdata, "Total albums (%d) less than number of albums (%d)", sp_search_total_albums(result), sp_search_num_albums(result));
 	else if(sp_search_num_artists(result) != 6)
 		test_report(userdata, "Expected %d artists got %d", 6, sp_search_num_artists(result));
+	else if(sp_search_total_artists(result) < sp_search_num_artists(result))
+		test_report(userdata, "Total artists (%d) less than number of artists (%d)", sp_search_total_artists(result), sp_search_num_artists(result));
 	else if(sp_search_num_playlists(result) != 8)
-		test_report(userdata, "Expected %d artists got %d", 8, sp_search_num_playlists(result));
+		test_report(userdata, "Expected %d playlists got %d", 8, sp_search_num_playlists(result));
+	else if(sp_search_total_playlists(result) < sp_search_num_playlists(result))
+		test_report(userdata, "Total playlists (%d) less than number of playlists (%d)", sp_search_total_playlists(result), sp_search_num_playlists(result));
 	else {
 		if (!sp_search_playlist_name(result, 1)) {
 			test_report(userdata, "Expected a name for playlist #1");
@@ -821,8 +829,8 @@ void test_process(void)
 		WAIT_FOR(!active_tests);
 #endif
 
-		info_report("Loading %s", "spotify:track:7dTWkvPOPgbGuMk4HDxNpY");
-		stream_track = track_from_uri("spotify:track:7dTWkvPOPgbGuMk4HDxNpY");
+		info_report("Loading %s", "spotify:track:5iIeIeH3LBSMK92cMIXrVD");
+		stream_track = track_from_uri("spotify:track:5iIeIeH3LBSMK92cMIXrVD");
 		WAIT_FOR(sp_track_is_loaded(stream_track));
 
 		playtrack_test();

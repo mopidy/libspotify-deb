@@ -58,6 +58,9 @@ Data Fields</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#aa0f62ed875aab47e5ae093576a6d54c8">offline_status_updated</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#ad403ac063f5512b277c924add75dfbea">offline_error</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> error)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#ae7c5c209735f5c437d76a512eebbf30b">credentials_blob_updated</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, const char *blob)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#a379c96577e927d6c65ac61fe13c1e412">connectionstate_updated</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#a01a47778439fa233187fdefa75a0f7dc">scrobble_error</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> error)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsp__session__callbacks.html#ad04af396785f8973a3c15a68bb617830">private_session_mode_changed</a> )(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, bool is_private)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Session callbacks</p>
@@ -81,6 +84,26 @@ Data Fields</h2></td></tr>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>error</em>&nbsp;</td><td>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK SP_ERROR_CLIENT_TOO_OLD SP_ERROR_UNABLE_TO_CONTACT_SERVER SP_ERROR_BAD_USERNAME_OR_PASSWORD SP_ERROR_USER_BANNED SP_ERROR_USER_NEEDS_PREMIUM SP_ERROR_OTHER_TRANSIENT SP_ERROR_OTHER_PERMANENT </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a379c96577e927d6c65ac61fe13c1e412"></a><!-- doxytag: member="sp_session_callbacks::connectionstate_updated" ref="a379c96577e927d6c65ac61fe13c1e412" args=")(sp_session *session)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void( * <a class="el" href="structsp__session__callbacks.html#a379c96577e927d6c65ac61fe13c1e412">sp_session_callbacks::connectionstate_updated</a>)(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Called when the connection state has updated - such as when logging in, going offline, etc.</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
   </table>
   </dd>
 </dl>
@@ -296,7 +319,7 @@ This function must never block. If your output buffers are full you must return 
 </div>
 <div class="memdoc">
 <p>Called when processing needs to take place on the main thread.</p>
-<p>You need to call <a class="el" href="group__session.html#ga019a640b351de2a1ffe040ed755013f4">sp_session_process_events()</a> in the main thread to get libspotify to do more work. Failure to do so may cause request timeouts, or a lost connection.</p>
+<p>You need to call <a class="el" href="group__session.html#gaff27cb730db6debf55e750e39e7fadd7">sp_session_process_events()</a> in the main thread to get libspotify to do more work. Failure to do so may cause request timeouts, or a lost connection.</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session</td></tr>
@@ -365,6 +388,48 @@ IT MUST NOT automatically resume playback but must instead wait for the user to 
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad04af396785f8973a3c15a68bb617830"></a><!-- doxytag: member="sp_session_callbacks::private_session_mode_changed" ref="ad04af396785f8973a3c15a68bb617830" args=")(sp_session *session, bool is_private)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void( * <a class="el" href="structsp__session__callbacks.html#ad04af396785f8973a3c15a68bb617830">sp_session_callbacks::private_session_mode_changed</a>)(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, bool is_private)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Called when there is a change in the private session mode</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>isPrivate</em>&nbsp;</td><td>True if in private session, false otherwhise </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a01a47778439fa233187fdefa75a0f7dc"></a><!-- doxytag: member="sp_session_callbacks::scrobble_error" ref="a01a47778439fa233187fdefa75a0f7dc" args=")(sp_session *session, sp_error error)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void( * <a class="el" href="structsp__session__callbacks.html#a01a47778439fa233187fdefa75a0f7dc">sp_session_callbacks::scrobble_error</a>)(<a class="el" href="group__types.html#ga70dd19c6f824cf6a159575aa4c128b53">sp_session</a> *session, <a class="el" href="group__error.html#gafd27986ce4cd9eeaeca8adda83c9eb6b">sp_error</a> error)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Called when there is a scrobble error event</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>session</em>&nbsp;</td><td>Session </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>error</em>&nbsp;</td><td>Scrobble error. Currently SP_ERROR_LASTFM_AUTH_ERROR. </td></tr>
   </table>
   </dd>
 </dl>
@@ -468,7 +533,7 @@ This function must never block.</dd></dl>
 </ul>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed Mar 28 2012 16:22:31.<br>
+Generated on Wed May 23 2012 09:09:03.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>
