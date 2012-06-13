@@ -1,7 +1,7 @@
 Index: libspotify/amd64/share/man3/album.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/album.3spotify	2011-09-03 14:51:46.836527231 +0200
-+++ libspotify/amd64/share/man3/album.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/album.3spotify	2012-06-13 09:11:11.529963508 +0200
++++ libspotify/amd64/share/man3/album.3spotify	2012-06-13 09:11:27.913695103 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -13,8 +13,8 @@ Index: libspotify/amd64/share/man3/album.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/albumbrowse.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/albumbrowse.3spotify	2011-09-03 14:51:46.616527224 +0200
-+++ libspotify/amd64/share/man3/albumbrowse.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/albumbrowse.3spotify	2012-06-13 09:11:11.549963180 +0200
++++ libspotify/amd64/share/man3/albumbrowse.3spotify	2012-06-13 09:11:27.913695103 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -26,8 +26,8 @@ Index: libspotify/amd64/share/man3/albumbrowse.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/artist.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/artist.3spotify	2011-09-03 14:51:46.966527233 +0200
-+++ libspotify/amd64/share/man3/artist.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/artist.3spotify	2012-06-13 09:11:11.501963966 +0200
++++ libspotify/amd64/share/man3/artist.3spotify	2012-06-13 09:11:27.913695103 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -39,8 +39,8 @@ Index: libspotify/amd64/share/man3/artist.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/artistbrowse.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/artistbrowse.3spotify	2011-09-03 14:51:46.686527227 +0200
-+++ libspotify/amd64/share/man3/artistbrowse.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/artistbrowse.3spotify	2012-06-13 09:11:11.601962328 +0200
++++ libspotify/amd64/share/man3/artistbrowse.3spotify	2012-06-13 09:11:27.913695103 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -52,8 +52,8 @@ Index: libspotify/amd64/share/man3/artistbrowse.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/error.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/error.3spotify	2011-09-03 14:51:46.946527233 +0200
-+++ libspotify/amd64/share/man3/error.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/error.3spotify	2012-06-13 09:11:11.565962918 +0200
++++ libspotify/amd64/share/man3/error.3spotify	2012-06-13 09:11:27.917695037 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -65,8 +65,8 @@ Index: libspotify/amd64/share/man3/error.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/image.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/image.3spotify	2011-09-03 14:51:46.856527230 +0200
-+++ libspotify/amd64/share/man3/image.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/image.3spotify	2012-06-13 09:11:11.693960820 +0200
++++ libspotify/amd64/share/man3/image.3spotify	2012-06-13 09:11:27.917695037 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -78,8 +78,8 @@ Index: libspotify/amd64/share/man3/image.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/link.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/link.3spotify	2011-09-03 14:51:47.006527234 +0200
-+++ libspotify/amd64/share/man3/link.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/link.3spotify	2012-06-13 09:11:11.577962721 +0200
++++ libspotify/amd64/share/man3/link.3spotify	2012-06-13 09:11:27.917695037 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -91,8 +91,8 @@ Index: libspotify/amd64/share/man3/link.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/playlist.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/playlist.3spotify	2011-09-03 14:51:46.666527226 +0200
-+++ libspotify/amd64/share/man3/playlist.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/playlist.3spotify	2012-06-13 09:11:11.613962131 +0200
++++ libspotify/amd64/share/man3/playlist.3spotify	2012-06-13 09:11:27.917695037 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -104,8 +104,8 @@ Index: libspotify/amd64/share/man3/playlist.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/session.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/session.3spotify	2011-09-03 14:51:47.046527235 +0200
-+++ libspotify/amd64/share/man3/session.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/session.3spotify	2012-06-13 09:11:11.433965080 +0200
++++ libspotify/amd64/share/man3/session.3spotify	2012-06-13 09:11:27.917695037 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -117,8 +117,8 @@ Index: libspotify/amd64/share/man3/session.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/toplist.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/toplist.3spotify	2011-09-03 14:51:46.726527228 +0200
-+++ libspotify/amd64/share/man3/toplist.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/toplist.3spotify	2012-06-13 09:11:11.385965867 +0200
++++ libspotify/amd64/share/man3/toplist.3spotify	2012-06-13 09:11:27.921694971 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -130,8 +130,8 @@ Index: libspotify/amd64/share/man3/toplist.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/track.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/track.3spotify	2011-09-03 14:51:46.746527228 +0200
-+++ libspotify/amd64/share/man3/track.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/track.3spotify	2012-06-13 09:11:11.497964031 +0200
++++ libspotify/amd64/share/man3/track.3spotify	2012-06-13 09:11:27.921694971 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -143,8 +143,8 @@ Index: libspotify/amd64/share/man3/track.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/types.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/types.3spotify	2011-09-03 14:51:46.626527225 +0200
-+++ libspotify/amd64/share/man3/types.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/types.3spotify	2012-06-13 09:11:11.417965342 +0200
++++ libspotify/amd64/share/man3/types.3spotify	2012-06-13 09:11:27.921694971 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -156,8 +156,8 @@ Index: libspotify/amd64/share/man3/types.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/user.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/user.3spotify	2011-09-03 14:51:46.776527228 +0200
-+++ libspotify/amd64/share/man3/user.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/user.3spotify	2012-06-13 09:11:11.673961148 +0200
++++ libspotify/amd64/share/man3/user.3spotify	2012-06-13 09:11:27.921694971 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -169,8 +169,8 @@ Index: libspotify/amd64/share/man3/user.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/sp_audio_buffer_stats.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_audio_buffer_stats.3spotify	2011-09-03 14:51:46.796527230 +0200
-+++ libspotify/amd64/share/man3/sp_audio_buffer_stats.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/sp_audio_buffer_stats.3spotify	2012-06-13 09:11:11.589962524 +0200
++++ libspotify/amd64/share/man3/sp_audio_buffer_stats.3spotify	2012-06-13 09:11:27.921694971 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -182,8 +182,8 @@ Index: libspotify/amd64/share/man3/sp_audio_buffer_stats.3spotify
  .PP
 Index: libspotify/amd64/share/man3/sp_audioformat.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_audioformat.3spotify	2011-09-03 14:51:46.816527229 +0200
-+++ libspotify/amd64/share/man3/sp_audioformat.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/sp_audioformat.3spotify	2012-06-13 09:11:11.633961804 +0200
++++ libspotify/amd64/share/man3/sp_audioformat.3spotify	2012-06-13 09:11:27.921694971 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -195,8 +195,8 @@ Index: libspotify/amd64/share/man3/sp_audioformat.3spotify
  .PP
 Index: libspotify/amd64/share/man3/sp_playlist_callbacks.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_playlist_callbacks.3spotify	2011-09-03 14:51:46.706527227 +0200
-+++ libspotify/amd64/share/man3/sp_playlist_callbacks.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/sp_playlist_callbacks.3spotify	2012-06-13 09:11:11.449964818 +0200
++++ libspotify/amd64/share/man3/sp_playlist_callbacks.3spotify	2012-06-13 09:11:27.925694906 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -208,8 +208,8 @@ Index: libspotify/amd64/share/man3/sp_playlist_callbacks.3spotify
  .PP
 Index: libspotify/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify	2011-09-03 14:51:46.876527232 +0200
-+++ libspotify/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify	2012-06-13 09:11:11.657961410 +0200
++++ libspotify/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify	2012-06-13 09:11:27.925694906 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -221,8 +221,8 @@ Index: libspotify/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify
  .PP
 Index: libspotify/amd64/share/man3/sp_session_callbacks.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_session_callbacks.3spotify	2011-09-03 14:51:46.646527226 +0200
-+++ libspotify/amd64/share/man3/sp_session_callbacks.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/sp_session_callbacks.3spotify	2012-06-13 09:11:11.701960690 +0200
++++ libspotify/amd64/share/man3/sp_session_callbacks.3spotify	2012-06-13 09:11:27.925694906 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -234,8 +234,8 @@ Index: libspotify/amd64/share/man3/sp_session_callbacks.3spotify
  .PP
 Index: libspotify/amd64/share/man3/sp_session_config.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_session_config.3spotify	2011-09-03 14:51:46.926527233 +0200
-+++ libspotify/amd64/share/man3/sp_session_config.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/sp_session_config.3spotify	2012-06-13 09:11:11.477964359 +0200
++++ libspotify/amd64/share/man3/sp_session_config.3spotify	2012-06-13 09:11:27.925694906 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -247,8 +247,8 @@ Index: libspotify/amd64/share/man3/sp_session_config.3spotify
  .PP
 Index: libspotify/amd64/share/man3/sp_subscribers.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_subscribers.3spotify	2011-09-03 14:51:46.986527235 +0200
-+++ libspotify/amd64/share/man3/sp_subscribers.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/sp_subscribers.3spotify	2012-06-13 09:11:11.721960361 +0200
++++ libspotify/amd64/share/man3/sp_subscribers.3spotify	2012-06-13 09:11:27.925694906 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -260,8 +260,8 @@ Index: libspotify/amd64/share/man3/sp_subscribers.3spotify
  .PP
 Index: libspotify/amd64/share/man3/api.h.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/api.h.3spotify	2011-09-03 14:51:46.896527231 +0200
-+++ libspotify/amd64/share/man3/api.h.3spotify	2011-09-03 14:51:47.000000000 +0200
+--- libspotify.orig/amd64/share/man3/api.h.3spotify	2012-06-13 09:11:11.457964687 +0200
++++ libspotify/amd64/share/man3/api.h.3spotify	2012-06-13 09:11:27.925694906 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -273,8 +273,8 @@ Index: libspotify/amd64/share/man3/api.h.3spotify
  .PP
 Index: libspotify/amd64/share/man3/inbox.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/inbox.3spotify	2011-09-03 14:52:18.116528014 +0200
-+++ libspotify/amd64/share/man3/inbox.3spotify	2011-09-03 14:52:57.676529006 +0200
+--- libspotify.orig/amd64/share/man3/inbox.3spotify	2012-06-13 09:11:11.513963769 +0200
++++ libspotify/amd64/share/man3/inbox.3spotify	2012-06-13 09:11:27.929694841 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -286,8 +286,8 @@ Index: libspotify/amd64/share/man3/inbox.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/search.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/search.3spotify	2011-09-03 14:52:20.086528064 +0200
-+++ libspotify/amd64/share/man3/search.3spotify	2011-09-03 14:52:46.046528713 +0200
+--- libspotify.orig/amd64/share/man3/search.3spotify	2012-06-13 09:11:11.637961738 +0200
++++ libspotify/amd64/share/man3/search.3spotify	2012-06-13 09:11:27.929694841 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -299,8 +299,8 @@ Index: libspotify/amd64/share/man3/search.3spotify
  .in +1c
 Index: libspotify/amd64/share/man3/sp_offline_sync_status.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_offline_sync_status.3spotify	2011-09-03 14:53:20.986529590 +0200
-+++ libspotify/amd64/share/man3/sp_offline_sync_status.3spotify	2011-09-03 14:53:31.196529845 +0200
+--- libspotify.orig/amd64/share/man3/sp_offline_sync_status.3spotify	2012-06-13 09:11:11.397965669 +0200
++++ libspotify/amd64/share/man3/sp_offline_sync_status.3spotify	2012-06-13 09:11:27.929694841 +0200
 @@ -2,7 +2,7 @@
  .ad l
  .nh
