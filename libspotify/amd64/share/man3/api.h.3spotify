@@ -1,4 +1,4 @@
-.TH "api.h" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
+.TH "api.h" 3spotify "Wed Jun 13 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -697,6 +697,9 @@ api.h \-
 .br
 .ti -1c
 .RI "int \fBsp_search_num_playlists\fP (\fBsp_search\fP *search)"
+.br
+.ti -1c
+.RI "\fBsp_playlist\fP * \fBsp_search_playlist\fP (\fBsp_search\fP *search, int index)"
 .br
 .ti -1c
 .RI "const char * \fBsp_search_playlist_name\fP (\fBsp_search\fP *search, int index)"

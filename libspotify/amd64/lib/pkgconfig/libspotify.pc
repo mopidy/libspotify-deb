@@ -5,6 +5,6 @@ includedir=${prefix}/include
 
 Name: libspotify
 Description: Spotify client library
-Version: 12.1.45
+Version: 12.1.51
 Libs: -L${libdir} -lspotify
 Cflags: -I${includedir}

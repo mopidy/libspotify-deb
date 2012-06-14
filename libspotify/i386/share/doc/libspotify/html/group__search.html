@@ -41,6 +41,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga0c456a6396c4c05fbc8677ea641ef1f7">sp_search_num_albums</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga6fd3e5de729c429fef3ff18ece6dcfad">sp_album</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga4ba7723e70db0c6a4569c4bcd44f0e98">sp_search_album</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gaa9f007f439d8241bf632f9abb8d926c9">sp_search_num_playlists</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga4175fba17f355b1c0bd361357181ea35">sp_search_playlist</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga933cd5d5a0ccca9906082ca4549a4ed7">sp_search_playlist_name</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#ga0071a3d30f0f0c4e477bf923e9014ff5">sp_search_playlist_uri</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search, int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__search.html#gac4463fab4ea25e0a5d5079c959a1781c">sp_search_playlist_image_uri</a> (<a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *search, int index)</td></tr>
@@ -289,7 +290,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Pointer to a search object. To free the object, use <a class="el" href="group__search.html#ga4e01d43067d9f8c533c985f90143821b">sp_search_release()</a> </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a16">search.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a18">search.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -343,7 +344,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK SP_ERROR_IS_LOADING SP_ERROR_OTHER_PERMANENT SP_ERROR_OTHER_TRANSIENT </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a12">search.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a14">search.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -450,7 +451,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of playlists for the specified search </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a12">search.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a class="anchor" id="ga1dd18cf7b3b3b7f4bf6e92a2140378d0"></a><!-- doxytag: member="api.h::sp_search_num_tracks" ref="ga1dd18cf7b3b3b7f4bf6e92a2140378d0" args="(sp_search *search)" -->
@@ -478,6 +480,42 @@ Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of tracks for the specified search </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a6">search.c</a>.</dd>
 </dl>
+</div>
+</div>
+<a class="anchor" id="ga4175fba17f355b1c0bd361357181ea35"></a><!-- doxytag: member="api.h::sp_search_playlist" ref="ga4175fba17f355b1c0bd361357181ea35" args="(sp_search *search, int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__types.html#ga1bcf54cbc117a20ab2c15e59eb3a8174">sp_playlist</a>* sp_search_playlist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd">sp_search</a> *&nbsp;</td>
+          <td class="paramname"> <em>search</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Load the playlist at the given index in the given search object</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>search</em>&nbsp;</td><td>Search object </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>index</em>&nbsp;</td><td>Index of the wanted playlist. Should be in the interval [0, <a class="el" href="group__search.html#gaa9f007f439d8241bf632f9abb8d926c9">sp_search_num_playlists()</a> - 1]</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A playlist object. This reference is owned by the caller and should be released with <a class="el" href="group__playlist.html#gacb9250eb530869b039541a8b62dfab6c">sp_playlist_release()</a> </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="gac4463fab4ea25e0a5d5079c959a1781c"></a><!-- doxytag: member="api.h::sp_search_playlist_image_uri" ref="gac4463fab4ea25e0a5d5079c959a1781c" args="(sp_search *search, int index)" -->
@@ -549,7 +587,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The playlist name at the given index in the given search object </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a13">search.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a class="anchor" id="ga0071a3d30f0f0c4e477bf923e9014ff5"></a><!-- doxytag: member="api.h::sp_search_playlist_uri" ref="ga0071a3d30f0f0c4e477bf923e9014ff5" args="(sp_search *search, int index)" -->
@@ -638,7 +677,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>One of the following errors, from <a class="el" href="group__error.html#ga83154178d3a32668658734d2facfa22b">sp_error</a> SP_ERROR_OK </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a15">search.c</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="search_8c-example.html#a17">search.c</a>.</dd>
 </dl>
 </div>
 </div>
@@ -786,7 +825,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed May 23 2012 09:11:01.<br>
+Generated on Wed Jun 13 2012 14:15:13.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

@@ -1,4 +1,4 @@
-.TH "Search subsystem" 3spotify "Wed May 23 2012" "libspotify" \" -*- nroff -*-
+.TH "Search subsystem" 3spotify "Wed Jun 13 2012" "libspotify" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -36,6 +36,9 @@ Search subsystem \-
 .br
 .ti -1c
 .RI "int \fBsp_search_num_playlists\fP (\fBsp_search\fP *search)"
+.br
+.ti -1c
+.RI "\fBsp_playlist\fP * \fBsp_search_playlist\fP (\fBsp_search\fP *search, int index)"
 .br
 .ti -1c
 .RI "const char * \fBsp_search_playlist_name\fP (\fBsp_search\fP *search, int index)"
@@ -279,6 +282,10 @@ The number of playlists for the specified search
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBsearch.c\fP.
 .SS "int sp_search_num_tracks (\fBsp_search\fP * search)"Get the number of tracks for the specified search
 .PP
 \fBParameters:\fP
@@ -296,6 +303,21 @@ The number of tracks for the specified search
 \fBExamples: \fP
 .in +1c
 \fBsearch.c\fP.
+.SS "\fBsp_playlist\fP* sp_search_playlist (\fBsp_search\fP * search, int index)"Load the playlist at the given index in the given search object
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsearch\fP Search object 
+.br
+\fIindex\fP Index of the wanted playlist. Should be in the interval [0, \fBsp_search_num_playlists()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A playlist object. This reference is owned by the caller and should be released with \fBsp_playlist_release()\fP 
+.RE
+.PP
+
 .SS "const char* sp_search_playlist_image_uri (\fBsp_search\fP * search, int index)"Return the image_uri of a playlist at the given index in the given search object
 .PP
 \fBParameters:\fP
@@ -326,6 +348,10 @@ The playlist name at the given index in the given search object
 .RE
 .PP
 
+.PP
+\fBExamples: \fP
+.in +1c
+\fBsearch.c\fP.
 .SS "const char* sp_search_playlist_uri (\fBsp_search\fP * search, int index)"Return the uri of a playlist at the given index in the given search object
 .PP
 \fBParameters:\fP

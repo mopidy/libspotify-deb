@@ -67,17 +67,24 @@
         print_artist(<a name="a11"></a><a class="code" href="group__search.html#ga79b3d532d5a20a3b2bf2a087eead7888">sp_search_artist</a>(search, i));
 
     puts(<span class="stringliteral">&quot;&quot;</span>);
+
+    <span class="keywordflow">for</span> (i = 0; i &lt; <a name="a12"></a><a class="code" href="group__search.html#gaa9f007f439d8241bf632f9abb8d926c9">sp_search_num_playlists</a>(search); ++i) {
+        <span class="comment">// print some readily available metadata, the rest will</span>
+        <span class="comment">// be available from the sp_playlist object loaded through</span>
+        <span class="comment">// sp_search_playlist().</span>
+        printf(<span class="stringliteral">&quot;  Playlist \&quot;%s\&quot;\n&quot;</span>, <a name="a13"></a><a class="code" href="group__search.html#ga933cd5d5a0ccca9906082ca4549a4ed7">sp_search_playlist_name</a>(search, i));
+    }
 }
 
 <span class="keyword">static</span> <span class="keywordtype">void</span> SP_CALLCONV search_complete(<a class="code" href="group__types.html#gac95893a6b23d4b19f6f149eed6ead1fd" title="A handle to a search result.">sp_search</a> *search, <span class="keywordtype">void</span> *userdata)
 {
-    <span class="keywordflow">if</span> (<a name="a12"></a><a class="code" href="group__search.html#ga7cf655e37a823f952d30270d4fb60f10">sp_search_error</a>(search) == <a name="a13"></a><a class="code" href="group__error.html#ggafd27986ce4cd9eeaeca8adda83c9eb6ba16cb277dc84328e4b2c0cf6d5a0c0b8d" title="No errors encountered.">SP_ERROR_OK</a>)
+    <span class="keywordflow">if</span> (<a name="a14"></a><a class="code" href="group__search.html#ga7cf655e37a823f952d30270d4fb60f10">sp_search_error</a>(search) == <a name="a15"></a><a class="code" href="group__error.html#ggafd27986ce4cd9eeaeca8adda83c9eb6ba16cb277dc84328e4b2c0cf6d5a0c0b8d" title="No errors encountered.">SP_ERROR_OK</a>)
         print_search(search);
     <span class="keywordflow">else</span>
         fprintf(stderr, <span class="stringliteral">&quot;Failed to search: %s\n&quot;</span>,
-                <a name="a14"></a><a class="code" href="group__error.html#ga983dee341d3c2008830513b7cffe7bf3">sp_error_message</a>(<a class="code" href="group__search.html#ga7cf655e37a823f952d30270d4fb60f10">sp_search_error</a>(search)));
+                <a name="a16"></a><a class="code" href="group__error.html#ga983dee341d3c2008830513b7cffe7bf3">sp_error_message</a>(<a class="code" href="group__search.html#ga7cf655e37a823f952d30270d4fb60f10">sp_search_error</a>(search)));
 
-    <a name="a15"></a><a class="code" href="group__search.html#ga4e01d43067d9f8c533c985f90143821b">sp_search_release</a>(search);
+    <a name="a17"></a><a class="code" href="group__search.html#ga4e01d43067d9f8c533c985f90143821b">sp_search_release</a>(search);
     cmd_done();
 }
 
@@ -104,7 +111,7 @@
         snprintf(query + strlen(query), <span class="keyword">sizeof</span>(query) - strlen(query), <span class="stringliteral">&quot;%s%s&quot;</span>,
              i == 1 ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot; &quot;</span>, argv[i]);
 
-    <a name="a16"></a><a class="code" href="group__search.html#ga2f64dfbcc1313e7d5179998cb28208d4">sp_search_create</a>(g_session, query, 0, 100, 0, 100, 0, 100, 0, 100, SP_SEARCH_STANDARD, &amp;search_complete, NULL);
+    <a name="a18"></a><a class="code" href="group__search.html#ga2f64dfbcc1313e7d5179998cb28208d4">sp_search_create</a>(g_session, query, 0, 100, 0, 100, 0, 100, 0, 100, SP_SEARCH_STANDARD, &amp;search_complete, NULL);
     <span class="keywordflow">return</span> 0;
 }
 
@@ -117,7 +124,7 @@
 </pre></div> </div>
 </div>
 <hr size="1"><address style="text-align: right;"><small>
-Generated on Wed May 23 2012 09:12:26.<br>
+Generated on Wed Jun 13 2012 14:22:40.<br>
 Copyright &copy; 2006&ndash;2012 Spotify Ltd</small></address>
 </body>
 </html>

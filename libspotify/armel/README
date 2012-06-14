@@ -1,5 +1,5 @@
 
-                                 libspotify 12.1.45
+                                 libspotify 12.1.51
 
                    ----------------------------------------
 
@@ -17,7 +17,7 @@
 
     The package is structured as follows:
 
-      libspotify-12.1.45/
+      libspotify-12.1.51/
         ChangeLog                      Contains description of new and changed
                                        functionality in libspotify
         Makefile                       Makefile for easier installation

@@ -77,6 +77,13 @@ static void print_search(sp_search *search)
 		print_artist(sp_search_artist(search, i));
 
 	puts("");
+
+	for (i = 0; i < sp_search_num_playlists(search); ++i) {
+		// print some readily available metadata, the rest will
+		// be available from the sp_playlist object loaded through
+		// sp_search_playlist().
+		printf("  Playlist \"%s\"\n", sp_search_playlist_name(search, i));
+	}
 }
 
 /**
