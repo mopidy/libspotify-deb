@@ -1,3 +1,9 @@
+libspotify (11.1.60-2armel1) unstable; urgency=low
+
+  * Rebuild for armv5 instead of armv7.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Thu, 23 Aug 2012 00:14:32 +0200
+
 libspotify (11.1.60-2) unstable; urgency=low
 
   * Update libspotify-dev to depend on libspotify11, not libspotify10.
