@@ -1,3 +1,9 @@
+libspotify (12.1.51-1armel1) unstable; urgency=low
+
+  * Rebuild for armv5 instead of armv7.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Thu, 23 Aug 2012 00:21:04 +0200
+
 libspotify (12.1.51-1) unstable; urgency=low
 
   * New upstream release.
