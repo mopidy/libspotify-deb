@@ -16,7 +16,7 @@ as follows:
     curl -o libspotify_11.1.60.orig-amd64.tar.gz \
         https://developer.spotify.com/download/libspotify/libspotify-11.1.60-Linux-x86_64-release.tar.gz
     curl -o libspotify_11.1.60.orig-armel.tar.gz \
-        https://developer.spotify.com/download/libspotify/libspotify-11.1.60-Linux-armv7-release.tar.gz
+        https://developer.spotify.com/download/libspotify/libspotify-11.1.60-Linux-armv5-release.tar.gz
 
     # Add the new files to git
     git add libspotify_11.1.60.orig-*
