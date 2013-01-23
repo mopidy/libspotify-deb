@@ -1,0 +1,1155 @@
+.TH "Playlist subsystem" 3spotify "Mon Jan 21 2013" "libspotify" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Playlist subsystem \- 
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBsp_playlist_callbacks\fP"
+.br
+.ti -1c
+.RI "struct \fBsp_playlistcontainer_callbacks\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBsp_playlist_callbacks\fP \fBsp_playlist_callbacks\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBsp_playlistcontainer_callbacks\fP \fBsp_playlistcontainer_callbacks\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBsp_playlist_is_loaded\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_add_callbacks\fP (\fBsp_playlist\fP *playlist, \fBsp_playlist_callbacks\fP *callbacks, void *userdata)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_remove_callbacks\fP (\fBsp_playlist\fP *playlist, \fBsp_playlist_callbacks\fP *callbacks, void *userdata)"
+.br
+.ti -1c
+.RI "int \fBsp_playlist_num_tracks\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_track\fP * \fBsp_playlist_track\fP (\fBsp_playlist\fP *playlist, int index)"
+.br
+.ti -1c
+.RI "int \fBsp_playlist_track_create_time\fP (\fBsp_playlist\fP *playlist, int index)"
+.br
+.ti -1c
+.RI "\fBsp_user\fP * \fBsp_playlist_track_creator\fP (\fBsp_playlist\fP *playlist, int index)"
+.br
+.ti -1c
+.RI "bool \fBsp_playlist_track_seen\fP (\fBsp_playlist\fP *playlist, int index)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_track_set_seen\fP (\fBsp_playlist\fP *playlist, int index, bool seen)"
+.br
+.ti -1c
+.RI "const char * \fBsp_playlist_track_message\fP (\fBsp_playlist\fP *playlist, int index)"
+.br
+.ti -1c
+.RI "const char * \fBsp_playlist_name\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_rename\fP (\fBsp_playlist\fP *playlist, const char *new_name)"
+.br
+.ti -1c
+.RI "\fBsp_user\fP * \fBsp_playlist_owner\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "bool \fBsp_playlist_is_collaborative\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_set_collaborative\fP (\fBsp_playlist\fP *playlist, bool collaborative)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_set_autolink_tracks\fP (\fBsp_playlist\fP *playlist, bool link)"
+.br
+.ti -1c
+.RI "const char * \fBsp_playlist_get_description\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "bool \fBsp_playlist_get_image\fP (\fBsp_playlist\fP *playlist, byte image[20])"
+.br
+.ti -1c
+.RI "bool \fBsp_playlist_has_pending_changes\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_add_tracks\fP (\fBsp_playlist\fP *playlist, \fBsp_track\fP *const *tracks, int num_tracks, int position, \fBsp_session\fP *session)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_remove_tracks\fP (\fBsp_playlist\fP *playlist, const int *tracks, int num_tracks)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_reorder_tracks\fP (\fBsp_playlist\fP *playlist, const int *tracks, int num_tracks, int new_position)"
+.br
+.ti -1c
+.RI "unsigned int \fBsp_playlist_num_subscribers\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_subscribers\fP * \fBsp_playlist_subscribers\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_subscribers_free\fP (\fBsp_subscribers\fP *subscribers)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_update_subscribers\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "bool \fBsp_playlist_is_in_ram\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_set_in_ram\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist, bool in_ram)"
+.br
+.ti -1c
+.RI "\fBsp_playlist\fP * \fBsp_playlist_create\fP (\fBsp_session\fP *session, \fBsp_link\fP *link)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_set_offline_mode\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist, bool offline)"
+.br
+.ti -1c
+.RI "\fBsp_playlist_offline_status\fP \fBsp_playlist_get_offline_status\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "int \fBsp_playlist_get_offline_download_completed\fP (\fBsp_session\fP *session, \fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_add_ref\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlist_release\fP (\fBsp_playlist\fP *playlist)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_add_callbacks\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_playlistcontainer_callbacks\fP *callbacks, void *userdata)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_remove_callbacks\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_playlistcontainer_callbacks\fP *callbacks, void *userdata)"
+.br
+.ti -1c
+.RI "int \fBsp_playlistcontainer_num_playlists\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "bool \fBsp_playlistcontainer_is_loaded\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "\fBsp_playlist\fP * \fBsp_playlistcontainer_playlist\fP (\fBsp_playlistcontainer\fP *pc, int index)"
+.br
+.ti -1c
+.RI "\fBsp_playlist_type\fP \fBsp_playlistcontainer_playlist_type\fP (\fBsp_playlistcontainer\fP *pc, int index)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_playlist_folder_name\fP (\fBsp_playlistcontainer\fP *pc, int index, char *buffer, int buffer_size)"
+.br
+.ti -1c
+.RI "sp_uint64 \fBsp_playlistcontainer_playlist_folder_id\fP (\fBsp_playlistcontainer\fP *pc, int index)"
+.br
+.ti -1c
+.RI "\fBsp_playlist\fP * \fBsp_playlistcontainer_add_new_playlist\fP (\fBsp_playlistcontainer\fP *pc, const char *name)"
+.br
+.ti -1c
+.RI "\fBsp_playlist\fP * \fBsp_playlistcontainer_add_playlist\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_link\fP *link)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_remove_playlist\fP (\fBsp_playlistcontainer\fP *pc, int index)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_move_playlist\fP (\fBsp_playlistcontainer\fP *pc, int index, int new_position, bool dry_run)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_add_folder\fP (\fBsp_playlistcontainer\fP *pc, int index, const char *name)"
+.br
+.ti -1c
+.RI "\fBsp_user\fP * \fBsp_playlistcontainer_owner\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_add_ref\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "\fBsp_error\fP \fBsp_playlistcontainer_release\fP (\fBsp_playlistcontainer\fP *pc)"
+.br
+.ti -1c
+.RI "int \fBsp_playlistcontainer_get_unseen_tracks\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist, \fBsp_track\fP **tracks, int num_tracks)"
+.br
+.ti -1c
+.RI "int \fBsp_playlistcontainer_clear_unseen_tracks\fP (\fBsp_playlistcontainer\fP *pc, \fBsp_playlist\fP *playlist)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The playlist subsystem handles playlists and playlist containers (list of playlists).
+.PP
+The playlist container functions are always valid, but your playlists are not guaranteed to be loaded until the \fBsp_session_callbacks::logged_in\fP callback has been issued. 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBsp_playlist_callbacks\fP  \fBsp_playlist_callbacks\fP"Playlist callbacks
+.PP
+Used to get notifications when playlists are updated. If some callbacks should not be of interest, set them to NULL. 
+.SS "typedef struct \fBsp_playlistcontainer_callbacks\fP  \fBsp_playlistcontainer_callbacks\fP"Playlist container callbacks. If some callbacks should not be of interest, set them to NULL.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_playlistcontainer_add_callbacks\fP 
+.PP
+\fBsp_playlistcontainer_remove_callbacks\fP 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "\fBsp_error\fP sp_playlist_add_callbacks (\fBsp_playlist\fP * playlist, \fBsp_playlist_callbacks\fP * callbacks, void * userdata)"Register interest in the given playlist
+.PP
+Here is a snippet from \fCjukebox.c:\fP  
+.PP
+.nf
+  sp_playlist_add_callbacks(pl, &pl_callbacks, NULL);
+
+.fi
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIcallbacks\fP Callbacks, see \fBsp_playlist_callbacks\fP 
+.br
+\fIuserdata\fP Userdata to be passed to callbacks 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_playlist_remove_callbacks\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "\fBsp_error\fP sp_playlist_add_ref (\fBsp_playlist\fP * playlist)"Increase the reference count of a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP The playlist object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_add_tracks (\fBsp_playlist\fP * playlist, \fBsp_track\fP *const * tracks, int num_tracks, int position, \fBsp_session\fP * session)"Add tracks to a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fItracks\fP Array of pointer to tracks. 
+.br
+\fInum_tracks\fP Length of \fCtracks\fP array 
+.br
+\fIposition\fP Start position in playlist where to insert the tracks 
+.br
+\fIsession\fP Your session object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INVALID_INDATA - position is > current playlist length SP_ERROR_PERMISSION_DENIED 
+.RE
+.PP
+
+.SS "\fBsp_playlist\fP* sp_playlist_create (\fBsp_session\fP * session, \fBsp_link\fP * link)"Load an already existing playlist without adding it to a playlistcontainer.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIlink\fP Link object referring to a playlist
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A playlist. The reference is owned by the caller and should be released with \fBsp_playlist_release()\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "const char* sp_playlist_get_description (\fBsp_playlist\fP * playlist)"Get description for a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Playlist description or NULL if unset 
+.RE
+.PP
+
+.SS "bool sp_playlist_get_image (\fBsp_playlist\fP * playlist, byte image[20])"Get description for a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIimage\fP 20 byte image id
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+TRUE if playlist has an image, FALSE if not 
+.RE
+.PP
+
+.SS "int sp_playlist_get_offline_download_completed (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist)"Get download progress for an offline playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value from 0 - 100 that indicates amount of playlist that is downloaded or 0 if the playlist is not in the SP_PLAYLIST_OFFLINE_STATUS_DOWNLOADING mode.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_playlist_offline_status()\fP 
+.RE
+.PP
+
+.SS "\fBsp_playlist_offline_status\fP sp_playlist_get_offline_status (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist)"Get offline status for a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+sp_playlist_offline_status
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+When in \fBSP_PLAYLIST_OFFLINE_STATUS_DOWNLOADING\fP mode the \fBsp_playlist_get_offline_download_completed()\fP method can be used to query progress of the download 
+.RE
+.PP
+
+.SS "bool sp_playlist_has_pending_changes (\fBsp_playlist\fP * playlist)"Check if a playlist has pending changes
+.PP
+Pending changes are local changes that have not yet been acknowledged by the server.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A flag representing if there are pending changes or not 
+.RE
+.PP
+
+.SS "bool sp_playlist_is_collaborative (\fBsp_playlist\fP * playlist)"Return collaborative status for a playlist.
+.PP
+A playlist in collaborative state can be modifed by all users, not only the user owning the list
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if playlist is collaborative, otherwise false 
+.RE
+.PP
+
+.SS "bool sp_playlist_is_in_ram (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist)"Return whether a playlist is loaded in RAM (as opposed to only stored on disk)
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True iff playlist is in RAM, False otherwise
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+When a playlist is no longer in RAM it will appear empty. However, libspotify will retain information about the list metadata (owner, title, picture, etc) in RAM. There is one caveat tough: If libspotify has never seen the playlist before this metadata will also be unset. In order for libspotify to get the metadata the playlist needs to be loaded at least once. In order words, if libspotify starts with an empty playlist cache and the application has set 'initially_unload_playlists' config parameter to True all playlists will be empty. It will not be possible to generate URI's to the playlists nor extract playlist title until the application calls sp_playlist_set_in_ram(..., true). So an application that needs to stay within a low memory profile would need to cycle thru all new playlists in order to extract metadata.
+.RE
+.PP
+The easiest way to detect this case is when \fBsp_playlist_is_in_ram()\fP returns false and \fBsp_link_create_from_playlist()\fP returns NULL 
+.SS "bool sp_playlist_is_loaded (\fBsp_playlist\fP * playlist)"Get load status for the specified playlist. If it's false, you have to wait until playlist_state_changed happens, and check again if is_loaded has changed
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if playlist is loaded, otherwise false 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "const char* sp_playlist_name (\fBsp_playlist\fP * playlist)"Return name of given playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the given playlist 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "unsigned int sp_playlist_num_subscribers (\fBsp_playlist\fP * playlist)"Return number of subscribers for a given playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of subscribers 
+.RE
+.PP
+
+.SS "int sp_playlist_num_tracks (\fBsp_playlist\fP * playlist)"Return number of tracks in the given playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of tracks in the playlist 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "\fBsp_user\fP* sp_playlist_owner (\fBsp_playlist\fP * playlist)"Return a pointer to the user for the given playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+User object 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_release (\fBsp_playlist\fP * playlist)"Decrease the reference count of a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP The playlist object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP.
+.SS "\fBsp_error\fP sp_playlist_remove_callbacks (\fBsp_playlist\fP * playlist, \fBsp_playlist_callbacks\fP * callbacks, void * userdata)"Unregister interest in the given playlist
+.PP
+The combination of (\fCcallbacks\fP, \fCuserdata\fP) is used to find the entry to be removed
+.PP
+Here is a snippet from \fCjukebox.c:\fP  
+.PP
+.nf
+ sp_playlist_remove_callbacks(pl, &pl_callbacks, NULL);
+
+.fi
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIcallbacks\fP Callbacks, see \fBsp_playlist_callbacks\fP 
+.br
+\fIuserdata\fP Userdata to be passed to callbacks 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_playlist_add_callbacks\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "\fBsp_error\fP sp_playlist_remove_tracks (\fBsp_playlist\fP * playlist, const int * tracks, int num_tracks)"Remove tracks from a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fItracks\fP Array of pointer to track indices. A certain track index should be present at most once, e.g. [0, 1, 2] is valid indata, whereas [0, 1, 1] is invalid. 
+.br
+\fInum_tracks\fP Length of \fCtracks\fP array
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_PERMISSION_DENIED 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBjukebox.c\fP.
+.SS "\fBsp_error\fP sp_playlist_rename (\fBsp_playlist\fP * playlist, const char * new_name)"Rename the given playlist The name must not consist of only spaces and it must be shorter than 256 characters.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fInew_name\fP New name for playlist
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INVALID_INDATA SP_ERROR_PERMISSION_DENIED 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_reorder_tracks (\fBsp_playlist\fP * playlist, const int * tracks, int num_tracks, int new_position)"Move tracks in playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fItracks\fP Array of pointer to track indices to be moved. A certain track index should be present at most once, e.g. [0, 1, 2] is valid indata, whereas [0, 1, 1] is invalid. 
+.br
+\fInum_tracks\fP Length of \fCtracks\fP array 
+.br
+\fInew_position\fP New position for tracks
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INVALID_INDATA - position is > current playlist length SP_ERROR_PERMISSION_DENIED 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_set_autolink_tracks (\fBsp_playlist\fP * playlist, bool link)"Set autolinking state for a playlist.
+.PP
+If a playlist is autolinked, unplayable tracks will be made playable by linking them to other Spotify tracks, where possible.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIlink\fP True or false 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_set_collaborative (\fBsp_playlist\fP * playlist, bool collaborative)"Set collaborative status for a playlist.
+.PP
+A playlist in collaborative state can be modified by all users, not only the user owning the list
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIcollaborative\fP True or false 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_set_in_ram (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist, bool in_ram)"Return whether a playlist is loaded in RAM (as opposed to only stored on disk)
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object 
+.br
+\fIin_ram\fP Controls whether or not to keep the list in RAM 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_set_offline_mode (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist, bool offline)"Mark a playlist to be synchronized for offline playback. The playlist must be in the users playlistcontainer
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object 
+.br
+\fIoffline\fP True iff playlist should be offline, false otherwise 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_subscribers\fP* sp_playlist_subscribers (\fBsp_playlist\fP * playlist)"Return subscribers for a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBsp_subscribers\fP struct with array of canonical usernames. This object should be free'd using \fBsp_playlist_subscribers_free()\fP
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+The count returned for this function may be less than those returned by \fBsp_playlist_num_subscribers()\fP. Spotify does not track each user subscribed to a playlist for playlist with many (>500) subscribers. 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_subscribers_free (\fBsp_subscribers\fP * subscribers)"Free object returned from \fBsp_playlist_subscribers()\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsubscribers\fP Subscribers object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_track\fP* sp_playlist_track (\fBsp_playlist\fP * playlist, int index)"Return the track at the given index in a playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIindex\fP Index into playlist container. Should be in the interval [0, \fBsp_playlist_num_tracks()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The track at the given index 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBbrowse.c\fP, and \fBjukebox.c\fP.
+.SS "int sp_playlist_track_create_time (\fBsp_playlist\fP * playlist, int index)"Return when the given index was added to the playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIindex\fP Index into playlist container. Should be in the interval [0, \fBsp_playlist_num_tracks()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Time, Seconds since unix epoch. 
+.RE
+.PP
+
+.SS "\fBsp_user\fP* sp_playlist_track_creator (\fBsp_playlist\fP * playlist, int index)"Return user that added the given index in the playlist
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIindex\fP Index into playlist container. Should be in the interval [0, \fBsp_playlist_num_tracks()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+User object 
+.RE
+.PP
+
+.SS "const char* sp_playlist_track_message (\fBsp_playlist\fP * playlist, int index)"Return a message attached to a playlist item. Typically used on inbox.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIindex\fP Index into playlist container. Should be in the interval [0, \fBsp_playlist_num_tracks()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+UTF-8 encoded message, or NULL if no message is present 
+.RE
+.PP
+
+.SS "bool sp_playlist_track_seen (\fBsp_playlist\fP * playlist, int index)"Return if a playlist entry is marked as seen or not
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIindex\fP Index into playlist container. Should be in the interval [0, \fBsp_playlist_num_tracks()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Seen state 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_track_set_seen (\fBsp_playlist\fP * playlist, int index, bool seen)"Set seen status of a playlist entry
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplaylist\fP Playlist object 
+.br
+\fIindex\fP Index into playlist container. Should be in the interval [0, \fBsp_playlist_num_tracks()\fP - 1] 
+.br
+\fIseen\fP Seen status to be set
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+error One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INDEX_OUT_OF_RANGE 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlist_update_subscribers (\fBsp_session\fP * session, \fBsp_playlist\fP * playlist)"Ask library to update the subscription count for a playlist
+.PP
+When the subscription info has been fetched from the Spotify backend the playlist subscribers_changed() callback will be invoked. In that callback use \fBsp_playlist_num_subscribers()\fP and/or \fBsp_playlist_subscribers()\fP to get information about the subscribers. You can call those two functions anytime you want but the information might not be up to date in such cases
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP Session object 
+.br
+\fIplaylist\fP Playlist object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlistcontainer_add_callbacks (\fBsp_playlistcontainer\fP * pc, \fBsp_playlistcontainer_callbacks\fP * callbacks, void * userdata)"Register interest in changes to a playlist container
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIcallbacks\fP Callbacks, see \fBsp_playlistcontainer_callbacks\fP 
+.br
+\fIuserdata\fP Opaque value passed to callbacks.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Every \fBsp_playlistcontainer_add_callbacks()\fP needs to be paired with a corresponding \fBsp_playlistcontainer_remove_callbacks()\fP that is invoked before releasing the last reference you own for the container. In other words, you must make sure to have removed all the callbacks before the container gets destroyed.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_session_playlistcontainer()\fP 
+.PP
+\fBsp_playlistcontainer_remove_callbacks\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBjukebox.c\fP.
+.SS "\fBsp_error\fP sp_playlistcontainer_add_folder (\fBsp_playlistcontainer\fP * pc, int index, const char * name)"Add a playlist folder
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIindex\fP Position of SP_PLAYLIST_TYPE_START_FOLDER entry 
+.br
+\fIname\fP Name of group
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+error One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INDEX_OUT_OF_RANGE
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This operation will actually create two playlists. One of type SP_PLAYLIST_TYPE_START_FOLDER and immediately following a SP_PLAYLIST_TYPE_END_FOLDER one.
+.RE
+.PP
+To remove a playlist folder both of these must be deleted or the list will be left in an inconsistant state.
+.PP
+There is no way to rename a playlist folder. Instead you need to remove the folder and recreate it again. 
+.SS "\fBsp_playlist\fP* sp_playlistcontainer_add_new_playlist (\fBsp_playlistcontainer\fP * pc, const char * name)"Add an empty playlist at the end of the playlist container. The name must not consist of only spaces and it must be shorter than 256 characters.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIname\fP Name of new playlist
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new playlist. Can be NULL if the operation fails. 
+.RE
+.PP
+
+.SS "\fBsp_playlist\fP* sp_playlistcontainer_add_playlist (\fBsp_playlistcontainer\fP * pc, \fBsp_link\fP * link)"Add an existing playlist at the end of the given playlist container
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIlink\fP Link object pointing to a playlist
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the new playlist. Will be NULL if the playlist already exists. 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlistcontainer_add_ref (\fBsp_playlistcontainer\fP * pc)"Increase reference count on playlistconatiner object
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "int sp_playlistcontainer_clear_unseen_tracks (\fBsp_playlistcontainer\fP * pc, \fBsp_playlist\fP * playlist)"Clears a playlist from unseen tracks, so that next call to \fBsp_playlistcontainer_get_unseen_tracks()\fP will return 0 until a new track is added to the \fCplayslist\fP.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container. 
+.br
+\fIplaylist\fP Playlist object. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns 0 on success and -1 on failure. 
+.RE
+.PP
+
+.SS "int sp_playlistcontainer_get_unseen_tracks (\fBsp_playlistcontainer\fP * pc, \fBsp_playlist\fP * playlist, \fBsp_track\fP ** tracks, int num_tracks)"Get the number of new tracks in a playlist since the corresponding function \fBsp_playlistcontainer_clear_unseen_tracks()\fP was called. The function always returns the number of new tracks, and fills the \fCtracks\fP array with the new tracks, but not more than specified in \fCnum_tracks\fP. The function will return a negative value on failure.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container. 
+.br
+\fIplaylist\fP Playlist object. 
+.br
+\fItracks\fP Array of pointer to new tracks (maybe NULL) 
+.br
+\fInum_tracks\fP Size of tracks array 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns the number of unseen tracks 
+.RE
+.PP
+
+.SS "bool sp_playlistcontainer_is_loaded (\fBsp_playlistcontainer\fP * pc)"Return true if the playlistcontainer is fully loaded
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if container is loaded
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+The container_loaded callback will be invoked when this flips to true 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlistcontainer_move_playlist (\fBsp_playlistcontainer\fP * pc, int index, int new_position, bool dry_run)"Move a playlist in the playlist container
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIindex\fP Index of playlist to be moved 
+.br
+\fInew_position\fP New position for the playlist 
+.br
+\fIdry_run\fP Do not execute the move, only check if it possible
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+error One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INDEX_OUT_OF_RANGE SP_ERROR_INVALID_INDATA - If trying to move a folder into itself 
+.RE
+.PP
+
+.SS "int sp_playlistcontainer_num_playlists (\fBsp_playlistcontainer\fP * pc)"Return the number of playlists in the given playlist container
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of playlists, -1 if undefined
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_session_playlistcontainer()\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBjukebox.c\fP.
+.SS "\fBsp_user\fP* sp_playlistcontainer_owner (\fBsp_playlistcontainer\fP * pc)"Return a pointer to the user object of the owner.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The user object or NULL if unknown or none. 
+.RE
+.PP
+
+.SS "\fBsp_playlist\fP* sp_playlistcontainer_playlist (\fBsp_playlistcontainer\fP * pc, int index)"Return a pointer to the playlist at a specific index
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIindex\fP Index in playlist container. Should be in the interval [0, \fBsp_playlistcontainer_num_playlists()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The playlist object
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_session_playlistcontainer()\fP 
+.RE
+.PP
+
+.PP
+\fBExamples: \fP
+.in +1c
+\fBjukebox.c\fP.
+.SS "sp_uint64 sp_playlistcontainer_playlist_folder_id (\fBsp_playlistcontainer\fP * pc, int index)"Return the folder id at \fIindex\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIindex\fP Index in playlist container. Should be in the interval [0, \fBsp_playlistcontainer_num_playlists()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The group ID of the folder. Returns 0 on index out of range, pc being NULL or indexed item not being a folder
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_session_playlistcontainer()\fP 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlistcontainer_playlist_folder_name (\fBsp_playlistcontainer\fP * pc, int index, char * buffer, int buffer_size)"Return the folder name at \fIindex\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIindex\fP Index in playlist container. Should be in the interval [0, \fBsp_playlistcontainer_num_playlists()\fP - 1]. Index should point at a start-folder entry, otherwise the empty string is written to buffer. 
+.br
+\fIbuffer\fP Pointer to char[] where to store folder name 
+.br
+\fIbuffer_size\fP Size of array
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INDEX_OUT_OF_RANGE
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_session_playlistcontainer()\fP 
+.RE
+.PP
+
+.SS "\fBsp_playlist_type\fP sp_playlistcontainer_playlist_type (\fBsp_playlistcontainer\fP * pc, int index)"Return the type of the playlist at a \fIindex\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIindex\fP Index in playlist container. Should be in the interval [0, \fBsp_playlistcontainer_num_playlists()\fP - 1]
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Type of the playlist, 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_playlist_type\fP
+.PP
+\fBsp_session_playlistcontainer()\fP 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlistcontainer_release (\fBsp_playlistcontainer\fP * pc)"Release reference count on playlistconatiner object
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlistcontainer_remove_callbacks (\fBsp_playlistcontainer\fP * pc, \fBsp_playlistcontainer_callbacks\fP * callbacks, void * userdata)"Unregister interest in changes to a playlist container
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIcallbacks\fP Callbacks, see \fBsp_playlistcontainer_callbacks\fP 
+.br
+\fIuserdata\fP Opaque value passed to callbacks.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsp_session_playlistcontainer()\fP 
+.PP
+\fBsp_playlistcontainer_add_callbacks\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+One of the following errors, from \fBsp_error\fP SP_ERROR_OK 
+.RE
+.PP
+
+.SS "\fBsp_error\fP sp_playlistcontainer_remove_playlist (\fBsp_playlistcontainer\fP * pc, int index)"Remove playlist at index from the given playlist container
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpc\fP Playlist container 
+.br
+\fIindex\fP Index of playlist to be removed
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+error One of the following errors, from \fBsp_error\fP SP_ERROR_OK SP_ERROR_INDEX_OUT_OF_RANGE 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libspotify from the source code.
