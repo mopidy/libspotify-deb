@@ -1,3 +1,9 @@
+libspotify (12.1.103-0mopidy1) unstable; urgency=low
+
+  * New upstream release for the armhf architecture only.
+
+ -- Stein Magnus Jodal <stein.magnus@jodal.no>  Wed, 23 Jan 2013 19:35:19 +0100
+
 libspotify (12.1.51-1armel1) unstable; urgency=low
 
   * Rebuild for armv5 instead of armv7.
