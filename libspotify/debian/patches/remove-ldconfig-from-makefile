@@ -1,7 +1,7 @@
 Index: libspotify/amd64/Makefile
 ===================================================================
---- libspotify.orig/amd64/Makefile	2012-06-13 16:22:36.000000000 +0200
-+++ libspotify/amd64/Makefile	2012-06-14 12:29:10.474160433 +0200
+--- libspotify.orig/amd64/Makefile	2013-01-23 19:47:10.396840181 +0100
++++ libspotify/amd64/Makefile	2013-01-23 19:47:32.484746313 +0100
 @@ -15,8 +15,6 @@
  	mkdir -p $(prefix)/lib/pkgconfig
  	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
@@ -13,8 +13,8 @@ Index: libspotify/amd64/Makefile
  	rm -f  $(prefix)/lib/libspotify.so.12.1.51
 Index: libspotify/i386/Makefile
 ===================================================================
---- libspotify.orig/i386/Makefile	2012-06-13 16:15:12.000000000 +0200
-+++ libspotify/i386/Makefile	2012-06-14 12:29:10.474160433 +0200
+--- libspotify.orig/i386/Makefile	2013-01-23 19:47:10.396840181 +0100
++++ libspotify/i386/Makefile	2013-01-23 19:47:32.484746313 +0100
 @@ -15,8 +15,6 @@
  	mkdir -p $(prefix)/lib/pkgconfig
  	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
@@ -26,8 +26,8 @@ Index: libspotify/i386/Makefile
  	rm -f  $(prefix)/lib/libspotify.so.12.1.51
 Index: libspotify/armel/Makefile
 ===================================================================
---- libspotify.orig/armel/Makefile	2012-06-13 16:14:20.000000000 +0200
-+++ libspotify/armel/Makefile	2012-06-14 12:29:10.474160433 +0200
+--- libspotify.orig/armel/Makefile	2013-01-23 19:47:10.396840181 +0100
++++ libspotify/armel/Makefile	2013-01-23 19:47:32.484746313 +0100
 @@ -15,8 +15,6 @@
  	mkdir -p $(prefix)/lib/pkgconfig
  	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
@@ -37,3 +37,16 @@ Index: libspotify/armel/Makefile
  uninstall:
  	rm -rf $(prefix)/include/libspotify
  	rm -f  $(prefix)/lib/libspotify.so.12.1.51
+Index: libspotify/armhf/Makefile
+===================================================================
+--- libspotify.orig/armhf/Makefile	2013-01-23 19:47:42.164705161 +0100
++++ libspotify/armhf/Makefile	2013-01-23 19:47:50.520669633 +0100
+@@ -15,8 +15,6 @@
+ 	mkdir -p $(prefix)/lib/pkgconfig
+ 	sed -e s:PKG_PREFIX:$(prefix):g <lib/pkgconfig/libspotify.pc >$(prefix)/lib/pkgconfig/libspotify.pc
+ 
+-	ldconfig
+-
+ uninstall:
+ 	rm -rf $(prefix)/include/libspotify
+ 	rm -f  $(prefix)/lib/libspotify.so.12.1.103

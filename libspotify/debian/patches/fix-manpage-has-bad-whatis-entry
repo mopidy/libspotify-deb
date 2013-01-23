@@ -1,7 +1,7 @@
-Index: libspotify/amd64/share/man3/album.3spotify
+Index: libspotify/armhf/share/man3/album.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/album.3spotify	2012-06-14 12:28:41.406622255 +0200
-+++ libspotify/amd64/share/man3/album.3spotify	2012-06-14 12:29:02.266290843 +0200
+--- libspotify.orig/armhf/share/man3/album.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/album.3spotify	2013-01-23 19:45:10.913347185 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -11,10 +11,10 @@ Index: libspotify/amd64/share/man3/album.3spotify
  .SS "Enumerations"
  
  .in +1c
-Index: libspotify/amd64/share/man3/albumbrowse.3spotify
+Index: libspotify/armhf/share/man3/albumbrowse.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/albumbrowse.3spotify	2012-06-14 12:28:41.422622001 +0200
-+++ libspotify/amd64/share/man3/albumbrowse.3spotify	2012-06-14 12:29:02.266290843 +0200
+--- libspotify.orig/armhf/share/man3/albumbrowse.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/albumbrowse.3spotify	2013-01-23 19:45:10.913347185 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -24,10 +24,10 @@ Index: libspotify/amd64/share/man3/albumbrowse.3spotify
  .SS "Typedefs"
  
  .in +1c
-Index: libspotify/amd64/share/man3/artist.3spotify
+Index: libspotify/armhf/share/man3/artist.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/artist.3spotify	2012-06-14 12:28:41.358623018 +0200
-+++ libspotify/amd64/share/man3/artist.3spotify	2012-06-14 12:29:02.266290843 +0200
+--- libspotify.orig/armhf/share/man3/artist.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/artist.3spotify	2013-01-23 19:45:10.913347185 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -37,10 +37,10 @@ Index: libspotify/amd64/share/man3/artist.3spotify
  .SS "Functions"
  
  .in +1c
-Index: libspotify/amd64/share/man3/artistbrowse.3spotify
+Index: libspotify/armhf/share/man3/artistbrowse.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/artistbrowse.3spotify	2012-06-14 12:28:41.478621111 +0200
-+++ libspotify/amd64/share/man3/artistbrowse.3spotify	2012-06-14 12:29:02.266290843 +0200
+--- libspotify.orig/armhf/share/man3/artistbrowse.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/artistbrowse.3spotify	2013-01-23 19:45:10.913347185 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -50,10 +50,10 @@ Index: libspotify/amd64/share/man3/artistbrowse.3spotify
  .SS "Typedefs"
  
  .in +1c
-Index: libspotify/amd64/share/man3/error.3spotify
+Index: libspotify/armhf/share/man3/error.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/error.3spotify	2012-06-14 12:28:41.430621874 +0200
-+++ libspotify/amd64/share/man3/error.3spotify	2012-06-14 12:29:02.266290843 +0200
+--- libspotify.orig/armhf/share/man3/error.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/error.3spotify	2013-01-23 19:45:10.913347185 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -63,10 +63,10 @@ Index: libspotify/amd64/share/man3/error.3spotify
  .SS "Typedefs"
  
  .in +1c
-Index: libspotify/amd64/share/man3/image.3spotify
+Index: libspotify/armhf/share/man3/image.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/image.3spotify	2012-06-14 12:28:41.578619523 +0200
-+++ libspotify/amd64/share/man3/image.3spotify	2012-06-14 12:29:02.270290780 +0200
+--- libspotify.orig/armhf/share/man3/image.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/image.3spotify	2013-01-23 19:45:10.913347185 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -76,10 +76,10 @@ Index: libspotify/amd64/share/man3/image.3spotify
  .SS "Typedefs"
  
  .in +1c
-Index: libspotify/amd64/share/man3/link.3spotify
+Index: libspotify/armhf/share/man3/link.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/link.3spotify	2012-06-14 12:28:41.438621747 +0200
-+++ libspotify/amd64/share/man3/link.3spotify	2012-06-14 12:29:02.270290780 +0200
+--- libspotify.orig/armhf/share/man3/link.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/link.3spotify	2013-01-23 19:45:10.913347185 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -89,10 +89,10 @@ Index: libspotify/amd64/share/man3/link.3spotify
  .SS "Enumerations"
  
  .in +1c
-Index: libspotify/amd64/share/man3/playlist.3spotify
+Index: libspotify/armhf/share/man3/playlist.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/playlist.3spotify	2012-06-14 12:28:41.502620730 +0200
-+++ libspotify/amd64/share/man3/playlist.3spotify	2012-06-14 12:29:02.270290780 +0200
+--- libspotify.orig/armhf/share/man3/playlist.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/playlist.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -102,10 +102,10 @@ Index: libspotify/amd64/share/man3/playlist.3spotify
  .SS "Data Structures"
  
  .in +1c
-Index: libspotify/amd64/share/man3/session.3spotify
+Index: libspotify/armhf/share/man3/session.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/session.3spotify	2012-06-14 12:28:41.278624288 +0200
-+++ libspotify/amd64/share/man3/session.3spotify	2012-06-14 12:29:02.270290780 +0200
+--- libspotify.orig/armhf/share/man3/session.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/session.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -115,10 +115,10 @@ Index: libspotify/amd64/share/man3/session.3spotify
  .SS "Data Structures"
  
  .in +1c
-Index: libspotify/amd64/share/man3/toplist.3spotify
+Index: libspotify/armhf/share/man3/toplist.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/toplist.3spotify	2012-06-14 12:28:41.226625115 +0200
-+++ libspotify/amd64/share/man3/toplist.3spotify	2012-06-14 12:29:02.270290780 +0200
+--- libspotify.orig/armhf/share/man3/toplist.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/toplist.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -128,10 +128,10 @@ Index: libspotify/amd64/share/man3/toplist.3spotify
  .SS "Defines"
  
  .in +1c
-Index: libspotify/amd64/share/man3/track.3spotify
+Index: libspotify/armhf/share/man3/track.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/track.3spotify	2012-06-14 12:28:41.346623209 +0200
-+++ libspotify/amd64/share/man3/track.3spotify	2012-06-14 12:29:02.274290716 +0200
+--- libspotify.orig/armhf/share/man3/track.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/track.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -141,10 +141,10 @@ Index: libspotify/amd64/share/man3/track.3spotify
  .SS "Functions"
  
  .in +1c
-Index: libspotify/amd64/share/man3/types.3spotify
+Index: libspotify/armhf/share/man3/types.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/types.3spotify	2012-06-14 12:28:41.270624416 +0200
-+++ libspotify/amd64/share/man3/types.3spotify	2012-06-14 12:29:02.274290716 +0200
+--- libspotify.orig/armhf/share/man3/types.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/types.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -154,10 +154,10 @@ Index: libspotify/amd64/share/man3/types.3spotify
  .SS "Typedefs"
  
  .in +1c
-Index: libspotify/amd64/share/man3/user.3spotify
+Index: libspotify/armhf/share/man3/user.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/user.3spotify	2012-06-14 12:28:41.558619841 +0200
-+++ libspotify/amd64/share/man3/user.3spotify	2012-06-14 12:29:02.274290716 +0200
+--- libspotify.orig/armhf/share/man3/user.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/user.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -167,10 +167,10 @@ Index: libspotify/amd64/share/man3/user.3spotify
  .SS "Typedefs"
  
  .in +1c
-Index: libspotify/amd64/share/man3/sp_audio_buffer_stats.3spotify
+Index: libspotify/armhf/share/man3/sp_audio_buffer_stats.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_audio_buffer_stats.3spotify	2012-06-14 12:28:41.454621493 +0200
-+++ libspotify/amd64/share/man3/sp_audio_buffer_stats.3spotify	2012-06-14 12:29:02.274290716 +0200
+--- libspotify.orig/armhf/share/man3/sp_audio_buffer_stats.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/sp_audio_buffer_stats.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -180,10 +180,10 @@ Index: libspotify/amd64/share/man3/sp_audio_buffer_stats.3spotify
  .SH SYNOPSIS
  .br
  .PP
-Index: libspotify/amd64/share/man3/sp_audioformat.3spotify
+Index: libspotify/armhf/share/man3/sp_audioformat.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_audioformat.3spotify	2012-06-14 12:28:41.510620603 +0200
-+++ libspotify/amd64/share/man3/sp_audioformat.3spotify	2012-06-14 12:29:02.274290716 +0200
+--- libspotify.orig/armhf/share/man3/sp_audioformat.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/sp_audioformat.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -193,10 +193,10 @@ Index: libspotify/amd64/share/man3/sp_audioformat.3spotify
  .SH SYNOPSIS
  .br
  .PP
-Index: libspotify/amd64/share/man3/sp_playlist_callbacks.3spotify
+Index: libspotify/armhf/share/man3/sp_playlist_callbacks.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_playlist_callbacks.3spotify	2012-06-14 12:28:41.302623908 +0200
-+++ libspotify/amd64/share/man3/sp_playlist_callbacks.3spotify	2012-06-14 12:29:02.274290716 +0200
+--- libspotify.orig/armhf/share/man3/sp_playlist_callbacks.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/sp_playlist_callbacks.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -206,10 +206,10 @@ Index: libspotify/amd64/share/man3/sp_playlist_callbacks.3spotify
  .SH SYNOPSIS
  .br
  .PP
-Index: libspotify/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify
+Index: libspotify/armhf/share/man3/sp_playlistcontainer_callbacks.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify	2012-06-14 12:28:41.538620158 +0200
-+++ libspotify/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify	2012-06-14 12:29:02.274290716 +0200
+--- libspotify.orig/armhf/share/man3/sp_playlistcontainer_callbacks.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/sp_playlistcontainer_callbacks.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -219,10 +219,10 @@ Index: libspotify/amd64/share/man3/sp_playlistcontainer_callbacks.3spotify
  .SH SYNOPSIS
  .br
  .PP
-Index: libspotify/amd64/share/man3/sp_session_callbacks.3spotify
+Index: libspotify/armhf/share/man3/sp_session_callbacks.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_session_callbacks.3spotify	2012-06-14 12:28:41.602619141 +0200
-+++ libspotify/amd64/share/man3/sp_session_callbacks.3spotify	2012-06-14 12:29:02.278290652 +0200
+--- libspotify.orig/armhf/share/man3/sp_session_callbacks.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/sp_session_callbacks.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -232,10 +232,10 @@ Index: libspotify/amd64/share/man3/sp_session_callbacks.3spotify
  .SH SYNOPSIS
  .br
  .PP
-Index: libspotify/amd64/share/man3/sp_session_config.3spotify
+Index: libspotify/armhf/share/man3/sp_session_config.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_session_config.3spotify	2012-06-14 12:28:41.338623335 +0200
-+++ libspotify/amd64/share/man3/sp_session_config.3spotify	2012-06-14 12:29:02.278290652 +0200
+--- libspotify.orig/armhf/share/man3/sp_session_config.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/sp_session_config.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -245,10 +245,10 @@ Index: libspotify/amd64/share/man3/sp_session_config.3spotify
  .SH SYNOPSIS
  .br
  .PP
-Index: libspotify/amd64/share/man3/sp_subscribers.3spotify
+Index: libspotify/armhf/share/man3/sp_subscribers.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_subscribers.3spotify	2012-06-14 12:28:41.638618570 +0200
-+++ libspotify/amd64/share/man3/sp_subscribers.3spotify	2012-06-14 12:29:02.278290652 +0200
+--- libspotify.orig/armhf/share/man3/sp_subscribers.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/sp_subscribers.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -258,10 +258,10 @@ Index: libspotify/amd64/share/man3/sp_subscribers.3spotify
  .SH SYNOPSIS
  .br
  .PP
-Index: libspotify/amd64/share/man3/api.h.3spotify
+Index: libspotify/armhf/share/man3/api.h.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/api.h.3spotify	2012-06-14 12:28:41.326623526 +0200
-+++ libspotify/amd64/share/man3/api.h.3spotify	2012-06-14 12:29:02.278290652 +0200
+--- libspotify.orig/armhf/share/man3/api.h.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/api.h.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -271,10 +271,10 @@ Index: libspotify/amd64/share/man3/api.h.3spotify
  .SH SYNOPSIS
  .br
  .PP
-Index: libspotify/amd64/share/man3/inbox.3spotify
+Index: libspotify/armhf/share/man3/inbox.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/inbox.3spotify	2012-06-14 12:28:41.382622636 +0200
-+++ libspotify/amd64/share/man3/inbox.3spotify	2012-06-14 12:29:02.278290652 +0200
+--- libspotify.orig/armhf/share/man3/inbox.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/inbox.3spotify	2013-01-23 19:45:10.917347168 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -284,10 +284,10 @@ Index: libspotify/amd64/share/man3/inbox.3spotify
  .SS "Typedefs"
  
  .in +1c
-Index: libspotify/amd64/share/man3/search.3spotify
+Index: libspotify/armhf/share/man3/search.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/search.3spotify	2012-06-14 12:28:41.526620349 +0200
-+++ libspotify/amd64/share/man3/search.3spotify	2012-06-14 12:29:02.278290652 +0200
+--- libspotify.orig/armhf/share/man3/search.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/search.3spotify	2013-01-23 19:45:10.921347151 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
@@ -297,10 +297,10 @@ Index: libspotify/amd64/share/man3/search.3spotify
  .SS "Typedefs"
  
  .in +1c
-Index: libspotify/amd64/share/man3/sp_offline_sync_status.3spotify
+Index: libspotify/armhf/share/man3/sp_offline_sync_status.3spotify
 ===================================================================
---- libspotify.orig/amd64/share/man3/sp_offline_sync_status.3spotify	2012-06-14 12:28:41.250624734 +0200
-+++ libspotify/amd64/share/man3/sp_offline_sync_status.3spotify	2012-06-14 12:29:02.282290589 +0200
+--- libspotify.orig/armhf/share/man3/sp_offline_sync_status.3spotify	2013-01-21 17:13:31.000000000 +0100
++++ libspotify/armhf/share/man3/sp_offline_sync_status.3spotify	2013-01-23 19:45:10.921347151 +0100
 @@ -2,7 +2,7 @@
  .ad l
  .nh
