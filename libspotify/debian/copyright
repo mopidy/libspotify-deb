@@ -13,7 +13,7 @@ Upstream Author(s):
 
 Copyright:
 
-    Copyright (C) 2006-2012 Spotify Ltd
+    Copyright (C) 2006-2013 Spotify Ltd
 
 License:
 
@@ -23,7 +23,7 @@ License:
 
 The Debian packaging is:
 
-    Copyright (C) 2011-2012 Stein Magnus Jodal <stein.magnus@jodal.no>
+    Copyright (C) 2011-2013 Stein Magnus Jodal <stein.magnus@jodal.no>
 
 and is licensed under the Apache License, Version 2.0,
 see "/usr/share/common-licenses/Apache-2.0".
